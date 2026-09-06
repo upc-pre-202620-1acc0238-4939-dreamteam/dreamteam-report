@@ -6,30 +6,82 @@
 
 ### 2.1.1. Análisis competitivo
 
-Identificación de mínimo 3 competidores directos (o indirectos si no aplica).
-
 #### Competitive analysis landscape
 
-|                          | Su startup | Competidor 1 | Competidor 2 | Competidor 3 |
-|--------------------------|------------|---------------|---------------|---------------|
-| Overview                 |            |               |               |               |
-| Ventaja competitiva      |            |               |               |               |
-| Mercado objetivo         |            |               |               |               |
-| Estrategias de marketing |            |               |               |               |
-| Productos & Servicios    |            |               |               |               |
-| Precios & Costos         |            |               |               |               |
-| Canales de distribución  |            |               |               |               |
-
-#### Análisis SWOT
-
-| | Fortalezas | Debilidades | Oportunidades | Amenazas |
+| Competitive Analysis Landscape | | | | |
 |---|---|---|---|---|
-| Su startup | | | | |
-| Competidor 1 | | | | |
+| **¿Por qué llevar a cabo este análisis?** | Identificar ventajas competitivas frente a soluciones existentes en el mercado de seguridad para transporte público. | | | |
+| | **SafeBus (Nuestro startup)** | **Competidor 1 (Metropolitano)** | **Competidor 2 (RTP)** | **Competidor 3 (Mi Transporte)** |
+| **Ventaja competitiva** | Monitoreo en tiempo real, botón de emergencia con conteo de pasajeros por sensores en la puerta. | Infraestructura organizada, estaciones, rutas definidas, carriles exclusivos y cámaras de videovigilancia. | Tecnología incorporada: cámaras de seguridad, monitoreo en tiempo real y capacitación del personal. | Monitoreo y protocolos de seguimiento en tiempo real, reportes ciudadanos. |
+| **Mercado objetivo** | Consorcios/empresas de transporte público y operarios de vehículos asignados. | Usuarios urbanos de Lima Metropolitana. | Población de zonas periféricas, estudiantes y grupos vulnerables. | Población de zonas periféricas y estudiantes. |
+| **Estrategia de marketing** | Enfatiza la seguridad durante la ruta con un sistema integrado al vehículo. | Servicio rápido, moderno, formal y seguro, destacando eficiencia y orden. | Campaña "Yo Soy RTP", sustentabilidad con unidades eléctricas. | Posiciona el transporte como sistema integrado, moderno y eficiente. |
+| **Productos & Servicios** | Botón de pánico, información sobre paraderos, monitoreo de riesgos 24h. | Transporte troncal, tarjeta recargable, estaciones seguras, información de rutas. | Servicio ordinario, expreso, Ecobús y Nochebús. | Transporte multimodal, Tarjeta Mi Movilidad, App Mi Saldo, Mi Pasaje. |
+| **Precios & Costos** | Desde S/. 99 por unidad/mes incluyendo instalación. 20% de descuento a partir de 3 unidades. | S/. 3.50 por viaje. | 40 céntimos (ordinario) a 1.50 soles (Nochebús). | Tarifa plana S/. 2.00, tarifa preferencial S/. 1.00. |
+| **Canales de distribución** | Web y móvil. | Web, móvil/recarga digital, puntos físicos. | App CDMX, tarjeta de movilidad integrada, sitio web oficial. | Web, móvil (App Mi Saldo), puntos físicos (OXXO, estaciones). |
+| **Fortalezas** | Equipo profesional comprometido con el bienestar del cliente. | Marca reconocida, sistema formal, modernización digital. | Tarifas sociales subsidiadas, flota moderna eléctrica, conductores capacitados. | Marca unificada, interoperabilidad, modernización de flota. |
+| **Oportunidades** | Expansión a provincias, acuerdos formales con la policía. | Expansión urbana, digitalización del servicio. | Expansión de rutas eléctricas para el Mundial 2026. | Crecimiento urbano hacia otros estados, crisis de combustibles. |
+| **Amenazas** | Alto índice de extorsiones a transportistas en sus rutas. | Inseguridad ciudadana, saturación en horas punta, fallas operativas. | Competencia del transporte concesionado informal, congestión vial. | Resistencia al cambio, inseguridad, incidentes de vandalismo. |
+
+
+## Análisis SWOT — SafeBus
+
+| Fortalezas | Debilidades |
+|---|---|
+| Tecnología diferenciadora: monitoreo en tiempo real, botón de emergencia y conteo de pasajeros por sensores en la puerta. | Marca nueva y poco reconocida frente a competidores consolidados (Metropolitano, RTP). |
+| Enfoque especializado en seguridad, que los competidores tratan solo como característica secundaria. | Canales limitados: solo web y móvil, sin puntos físicos de venta/atención. |
+| Precio competitivo y escalable: desde S/. 99 por unidad/mes, con 20% de descuento a partir de 3 unidades. | Dependencia de hardware/sensores: costos de instalación, mantenimiento y riesgo de fallas técnicas. |
+| Sistema integrado al vehículo, sin depender de estaciones ni infraestructura fija. | Mercado objetivo estrecho (consorcios y empresas): ingresos concentrados en pocos clientes grandes. |
+| Equipo profesional comprometido con el bienestar del cliente. | Startup en etapa temprana, aún no probada a gran escala. |
+
+| Oportunidades | Amenazas |
+|---|---|
+| Expansión a provincias. | Alto índice de extorsiones a transportistas en las rutas de operación. |
+| Acuerdos formales con la policía y autoridades. | Competidores grandes con más recursos podrían incorporar funciones de seguridad similares. |
+| Demanda creciente de soluciones de seguridad por el aumento de la inseguridad y la extorsión. | Resistencia al cambio y baja adopción tecnológica entre los transportistas. |
+| Tendencia a la formalización del transporte público y a exigir estándares de seguridad. | Informalidad del sector y dependencia de los presupuestos de los consorcios. |
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
-[Estrategias y tácticas]
+Para posicionar a SafeBus de manera competitiva, se plantean las siguientes estrategias:
+
+**Estrategias de vinculación y fidelización con usuarios clave:**
+
+**#1 Implementación colaborativa con conductores y empresas**  
+SafeBus adoptará un enfoque participativo, donde conductores y empresas de transporte formen parte del proceso de implementación y adaptación del sistema. Esto permitirá reducir la resistencia al cambio y asegurar que la solución se ajuste a necesidades reales del entorno.
+
+**#2 Programa integral de capacitación y soporte técnico continuo**  
+Se ofrecerán programas de capacitación para conductores y empresas, junto con soporte técnico constante. Esta estrategia responde a la baja adopción tecnológica en el sector.
+
+**#3 Empoderamiento del usuario como actor activo**  
+SafeBus integrará funcionalidades visibles para los usuarios (como monitoreo de rutas o estado del viaje), aumentando la percepción de seguridad.
+
+**Estrategias de diferenciación tecnológica y funcional:**
+
+**#1 Sistema integral de seguridad en tiempo real**  
+SafeBus integrará monitoreo en tiempo real, botón de emergencia y sensores de conteo de pasajeros en una sola plataforma.
+
+**#2 Plataforma centralizada de información**  
+Se consolidará toda la información del vehículo (ubicación, alertas, estado) en un sistema único accesible para empresas.
+
+**#3 Integración de hardware y software**  
+SafeBus combinará aplicación móvil con dispositivos físicos (sensores, botón de pánico), generando una solución más robusta.
+
+**#4 Analítica y reportes de seguridad**  
+Se incorporarán reportes sobre incidentes, zonas de riesgo y comportamiento de rutas.
+
+**Estrategias de posicionamiento y enfoque de mercado:**
+
+**#1 Enfoque en seguridad como valor principal**  
+SafeBus se posicionará como una solución centrada en la protección de conductores y pasajeros, destacando su impacto social.
+
+**#2 Segmentación hacia empresas formales de transporte**  
+Se priorizará trabajar con consorcios organizados que busquen mejorar su gestión y seguridad.
+
+**#3 Adaptación al contexto local (Perú)**  
+La solución estará diseñada considerando problemáticas reales como extorsión, informalidad y falta de regulación tecnológica.
+
+**#4 Alianzas estratégicas**  
+Se buscarán acuerdos con autoridades, municipalidades y entidades de seguridad para fortalecer la credibilidad y efectividad del sistema.
 
 ---
 
