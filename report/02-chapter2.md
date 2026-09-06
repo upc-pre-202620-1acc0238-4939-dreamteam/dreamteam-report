@@ -57,23 +57,83 @@ Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/
 
 ## 2.3. Needfinding
 
-### 2.3.1. User Personas
+Para identificar las necesidades de nuestros usuarios, es importante interactuar con ellos y recopilar información valiosa de las entrevistas previamente realizadas.
 
-[Fichas de User Persona por segmento — herramienta: UXPressia]
+#### 2.3.1 User Personas
+
+Con el User Persona, buscamos representar imaginariamente a un usuario actual ideal.
+
+**Segmento #1: Conductores (operarios) de transporte público**
+
+<img src="../assets/Segmento1Persona.png">
+
+**Segmento #2: Empresas o consorcios de transporte público**
+
+<img src="../assets/Segmento2Persona.png">
+
+---
 
 ### 2.3.2. User Task Matrix
 
-| Task | [User Persona 1] Frecuencia | [User Persona 1] Importancia | [User Persona 2] Frecuencia | [User Persona 2] Importancia |
-|------|---|---|---|---|
-| | | | | |
+Esta es una lista de actividades que nuestros usuarios completan. Esto nos ayudará a entender la importancia de las tareas que podríamos llevar a cabo dentro de nuestro producto.
+
+**Segmento objetivo #1 — Jose Quispe Mamanih**
+
+| Actividades | Frecuencia | Importancia |
+|-------------|-----------|-------------|
+| Iniciar jornada y verificar el estado de la unidad antes de salir | Con frecuencia | Alta |
+| Confirmar la ruta asignada y horario de salida con la empresa | Con frecuencia | Alta |
+| Cobrar pasaje y controlar el flujo de subida y bajada de pasajeros | Con frecuencia | Alta |
+| Reportar incidentes o percances al encargado de la empresa | A veces | Alta |
+| Evaluar zonas de riesgo durante la ruta y tomar desvíos si es necesario | Frecuente | Alta |
+| Pagar cuota o cupo a personas externas que operan en la ruta | Frecuente | Media |
+| Comunicarse con otros conductores vía celular ante situaciones de riesgo | A veces | Alta |
+| Registrar el cierre de turno y entregar la unidad al siguiente conductor | Con frecuencia | Alta |
+
+**Segmento objetivo #2 — Luis Ramirez Nombera**
+
+| Actividades | Frecuencia | Importancia |
+|-------------|-----------|-------------|
+| Supervisar las unidades de transporte en ruta | Con frecuencia | Alta |
+| Coordinar con conductores durante la jornada | Con frecuencia | Alta |
+| Atender incidentes o reportes de seguridad | Con frecuencia | Alta |
+| Comunicarse con autoridades (policía, emergencia) | A veces | Alta |
+| Verificar documentación de conductores | A veces | Media |
+| Gestionar problemas de extorsión o amenazas | Con frecuencia | Alta |
+| Revisar estado operativo de las unidades | Con frecuencia | Alta |
+| Recibir reportes de pasajeros o quejas | A veces | Media |
+| Resolver problemas sin información en tiempo real | Con frecuencia | Alta |
+| Evaluar implementación de nuevas tecnologías | A veces | Media |
 
 ### 2.3.3. User Journey Mapping
 
-[Journey Maps As-Is por User Persona]
+Usaremos el User Journey Map para representar las etapas que nuestros usuarios pasan al interactuar por un cambio de turno.
+
+
+**Segmento objetivo #1 — José Mamani Quispe**
+
+<img src="../assets/Segmento Objetivo 1 - JourneyMap.png">
+
+
+**Segmento objetivo #2 — Luis Ramirez Nombera**
+
+<img src="../assets/Segmento Objetivo 2 - JourneyMap.png">
+
+---
 
 ### 2.3.4. Empathy Mapping
 
-[Empathy Maps por User Persona]
+Para entender mejor a nuestros usuarios, usamos el Empathy Map, para ponernos en su lugar y entender mejor sus necesidades y deseos.
+
+**#1er Segmento Objetivo:**
+
+<img src="../assets/Empathy map Segmento 1.png">
+
+**#2do Segmento Objetivo:**
+
+<img src="../assets/Empathy map Segmento 2.png">
+
+---
 
 ### 2.3.5. Big Picture EventStorming
 
