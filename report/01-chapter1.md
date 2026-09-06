@@ -214,9 +214,10 @@ Con un sistema de validación de identidad mediante códigos QR previo a cada ru
 
 Un hypothesis statement por cada feature assumption.
 
-#### 1.2.2.4. Lean UX Canvas
+#### 1.2.2.4. Lean UX Canvas    
 
-[Captura del Lean UX Canvas]
+![Lean UX Canvas](../docs/lean-ux-canvas/lean-canvas.png)
+
 
 ---
 
