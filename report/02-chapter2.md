@@ -57,9 +57,21 @@ Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/
 
 ## 2.3. Needfinding
 
-### 2.3.1. User Personas
+Para identificar las necesidades de nuestros usuarios, es importante interactuar con ellos y recopilar información valiosa de las entrevistas previamente realizadas.
 
-[Fichas de User Persona por segmento — herramienta: UXPressia]
+#### 2.3.1 User Personas
+
+Con el User Persona, buscamos representar imaginariamente a un usuario actual ideal.
+
+**Segmento #1: Conductores (operarios) de transporte público**
+
+<img src="../assets/Segmento1Persona.png">
+
+**Segmento #2: Empresas o consorcios de transporte público**
+
+<img src="../assets/Segmento2Persona.png">
+
+---
 
 ### 2.3.2. User Task Matrix
 
