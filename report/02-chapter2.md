@@ -88,8 +88,19 @@ Se buscarán acuerdos con autoridades, municipalidades y entidades de seguridad 
 ## 2.2. Entrevistas
 
 ### 2.2.1. Diseño de entrevistas
+A continuación se presentan las preguntas para las entrevistas a los segmentos objetivos
 
-[Preguntas principales y complementarias por segmento]
+Segmento 1:  Operadores (conductores) de transporte público
+
+1. ¿Cómo es un día típico para ti desde que inicias hasta que terminas tu jornada?
+2. Durante toda esa jornada, ¿en qué momentos te sientes más expuesto o inseguro?
+3. ¿Qué tan frecuente es que reciban amenazas, cobros o algún tipo de extorsión durante el trabajo?
+4. Frente a estos riesgos, ¿qué herramientas o medidas de seguridad tienen actualmente en la unidad?
+5. ¿Qué tan importante sería para ti que la empresa pudiera monitorear la unidad en tiempo real?
+6. Si ocurriera una emergencia dentro del bus, ¿qué tan rápido podrías pedir ayuda actualmente?
+7. ¿Qué tan cómodo te sentirías utilizando una aplicación que monitoree tu ubicación y seguridad durante toda la jornada?
+8. La aplicación podría permitirte validar tu identidad mediante un código QR antes de iniciar el recorrido. ¿Qué opinas de esa función?
+9. Si pudieras elegir una sola función de seguridad que debería tener SafeBus, ¿cuál sería?
 
 ### 2.2.2. Registro de entrevistas
 
