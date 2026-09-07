@@ -1,12 +1,44 @@
-# [Nombre del Producto] — Informe de Trabajo Final
+<div align="center">
 
-**Startup:** [Nombre de la Startup]
-**Curso:** 1ACC0238 Aplicaciones para Dispositivos Móviles
-**NRC:** [NRC]
-**Periodo académico:** 202620
+<img src="assets/logo_upc.png" alt="Logo de la Universidad Peruana de Ciencias Aplicadas" width="180">
 
-Este repositorio contiene el Informe de Trabajo Final elaborado de forma colaborativa
-durante el ciclo de vida del proyecto, siguiendo GitFlow y Conventional Commits.
+ Universidad Peruana de Ciencias Aplicadas
+    Carrera de Ingeniería de Software
+
+
+#### **1ACC0238** 
+#### **Aplicaciones para Dispositivos Móviles**
+ NRC 
+ **4939**
+
+#### **Informe del Trabajo Final**
+
+Docente 
+**Quevedo Velasco, David Gerardo**
+
+Equipo  
+**DreamTeam**
+
+Proyecto
+**SafeBus**
+
+
+
+####             **Integrantes**
+
+u202321020 — Delgado Arriola, Leonardo Sebastián  
+u202414928 — Fernández Linares, Alvaro Sebastian  
+u202410344 — Espinoza Orrego, Valentino Andre  
+u202320699 — Arechaga Saavedra, Mathias Augusto  
+u202314898 — Acuache Lucas, Mathias Joaquin
+
+
+**Período 202610**  
+**Julio 2026**
+
+---
+
+</div>
 
 ## Contenido del informe
 
