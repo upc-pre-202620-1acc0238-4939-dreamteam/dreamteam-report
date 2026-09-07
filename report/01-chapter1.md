@@ -6,13 +6,17 @@
 
 ### 1.1.1. Descripción de la Startup
 
-DreamTeam es un startup peruana de tecnologia enfocada en la protección del ecosistema de movilidad urbana. Esta iniciativa surge debido a la necesidad de transformar la experiencia diaria de millones de pasajeros en Lima y diversas regiones del Perú, donde la carencia de filtros en la identificacion de operadores, la inexistencia de canales rápidos de auxilio ante siniestros y el desconocimiento del aforo real multiplican la vulnerabilidad frente a asaltos, siniestros viales y situacionese críticas.
+DreamTeam es una startup peruana de tecnología enfocada en la protección del ecosistema de movilidad urbana. Esta iniciativa surge debido a la necesidad de transformar la experiencia diaria de millones de pasajeros en Lima y diversas regiones del Perú, donde la carencia de filtros en la identificación de operadores, la inexistencia de canales rápidos de auxilio ante siniestros y el desconocimiento del aforo real multiplican la vulnerabilidad frente a asaltos, siniestros viales y situaciones críticas.
 
 Nuestra solución se materializa en SafeBus, el cual es una plataforma digital estructurada en tres ejes operativos conectados en tiempo real:
 
 * **Validación de operadores** mediante código QR al inicio de cada servicio.
-* **Botón de pánico integrado** para el conductor, que transmite alertas inmediatas a la central de operaciones.
-* **Conteo automatizado de pasajeros** a bordo del vehículo, identificando la cantidad de vidas expuestas ante una emergencia.
+* **Botón de pánico digital para conductores y pasajeros**, que envía solicitudes silenciosas de ayuda a la central de operaciones e informa cuando quedan pendientes por falta de conexión.
+* **Conteo automatizado de pasajeros** a bordo del vehículo, indicando su capacidad, la cantidad registrada y si el dato está vigente o no disponible.
+
+La primera versión móvil atiende a conductores, pasajeros y supervisores de empresas en Lima y Callao. La ubicación proviene del teléfono del conductor durante el turno; el pasajero vincula su viaje escaneando el QR del bus. La empresa recibe y atiende los casos mediante una experiencia móvil por rol. El sitio web público explica el servicio y recibe solicitudes de contacto. La integración física de conteo debe contrastarse con la investigación técnica; cualquier simulador utilizado se identificará como tal.
+
+La inclusión del botón de pánico para pasajeros responde al feedback docente comunicado por el equipo. El alcance y sus hipótesis se desarrollan en el capítulo II; no se presupone atención humana permanente ni integración automática con autoridades.
 
 **Mision**: Fortalecer la seguridad de los usuarios del transporte público mediante soluciones digitales innovadoras que permitan verificar la identidad de conductores, gestionar emergencia en tiempo real y cuantificar el riesgo humano a bordo de cada vehículo.
 
@@ -131,14 +135,14 @@ Nuestra solución se materializa en SafeBus, el cual es una plataforma digital e
 Para comprender a fondo los requerimientos de nuestros usuarios, empleamos la técnica 5W's & 2H's, un marco metodológico que aborda siete interrogantes esenciales para dimensionar un desafío de manera integral.
 
 **What (Qué) — ¿Cuál es el problema?**
-La vulnerabilidad y los riesgos latentes en el sistema de transporte masivo peruano. Los usuarios carecen de medios para cerciorarse de si el operador al volante cuenta con la habilitación oficial para gestionar dicha unidad. Adicionalmente, prevalece la carencia de canales de aviso instantáneo para los conductores ante situaciones críticas y la ausencia de métricas sobre el aforo exacto de pasajeros.
+La vulnerabilidad y los riesgos latentes en el sistema de transporte masivo peruano. Los usuarios carecen de medios para cerciorarse de si el operador al volante cuenta con la habilitación oficial para gestionar dicha unidad. Adicionalmente, prevalece la carencia de canales de solicitud de ayuda para conductores y pasajeros ante situaciones críticas y la ausencia de métricas sobre el aforo exacto de pasajeros.
 
 **When (Cuándo) — ¿Cuándo sucede el problema?**
 La problemática se evidencia de forma constante en cada trayecto operativo: al momento de subir al vehículo, a lo largo del recorrido y durante las labores de asistencia por parte de los organismos competentes. Los hechos delictivos y siniestros viales pueden presentarse en cualquier intervalo horario, acentuándose de manera crítica durante las horas de la noche.
-*¿Cuándo utilizará el cliente el producto?* Desde el momento previo a la puesta en marcha, cuando el operador valide sus credenciales antes de iniciar la ruta.
+*¿Cuándo utilizará el cliente el producto?* El conductor valida su turno antes de iniciar el servicio; el pasajero verifica la unidad al abordar y solicita ayuda si ocurre un peligro; el supervisor consulta la flota y atiende los casos durante su horario de operación.
 
 **Where (Dónde) — ¿Dónde está el cliente cuando usa el producto?**
-A bordo del vehículo, ejecutando sus labores cotidianas de conducción en plena ruta. El conflicto se gestó inicialmente en regiones del norte peruano (como Trujillo, Chiclayo y Piura) hace aproximadamente dos décadas, expandiéndose posteriormente hacia los principales distritos y ejes viales de Lima Metropolitana.
+El conductor utiliza el producto en la unidad, el pasajero al abordar y durante el viaje, y el supervisor desde el lugar en que realiza el monitoreo de su empresa. El conflicto se gestó inicialmente en regiones del norte peruano (como Trujillo, Chiclayo y Piura) hace aproximadamente dos décadas, expandiéndose posteriormente hacia los principales distritos y ejes viales de Lima Metropolitana.
 
 **Who (Quién) — ¿A quiénes les sucede el problema?**
 A los usuarios del servicio público —con mayor énfasis en estudiantes, adultos mayores y mujeres—, a los operadores expuestos a asaltos y presiones extorsivas, a las empresas de transporte que carecen de supervisión telemática de su flota en vivo, y a las entidades encargadas del resguardo ciudadano.
@@ -160,9 +164,9 @@ El estado actual del sector de transporte público urbano en el Perú se ha enfo
 
 Lo que los productos o servicios existentes no logran resolver es la brecha crítica en el mercado relacionada con la seguridad en tiempo real, la verificación de identidad de los operadores y la respuesta inmediata ante emergencias durante el trayecto.
 
-Nuestro producto/servicio (SafeBus) abordará esta brecha mediante la validación de conductores por código QR, un botón de pánico integrado para alertas instantáneas a la central de control y el conteo automatizado de pasajeros.
+Nuestro producto/servicio (SafeBus) abordará esta brecha mediante la validación de conductores por código QR, botones de pánico digitales para conductor y pasajero que envían solicitudes de ayuda a la central de control y el conteo automatizado de pasajeros.
 
-Nuestro foco inicial serán los pasajeros del transporte público, los conductores expuestos a riesgos y las empresas de transporte que operan en Lima y otras ciudades principales.
+Nuestro foco inicial serán los pasajeros del transporte público, los conductores expuestos a riesgos y las empresas de transporte que operan inicialmente en Lima y Callao.
 
 Sabremos que tenemos éxito cuando veamos una alta tasa de adopción de la validación QR por parte de los conductores, una reducción significativa en los tiempos de respuesta ante emergencias por parte de las empresas y un aumento en la confianza de los pasajeros durante sus viajes.
 
@@ -171,11 +175,11 @@ Sabremos que tenemos éxito cuando veamos una alta tasa de adopción de la valid
 **Business Assumptions**
 * Creemos que las empresas de transporte público necesitan herramientas digitales que les permitan supervisar sus unidades en tiempo real y responder rápidamente ante incidentes de seguridad.
 * Suponemos que las empresas estarían dispuestas a adoptar una plataforma tecnológica si esta contribuye a mejorar el control operativo y reducir situaciones de riesgo dentro de las unidades.
-* Consideramos que la implementación de SafeBus puede optimizar la comunicación entre conductores y supervisores durante situaciones de emergencia.
+* Consideramos que la implementación de SafeBus puede optimizar la comunicación de conductores y pasajeros con los supervisores durante situaciones de emergencia.
 * Creemos que centralizar la información de recorridos, alertas e incidencias facilitará la toma de decisiones y mejorará la capacidad de monitoreo de las operaciones de transporte.
 
 **Business Outcome Assumptions**
-* Reducir el tiempo de respuesta ante incidentes reportados por los conductores.
+* Reducir el tiempo hasta el inicio de atención de incidentes reportados por conductores y pasajeros.
 * Mejorar la capacidad de supervisión operativa de las empresas.
 * Incrementar la percepción de confiabilidad del servicio y la adopción de la plataforma por parte de los operadores.
 
@@ -187,36 +191,41 @@ Sabremos que tenemos éxito cuando veamos una alta tasa de adopción de la valid
 **User Outcome and Benefit Assumptions**
 * Los conductores podrán reportar incidentes de manera rápida y sencilla mediante alertas desde la aplicación móvil, sintiéndose más respaldados ante asaltos o emergencias.
 * Los supervisores tendrán acceso inmediato a información de rutas, incidencias y estado de unidades, facilitando la toma de decisiones oportunas.
-* Los usuarios percibirán un entorno de transporte más seguro, incrementando su confianza y tranquilidad durante los desplazamientos diarios.
+* Los pasajeros podrán verificar la unidad, pedir ayuda de forma silenciosa y consultar el estado de su caso, con el objetivo de mejorar su confianza durante el viaje. Este beneficio debe validarse mediante entrevistas y pruebas.
 
 **Feature Assumptions**
-* Una aplicación móvil para conductores integrada con un botón de pánico físico o digital para la transmisión inmediata de alertas de emergencia hacia la central.
-* Un sistema de verificación de identidad de operadores mediante escaneo de código QR previo a la puesta en marcha de cada servicio o ruta.
-* Un módulo o panel de monitoreo en tiempo real para las empresas que centralice la visualización de recorridos, estado de flotas y alertas críticas.
-* Sensores o herramientas automatizadas para el conteo de pasajeros a bordo, permitiendo cuantificar con precisión el aforo y las personas expuestas ante cualquier eventualidad.
+* Una aplicación móvil con botón de pánico digital silencioso para conductores y pasajeros, almacenamiento local de alertas sin conexión y consulta de su recepción y atención por la central.
+* Un sistema de validación de conductores mediante credencial QR y asignación de turno, más un QR de la unidad para que el pasajero consulte el servicio y vincule su viaje con el bus.
+* Una experiencia móvil para supervisores que centralice ubicación, aforo, estado de turnos y atención de casos de conductores y pasajeros.
+* Una fuente de eventos de entrada y salida para calcular el aforo y compararlo con la capacidad del bus, señalando fallas o datos antiguos. La precisión del hardware debe comprobarse; no se presume a partir de un simulador.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
-Creemos que lograremos reducir el tiempo de respuesta ante incidentes reportados y optimizar la gestión de emergencias
-Si los conductores de transporte público urbano
-Obtienen una forma rápida y sencilla de reportar atracos o peligros desde la unidad
-Con una aplicación móvil integrada con un botón de pánico para alertas instantáneas.
+Las siguientes hipótesis corresponden a las cuatro Feature Assumptions. Son propuestas para comprobar, no resultados de validación.
 
-Creemos que lograremos mejorar la capacidad de supervisión operativa y la toma de decisiones de las empresas de transporte
-Si las empresas operadoras de flotas en Lima
-Obtienen visibilidad en tiempo real sobre el estado de las unidades, recorridos y alertas críticas
-Con un panel de control corporativo que centraliza toda la información del servicio.
+| Hipótesis | Enunciado | Historias relacionadas |
+|---|---|---|
+| H01 — Solicitud y atención de ayuda | Creemos que conductores y pasajeros podrán pedir ayuda y conocer su recepción si disponen de un botón de pánico silencioso con estados de envío y un proceso de atención por la empresa. Lo comprobaremos con recorridos conectados y sin conexión, registrando recepción e inicio de atención. | US05, US10, US12, US18, US28 |
+| H02 — Identificación del servicio | Creemos que conductores, pasajeros y empresas tendrán una referencia clara del responsable de cada bus si la validación QR se vincula con una asignación de turno. Lo comprobaremos con asignaciones válidas e inválidas y consulta del QR por pasajeros. | US01, US08, US31, US32 |
+| H03 — Supervisión operativa | Creemos que los supervisores podrán evaluar y coordinar incidentes con información más clara si consultan ubicación, aforo y casos de su flota con sus horas de actualización. Lo comprobaremos con escenarios de datos actuales, antiguos y ausentes. | US04, US15, US18, US20, US23, US27 |
+| H04 — Ocupación del bus | Creemos que pasajeros y supervisores podrán interpretar mejor el aforo si reciben el conteo, capacidad y estado de validez. Lo comprobaremos con secuencias conocidas de entradas y salidas, sobrecapacidad y eventos faltantes. | US09, US22, US30, US33 |
 
-Creemos que lograremos incrementar la confianza de los pasajeros y asegurar la trazabilidad de los operadores
-Si los usuarios del servicio público y las empresas
-Obtienen la certeza de que el chofer está debidamente autorizado antes de iniciar el viaje
-Con un sistema de validación de identidad mediante códigos QR previo a cada ruta.
+#### 1.2.2.4. Lean UX Canvas
 
-Un hypothesis statement por cada feature assumption.
+La siguiente versión textual es la referencia actual del canvas. Resume hipótesis por validar y mantiene el alcance de H01–H04 y del capítulo II.
 
-#### 1.2.2.4. Lean UX Canvas    
+| Bloque | Propuesta revisada |
+|---|---|
+| Business Problem | Conductores y pasajeros carecen de un canal claro de ayuda y las empresas tienen información limitada sobre responsable, ubicación, aforo y atención de incidentes. |
+| Users | Conductores, pasajeros y supervisores de empresas de transporte en Lima y Callao. La empresa adopta el servicio. |
+| Business Outcomes | Identificar al responsable de cada turno, registrar solicitudes de ayuda y su atención, y disponer de datos operativos con vigencia conocida. Las metas de prueba se especifican en BG01–BG04. |
+| User Outcomes & Benefits | Conductor: pedir ayuda discretamente. Pasajero: verificar la unidad, conocer el aforo, pedir ayuda y consultar su caso. Supervisor: ubicar la unidad y registrar la atención. |
+| Solutions | Aplicaciones móviles por rol, QR del conductor y de la unidad, dos botones de pánico digitales, almacenamiento local de eventos, consulta de ubicación y aforo, proceso compartido de casos y landing de contacto. |
+| Hypotheses | H01: ayuda de ambos actores. H02: identificación del servicio. H03: supervisión con datos vigentes. H04: interpretación del aforo. |
+| Most important learning | Comprobar si los tres segmentos comprenden y pueden completar el flujo, si la empresa dispone de responsables para atenderlo y si ubicación y conteo son viables. |
+| Smallest experiment | Prototipo de verificación, alerta de ambos actores y atención; pruebas sin conexión y entrevistas de los tres segmentos. US29 y US30 resuelven dudas técnicas y deben alimentar funciones implementadas. |
 
-![Lean UX Canvas](../docs/lean-ux-canvas/lean-canvas.png)
+[Canvas gráfico anterior, conservado como antecedente](../docs/lean-ux-canvas/lean-canvas.png). Su exportación visual debe actualizarse a partir de esta versión; el rastreo del trayecto completo por pasajeros que figura en la imagen anterior no forma parte del alcance actual.
 
 
 ---
@@ -227,3 +236,6 @@ Un hypothesis statement por cada feature assumption.
 | :--- | :--- | :--- |
 | **Operadores (conductores) de transporte público** | • **Volumen de unidades:** Uno o dos vehículos bajo su responsabilidad.<br>• **Rango etario:** Población adulta desde los 24 años en adelante.<br>• **Rol:** Choferes con unidades adscritas formalmente a una empresa y ruta específica.<br>• **Zona de operación:** Lima Metropolitana y la Provincia Constitucional del Callao.<br>• **Motivación:** Velar por su integridad física y la de los usuarios transportados. | Conforme a lo reportado por Panamericana.pe (2025), los operadores se ven obligados a abonar contribuciones diarias y semanales para laborar; ante cualquier negativa, se exponen a ataques armados letales. |
 | **Compañías o consorcios de transporte masivo** | • **Volumen de unidades:** Parques vehiculares superiores a dos unidades a nombre de la empresa.<br>• **Rango etario:** Adultos mayores de 28 años.<br>• **Rol:** Apoderados o directivos de consorcios con flotas de cústers y ómnibuses.<br>• **Zona de operación:** Lima Metropolitana y Callao.<br>• **Motivación:** Asegurar la protección de la tripulación y de los pasajeros. | Según registros de larepublica.pe (2024), se han contabilizado más de 14,000 querellas por extorsión a nivel nacional, sobresaliendo Lima y La Libertad como las jurisdicciones con mayor índice de afectación. |
+| **Pasajeros de transporte público** | • **Rol:** Personas que viajan en buses de empresas asociadas a SafeBus.<br>• **Contexto:** Lima Metropolitana y Callao; uso de un teléfono compatible durante el abordaje y el viaje.<br>• **Necesidades propuestas:** Identificar unidad y conductor, consultar aforo, activar una alerta silenciosa y conocer su atención.<br>• **Acceso:** Sesión de viaje mediante QR, sin registro con contraseña. | Segmento incorporado por la necesidad funcional indicada por el docente. Caracterización demográfica, acceso a datos móviles, barreras de uso y sustento estadístico específico pendientes de investigación; no se inventan porcentajes ni entrevistas. |
+
+La empresa es el cliente que adopta el servicio; conductor y pasajero son usuarios directos. Los tres segmentos deben participar en la investigación y validación. Los textos y gráficos anteriores requieren contrastarse con este alcance; el catálogo de referencia es el de la sección 2.4 del capítulo II.
