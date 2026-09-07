@@ -88,18 +88,35 @@ Se buscarán acuerdos con autoridades, municipalidades y entidades de seguridad 
 ## 2.2. Entrevistas
 
 ### 2.2.1. Diseño de entrevistas
+A continuación se presentan las preguntas para las entrevistas a los segmentos objetivos
 
-[Preguntas principales y complementarias por segmento]
+Segmento 1:  Operadores (conductores) de transporte público
+
+1. ¿Cómo es un día típico para ti desde que inicias hasta que terminas tu jornada?
+2. Durante toda esa jornada, ¿en qué momentos te sientes más expuesto o inseguro?
+3. ¿Qué tan frecuente es que reciban amenazas, cobros o algún tipo de extorsión durante el trabajo?
+4. Frente a estos riesgos, ¿qué herramientas o medidas de seguridad tienen actualmente en la unidad?
+5. ¿Qué tan importante sería para ti que la empresa pudiera monitorear la unidad en tiempo real?
+6. Si ocurriera una emergencia dentro del bus, ¿qué tan rápido podrías pedir ayuda actualmente?
+7. ¿Qué tan cómodo te sentirías utilizando una aplicación que monitoree tu ubicación y seguridad durante toda la jornada?
+8. La aplicación podría permitirte validar tu identidad mediante un código QR antes de iniciar el recorrido. ¿Qué opinas de esa función?
+9. Si pudieras elegir una sola función de seguridad que debería tener SafeBus, ¿cuál sería?
 
 ### 2.2.2. Registro de entrevistas
 
 Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/tbn>.mp4`
 
-| # | Nombres y apellidos | Edad | Distrito | Timing en video | Screenshot |
-|---|----------------------|------|----------|------------------|------------|
-| 1 | | | | | |
+### Entrevista 1: Carlos Garcia
 
-**Resumen entrevista 1:** [descriptivo]
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Carlos Garcia |
+| **Imagen** | ![EntrevistaJulio](../assets/CG-Interview.png){width=80%} |
+| **Edad** | 45 |
+| **Ocupación** | Conductor de transporte público |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Resumen** | La entrevista presenta a Carlos Garcia, conductor de transporte público en Lima, quien describe una jornada extensa y desgastante que inicia a las 4:00 a. m. y termina entre las 9:00 y 10:00 p. m. Señala que los momentos de mayor riesgo son de madrugada y durante la noche, especialmente al atravesar “zonas rojas” y al quedar solos en los paraderos finales. Destaca que la extorsión y los cobros de cupos son frecuentes, mientras que actualmente cuentan con pocas herramientas de seguridad, sin cámaras, botón de pánico ni comunicación rápida con la empresa. Carlos considera fundamental el monitoreo GPS en tiempo real y una alerta discreta para emergencias. Además, muestra una actitud positiva hacia SafeBus, especialmente hacia la validación mediante QR para identificar al conductor autorizado. Finalmente, considera que el botón de emergencia sería la función más importante, acompañado del monitoreo de ubicación para facilitar una respuesta rápida ante situaciones de peligro. | 
+
 
 ### 2.2.3. Análisis de entrevistas
 
