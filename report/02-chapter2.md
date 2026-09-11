@@ -58,7 +58,7 @@ SafeBus integrará funcionalidades visibles para los usuarios (como monitoreo de
 **Estrategias de diferenciación tecnológica y funcional:**
 
 **#1 Sistema integral de seguridad en tiempo real**  
-SafeBus integrará ubicación durante el turno, botones de emergencia digitales para conductor y pasajero, y conteo de pasajeros en una sola plataforma móvil. La prueba con hardware se precisará con el docente a partir de US30.
+SafeBus integrará ubicación durante el turno, botones de emergencia digitales para conductor y pasajero, y conteo de pasajeros en una sola plataforma móvil. La prueba con hardware se precisará con el docente a partir de US22.
 
 **#2 Plataforma centralizada de información**  
 Se consolidará toda la información del vehículo (ubicación, alertas, estado) en un sistema único accesible para empresas.
@@ -66,8 +66,9 @@ Se consolidará toda la información del vehículo (ubicación, alertas, estado)
 **#3 Integración de hardware y software**  
 La primera versión utiliza el GPS del teléfono y botones de pánico digitales. La fuente externa de conteo se integra mediante un contrato de eventos; el prototipo debe identificar si utiliza sensores reales o un simulador. Un botón físico adicional queda como posible ampliación.
 
-**#4 Analítica y reportes de seguridad**  
-Se incorporará un reporte básico de incidentes y tiempos hasta el inicio de atención. Los avisos se asociarán a rutas; el análisis avanzado de zonas de riesgo queda como posible ampliación.
+**#4 Seguimiento de alertas de seguridad**
+
+La central conservará el estado, responsable y resultado de atención de las alertas para consultar cada caso durante el servicio.
 
 **Estrategias de posicionamiento y enfoque de mercado:**
 
@@ -184,7 +185,7 @@ Las matrices existentes describen actividades del contexto del conductor y de la
 | Consultar cantidad de pasajeros y capacidad | Antes de abordar | Alta |
 | Activar el botón de pánico | Ante un peligro durante el viaje | Alta |
 | Consultar si su alerta fue recibida y atendida | Después de reportar | Alta |
-| Reportar una discrepancia y terminar el vínculo con el viaje | Cuando detecta un dato incorrecto / al bajar | Media |
+| Terminar el vínculo con el viaje | Al bajar de la unidad | Media |
 
 ### 2.3.3. User Journey Mapping
 
@@ -204,11 +205,11 @@ Los gráficos existentes describen hipótesis del recorrido **actual, sin SafeBu
 
 | Etapa | Acción actual supuesta | Dificultad a validar | Oportunidad para SafeBus |
 |---|---|---|---|
-| Abordaje | Observa la placa y la información visible del vehículo. | No cuenta con una referencia digital del conductor asignado. | Verificar los datos registrados de la unidad mediante US08. |
-| Decisión de viaje | Estima visualmente cuántas personas hay. | Desconoce el conteo y la capacidad registrada. | Consultar ocupación y vigencia mediante US09. |
-| Incidente | Busca ayuda de otra persona o intenta llamar. | Puede tener dificultades para actuar discretamente o identificar a quién avisar. | Botón de pánico del pasajero en US10. |
-| Seguimiento | Espera una respuesta o vuelve a contactar. | No sabe si su solicitud fue recibida ni quién la atiende. | Consulta del caso mediante US12 y atención mediante US18. |
-| Discrepancia o salida | Comunica informalmente un problema o termina el viaje. | La empresa puede no conservar el reporte asociado al bus. | Reporte de discrepancia mediante US14. |
+| Abordaje | Observa la placa y la información visible del vehículo. | No cuenta con una referencia digital del conductor asignado. | Verificar los datos registrados de la unidad mediante US06. |
+| Decisión de viaje | Estima visualmente cuántas personas hay. | Desconoce el conteo y la capacidad registrada. | Consultar ocupación y vigencia mediante US07. |
+| Incidente | Busca ayuda de otra persona o intenta llamar. | Puede tener dificultades para actuar discretamente o identificar a quién avisar. | Botón de pánico del pasajero en US08. |
+| Seguimiento | Espera una respuesta o vuelve a contactar. | No sabe si su solicitud fue recibida ni quién la atiende. | Consulta del caso mediante US09 y atención mediante US10. |
+
 
 
 ---
@@ -253,105 +254,67 @@ Para entender mejor a nuestros usuarios, usamos el Empathy Map, para ponernos en
 | Operations Central | Central de operaciones | Función de la empresa ejercida por supervisores que reciben y atienden casos. |
 | Passenger Count | Conteo de pasajeros | Cantidad derivada de entradas y salidas de la fuente registrada, con estado de validez. |
 | Bus Capacity | Capacidad del bus | Límite de pasajeros registrado por la empresa según la ficha de la unidad. |
-| Route Safety Notice | Aviso de seguridad de ruta | Mensaje de la empresa vinculado a una ruta hasta su vencimiento. |
 
 ---
 
 ## 2.4. Requirements specification
 
-SafeBus adapta la propuesta anterior a una experiencia móvil para tres actores: conductor, pasajero y supervisor de empresa. El botón de pánico para pasajeros es parte del alcance principal, conforme a la indicación docente comunicada por el equipo. Las historias cubren validación del conductor, alertas de ambos usuarios, atención por la central, ubicación y conteo de pasajeros, junto con los componentes exigidos por el curso.
+SafeBus reúne los requisitos de una aplicación móvil para conductores, pasajeros y supervisores de empresas de transporte. Su alcance comprende la validación del conductor mediante QR, la consulta de la unidad y su aforo, los botones de pánico para conductor y pasajero, la atención de alertas y el monitoreo de ubicación. Una landing page presenta el servicio y recibe solicitudes de contacto.
 
-Esta versión contiene **28 historias activas agrupadas en 7 épicas**: 22 funcionales, 4 técnicas y 2 spikes. La cantidad responde a responsabilidades concretas y a la eliminación de repeticiones; no constituye una cantidad mínima indicada por el docente. Es una propuesta refinada para recibir feedback, no una validación con usuarios ni una afirmación de funcionalidad implementada.
-
-#### Scope and shared business rules
-
-| ID | Regla propuesta para la primera versión |
-|---|---|
-| BR01 | **Actores y canales.** Conductores, pasajeros y supervisores usan experiencias por rol en la aplicación móvil. Se contempla implementación nativa Android y cross-platform con el mismo alcance funcional y backend. La landing es un sitio estático público. No se requiere construir además una aplicación web de operaciones para esta primera versión. |
-| BR02 | **Acceso e información inicial.** La empresa dispone de cuentas, buses, rutas, capacidades y credenciales QR cargados como datos iniciales documentados. US32 permite asignarlos a turnos y US22 actualizar capacidades. US31 cubre el acceso de conductor y supervisor. No se incluye registro público de empresas ni un módulo completo de administración. |
-| BR03 | **Pasajero.** El QR del bus inicia una sesión limitada al viaje, previa aceptación de términos y con conexión para verificarlo. No exige crear una cuenta con contraseña. La sesión y asociación se conservan de forma protegida en ese dispositivo; permiten consultar únicamente sus propios casos. No se promete recuperación en otro teléfono. El pasajero puede terminar el viaje y el cierre del turno también termina asociaciones para nuevas alertas. Escanear el QR vincula el reporte al bus; no demuestra físicamente que la persona esté a bordo. |
-| BR04 | **Validación QR.** El conductor autenticado valida su credencial contra la asignación registrada por la empresa. El pasajero consulta placa, empresa, ruta, nombre público del conductor y validación interna. No se afirma certificación oficial ni consulta automática de SOAT, ATU o revisión técnica. Los ejemplos y registros de prueba no son datos comprobados de personas reales. |
-| BR05 | **Ubicación.** La fuente principal es el GPS del teléfono del conductor durante el turno. La ubicación es Current con antigüedad menor o igual a tres minutos, Stale si la supera y Unavailable si no existe. Siempre se conserva la hora de captura; recibir un dato antiguo no lo convierte en actual. Los intervalos de muestreo se decidirán con US29. |
-| BR06 | **Conteo.** La fuente de conteo se registra por bus y emite subidas, bajadas y una señal de disponibilidad al menos cada minuto. El conteo inicia solo después de confirmar el bus vacío; si no puede confirmarse, se informa Unavailable. Una pausa sin subidas no significa falla: la vigencia se decide por la señal de disponibilidad. Hasta dos minutos se considera vigente; después, Stale. Available significa conteo menor que capacidad, Full significa igualdad y Over capacity significa mayor. Un evento perdido o un conteo incoherente se informa como Unavailable hasta reconciliarlo. |
-| BR07 | **Alertas sin conexión.** Los dos botones de pánico son digitales y silenciosos, sin sonido ni vibración de activación. La app guarda localmente el identificador, contexto del viaje y hora original, incluso si se reinicia, y muestra Pending transmission hasta confirmación del servidor. La falta de GPS o aforo no impide enviar una alerta vinculada al bus. La sincronización conserva el turno original aunque ya haya cerrado; una recepción tardía se identifica como tal. El botón físico no es requisito de esta primera versión móvil. |
-| BR08 | **Atención de casos.** El servidor usa Received → In progress → Closed. Pending transmission pertenece solo a la app. Los dos tipos de pánico tienen prioridad Critical; reportes ordinarios y discrepancias tienen prioridad Normal. Un supervisor de la empresa asume la atención y registra un resultado para cerrar. Closed significa cierre registrado con resultado, no una garantía automática de que desapareció el peligro. No se fusionan automáticamente reportes de personas distintas. |
-| BR09 | **Coordinación externa.** La central contacta autoridades por medios externos y registra intentos y resultados en US20. SafeBus no garantiza respuesta policial, atención 24 horas ni envío automático a PNP/ATU. La disponibilidad humana del servicio debe acordarse con cada empresa. |
-| BR10 | **Servicios e investigación.** US15 incorpora un servicio cartográfico de terceros; el proveedor y sus condiciones están pendientes de selección antes de implementar. La aplicación funciona con datos y coordenadas si el mapa falla. US29 y US30 deben alimentar historias implementadas y documentar lo aprendido fuera de clase. Un simulador de conteo debe identificarse expresamente y no acredita precisión de sensores físicos; el alcance de hardware se revisará con el docente. |
-| BR11 | **Operación móvil.** Una alerta no requiere escribir una descripción antes de enviarse. Reportes ordinarios, consulta de detalles y configuración se realizan con el vehículo detenido cuando actúa el conductor. No se incluye cálculo automático de desvíos, seguimiento continuo del GPS del pasajero, analítica avanzada ni gestión comercial extensa. |
-
-Las duraciones, longitudes y metas numéricas de esta sección son decisiones iniciales comprobables, pendientes de refinamiento con el equipo y el docente; no son resultados de pruebas realizadas.
+La especificación contiene **22 historias, numeradas de US01 a US22 y agrupadas en 7 épicas**: 16 historias funcionales, 4 historias técnicas y 2 Spike Stories. Cada historia identifica al actor, la necesidad, el beneficio, la prioridad y los criterios de aceptación que permiten comprobar su cumplimiento.
 
 #### To-Be Scenario Mapping
 
-Esta matriz describe el recorrido futuro propuesto con SafeBus y lo vincula con las historias. Se distingue de los recorridos actuales de 2.3.3.
+El recorrido futuro conecta las acciones de los tres actores con los resultados que ofrece SafeBus.
 
-| Actor | Antes o al iniciar el viaje | Durante el servicio | Ante un incidente | Al finalizar |
+| Actor | Inicio del servicio | Durante el viaje | Ante una emergencia | Finalización |
 |---|---|---|---|---|
-| Conductor | Ingresa con su cuenta, consulta la asignación y valida su QR (US31, US02, US01). | Comprueba disponibilidad y comparte ubicación; consulta avisos con el vehículo detenido (US03, US04, US21). | Activa una alerta silenciosa o registra un reporte ordinario. Si no hay conexión, la alerta queda pendiente localmente (US05, US06). | Cierra el turno, detiene el GPS y conserva el vínculo histórico con sus casos (US07). |
-| Pasajero | Acepta términos, verifica la unidad mediante QR y consulta aforo (US08, US09). | Conserva la asociación con el viaje, sin seguimiento continuo de su GPS (US08). | Activa su botón de pánico, consulta su atención o reporta una discrepancia (US10, US12, US14). | Termina la asociación al bajar y conserva acceso a sus casos en el mismo dispositivo (US08, US12). |
-| Supervisor | Accede con su cuenta y asigna conductor, bus y ruta; registra capacidad (US31, US32, US22). | Consulta ubicación, aforo, vigencia de datos y casos; publica avisos por ruta (US15, US21). | Inicia la atención, registra contactos externos y cierra el caso con resultado (US18, US20). | Consulta o exporta los incidentes; los casos abiertos continúan aunque termine el turno del conductor (US23, US18). |
-
-#### Cross-cutting acceptance requirements
-
-Estos criterios forman parte de las historias aplicables y se verifican en ambas implementaciones móviles y en la landing cuando corresponda. No se agregan pantallas o módulos separados para cada criterio.
-
-| ID | Aplicación | Criterio comprobable |
-|---|---|---|
-| CR01 | Landing, aplicaciones y servicios | Given no language preference exists, When the product returns user-facing content, Then it uses English by default. Given Latin American Spanish is selected, When the user repeats the supported operation, Then the product provides the equivalent content or message in es_419 without changing the business result. |
-| CR02 | Landing y aplicaciones | Given a user uses a screen reader or an alternative supported input method, When the user performs an applicable core flow, Then all actions expose meaningful accessible names, status changes are identifiable without color alone and the flow completes without an inaccessible action. Web semantics and ARIA, contrast and supported text enlargement are checked in design validation. |
-| CR03 | US08, US24, US25 y US31 | Given a user is about to start a passenger session, first access a company account or submit contact details, When the service validates the request, Then it requires acceptance of the current service terms or contact consent as applicable and records its version and time; a declined acceptance creates no new session or contact request. Terms remain available for consultation. |
-| CR04 | US04, US05, US08 y US10 | Given the app persists pending events or a passenger association and restarts without connectivity, When the same installation resumes, Then it recovers the protected records with their original identifiers and timestamps, claims no server receipt for pending events, and synchronizes only with authorized access. Credentials and sensitive local records use platform-appropriate protected storage. |
-| CR05 | US26, US27, US28 y US33; API de casos y contacto | Given the internal service contracts are implemented, When the team reviews the OpenAPI documentation and associated acceptance tests, Then REST requests, responses, errors and authorization rules match the relevant scenarios. WebSocket message and subscription rules are documented separately. |
-| CR06 | US28 | Given two active buses, five supervisor subscriptions and a stable demo network with measured round-trip time no greater than 200 ms, When the team submits 20 test panic alerts, Then each connected authorized subscriber receives the relevant notification within five seconds of server persistence; activation, persistence and delivery times are retained separately. This is an acceptance target, not a production guarantee. |
+| Conductor | Ingresa, consulta su asignación y valida su QR (US16, US02, US01). | Comparte la ubicación del bus desde su teléfono (US03). | Activa una alerta silenciosa; si no tiene conexión, la aplicación conserva el aviso hasta poder enviarlo (US04). | Cierra el turno y detiene el seguimiento de ubicación (US05). |
+| Pasajero | Escanea el QR, verifica la unidad y consulta el aforo (US06, US07). | Conserva la asociación con el viaje sin compartir continuamente su GPS (US06). | Activa su botón de pánico y consulta la atención de su caso (US08, US09). | Termina su asociación con el viaje y conserva acceso a sus casos desde la misma sesión del dispositivo (US06, US09). |
+| Supervisor | Ingresa, registra capacidades y asigna conductor, bus y ruta (US16, US12, US13). | Consulta ubicación, aforo y alertas de su flota (US11). | Asume la atención de alertas del conductor o pasajero (US10). | Registra el resultado y cierra el caso; conserva abiertos aquellos que todavía requieren atención (US10). |
 
 ### 2.4.1. User Stories
 
-Cada historia expresa un actor, una necesidad y su beneficio. Los criterios usan Given–When–Then en presente y tercera persona, y describen resultados sin prescribir pantallas. Las Technical Stories emplean el rol Developer, conforme al enunciado. Los spikes especifican duración y evidencia de cierre. Las historias y épicas conservan identificadores para facilitar la trazabilidad respecto de la revisión anterior.
+Las historias se redactan con la estructura “As a… I want… so that…”. Sus criterios de aceptación utilizan Given–When–Then y describen condiciones y resultados comprobables. Las historias técnicas utilizan el actor Developer; las Spike Stories establecen una pregunta de investigación, un límite de tiempo y los resultados que documentan su cierre.
 
 #### Epics
 
-| Epic ID | Epic | Propósito | Historias activas |
+| Epic ID | Epic | Propósito | User Stories |
 |---|---|---|---|
-| EP01 | **Driver Shift and Safety** — Turno y seguridad del conductor | Validar el turno, consultar la ruta, revisar la disponibilidad del monitoreo, compartir ubicación, pedir ayuda, reportar incidentes y cerrar el turno. | US01, US02, US03, US04, US05, US06, US07 |
-| EP02 | **Passenger Verification and Safety** — Verificación y seguridad del pasajero | Consultar los datos del bus y su conductor, conocer el aforo, activar el botón de pánico, consultar la atención recibida y reportar datos que no coinciden. | US08, US09, US10, US12, US14 |
-| EP03 | **Incident Response Coordination** — Atención de incidentes | Recibir y atender alertas de ambos tipos de usuario, registrar contactos externos y comunicar avisos de seguridad por ruta. | US18, US20, US21 |
-| EP04 | **Fleet Monitoring and Setup** — Monitoreo y configuración básica de flota | Supervisar ubicación y aforo, registrar la capacidad del bus, asignar turnos y obtener un reporte básico de incidentes. | US15, US22, US23, US32 |
-| EP05 | **Service Information and Contact** — Presentación y contacto comercial | Explicar SafeBus mediante una landing page estática y registrar solicitudes sencillas de contacto. | US24, US25 |
-| EP06 | **User Access and Service Integration** — Acceso y comunicación de la aplicación | Permitir el acceso de los usuarios, proteger los datos y conectar las aplicaciones con los servicios de ubicación, conteo y alertas. | US26, US27, US28, US31, US33 |
-| EP07 | **Technical Feasibility Spikes** — Investigaciones técnicas breves | Comprobar el consumo del GPS móvil y la recepción de eventos de conteo antes de cerrar sus decisiones de implementación. | US29, US30 |
+| EP01 | **Driver Shift and Safety** — Turno y seguridad del conductor | Validar el turno, consultar la asignación, compartir ubicación, solicitar ayuda y cerrar la jornada. | US01, US02, US03, US04, US05 |
+| EP02 | **Passenger Verification and Safety** — Verificación y seguridad del pasajero | Identificar la unidad, consultar el aforo, solicitar ayuda y conocer la atención de la alerta. | US06, US07, US08, US09 |
+| EP03 | **Incident Response Coordination** — Atención de alertas | Recibir y atender alertas de conductores y pasajeros, identificando al responsable y el resultado de atención. | US10 |
+| EP04 | **Fleet Monitoring and Setup** — Monitoreo y asignación de unidades | Consultar ubicación y aforo de la flota, registrar capacidades y asignar conductor, bus y ruta. | US11, US12, US13 |
+| EP05 | **Service Information and Contact** — Presentación y contacto | Explicar el servicio mediante una landing page y recibir solicitudes de información. | US14, US15 |
+| EP06 | **User Access and Service Integration** — Acceso y comunicación de la aplicación | Permitir el ingreso de usuarios y proteger el intercambio de ubicación, conteo y alertas. | US16, US17, US18, US19, US20 |
+| EP07 | **Technical Feasibility Spikes** — Investigaciones técnicas breves | Evaluar el consumo de GPS móvil y la recepción de eventos de conteo para orientar la implementación. | US21, US22 |
 
-#### User Story Catalogue — Reviewed Scope
+#### User Story Catalogue
 
-| Story ID | Actor | Title | Priority | Epic | Tipo |
+| Story ID | User | Title | Priority | Epic | Type |
 |---|---|---|---|---|---|
 | **US01** | Public Transport Driver | Validate an Assigned Shift with a Driver QR Credential | High | EP01 | Functional |
 | **US02** | Public Transport Driver | Consult Assigned Route and Shift Details | High | EP01 | Functional |
-| **US03** | Public Transport Driver | Check Monitoring Availability Before Service | Medium | EP01 | Functional |
-| **US04** | Public Transport Driver | Share Bus Location During an Active Shift | High | EP01 | Functional |
-| **US05** | Public Transport Driver | Activate a Silent Driver Panic Alert | High | EP01 | Functional |
-| **US06** | Public Transport Driver | Report a Non-Emergency Safety Incident | Medium | EP01 | Functional |
-| **US07** | Public Transport Driver | Close a Driver Shift | Medium | EP01 | Functional |
-| **US08** | Bus Passenger | Verify a Bus and Start a Passenger Journey | High | EP02 | Functional |
-| **US09** | Bus Passenger | Consult Passenger Count and Bus Capacity | High | EP02 | Functional |
-| **US10** | Bus Passenger | Activate a Silent Passenger Panic Alert with Bus Location | High | EP02 | Functional |
-| **US12** | Bus Passenger | Consult the Status of My Safety Cases | Medium | EP02 | Functional |
-| **US14** | Bus Passenger | Report a Bus or Driver Information Mismatch | Medium | EP02 | Functional |
-| **US15** | Fleet Supervisor | Monitor Fleet Location and Occupancy | High | EP04 | Functional |
-| **US18** | Fleet Supervisor | Receive, Attend and Close Driver and Passenger Cases | High | EP03 | Functional |
-| **US20** | Fleet Supervisor | Record External Emergency Contact Attempts | Medium | EP03 | Functional |
-| **US21** | Fleet Supervisor | Publish a Time-Limited Route Safety Notice | Medium | EP03 | Functional |
-| **US22** | Fleet Supervisor | Maintain the Recorded Capacity of a Bus | Medium | EP04 | Functional |
-| **US23** | Fleet Supervisor | Export a Basic Incident Report | Medium | EP04 | Functional |
-| **US24** | Transport Company Representative | Consult SafeBus Service Information | Medium | EP05 | Functional |
-| **US25** | Transport Company Representative | Submit a Company Contact Request | Medium | EP05 | Functional |
-| **US26** | Developer | Protect API Access by Role, Company and Passenger Session | High | EP06 | Technical |
-| **US27** | Developer | Provide a RESTful Location Service | High | EP06 | Technical |
-| **US28** | Developer | Deliver Live Case Updates and Recover Missed Notifications | High | EP06 | Technical |
-| **US29** | Developer | Spike Mobile Background Location and Battery Use | High | EP07 | Spike |
-| **US30** | Developer | Spike Ordered Passenger-Count Event Ingestion | High | EP07 | Spike |
-| **US31** | Registered Driver or Fleet Supervisor | Sign In and Sign Out of a Company Account | High | EP06 | Functional |
-| **US32** | Fleet Supervisor | Assign a Driver and Bus to a Route Shift | High | EP04 | Functional |
-| **US33** | Developer | Provide a RESTful Passenger-Count Service | High | EP06 | Technical |
+| **US03** | Public Transport Driver | Share Bus Location During an Active Shift | High | EP01 | Functional |
+| **US04** | Public Transport Driver | Activate a Silent Driver Panic Alert | High | EP01 | Functional |
+| **US05** | Public Transport Driver | Close a Driver Shift | Medium | EP01 | Functional |
+| **US06** | Bus Passenger | Verify a Bus and Start a Passenger Journey | High | EP02 | Functional |
+| **US07** | Bus Passenger | Consult Passenger Count and Bus Capacity | High | EP02 | Functional |
+| **US08** | Bus Passenger | Activate a Silent Passenger Panic Alert with Bus Location | High | EP02 | Functional |
+| **US09** | Bus Passenger | Consult the Status of My Safety Cases | Medium | EP02 | Functional |
+| **US10** | Fleet Supervisor | Receive, Attend and Close Driver and Passenger Cases | High | EP03 | Functional |
+| **US11** | Fleet Supervisor | Monitor Fleet Location and Occupancy | High | EP04 | Functional |
+| **US12** | Fleet Supervisor | Maintain the Recorded Capacity of a Bus | Medium | EP04 | Functional |
+| **US13** | Fleet Supervisor | Assign a Driver and Bus to a Route Shift | High | EP04 | Functional |
+| **US14** | Transport Company Representative | Consult SafeBus Service Information | Medium | EP05 | Functional |
+| **US15** | Transport Company Representative | Submit a Company Contact Request | Medium | EP05 | Functional |
+| **US16** | Registered Driver or Fleet Supervisor | Sign In and Sign Out of a Company Account | High | EP06 | Functional |
+| **US17** | Developer | Protect API Access by Role, Company and Passenger Session | High | EP06 | Technical |
+| **US18** | Developer | Provide a RESTful Location Service | High | EP06 | Technical |
+| **US19** | Developer | Provide a RESTful Passenger-Count Service | High | EP06 | Technical |
+| **US20** | Developer | Deliver Live Case Updates and Recover Missed Notifications | High | EP06 | Technical |
+| **US21** | Developer | Spike Mobile Background Location and Battery Use | High | EP07 | Spike |
+| **US22** | Developer | Spike Ordered Passenger-Count Event Ingestion | High | EP07 | Spike |
 
 #### Detailed User Stories
 
@@ -371,335 +334,222 @@ Cada historia expresa un actor, una necesidad y su beneficio. Los criterios usan
 | **US02** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
 | **Title** | Consult Assigned Route and Shift Details | | |
 | **Description** | As a Public Transport Driver, I want to consult my assigned route and shift details so that I know the bus, route and service schedule that I must follow. | | |
-| **Acceptance Criteria** | **Scenario 1: Consult an assignment**<br>Given the authenticated driver has an assigned shift<br>When the driver requests the assignment<br>Then SafeBus provides the bus plate, route name, origin, destination, scheduled start and any active route notice<br><br>**Scenario 2: Handle a missing assignment**<br>Given the authenticated driver has no assigned shift<br>When the driver requests the assignment<br>Then SafeBus reports that no assignment is available and does not substitute another driver's assignment | | |
+| **Acceptance Criteria** | **Scenario 1: Consult an assignment**<br>Given the authenticated driver has an assigned shift<br>When the driver requests the assignment<br>Then SafeBus provides the bus plate, route name, origin, destination, scheduled start and scheduled end<br><br>**Scenario 2: Handle a missing assignment**<br>Given the authenticated driver has no assigned shift<br>When the driver requests the assignment<br>Then SafeBus reports that no assignment is available and does not substitute another driver's assignment | | |
 
-##### US03 — Check Monitoring Availability Before Service
+##### US03 — Share Bus Location During an Active Shift
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US03** | Public Transport Driver | Medium | EP01 — Driver Shift and Safety |
-| **Title** | Check Monitoring Availability Before Service | | |
-| **Description** | As a Public Transport Driver, I want to check location, connectivity and passenger-count availability before service so that I know which safety information is available to Operations Central. | | |
-| **Acceptance Criteria** | **Scenario 1: Report available monitoring**<br>Given the mobile app has location permission, network connectivity and a count-source heartbeat no older than two minutes<br>When the driver requests the monitoring check<br>Then SafeBus reports each component as available and records the check time<br><br>**Scenario 2: Report partial availability**<br>Given the location permission is denied, the network is unavailable, or the count-source heartbeat is older than two minutes<br>When the driver requests the monitoring check<br>Then SafeBus identifies each unavailable component and its limitation, keeps panic activation available for local recording, and does not block an otherwise valid shift solely because monitoring is degraded | | |
+| **US03** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
+| **Title** | Share Bus Location During an Active Shift | | |
+| **Description** | As a Public Transport Driver, I want the mobile app to share my bus location during my active shift so that Operations Central can locate the unit when assistance is needed. | | |
+| **Acceptance Criteria** | **Scenario 1: Share a current location**<br>Given the driver has an active shift, grants location permission and has connectivity<br>When the app obtains a location sample at a sampling interval of 30 seconds<br>Then SafeBus sends the event identifier, coordinates, accuracy, capture time, bus and shift to the location service<br><br>**Scenario 2: Synchronize locally stored samples**<br>Given the app captures three samples while connectivity is unavailable<br>When connectivity returns during an authenticated session<br>Then the app submits the locally persisted samples with their original identifiers and times, removes acknowledged samples from the pending queue, and does not replace a newer current position with an older sample<br><br>**Scenario 3: Stop collecting location**<br>Given the shift closes or the driver withdraws location permission<br>When the app evaluates location collection<br>Then the app stops collecting new samples and reports that live location is unavailable; already pending samples remain associated with their original shift | | |
 
-##### US04 — Share Bus Location During an Active Shift
+##### US04 — Activate a Silent Driver Panic Alert
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
 | **US04** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
-| **Title** | Share Bus Location During an Active Shift | | |
-| **Description** | As a Public Transport Driver, I want the mobile app to share my bus location during my active shift so that Operations Central can locate the unit when assistance is needed. | | |
-| **Acceptance Criteria** | **Scenario 1: Share a current location**<br>Given the driver has an active shift, grants location permission and has connectivity<br>When the app obtains a location sample at the configured interval<br>Then SafeBus sends the event identifier, coordinates, accuracy, capture time, bus and shift to the location service<br><br>**Scenario 2: Synchronize locally stored samples**<br>Given the app captures three samples while connectivity is unavailable<br>When connectivity returns during an authenticated session<br>Then the app submits the locally persisted samples with their original identifiers and times, removes acknowledged samples from the pending queue, and does not replace a newer current position with an older sample<br><br>**Scenario 3: Stop collecting location**<br>Given the shift closes or the driver withdraws location permission<br>When the app evaluates location collection<br>Then the app stops collecting new samples and reports that live location is unavailable; already pending samples remain associated with their original shift | | |
-
-##### US05 — Activate a Silent Driver Panic Alert
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US05** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
 | **Title** | Activate a Silent Driver Panic Alert | | |
 | **Description** | As a Public Transport Driver, I want to activate a silent panic alert from the mobile app so that Operations Central receives a request for help linked to my bus. | | |
-| **Acceptance Criteria** | **Scenario 1: Submit a driver panic alert**<br>Given the authenticated driver has an active shift and connectivity<br>When the driver activates the panic function<br>Then SafeBus records a critical driver alert with its unique identifier, activation time, bus, route and available location and occupancy context; the mobile app emits no activation sound or vibration and records Received only after server acknowledgement<br><br>**Scenario 2: Queue a panic alert offline**<br>Given the driver has a locally stored active-shift association and no connectivity<br>When the driver activates the panic function<br>Then the mobile app persists the alert and its original context as Pending transmission, emits no activation sound or vibration, and does not claim that Operations Central has received it<br><br>**Scenario 3: Retry without creating duplicate cases**<br>Given a locally pending alert exists and connectivity and authorized access are restored<br>When the mobile app retries delivery using the original alert identifier<br>Then SafeBus creates or returns one case, preserves the activation time and original shift association, records the receipt time separately, and marks a late delivery as delayed<br><br>**Scenario 4: Consult my driver alert status**<br>Given the authenticated driver submitted a panic case<br>When the driver requests that case status<br>Then SafeBus returns Received, In progress or Closed and its update time for the driver's own case, without disclosing internal coordination notes or another driver's cases | | |
+| **Acceptance Criteria** | **Scenario 1: Submit a driver panic alert**<br>Given the authenticated driver has an active shift and connectivity<br>When the driver activates the panic function<br>Then SafeBus records a critical driver alert with its unique identifier, activation time, bus, route and available location and occupancy context; the mobile app emits no activation sound or vibration and records Received only after server acknowledgement<br><br>**Scenario 2: Queue a panic alert offline**<br>Given the driver has a locally stored active-shift association and no connectivity<br>When the driver activates the panic function<br>Then the mobile app persists the alert and its original context in protected local storage as Pending transmission, recovers that record after an app restart, emits no activation sound or vibration, and does not claim that Operations Central has received it<br><br>**Scenario 3: Retry without creating duplicate cases**<br>Given a locally pending alert exists and connectivity and authorized access are restored<br>When the mobile app retries delivery using the original alert identifier<br>Then SafeBus creates or returns one case, preserves the activation time and original shift association, records the receipt time separately, and marks a late delivery as delayed<br><br>**Scenario 4: Consult my driver alert status**<br>Given the authenticated driver submitted a panic case<br>When the driver requests that case status<br>Then SafeBus returns Received, In progress or Closed and its update time for the driver's own case, without disclosing internal coordination notes or another driver's cases | | |
 
-##### US06 — Report a Non-Emergency Safety Incident
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US06** | Public Transport Driver | Medium | EP01 — Driver Shift and Safety |
-| **Title** | Report a Non-Emergency Safety Incident | | |
-| **Description** | As a Public Transport Driver, I want to report a non-emergency safety incident with a category and a short description so that the company can review the issue without confusing it with an active panic alert. | | |
-| **Acceptance Criteria** | **Scenario 1: Register an incident**<br>Given the authenticated driver has an active shift and supplies a category and a description of 1 to 500 characters<br>When SafeBus receives the report<br>Then SafeBus records the description, category, bus, route, activation time and available location as a non-emergency case for Operations Central<br><br>**Scenario 2: Reject an incomplete report**<br>Given the report has no category or its description falls outside the permitted length<br>When SafeBus validates the report<br>Then SafeBus identifies the invalid field and creates no case | | |
-
-##### US07 — Close a Driver Shift
+##### US05 — Close a Driver Shift
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US07** | Public Transport Driver | Medium | EP01 — Driver Shift and Safety |
+| **US05** | Public Transport Driver | Medium | EP01 — Driver Shift and Safety |
 | **Title** | Close a Driver Shift | | |
 | **Description** | As a Public Transport Driver, I want to close my completed shift so that the company records the end of my responsibility and the app stops collecting my location. | | |
 | **Acceptance Criteria** | **Scenario 1: Close an active shift**<br>Given the authenticated driver has an active shift<br>When the driver requests shift closure<br>Then SafeBus records the closing time and last available location and count with their timestamps, closes the shift and requests the app to stop location collection<br><br>**Scenario 2: Preserve an open incident**<br>Given the closing shift has an unresolved case<br>When SafeBus closes the shift<br>Then SafeBus preserves the case and its original driver and shift references, keeps it available to Operations Central, and does not mark the case as resolved | | |
 
-##### US08 — Verify a Bus and Start a Passenger Journey
+##### US06 — Verify a Bus and Start a Passenger Journey
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US08** | Bus Passenger | High | EP02 — Passenger Verification and Safety |
+| **US06** | Bus Passenger | High | EP02 — Passenger Verification and Safety |
 | **Title** | Verify a Bus and Start a Passenger Journey | | |
 | **Description** | As a Bus Passenger, I want to scan the unit QR and consult the company-recorded bus and driver details so that I can identify the service and associate safety requests with the correct bus. | | |
-| **Acceptance Criteria** | **Scenario 1: Start a passenger journey**<br>Given the passenger accepts the current service terms and scans a registered unit QR with connectivity and an active driver shift<br>When SafeBus validates the unit association<br>Then SafeBus provides the bus plate, company, route, assigned driver's public display name and company validation status, creates a passenger session limited to that journey, and allows the app to persist its association securely<br><br>**Scenario 2: Reject an unknown or inactive unit**<br>Given the QR is unreadable, unregistered, or identifies a bus without an active shift<br>When the passenger requests verification<br>Then SafeBus identifies the reason, creates no verified journey, and does not present the bus as verified<br><br>**Scenario 3: End a passenger journey**<br>Given a passenger journey association exists<br>When the passenger ends the journey or SafeBus records closure of its driver shift<br>Then SafeBus ends the association for new alerts, preserves access to the passenger's own case history, and keeps already queued reports linked to their original journey | | |
+| **Acceptance Criteria** | **Scenario 1: Start a passenger journey**<br>Given the passenger accepts the current service terms and scans a registered unit QR with connectivity and an active driver shift<br>When SafeBus validates the unit association<br>Then SafeBus provides the bus plate, company, route, assigned driver's public display name and company validation status, creates a passenger session limited to that journey without requiring password-based registration, and allows the app to persist its association securely<br><br>**Scenario 2: Reject an unknown or inactive unit**<br>Given the QR is unreadable, unregistered, or identifies a bus without an active shift<br>When the passenger requests verification<br>Then SafeBus identifies the reason, creates no verified journey, and does not present the bus as verified<br><br>**Scenario 3: End a passenger journey**<br>Given a passenger journey association exists<br>When the passenger ends the journey or SafeBus records closure of its driver shift<br>Then SafeBus ends the association for new alerts, preserves access to the passenger's own case history, and keeps already queued reports linked to their original journey | | |
 
-##### US09 — Consult Passenger Count and Bus Capacity
+##### US07 — Consult Passenger Count and Bus Capacity
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US09** | Bus Passenger | High | EP02 — Passenger Verification and Safety |
+| **US07** | Bus Passenger | High | EP02 — Passenger Verification and Safety |
 | **Title** | Consult Passenger Count and Bus Capacity | | |
 | **Description** | As a Bus Passenger, I want to consult the passenger count and capacity of a verified bus so that I can judge whether there is room before boarding. | | |
 | **Acceptance Criteria** | **Scenario 1: Classify current occupancy**<br>Given the bus has capacity 42 and a count-source heartbeat no older than two minutes<br>When the passenger requests occupancy<br>Then SafeBus provides count, capacity, reading time and state: Available for counts below 42, Full for 42, and Over capacity for counts above 42<br><br>**Scenario 2: Handle unavailable or stale counts**<br>Given no valid count exists or the latest count-source heartbeat is older than two minutes<br>When the passenger requests occupancy<br>Then SafeBus reports Unavailable or Stale as applicable, preserves the last known count and time if they exist, and does not infer zero passengers or available space | | |
 
-##### US10 — Activate a Silent Passenger Panic Alert with Bus Location
+##### US08 — Activate a Silent Passenger Panic Alert with Bus Location
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US10** | Bus Passenger | High | EP02 — Passenger Verification and Safety |
+| **US08** | Bus Passenger | High | EP02 — Passenger Verification and Safety |
 | **Title** | Activate a Silent Passenger Panic Alert with Bus Location | | |
 | **Description** | As a Bus Passenger, I want to activate a silent panic alert associated with my bus so that Operations Central can respond to a danger affecting my journey. | | |
-| **Acceptance Criteria** | **Scenario 1: Submit a passenger panic alert**<br>Given the passenger has a verified active journey and connectivity<br>When the passenger activates the panic function<br>Then SafeBus creates a critical passenger case with its unique identifier, activation time, journey, bus, route and latest available bus location; the app emits no activation sound or vibration, requires no category before sending, and records Received only after server acknowledgement<br><br>**Scenario 2: Report without current bus location**<br>Given the passenger has a verified journey but bus location is stale or unavailable<br>When SafeBus receives the panic alert<br>Then SafeBus accepts the case, labels the location as Stale or Unavailable with its timestamp if present, and does not delay the request while waiting for passenger GPS<br><br>**Scenario 3: Queue and retry a passenger alert**<br>Given the passenger has a persisted journey association and loses connectivity before activating the alert<br>When the passenger activates the panic function and the app later restores authorized connectivity<br>Then the app persists the alert as Pending transmission without sound or vibration, submits the original identifier and journey context on reconnection, and records Received only after acknowledgement; SafeBus returns one case even if delivery occurs after journey closure and marks that delivery as delayed | | |
+| **Acceptance Criteria** | **Scenario 1: Submit a passenger panic alert**<br>Given the passenger has a verified active journey and connectivity<br>When the passenger activates the panic function<br>Then SafeBus creates a critical passenger case with its unique identifier, activation time, journey, bus, route and latest available bus location; the app emits no activation sound or vibration, requires no category before sending, and records Received only after server acknowledgement<br><br>**Scenario 2: Report without current bus location**<br>Given the passenger has a verified journey but bus location is stale or unavailable<br>When SafeBus receives the panic alert<br>Then SafeBus accepts the case, labels the location as Stale or Unavailable with its timestamp if present, and does not delay the request while waiting for passenger GPS<br><br>**Scenario 3: Queue and retry a passenger alert**<br>Given the passenger has a persisted journey association and loses connectivity before activating the alert<br>When the passenger activates the panic function and the app later restores authorized connectivity<br>Then the app persists the alert in protected local storage as Pending transmission without sound or vibration and retains it after an app restart, submits the original identifier and journey context on reconnection, and records Received only after acknowledgement; SafeBus returns one case even if delivery occurs after journey closure and marks that delivery as delayed | | |
 
-##### US12 — Consult the Status of My Safety Cases
+##### US09 — Consult the Status of My Safety Cases
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US12** | Bus Passenger | Medium | EP02 — Passenger Verification and Safety |
+| **US09** | Bus Passenger | Medium | EP02 — Passenger Verification and Safety |
 | **Title** | Consult the Status of My Safety Cases | | |
 | **Description** | As a Bus Passenger, I want to consult the status of safety cases submitted from my passenger session so that I know whether Operations Central has received, started attending or closed my report. | | |
 | **Acceptance Criteria** | **Scenario 1: Consult a submitted case**<br>Given the passenger session owns a case that Operations Central has started attending<br>When the passenger requests the case status<br>Then SafeBus returns In progress, its update time and any passenger-facing response, without disclosing internal coordination notes<br><br>**Scenario 2: Protect another passenger's case**<br>Given a passenger session requests a case owned by a different session<br>When SafeBus validates case access<br>Then SafeBus rejects access and discloses no case details<br><br>**Scenario 3: Distinguish a locally pending report**<br>Given an alert remains locally queued without server acknowledgement<br>When the passenger requests its status<br>Then the app reports Pending transmission and does not claim receipt or attention by Operations Central | | |
 
-##### US14 — Report a Bus or Driver Information Mismatch
+##### US10 — Receive, Attend and Close Driver and Passenger Cases
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US14** | Bus Passenger | Medium | EP02 — Passenger Verification and Safety |
-| **Title** | Report a Bus or Driver Information Mismatch | | |
-| **Description** | As a Bus Passenger, I want to report a difference between the bus details and what I observe so that the company can review a possible incorrect assignment. | | |
-| **Acceptance Criteria** | **Scenario 1: Report a mismatch**<br>Given the passenger has a verified journey and provides a mismatch type and a description of 1 to 500 characters<br>When SafeBus receives the report<br>Then SafeBus creates a non-emergency case linked to the original bus, route, journey and report time for Operations Central review<br><br>**Scenario 2: Reject an incomplete mismatch report**<br>Given the report lacks a mismatch type or its description falls outside the permitted length<br>When SafeBus validates the report<br>Then SafeBus identifies the invalid field and creates no case; the verified journey remains available for a valid report | | |
-
-##### US15 — Monitor Fleet Location and Occupancy
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US15** | Fleet Supervisor | High | EP04 — Fleet Monitoring and Setup |
-| **Title** | Monitor Fleet Location and Occupancy | | |
-| **Description** | As a Fleet Supervisor, I want to consult my company's active buses and their location and occupancy status so that I can locate a unit and assess the available information during an incident. | | |
-| **Acceptance Criteria** | **Scenario 1: Consult active fleet information**<br>Given the authenticated supervisor has buses assigned to their company<br>When the supervisor requests active fleet information<br>Then SafeBus returns each bus, route, driver, shift state, latest location and timestamp, count and timestamp, occupancy state and open cases; the mobile client uses an external cartographic service to represent available positions<br><br>**Scenario 2: Identify outdated location**<br>Given a bus has no location sample newer than three minutes<br>When SafeBus evaluates the bus location<br>Then SafeBus marks the last position as Stale, preserves its timestamp, and does not present it as a current position; absent samples produce Unavailable<br><br>**Scenario 3: Handle an external map-service failure**<br>Given the external cartographic service is unavailable but SafeBus fleet data is accessible<br>When the supervisor requests fleet information<br>Then SafeBus keeps bus details, coordinates, timestamps and case access available and reports that the map is unavailable | | |
-
-##### US18 — Receive, Attend and Close Driver and Passenger Cases
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US18** | Fleet Supervisor | High | EP03 — Incident Response Coordination |
+| **US10** | Fleet Supervisor | High | EP03 — Incident Response Coordination |
 | **Title** | Receive, Attend and Close Driver and Passenger Cases | | |
 | **Description** | As a Fleet Supervisor, I want to receive, attend and close driver and passenger cases through one response process so that both user groups receive traceable assistance from Operations Central. | | |
-| **Acceptance Criteria** | **Scenario 1: Receive and attend a panic case**<br>Given a driver or passenger panic alert reaches the server<br>When an authorized supervisor starts attending the received case<br>Then SafeBus preserves its critical priority and source, records the responsible supervisor and attention time, and changes the case from Received to In progress<br><br>**Scenario 2: Close a case with an outcome**<br>Given a case is In progress and its responsible supervisor provides an outcome and a response summary<br>When the supervisor requests closure<br>Then SafeBus records Closed, the outcome, closing time and a separate passenger-facing response where applicable, while preserving the incident history<br><br>**Scenario 3: Reject an invalid transition**<br>Given a case is Received or lacks a closure outcome<br>When the supervisor requests direct closure without starting attention or providing the outcome<br>Then SafeBus rejects the transition and preserves the current state<br><br>**Scenario 4: Review an ordinary report**<br>Given a driver incident or passenger mismatch report reaches the server<br>When an authorized supervisor requests received cases<br>Then SafeBus includes the report in the same case workflow with Normal priority and its original source; it does not automatically reclassify it as a panic alert | | |
+| **Acceptance Criteria** | **Scenario 1: Receive and attend a panic case**<br>Given a driver or passenger panic alert reaches the server and is recorded as Received with Critical priority<br>When an authorized supervisor starts attending that case<br>Then SafeBus preserves its source and context, records the responsible supervisor and attention time, and changes the case to In progress<br><br>**Scenario 2: Close a case with an outcome**<br>Given a case is In progress and its responsible supervisor provides an outcome and a response summary<br>When the supervisor requests closure<br>Then SafeBus records Closed, the outcome, closing time and a user-facing response, while preserving the incident history<br><br>**Scenario 3: Reject an invalid transition**<br>Given a case is Received or the closure request lacks an outcome<br>When the supervisor requests closure<br>Then SafeBus rejects the request and preserves the current state until attention has started and an outcome is supplied | | |
 
-##### US20 — Record External Emergency Contact Attempts
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US20** | Fleet Supervisor | Medium | EP03 — Incident Response Coordination |
-| **Title** | Record External Emergency Contact Attempts | | |
-| **Description** | As a Fleet Supervisor, I want to record attempts to contact an authority or emergency service so that the case history shows what coordination occurred and what response was obtained. | | |
-| **Acceptance Criteria** | **Scenario 1: Record a completed contact**<br>Given the responsible supervisor has an In progress case and contacts an emergency service outside SafeBus<br>When the supervisor records the service name, contact time and response summary<br>Then SafeBus appends the contact record and author to the case without claiming an automated authority integration<br><br>**Scenario 2: Record an unanswered attempt**<br>Given the emergency service does not answer the supervisor's external contact attempt<br>When the supervisor records No response and the attempt time<br>Then SafeBus preserves the attempt and keeps the case In progress for further coordination | | |
-
-##### US21 — Publish a Time-Limited Route Safety Notice
-
-| Story ID | User | Priority | Epic |
-    |---|---|---|---|
-| **US21** | Fleet Supervisor | Medium | EP03 — Incident Response Coordination |
-| **Title** | Publish a Time-Limited Route Safety Notice | | |
-| **Description** | As a Fleet Supervisor, I want to publish a safety notice for a route until a defined expiry time so that assigned drivers receive relevant risk information during their service. | | |
-| **Acceptance Criteria** | **Scenario 1: Publish a route notice**<br>Given the supervisor is authorized for a route and supplies a message of 1 to 500 characters and a future expiry time<br>When the supervisor publishes the notice<br>Then SafeBus records route, message, author, publication time and expiry and makes it available with the assigned route details<br><br>**Scenario 2: Exclude an expired notice**<br>Given a route notice has reached its expiry time<br>When a driver requests current route notices<br>Then SafeBus excludes the expired notice from active notices and preserves its historical record<br><br>**Scenario 3: Reject unauthorized publication**<br>Given the requested route belongs to another company<br>When the supervisor publishes a notice for that route<br>Then SafeBus rejects the request and preserves existing notices | | |
-
-##### US22 — Maintain the Recorded Capacity of a Bus
+##### US11 — Monitor Fleet Location and Occupancy
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US22** | Fleet Supervisor | Medium | EP04 — Fleet Monitoring and Setup |
+| **US11** | Fleet Supervisor | High | EP04 — Fleet Monitoring and Setup |
+| **Title** | Monitor Fleet Location and Occupancy | | |
+| **Description** | As a Fleet Supervisor, I want to consult my company's active buses and their location and occupancy status so that I can locate a unit and assess the available information during an incident. | | |
+| **Acceptance Criteria** | **Scenario 1: Consult active fleet information**<br>Given the authenticated supervisor has buses assigned to their company<br>When the supervisor requests active fleet information<br>Then SafeBus returns each bus, route, driver, shift state, latest location and timestamp, count and timestamp, occupancy state and open cases; the mobile client uses an external cartographic service to represent available positions<br><br>**Scenario 2: Identify outdated location**<br>Given the latest bus location sample is older than three minutes or no sample exists<br>When SafeBus evaluates the bus location<br>Then SafeBus marks the last position as Stale, preserves its timestamp, and does not present it as a current position; absent samples produce Unavailable<br><br>**Scenario 3: Handle an external map-service failure**<br>Given the external cartographic service is unavailable but SafeBus fleet data is accessible<br>When the supervisor requests fleet information<br>Then SafeBus keeps bus details, coordinates, timestamps and case access available and reports that the map is unavailable | | |
+
+##### US12 — Maintain the Recorded Capacity of a Bus
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US12** | Fleet Supervisor | Medium | EP04 — Fleet Monitoring and Setup |
 | **Title** | Maintain the Recorded Capacity of a Bus | | |
 | **Description** | As a Fleet Supervisor, I want to record the passenger capacity of a bus using its company-held technical record so that SafeBus evaluates occupancy against the correct limit. | | |
 | **Acceptance Criteria** | **Scenario 1: Record a capacity**<br>Given the supervisor is authorized for the bus and supplies a positive integer capacity and a technical-record reference<br>When SafeBus receives the capacity update<br>Then SafeBus stores the capacity, reference, author and update time and applies the capacity to subsequent occupancy queries without changing the passenger count<br><br>**Scenario 2: Reject an invalid capacity**<br>Given the submitted capacity is zero, negative or non-integer, or the reference is absent<br>When SafeBus validates the update<br>Then SafeBus rejects the update, identifies the reason and preserves the last valid capacity | | |
 
-##### US23 — Export a Basic Incident Report
+##### US13 — Assign a Driver and Bus to a Route Shift
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US23** | Fleet Supervisor | Medium | EP04 — Fleet Monitoring and Setup |
-| **Title** | Export a Basic Incident Report | | |
-| **Description** | As a Fleet Supervisor, I want to export my company's incident records for a date range so that I can review the cases and time taken to start attention. | | |
-| **Acceptance Criteria** | **Scenario 1: Export authorized cases**<br>Given the supervisor supplies a valid date range containing cases for their company<br>When the supervisor requests a CSV report<br>Then SafeBus exports case identifier, source, bus, route, activation time, receipt time, attention-start time, closing time, state and outcome, and calculates attention delay from receipt to attention start only where both times exist<br><br>**Scenario 2: Export an empty period**<br>Given the date range is valid but contains no cases for the supervisor's company<br>When the supervisor requests the report<br>Then SafeBus returns a CSV with the defined headers and zero case rows, including no records from another company | | |
-
-##### US24 — Consult SafeBus Service Information
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US24** | Transport Company Representative | Medium | EP05 — Service Information and Contact |
-| **Title** | Consult SafeBus Service Information | | |
-| **Description** | As a Transport Company Representative, I want to consult the published SafeBus service information so that I understand its benefits and the scope proposed for my company. | | |
-| **Acceptance Criteria** | **Scenario 1: Consult the service scope**<br>Given a representative requests the published static landing page<br>When the site serves its content<br>Then the content explains driver verification, driver and passenger panic alerts, fleet location, occupancy, connectivity limitations and the contact channel, distinguishing implemented capabilities from proposed capabilities<br><br>**Scenario 2: Consult service terms and languages**<br>Given the representative requests service terms or selects a supported language<br>When the site serves the corresponding static content<br>Then the site provides the current terms and consistent English or Latin American Spanish content, using English by default | | |
-
-##### US25 — Submit a Company Contact Request
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US25** | Transport Company Representative | Medium | EP05 — Service Information and Contact |
-| **Title** | Submit a Company Contact Request | | |
-| **Description** | As a Transport Company Representative, I want to submit my company and contact details so that the SafeBus team can respond to my request for information or a demonstration. | | |
-| **Acceptance Criteria** | **Scenario 1: Register a contact request**<br>Given the representative supplies a company name, contact name, syntactically valid email and contact consent<br>When SafeBus receives the contact request with a unique submission identifier<br>Then SafeBus stores the request and receipt time and returns a receipt reference; retries with the same identifier return the same reference<br><br>**Scenario 2: Reject invalid contact details**<br>Given a required name, a valid email or contact consent is missing<br>When SafeBus validates the request<br>Then SafeBus identifies the invalid field and stores no contact request | | |
-
-##### US26 — Protect API Access by Role, Company and Passenger Session
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US26** | Developer | High | EP06 — User Access and Service Integration |
-| **Title** | Protect API Access by Role, Company and Passenger Session | | |
-| **Description** | As a Developer, I want to enforce authenticated and scoped access to SafeBus services so that clients access only the operations and information permitted to them. | | |
-| **Acceptance Criteria** | **Scenario 1: Authorize a company request**<br>Given a client holds an unexpired signed access token with Fleet Supervisor role and a matching company scope<br>When the client requests an authorized fleet resource<br>Then the API validates the token and scope and returns HTTP 200 with only the authorized resource<br><br>**Scenario 2: Reject invalid authentication**<br>Given a protected request has a missing, expired or invalid token<br>When the API evaluates authentication<br>Then the API returns HTTP 401 and discloses no protected resource<br><br>**Scenario 3: Reject a forbidden operation**<br>Given an authenticated Driver requests a supervisor operation or a supervisor requests another company's resource<br>When the API evaluates permissions<br>Then the API returns HTTP 403 and leaves the protected resource unchanged<br><br>**Scenario 4: Restrict passenger sessions**<br>Given a valid passenger-session credential identifies one journey and its submitted cases<br>When the client requests a different session's case or a company administration operation<br>Then the API returns HTTP 403 and discloses no private case or company data; verified public unit information remains limited to US08 and US09 | | |
-
-##### US27 — Provide a RESTful Location Service
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US27** | Developer | High | EP06 — User Access and Service Integration |
-| **Title** | Provide a RESTful Location Service | | |
-| **Description** | As a Developer, I want to provide location ingestion and retrieval through a RESTful API so that mobile clients exchange timestamped bus positions consistently. | | |
-| **Acceptance Criteria** | **Scenario 1: Accept a location event**<br>Given an authorized driver client submits a unique event identifier, original assigned shift, capture time, accuracy and coordinates within valid latitude and longitude ranges<br>When POST /api/v1/location-events validates the payload<br>Then the API returns HTTP 201 and persists the event; it updates the current bus position only if the event is newer than the latest stored sample<br><br>**Scenario 2: Reject malformed coordinates**<br>Given a location payload is missing a required field or has latitude outside -90 to 90 or longitude outside -180 to 180<br>When POST /api/v1/location-events validates the payload<br>Then the API returns HTTP 422 with validation details and preserves the last valid bus position<br><br>**Scenario 3: Handle a repeated event**<br>Given the same authorized client resubmits a previously accepted identifier with the same payload<br>When POST /api/v1/location-events processes the retry<br>Then the API returns HTTP 200 with the original event reference and creates no duplicate; a conflicting payload for that identifier returns HTTP 409<br><br>**Scenario 4: Retrieve the current position**<br>Given an authorized supervisor requests a bus within their company<br>When GET /api/v1/vehicles/{id}/location processes the request<br>Then the API returns HTTP 200 with the latest position and timestamp and Current, Stale or Unavailable according to the shared freshness rule | | |
-
-##### US28 — Deliver Live Case Updates and Recover Missed Notifications
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US28** | Developer | High | EP06 — User Access and Service Integration |
-| **Title** | Deliver Live Case Updates and Recover Missed Notifications | | |
-| **Description** | As a Developer, I want to deliver authenticated live case notifications and recover current case state after reconnection so that Operations Central does not depend on an uninterrupted connection to find received alerts. | | |
-| **Acceptance Criteria** | **Scenario 1: Deliver a live notification**<br>Given an authorized supervisor client has an active WebSocket connection and the agreed demo network conditions hold<br>When the server persists a new panic case<br>Then the service delivers its identifier, source, bus, state and receipt time to the company subscription within five seconds after persistence<br><br>**Scenario 2: Recover after a disconnection**<br>Given a supervisor client loses its socket connection while cases are persisted on the server<br>When the client reconnects and authenticates<br>Then the client retrieves current open cases from the REST API, reconciles them by case identifier and resumes live notifications without creating duplicate cases<br><br>**Scenario 3: Reject a foreign subscription**<br>Given a supervisor token identifies one company<br>When the client requests a socket subscription for another company<br>Then the service rejects the subscription and delivers no foreign company events | | |
-
-##### US29 — Spike Mobile Background Location and Battery Use
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US29** | Developer | High | EP07 — Technical Feasibility Spikes |
-| **Title** | Spike Mobile Background Location and Battery Use | | |
-| **Description** | As a Developer, I want to compare two background-location sampling profiles within a 12-hour investigation so that the team selects a measured configuration for US04 and identifies platform limitations. | | |
-| **Acceptance Criteria** | **Scenario 1: Complete a bounded experiment**<br>Given the team has a physical Android device, profiles of 15 and 30 seconds, and a draft budget of at most 10 battery percentage points per hour per profile<br>When the developer runs one-hour tests per profile under comparable conditions and records a one-hour baseline plus a permission-revocation and background-restriction check within the 12-hour time box<br>Then the report records device and OS, raw battery levels, baseline, sample counts, location accuracy and restrictions, compares both profiles and recommends one or records that neither meets the draft budget; it does not claim a measured full-shift endurance result<br><br>**Scenario 2: Document a limitation or unfinished measurement**<br>Given a profile fails the budget, loses updates in the background, or the investigation reaches its time limit<br>When the developer closes the investigation<br>Then the report records the failure or missing evidence, cites the technical sources consulted, identifies what was learned beyond class content, and specifies the changes and follow-up validation required for US04 on native and cross-platform clients | | |
-
-##### US30 — Spike Ordered Passenger-Count Event Ingestion
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US30** | Developer | High | EP07 — Technical Feasibility Spikes |
-| **Title** | Spike Ordered Passenger-Count Event Ingestion | | |
-| **Description** | As a Developer, I want to test passenger-count event ingestion through the planned REST contract within a 16-hour investigation so that the team knows whether the counting source can maintain a consistent count despite interruptions. | | |
-| **Acceptance Criteria** | **Scenario 1: Run the ingestion proof of concept**<br>Given a prototype sensor adapter or an explicitly identified simulator emits device, bus, shift, sequence, event identifier and entry or exit events using the US33 REST contract<br>When the developer tests a known event sequence, a five-minute interruption and reconnection within the 16-hour time box<br>Then the report compares the final count against the known expected count, records receipt delay and event loss, identifies the actual source used and provides an implementation recommendation for US33<br><br>**Scenario 2: Test duplicate and missing events**<br>Given the source repeats an entry, delays an exit and omits a sequence number<br>When the developer runs the proof of concept<br>Then the report demonstrates or records failure of duplicate rejection, gap handling and recovery, lists the sources consulted and the implementation tasks; a simulator-only test explicitly leaves physical-sensor accuracy unvalidated | | |
-
-##### US31 — Sign In and Sign Out of a Company Account
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US31** | Registered Driver or Fleet Supervisor | High | EP06 — User Access and Service Integration |
-| **Title** | Sign In and Sign Out of a Company Account | | |
-| **Description** | As a Registered Driver or Fleet Supervisor, I want to sign in and sign out of my company-provisioned account so that I can use the operations assigned to my role and end access on the device. | | |
-| **Acceptance Criteria** | **Scenario 1: Sign in with valid credentials**<br>Given the company-provisioned account is active and the user accepts the current service terms<br>When the user submits valid credentials<br>Then SafeBus establishes an authenticated session with the stored role and company and permits only the corresponding operations<br><br>**Scenario 2: Reject an invalid sign-in**<br>Given the account is disabled or the supplied credentials are invalid<br>When the user attempts sign-in<br>Then SafeBus creates no session and returns a generic sign-in failure without revealing whether the account exists<br><br>**Scenario 3: Sign out of the device**<br>Given a company session exists on the mobile device<br>When the user signs out<br>Then the app removes its local access credentials, stops collecting new location samples and requires sign-in for protected operations; pending reports remain protected and require renewed authorized access to synchronize | | |
-
-##### US32 — Assign a Driver and Bus to a Route Shift
-
-| Story ID | User | Priority | Epic |
-|---|---|---|---|
-| **US32** | Fleet Supervisor | High | EP04 — Fleet Monitoring and Setup |
+| **US13** | Fleet Supervisor | High | EP04 — Fleet Monitoring and Setup |
 | **Title** | Assign a Driver and Bus to a Route Shift | | |
 | **Description** | As a Fleet Supervisor, I want to assign an existing driver and bus to a route and shift period so that the driver can validate the correct service and the company knows who is responsible. | | |
 | **Acceptance Criteria** | **Scenario 1: Create a shift assignment**<br>Given the company has an enabled driver, bus and route with no overlapping assignment and a valid start and end period<br>When the supervisor records the assignment<br>Then SafeBus stores driver, bus, route, planned period and author and makes the assignment available to that driver<br><br>**Scenario 2: Reject a conflicting or foreign assignment**<br>Given the driver or bus has an overlapping assignment, belongs to another company, or is disabled<br>When the supervisor submits the assignment<br>Then SafeBus rejects the request, identifies the conflict or access limitation and preserves existing assignments | | |
 
-##### US33 — Provide a RESTful Passenger-Count Service
+##### US14 — Consult SafeBus Service Information
 
 | Story ID | User | Priority | Epic |
 |---|---|---|---|
-| **US33** | Developer | High | EP06 — User Access and Service Integration |
+| **US14** | Transport Company Representative | Medium | EP05 — Service Information and Contact |
+| **Title** | Consult SafeBus Service Information | | |
+| **Description** | As a Transport Company Representative, I want to consult the published SafeBus service information so that I understand its benefits and the service scope for my company. | | |
+| **Acceptance Criteria** | **Scenario 1: Consult the service scope**<br>Given a representative requests the published static landing page<br>When the site serves its content<br>Then the content explains driver verification, driver and passenger panic alerts, fleet location, occupancy, connectivity limitations and the contact channel<br><br>**Scenario 2: Consult service terms and languages**<br>Given the representative requests service terms or selects a supported language<br>When the site serves the corresponding static content<br>Then the site provides the current terms and consistent English or Latin American Spanish content, using English by default | | |
+
+##### US15 — Submit a Company Contact Request
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US15** | Transport Company Representative | Medium | EP05 — Service Information and Contact |
+| **Title** | Submit a Company Contact Request | | |
+| **Description** | As a Transport Company Representative, I want to submit my company and contact details so that the SafeBus team can respond to my request for information or a demonstration. | | |
+| **Acceptance Criteria** | **Scenario 1: Register a contact request**<br>Given the representative supplies a company name, contact name, syntactically valid email and contact consent<br>When SafeBus receives the contact request with a unique submission identifier<br>Then SafeBus stores the request and receipt time and returns a receipt reference; retries with the same identifier return the same reference<br><br>**Scenario 2: Reject invalid contact details**<br>Given a required name, a valid email or contact consent is missing<br>When SafeBus validates the request<br>Then SafeBus identifies the invalid field and stores no contact request | | |
+
+##### US16 — Sign In and Sign Out of a Company Account
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US16** | Registered Driver or Fleet Supervisor | High | EP06 — User Access and Service Integration |
+| **Title** | Sign In and Sign Out of a Company Account | | |
+| **Description** | As a Registered Driver or Fleet Supervisor, I want to sign in and sign out of my company-provisioned account so that I can use the operations assigned to my role and end access on the device. | | |
+| **Acceptance Criteria** | **Scenario 1: Sign in with valid credentials**<br>Given the company-provisioned account is active and the user accepts the current service terms<br>When the user submits valid credentials<br>Then SafeBus establishes an authenticated session with the stored role and company and permits only the corresponding operations<br><br>**Scenario 2: Reject an invalid sign-in**<br>Given the account is disabled or the supplied credentials are invalid<br>When the user attempts sign-in<br>Then SafeBus creates no session and returns a generic sign-in failure without revealing whether the account exists<br><br>**Scenario 3: Sign out of the device**<br>Given a company session exists on the mobile device<br>When the user signs out<br>Then the app removes its local access credentials, stops collecting new location samples and requires sign-in for protected operations; pending reports remain protected and require renewed authorized access to synchronize | | |
+
+##### US17 — Protect API Access by Role, Company and Passenger Session
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US17** | Developer | High | EP06 — User Access and Service Integration |
+| **Title** | Protect API Access by Role, Company and Passenger Session | | |
+| **Description** | As a Developer, I want to enforce authenticated and scoped access to SafeBus services so that clients access only the operations and information permitted to them. | | |
+| **Acceptance Criteria** | **Scenario 1: Authorize a company request**<br>Given a client holds an unexpired signed access token with Fleet Supervisor role and a matching company scope<br>When the client requests an authorized fleet resource<br>Then the API validates the token and scope and returns HTTP 200 with only the authorized resource<br><br>**Scenario 2: Reject invalid authentication**<br>Given a protected request has a missing, expired or invalid token<br>When the API evaluates authentication<br>Then the API returns HTTP 401 and discloses no protected resource<br><br>**Scenario 3: Reject a forbidden operation**<br>Given an authenticated Driver requests a supervisor operation or a supervisor requests another company's resource<br>When the API evaluates permissions<br>Then the API returns HTTP 403 and leaves the protected resource unchanged<br><br>**Scenario 4: Restrict passenger sessions**<br>Given a valid passenger-session credential identifies one journey and its submitted cases<br>When the client requests a different session's case or a company administration operation<br>Then the API returns HTTP 403 and discloses no private case or company data; verified public unit information remains limited to US06 and US07 | | |
+
+##### US18 — Provide a RESTful Location Service
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US18** | Developer | High | EP06 — User Access and Service Integration |
+| **Title** | Provide a RESTful Location Service | | |
+| **Description** | As a Developer, I want to provide location ingestion and retrieval through a RESTful API so that mobile clients exchange timestamped bus positions consistently. | | |
+| **Acceptance Criteria** | **Scenario 1: Accept a location event**<br>Given an authorized driver client submits a unique event identifier, original assigned shift, capture time, accuracy and coordinates within valid latitude and longitude ranges<br>When POST /api/v1/location-events validates the payload<br>Then the API returns HTTP 201 and persists the event; it updates the current bus position only if the event is newer than the latest stored sample<br><br>**Scenario 2: Reject malformed coordinates**<br>Given a location payload is missing a required field or has latitude outside -90 to 90 or longitude outside -180 to 180<br>When POST /api/v1/location-events validates the payload<br>Then the API returns HTTP 422 with validation details and preserves the last valid bus position<br><br>**Scenario 3: Handle a repeated event**<br>Given the same authorized client resubmits a previously accepted identifier with the same payload<br>When POST /api/v1/location-events processes the retry<br>Then the API returns HTTP 200 with the original event reference and creates no duplicate; a conflicting payload for that identifier returns HTTP 409<br><br>**Scenario 4: Retrieve the current position**<br>Given an authorized supervisor requests a bus within their company<br>When GET /api/v1/vehicles/{id}/location processes the request<br>Then the API returns HTTP 200 with the latest position and timestamp and Current for a sample no older than three minutes, Stale for an older sample, or Unavailable when no sample exists | | |
+
+##### US19 — Provide a RESTful Passenger-Count Service
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US19** | Developer | High | EP06 — User Access and Service Integration |
 | **Title** | Provide a RESTful Passenger-Count Service | | |
 | **Description** | As a Developer, I want to process ordered entry and exit events from a registered counting source so that SafeBus provides a reliable passenger count without double counting retries. | | |
 | **Acceptance Criteria** | **Scenario 1: Initialize and process an ordered count**<br>Given a registered source has an authenticated association with a bus and shift and a confirmed initial empty-bus count of zero<br>When POST /api/v1/occupancy-events receives the next sequential entry or exit event with an identifier and capture time<br>Then the API returns HTTP 201, applies the increment or decrement once and records the resulting count and sequence; counts above capacity remain valid and are classified as Over capacity<br><br>**Scenario 2: Reject an impossible or unregistered event**<br>Given the payload is malformed, the source is not registered, or the next exit would reduce the count below zero<br>When the occupancy API validates the request<br>Then the API returns HTTP 422 for malformed or impossible data or HTTP 403 for an unauthorized source, preserves the last valid count and marks a count inconsistency as Unavailable pending reconciliation<br><br>**Scenario 3: Handle repeated and out-of-order delivery**<br>Given the API has accepted sequence 10 and receives an identical retry of 10 or sequence 12 before 11<br>When the API evaluates the sequence<br>Then the identical retry returns HTTP 200 without changing the count; sequence 12 returns HTTP 409 identifying expected sequence 11 and marks the count Unavailable until the source replays the missing sequence and following events successfully<br><br>**Scenario 4: Maintain source freshness**<br>Given a registered source has a valid initialized count and sends a heartbeat at least once per minute even when no passenger boards or exits<br>When an authorized client requests occupancy<br>Then the API returns HTTP 200 with count, capacity, last count time, last heartbeat time and validity; it reports Stale when the heartbeat is older than two minutes and Unavailable when initialization or sequence consistency is missing | | |
 
-#### Traceability of refinements
+##### US20 — Deliver Live Case Updates and Recover Missed Notifications
 
-| Identificador anterior | Decisión | Dónde queda su valor |
-|---|---|---|
-| US11 | Integrada; ya no se planifica como historia independiente | US10 incorpora ubicación del bus y tratamiento de ubicación no disponible. Se retira el seguimiento continuo del GPS del pasajero. |
-| US13 | Integrada | US09 consulta conteo, capacidad y clasificación en una sola historia. |
-| US16 | Integrada | US15 distingue ubicación vigente, desactualizada y ausente. |
-| US17 | Retirada como automatización de excepciones | US32 previene asignaciones incompatibles; US01 valida el turno y US06 permite reportar un desvío manualmente. La detección automática por corredores queda fuera de la primera versión. |
-| US19 | Integrada | US18 atiende tanto alertas de conductor como de pasajero, conservando su origen. |
-| US27 | Acotada | Conserva el contrato de ubicación; US33 especifica por separado el conteo de pasajeros. |
-| US31 y US32 | Añadidas para cerrar dependencias del flujo | Acceso de cuentas y asignación básica conductor–bus–ruta. |
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US20** | Developer | High | EP06 — User Access and Service Integration |
+| **Title** | Deliver Live Case Updates and Recover Missed Notifications | | |
+| **Description** | As a Developer, I want to deliver authenticated live case notifications and recover current case state after reconnection so that Operations Central does not depend on an uninterrupted connection to find received alerts. | | |
+| **Acceptance Criteria** | **Scenario 1: Deliver a live notification**<br>Given an authorized supervisor client has an active WebSocket connection and the test network has a measured round-trip time no greater than 200 ms, with two active buses and five supervisor subscriptions<br>When the server persists a new panic case<br>Then the service delivers its identifier, source, bus, state and receipt time to the company subscription within five seconds after persistence<br><br>**Scenario 2: Recover after a disconnection**<br>Given a supervisor client loses its socket connection while cases are persisted on the server<br>When the client reconnects and authenticates<br>Then the client retrieves current open cases from the REST API, reconciles them by case identifier and resumes live notifications without creating duplicate cases<br><br>**Scenario 3: Reject a foreign subscription**<br>Given a supervisor token identifies one company<br>When the client requests a socket subscription for another company<br>Then the service rejects the subscription and delivers no foreign company events | | |
 
-Los identificadores integrados o retirados no se reutilizan y no cuentan en las 28 historias activas. Mantener huecos evita cambiar las referencias del equipo. Se simplifican US20, US21, US23, US24 y US25 sin crear módulos adicionales. US29 y US30 conservan sus preguntas de investigación, con criterios medibles y límites explícitos.
+##### US21 — Spike Mobile Background Location and Battery Use
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US21** | Developer | High | EP07 — Technical Feasibility Spikes |
+| **Title** | Spike Mobile Background Location and Battery Use | | |
+| **Description** | As a Developer, I want to compare two background-location sampling profiles within a 12-hour investigation so that the team selects a measured configuration for US03 and identifies platform limitations. | | |
+| **Acceptance Criteria** | **Scenario 1: Complete a bounded experiment**<br>Given the team has a physical Android device, profiles of 15 and 30 seconds, and a budget of at most 10 battery percentage points per hour per profile<br>When the developer runs one-hour tests per profile under comparable conditions and records a one-hour baseline plus a permission-revocation and background-restriction check within the 12-hour time box<br>Then the report records device and OS, raw battery levels, baseline, sample counts, location accuracy and restrictions, compares both profiles and recommends one or records that neither meets the budget; it does not claim a measured full-shift endurance result<br><br>**Scenario 2: Document a limitation or unfinished measurement**<br>Given a profile fails the budget, loses updates in the background, or the investigation reaches its time limit<br>When the developer closes the investigation<br>Then the report records the failure or missing evidence, cites the technical sources consulted, identifies what was learned beyond class content, and specifies the changes and follow-up validation required for US03 on native and cross-platform clients | | |
+
+##### US22 — Spike Ordered Passenger-Count Event Ingestion
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US22** | Developer | High | EP07 — Technical Feasibility Spikes |
+| **Title** | Spike Ordered Passenger-Count Event Ingestion | | |
+| **Description** | As a Developer, I want to test passenger-count event ingestion through the REST contract within a 16-hour investigation so that the team knows whether the counting source can maintain a consistent count despite interruptions. | | |
+| **Acceptance Criteria** | **Scenario 1: Run the ingestion proof of concept**<br>Given a prototype sensor adapter or an explicitly identified simulator emits device, bus, shift, sequence, event identifier and entry or exit events using the US19 REST contract<br>When the developer tests a known event sequence, a five-minute interruption and reconnection within the 16-hour time box<br>Then the report compares the final count against the known expected count, records receipt delay and event loss, identifies the actual source used and provides an implementation recommendation for US19<br><br>**Scenario 2: Test duplicate and missing events**<br>Given the source repeats an entry, delays an exit and omits a sequence number<br>When the developer runs the proof of concept<br>Then the report demonstrates or records failure of duplicate rejection, gap handling and recovery, lists the sources consulted and the implementation tasks; a simulator-only test explicitly leaves physical-sensor accuracy unvalidated | | |
 
 ### 2.4.2. Impact Mapping
 
-El siguiente mapa textual relaciona necesidades, cambios esperados y funciones. Es una **propuesta de objetivos para la validación académica**, no evidencia de entrevistas ni resultados obtenidos. Debe trasladarse a UXPressia y completarse con su enlace y captura cuando el equipo lo elabore. Las referencias de conductor y supervisor corresponden a los perfiles existentes; el perfil de pasajero es provisional.
+El Impact Mapping de SafeBus relaciona cuatro objetivos del servicio con las acciones de conductores, pasajeros y representantes de empresas de transporte. A partir de estos comportamientos se identifican los entregables y las historias de usuario que permiten validar al conductor, solicitar y atender ayuda, consultar el aforo y conocer la propuesta comercial. El siguiente mapa muestra estas relaciones y su correspondencia con el catálogo de requisitos
 
-| Business Goal SMART propuesto | Actor / Persona | Impact esperado | Deliverable | User Stories (Como… quiero… para…) |
-|---|---|---|---|---|
-| BG01: antes de la demostración de la primera entrega funcional, validar correctamente los 5 casos de asignación válida y rechazar los 5 casos inválidos definidos por el equipo. | Conductor / José Mamani Quispe; supervisor / Luis Ramírez Nombera | Iniciar servicios con una responsabilidad identificada. | Acceso, asignación y validación QR. | US31: como usuario de empresa quiero acceder a mi cuenta para usar mi rol. US32: como supervisor quiero asignar un turno para identificar al responsable. US01: como conductor quiero validar mi QR para iniciar el turno asignado. |
-| BG02: antes de la entrega final, completar el flujo de recepción, atención y cierre de 10 alertas de conductor y 10 de pasajero, sin casos duplicados por reintentos, bajo las condiciones de CR06. | Conductor / José; pasajero / perfil provisional; supervisor / Luis | Solicitar ayuda y registrar quién atendió cada reporte. | Dos botones de pánico y un proceso compartido de atención. | US05 y US10: como conductor o pasajero quiero pedir ayuda para que la central atienda el peligro. US18: como supervisor quiero atender los casos para coordinar ayuda. US12: como pasajero quiero consultar mi caso para conocer su atención. |
-| BG03: antes de la entrega final, obtener el conteo esperado en los 10 recorridos de eventos de prueba acordados y señalar como no disponible todo caso con eventos faltantes sin reconciliar. | Pasajero / perfil provisional; supervisor / Luis | Decidir con datos identificados como actuales o limitados. | Consulta de aforo, capacidad y vigencia. | US09: como pasajero quiero conocer el aforo para decidir si hay espacio. US15: como supervisor quiero consultar ubicación y aforo para evaluar la unidad. US22: como supervisor quiero registrar capacidad para interpretar el conteo. |
-| BG04: al cierre del Sprint 1 propuesto, permitir consultar el alcance y registrar correctamente las 5 solicitudes válidas de contacto de prueba, rechazando las 5 inválidas acordadas. | Representante de empresa / rol comercial del segmento empresa | Comprender la propuesta y expresar interés. | Landing estática y contacto. | US24: como representante quiero conocer SafeBus para evaluar sus beneficios. US25: como representante quiero dejar mis datos para recibir información. |
-
-US02, US03, US04, US06, US07, US08, US14, US20, US21 y US23 completan los recorridos operativos de BG01–BG03. US26, US27, US28 y US33 son habilitadores técnicos. US29 y US30 reducen incertidumbre y deben vincular sus resultados a US04 y US33, respectivamente. Estas relaciones no sustituyen las pruebas con personas de los tres segmentos.
+<img src="../assets/SafeBus - Impact Mapping.png">
 
 ### 2.4.3. Product Backlog
 
-El orden expresa valor para el negocio y no orden de programación. Las dependencias se resuelven mediante tareas e historias coordinadas dentro del sprint o en uno anterior. El acceso técnico no encabeza el backlog por sí mismo. La landing se incluye desde el Sprint 1, conforme al enunciado.
+El Product Backlog ordena las historias por su valor para el servicio. La estimación utiliza Story Points de la escala 1, 2, 3, 5 y 8. El sprint indica la iteración de desarrollo asignada; las historias de acceso e integración permiten implementar los recorridos funcionales y la landing se incorpora desde el primer sprint.
 
-**Estimaciones iniciales, pendientes de revisión del equipo y feedback docente.** Los puntos representan esfuerzo relativo (1, 2, 3, 5 u 8), no horas. La distribución en tres sprints es tentativa y debe ajustarse a fechas y capacidad real antes de comprometer trabajo. La duración de los spikes se mide además con sus límites de 12 y 16 horas. Una historia puede pasar a otro sprint si sus dependencias no están listas.
-
-> Herramienta indicada por el docente: pendiente de confirmar. URL pública y captura del Product Backlog: pendientes de publicación por el equipo; no se ha creado un tablero externo durante esta revisión.
-
-| # Orden | User Story Id | Título | Story Points propuestos | Sprint propuesto | Dependencias / coordinación |
-|---|---|---|---|---|---|
-| 1 | US05 | Activate a Silent Driver Panic Alert | 5 | 2 | US01, US26, US18; US28 completa la actualización en vivo |
-| 2 | US10 | Activate a Silent Passenger Panic Alert with Bus Location | 5 | 2 | US08, US26, US18; US28 completa la actualización en vivo |
-| 3 | US18 | Receive, Attend and Close Driver and Passenger Cases | 5 | 2 | US26, US31; fuentes US05, US10, US06 y US14 |
-| 4 | US01 | Validate an Assigned Shift with a Driver QR Credential | 3 | 1 | US31, US32, US26 |
-| 5 | US08 | Verify a Bus and Start a Passenger Journey | 3 | 1 | US26, US01 |
-| 6 | US09 | Consult Passenger Count and Bus Capacity | 3 | 3 | US08, US22, US33 |
-| 7 | US15 | Monitor Fleet Location and Occupancy | 5 | 2 | US04, US27, US26; aforo de US33 y casos de US18 |
-| 8 | US04 | Share Bus Location During an Active Shift | 5 | 2 | US01, US27; US29 informa la configuración |
-| 9 | US24 | Consult SafeBus Service Information | 2 | 1 | — |
-| 10 | US25 | Submit a Company Contact Request | 2 | 1 | US24 |
-| 11 | US32 | Assign a Driver and Bus to a Route Shift | 3 | 1 | US26, US31 |
-| 12 | US31 | Sign In and Sign Out of a Company Account | 3 | 1 | US26 |
-| 13 | US26 | Protect API Access by Role, Company and Passenger Session | 5 | 1 | — |
-| 14 | US02 | Consult Assigned Route and Shift Details | 2 | 1 | US31, US32; avisos de US21 cuando estén disponibles |
-| 15 | US29 | Spike Mobile Background Location and Battery Use | 3 | 1 | — |
-| 16 | US30 | Spike Ordered Passenger-Count Event Ingestion | 5 | 1 | — |
-| 17 | US33 | Provide a RESTful Passenger-Count Service | 5 | 3 | US26, US30; capacidad de US22 |
-| 18 | US27 | Provide a RESTful Location Service | 3 | 2 | US26 |
-| 19 | US28 | Deliver Live Case Updates and Recover Missed Notifications | 5 | 2 | US26, US18 |
-| 20 | US22 | Maintain the Recorded Capacity of a Bus | 2 | 3 | US26, US31 |
-| 21 | US03 | Check Monitoring Availability Before Service | 3 | 3 | US04, US33 |
-| 22 | US07 | Close a Driver Shift | 3 | 3 | US01, US04, US18 |
-| 23 | US12 | Consult the Status of My Safety Cases | 3 | 3 | US10, US18, US26 |
-| 24 | US06 | Report a Non-Emergency Safety Incident | 3 | 3 | US01, US18 |
-| 25 | US14 | Report a Bus or Driver Information Mismatch | 3 | 3 | US08, US18 |
-| 26 | US20 | Record External Emergency Contact Attempts | 2 | 3 | US18 |
-| 27 | US21 | Publish a Time-Limited Route Safety Notice | 3 | 3 | US02, US26 |
-| 28 | US23 | Export a Basic Incident Report | 3 | 3 | US18, US26 |
-
-| Sprint propuesto | Objetivo | Puntos iniciales |
-|---|---|---|
-| 1 | Preparar acceso, asignación y verificación QR de conductor y pasajero, publicar la landing y resolver las investigaciones. | 31 |
-| 2 | Completar las alertas de ambos actores y su atención, integrar ubicación, monitoreo y notificaciones en vivo. | 33 |
-| 3 | Integrar conteo, consulta de casos, cierre de turno, reportes, avisos y exportación básica. | 33 |
-
-Los totales similares ayudan a revisar la distribución, pero no acreditan capacidad ni una velocidad de trabajo conocida. El equipo debe ajustar el plan antes de comprometer cada sprint, manteniendo la landing desde el primero. El Sprint 2 prueba alertas de ambos actores con ubicación; el aforo puede permanecer Unavailable hasta completar el conteo en Sprint 3, tal como permiten sus criterios. La cobertura completa se verifica con ambos datos al final. US18 implementa el servicio de casos y US28 agrega notificación en vivo y recuperación de estado dentro del mismo Sprint 2.
-
-#### Requirements coverage and pending evidence
-
-| Requisito / punto del proyecto | Cobertura prevista | Evidencia pendiente |
-|---|---|---|
-| Validación del conductor y asignación | US01, US02, US31 y US32 | Pruebas de asignación válida e inválida. |
-| Pánico para conductor **y pasajero** | US05, US08, US10, US12 y US18 | Recorridos de ambos segmentos, recepción, atención, cierre y prueba sin conexión. |
-| Conteo automatizado y capacidad | US09, US22, US30 y US33 | Fuente real o simulada identificada, secuencias de prueba y decisión docente sobre hardware. |
-| Ubicación y servicio externo | US04, US15, US27 y US29 | Proveedor cartográfico seleccionado, integración y prueba de caída. |
-| Almacenamiento local móvil | US04, US05, US08, US10 y CR04 | Reinicio de app sin red y sincronización sin duplicados. |
-| Recurso interno del dispositivo | Cámara para QR en US01/US08; GPS en US04 | Demostración con permisos y denegación de permisos en dispositivo físico. |
-| Servicio RESTful propio y documentación | US26, US27, US33, API de casos/contacto y CR05 | Contratos OpenAPI y pruebas de aceptación implementadas. |
-| Aprendizaje autónomo | US29 → US04; US30 → US33 | Fuentes, comparación, decisiones, implementación y evidencia de aprendizaje diferente al contenido de clase. |
-| Landing | US24 y US25 | Sitio estático, términos, contacto y validación de contenido. |
-| Idiomas, accesibilidad y términos | CR01–CR03 | Pruebas en_US/es_419, accesibilidad y aceptación de términos. |
-| Nativa y cross-platform | BR01; mismas historias por rol | Implementaciones y demostración en dispositivo físico conforme al enunciado. |
-| Sustento del alcance | Capítulo I y segmentos de 2.3 | Entrevistas reales de los tres segmentos; el pasajero tiene perfil provisional. |
-| Planificación y diseño | Impact Mapping y backlog textual de esta sección | Feedback docente, estimación por el equipo, tablero público, mapas, diseños y diagramas de las secciones restantes. |
-
-Esta cobertura corresponde a **requisitos documentados**. No declara la aplicación construida, las pruebas aprobadas ni el informe académico completo.
+| # Orden | User Story Id | Título | Story Points | Sprint |
+|---|---|---|---|---|
+| 1 | US04 | Activate a Silent Driver Panic Alert | 5 |  |
+| 2 | US08 | Activate a Silent Passenger Panic Alert with Bus Location | 5 |  |
+| 3 | US10 | Receive, Attend and Close Driver and Passenger Cases | 5 |  |
+| 4 | US01 | Validate an Assigned Shift with a Driver QR Credential | 3 |  |
+| 5 | US06 | Verify a Bus and Start a Passenger Journey | 3 | |
+| 6 | US07 | Consult Passenger Count and Bus Capacity | 3 |  |
+| 7 | US11 | Monitor Fleet Location and Occupancy | 5 |  |
+| 8 | US03 | Share Bus Location During an Active Shift | 5 |  |
+| 9 | US14 | Consult SafeBus Service Information | 2 |  |
+| 10 | US15 | Submit a Company Contact Request | 2 |  |
+| 11 | US13 | Assign a Driver and Bus to a Route Shift | 3 |  |
+| 12 | US16 | Sign In and Sign Out of a Company Account | 3 | |
+| 13 | US17 | Protect API Access by Role, Company and Passenger Session | 3 |  |
+| 14 | US02 | Consult Assigned Route and Shift Details | 2 |  |
+| 15 | US21 | Spike Mobile Background Location and Battery Use | 3 |  |
+| 16 | US22 | Spike Ordered Passenger-Count Event Ingestion | 5 |  |
+| 17 | US19 | Provide a RESTful Passenger-Count Service | 5 |  |
+| 18 | US18 | Provide a RESTful Location Service | 3 |  |
+| 19 | US20 | Deliver Live Case Updates and Recover Missed Notifications | 5 |  |
+| 20 | US12 | Maintain the Recorded Capacity of a Bus | 2 |  |
+| 21 | US05 | Close a Driver Shift | 3 |  |
+| 22 | US09 | Consult the Status of My Safety Cases | 3 |  |
 
 ---
 

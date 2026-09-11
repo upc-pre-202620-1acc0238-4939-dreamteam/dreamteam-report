@@ -205,10 +205,10 @@ Las siguientes hipótesis corresponden a las cuatro Feature Assumptions. Son pro
 
 | Hipótesis | Enunciado | Historias relacionadas |
 |---|---|---|
-| H01 — Solicitud y atención de ayuda | Creemos que conductores y pasajeros podrán pedir ayuda y conocer su recepción si disponen de un botón de pánico silencioso con estados de envío y un proceso de atención por la empresa. Lo comprobaremos con recorridos conectados y sin conexión, registrando recepción e inicio de atención. | US05, US10, US12, US18, US28 |
-| H02 — Identificación del servicio | Creemos que conductores, pasajeros y empresas tendrán una referencia clara del responsable de cada bus si la validación QR se vincula con una asignación de turno. Lo comprobaremos con asignaciones válidas e inválidas y consulta del QR por pasajeros. | US01, US08, US31, US32 |
-| H03 — Supervisión operativa | Creemos que los supervisores podrán evaluar y coordinar incidentes con información más clara si consultan ubicación, aforo y casos de su flota con sus horas de actualización. Lo comprobaremos con escenarios de datos actuales, antiguos y ausentes. | US04, US15, US18, US20, US23, US27 |
-| H04 — Ocupación del bus | Creemos que pasajeros y supervisores podrán interpretar mejor el aforo si reciben el conteo, capacidad y estado de validez. Lo comprobaremos con secuencias conocidas de entradas y salidas, sobrecapacidad y eventos faltantes. | US09, US22, US30, US33 |
+| H01 — Solicitud y atención de ayuda | Creemos que conductores y pasajeros podrán pedir ayuda y conocer su recepción si disponen de un botón de pánico silencioso con estados de envío y un proceso de atención por la empresa. Lo comprobaremos con recorridos conectados y sin conexión, registrando recepción e inicio de atención. | US04, US08, US09, US10, US20 |
+| H02 — Identificación del servicio | Creemos que conductores, pasajeros y empresas tendrán una referencia clara del responsable de cada bus si la validación QR se vincula con una asignación de turno. Lo comprobaremos con asignaciones válidas e inválidas y consulta del QR por pasajeros. | US01, US06, US16, US13 |
+| H03 — Supervisión operativa | Creemos que los supervisores podrán evaluar y coordinar incidentes con información más clara si consultan ubicación, aforo y casos de su flota con sus horas de actualización. Lo comprobaremos con escenarios de datos actuales, antiguos y ausentes. | US03, US11, US10, US18 |
+| H04 — Ocupación del bus | Creemos que pasajeros y supervisores podrán interpretar mejor el aforo si reciben el conteo, capacidad y estado de validez. Lo comprobaremos con secuencias conocidas de entradas y salidas, sobrecapacidad y eventos faltantes. | US07, US12, US22, US19 |
 
 #### 1.2.2.4. Lean UX Canvas
 
@@ -223,7 +223,7 @@ La siguiente versión textual es la referencia actual del canvas. Resume hipóte
 | Solutions | Aplicaciones móviles por rol, QR del conductor y de la unidad, dos botones de pánico digitales, almacenamiento local de eventos, consulta de ubicación y aforo, proceso compartido de casos y landing de contacto. |
 | Hypotheses | H01: ayuda de ambos actores. H02: identificación del servicio. H03: supervisión con datos vigentes. H04: interpretación del aforo. |
 | Most important learning | Comprobar si los tres segmentos comprenden y pueden completar el flujo, si la empresa dispone de responsables para atenderlo y si ubicación y conteo son viables. |
-| Smallest experiment | Prototipo de verificación, alerta de ambos actores y atención; pruebas sin conexión y entrevistas de los tres segmentos. US29 y US30 resuelven dudas técnicas y deben alimentar funciones implementadas. |
+| Smallest experiment | Prototipo de verificación, alerta de ambos actores y atención; pruebas sin conexión y entrevistas de los tres segmentos. US21 y US22 resuelven dudas técnicas y deben alimentar funciones implementadas. |
 
 [Canvas gráfico anterior, conservado como antecedente](../docs/lean-ux-canvas/lean-canvas.png). Su exportación visual debe actualizarse a partir de esta versión; el rastreo del trayecto completo por pasajeros que figura en la imagen anterior no forma parte del alcance actual.
 
