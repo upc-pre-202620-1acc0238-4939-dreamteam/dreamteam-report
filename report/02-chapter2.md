@@ -89,6 +89,7 @@ Se buscarán acuerdos con autoridades, municipalidades y entidades de seguridad 
 ## 2.2. Entrevistas
 
 ### 2.2.1. Diseño de entrevistas
+A continuación se presentan las preguntas para las entrevistas a los segmentos objetivos
 
 La siguiente guía incorpora a los tres segmentos. Es un instrumento propuesto: las respuestas y conclusiones se registrarán después de realizar las entrevistas.
 
@@ -102,9 +103,16 @@ La siguiente guía incorpora a los tres segmentos. Es un instrumento propuesto: 
 
 Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/tbn>.mp4`
 
-| # | Nombres y apellidos | Edad | Distrito | Timing en video | Screenshot |
-|---|----------------------|------|----------|------------------|------------|
-| 1 | | | | | |
+### Entrevista 1: Carlos Garcia
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Carlos Garcia |
+| **Imagen** | ![EntrevistaJulio](../assets/CG-Interview.png){width=80%} |
+| **Edad** | 45 |
+| **Ocupación** | Conductor de transporte público |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Resumen** | La entrevista presenta a Carlos Garcia, conductor de transporte público en Lima, quien describe una jornada extensa y desgastante que inicia a las 4:00 a. m. y termina entre las 9:00 y 10:00 p. m. Señala que los momentos de mayor riesgo son de madrugada y durante la noche, especialmente al atravesar “zonas rojas” y al quedar solos en los paraderos finales. Destaca que la extorsión y los cobros de cupos son frecuentes, mientras que actualmente cuentan con pocas herramientas de seguridad, sin cámaras, botón de pánico ni comunicación rápida con la empresa. Carlos considera fundamental el monitoreo GPS en tiempo real y una alerta discreta para emergencias. Además, muestra una actitud positiva hacia SafeBus, especialmente hacia la validación mediante QR para identificar al conductor autorizado. Finalmente, considera que el botón de emergencia sería la función más importante, acompañado del monitoreo de ubicación para facilitar una respuesta rápida ante situaciones de peligro. | 
 
 **Estado del registro:** entrevistas pendientes de documentar. No se atribuyen respuestas a personas ni se presentan resultados de validación en esta versión.
 
@@ -592,25 +600,40 @@ Customer/Supplier, Shared Kernel]
 
 ## 2.6. Tactical-Level Domain-Driven Design
 
-> Duplicar la siguiente subsección `2.6.x` por cada Bounded Context identificado.
+El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que concentra los componentes reutilizables del dominio. Cada contexto expone su API REST y se comunica de forma asíncrona con los demás mediante eventos de dominio publicados en un Message Broker, lo que permite reaccionar en tiempo real a validaciones y alertas de emergencia .
 
-### 2.6.1. Bounded Context: [Nombre del Bounded Context]
+| # | Bounded Context | Carpeta | Responsabilidad principal |
+| :--- | :--- | :--- | :--- |
+| 2.6.1 | **IAM** | `iam` | Registro, autenticación y autorización de todos los actores. |
+| 2.6.2 | **User Management** | `usermanagement` | Perfiles de conductores, empresas y pasajeros; validación de operadores. |
+| 2.6.3 | **Alert Management** | `alertmanagement` | Botón de pánico, generación y despacho de alertas de emergencia. |
+
+### 2.6.1. Bounded Context: IAM
 
 #### 2.6.1.1. Domain Layer
 
-[Entities, Value Objects, Aggregates, Factories, Domain Services, Repository interfaces]
+* **Entities:** `User`, `Role`, `Permission`
+* **Value Objects:** `EmailAddress`, `PasswordHash`, `PersonName`, `PhoneNumber`, `RoleType`
+* **Aggregates:** `User` (aggregate root; agrupa sus `Role` asignados)
+* **Factories:** `UserFactory`
+* **Domain Services:** `AuthenticationService`, `PasswordPolicyService`
+* **Repository interfaces:** `UserRepository`, `RoleRepository`
 
 #### 2.6.1.2. Interface Layer
 
-[Controllers, Consumers]
+* **Controllers:** `AuthenticationController`, `UsersController`, `RolesController`
+* **Consumers:** —
 
 #### 2.6.1.3. Application Layer
 
-[Command Handlers, Event Handlers]
+* **Command Handlers:** `SignUpCommandHandler`, `SignInCommandHandler`, `AssignRoleToUserCommandHandler`
+* **Event Handlers:** `SeedRolesEventHandler`
 
 #### 2.6.1.4. Infrastructure Layer
 
-[Repository implementations, Message Brokers, servicios externos]
+* **Repository implementations:** `UserRepositoryImpl`, `RoleRepositoryImpl`
+* **Message Brokers:** publica `UserRegisteredEvent`
+* **Servicios externos:** `JwtTokenService` (generación de JWT/BearerToken), `HashingService` (BCrypt)
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -623,5 +646,80 @@ Customer/Supplier, Shared Kernel]
 [Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
+
+[Database Diagram — tablas, columnas, constraints, relaciones]
+
+### 2.6.2. Bounded Context: User Management
+
+* **Entities:** `Driver` (Conductor), `TransportCompany` (Empresa), `Passenger` (Pasajero), `QrCredential`
+* **Value Objects:** `LicenseNumber` (licencia de conducir), `Ruc`, `Dni`, `Address`, `ContactInfo`, `QrCode`, `Habilitation` (habilitación), `ValidationStatus` (VALIDATED / REJECTED / PENDING)
+* **Aggregates:** `DriverProfile` (aggregate root), `CompanyProfile`, `PassengerProfile`
+* **Factories:** `ProfileFactory`, `QrCredentialFactory`
+* **Domain Services:** `ProfileValidationService`, `OperatorHabilitationService`, `QrValidationService`
+* **Repository interfaces:** `DriverRepository`, `CompanyRepository`, `PassengerRepository`, `QrCredentialRepository`
+
+#### 2.6.2.2. Interface Layer
+
+* **Controllers:** `DriversController`, `CompaniesController`, `PassengersController`, `OperatorValidationController`
+* **Consumers:** `UserRegisteredConsumer` (crea el perfil cuando IAM registra un usuario)
+
+#### 2.6.2.4. Infrastructure Layer
+
+* **Repository implementations:** `DriverRepositoryImpl`, `CompanyRepositoryImpl`, `PassengerRepositoryImpl`, `QrCredentialRepositoryImpl`
+* **Message Brokers:** consume `UserRegisteredEvent`; publica `DriverProfileCreatedEvent` y `OperatorValidatedEvent`
+* **Servicios externos:** validación de licencias/habilitación ante MTC/SUTRAN, `QrCodeGeneratorService` (ZXing)
+
+#### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
+
+[Component Diagram C4 por Container]
+
+#### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
+
+[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+
+##### 2.6.2.6.2. Bounded Context Database Design Diagram
+
+[Database Diagram — tablas, columnas, constraints, relaciones]
+
+### 2.6.3. Bounded Context: Alert Management
+
+#### 2.6.3.1. Domain Layer
+
+* **Entities:** `EmergencyAlert`, `Incident`, `ResponseAction`
+* **Value Objects:** `GeoLocation` (latitud/longitud), `AlertType` (asalto, siniestro, extorsión), `AlertStatus` (ACTIVE / ATTENDED / CLOSED), `Severity`
+* **Aggregates:** `EmergencyAlert` (aggregate root; agrupa sus `ResponseAction`)
+* **Factories:** `AlertFactory`
+* **Domain Services:** `AlertDispatchService`, `EmergencyPriorityService`
+* **Repository interfaces:** `AlertRepository`, `IncidentRepository`
+
+#### 2.6.3.2. Interface Layer
+
+* **Controllers:** `PanicButtonController`, `EmergencyAlertsController`
+* **Consumers:** —
+
+#### 2.6.3.3. Application Layer
+
+* **Command Handlers:** `TriggerPanicAlertCommandHandler`, `AttendAlertCommandHandler`, `CloseIncidentCommandHandler`
+* **Event Handlers:** `AlertTriggeredEventHandler`
+
+#### 2.6.3.4. Infrastructure Layer
+
+* **Repository implementations:** `AlertRepositoryImpl`, `IncidentRepositoryImpl`
+* **Message Brokers:** publica `EmergencyAlertTriggeredEvent` (hacia Monitoring)
+* **Servicios externos:** notificaciones push (Firebase Cloud Messaging), pasarela SMS, integración con central de emergencias / serenazgo
+
+#### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
+
+[Component Diagram C4 por Container]
+
+#### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
+
+[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+
+##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
 [Database Diagram — tablas, columnas, constraints, relaciones]
