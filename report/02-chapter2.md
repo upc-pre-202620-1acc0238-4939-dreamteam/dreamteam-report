@@ -330,17 +330,18 @@ El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que co
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Component Diagram C4 por Container]
+<img src="../docs/c4/IAMC4.drawio.png">
+
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+<img src="../docs/class-diagrams-backend/ClassDiagram-IAM.png">
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
-[Database Diagram — tablas, columnas, constraints, relaciones]
+<img src="../docs/database/DataBase-IAM.png">
 
 ### 2.6.2. Bounded Context: User Management
 
@@ -364,17 +365,17 @@ El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que co
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Component Diagram C4 por Container]
+<img src="../docs/c4/C4-2.drawio.png">
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+<img src="../docs/class-diagrams-backend/ClassDiagram-User.png">
 
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
 
-[Database Diagram — tablas, columnas, constraints, relaciones]
+<img src="../docs/database/DataBase-User.png">
 
 ### 2.6.3. Bounded Context: Alert Management
 
@@ -405,14 +406,14 @@ El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que co
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Component Diagram C4 por Container]
+<img src="../docs/c4/C4-3.drawio.png">
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+<img src="../docs/class-diagrams-backend/ClassDiagram-Alert.png">
 
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
-[Database Diagram — tablas, columnas, constraints, relaciones]
+<img src="../docs/database/DataBase-Alert.png">
