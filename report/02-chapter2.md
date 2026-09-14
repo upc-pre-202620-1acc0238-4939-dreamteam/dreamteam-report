@@ -249,19 +249,38 @@ Para entender mejor a nuestros usuarios, usamos el Empathy Map, para ponernos en
 
 ### 2.3.5. Big Picture EventStorming
 
-[Capturas y explicación del proceso — guía: https://bit.ly/bpes-guide]
+<img src="../docs/bigPicture/Step 1.png">
+
+<img src="../docs/bigPicture/Step 2p1.png">
+
+<img src="../docs/bigPicture/Step 2p2.png">
+
+<img src="../docs/bigPicture/Step 3p1.png">
+
+<img src="../docs/bigPicture/Step 3p2.png">
 
 ### 2.3.6. Ubiquitous Language
 
 | Term (English) | Término (Español) | Definición |
 |-----------------|--------------------|------------|
+| Transport Unit | Unidad de Transporte | Vehículo que forma parte del sistema y es objeto de monitoreo, seguimiento de estado y eventos. |
+| Driver | Conductor | Persona responsable de operar una unidad de transporte durante un turno. |
 | Driver Shift | Turno del conductor | Periodo asignado a un conductor, bus y ruta; pasa de asignado a activo y cerrado. |
+| Passenger | Pasajero | Persona que aborda una unidad de transporte y utiliza el servicio para verificarla, consultar el aforo o solicitar ayuda. |
 | Passenger Journey | Viaje del pasajero | Asociación iniciada al verificar el QR de una unidad; termina al bajar o cerrar el turno. |
+| Transport Company | Empresa de Transporte | Organización responsable de operar una o más flotas y de supervisar a sus conductores. |
+| Fleet | Flota | Conjunto de unidades de transporte gestionadas por una empresa dentro del sistema. |
+| Fleet Supervisor | Supervisor de Flota | Persona encargada de administrar la flota, asignar conductores y unidades a rutas. |
+| Operations Central | Central de operaciones | Función de la empresa ejercida por supervisores que reciben y atienden casos. |
+| Route | Ruta | Trayecto definido que sigue una unidad de transporte, incluyendo punto de inicio, paradas y destino final. |
+| Passenger Count | Conteo de pasajeros | Cantidad derivada de entradas y salidas de la fuente registrada, con estado de validez. |
+| Bus Capacity | Capacidad del bus | Límite de pasajeros registrado por la empresa según la ficha técnica de la unidad. |
 | Panic Alert | Alerta de pánico | Solicitud crítica de ayuda de conductor o pasajero; puede estar pendiente localmente antes de ser recibida. |
 | Safety Case | Caso de seguridad | Registro recibido por la central con origen, responsable, estado e historial de atención. |
-| Operations Central | Central de operaciones | Función de la empresa ejercida por supervisores que reciben y atienden casos. |
-| Passenger Count | Conteo de pasajeros | Cantidad derivada de entradas y salidas de la fuente registrada, con estado de validez. |
-| Bus Capacity | Capacidad del bus | Límite de pasajeros registrado por la empresa según la ficha de la unidad. |
+| Alert Priority | Prioridad de la alerta | Clasificación de urgencia de un caso (por ejemplo, crítica) que determina la rapidez de atención requerida. |
+| External Escalation | Escalamiento externo | Proceso de derivar un incidente hacia una autoridad o entidad externa (policía, aseguradora) cuando la gestión interna no es suficiente. |
+| Incident | Incidente | Evento inesperado que afecta el desarrollo normal de un viaje y puede requerir intervención o seguimiento. |
+| Risk Zone | Zona de riesgo | Área geográfica identificada por los conductores como de alta incidencia de inseguridad, usada para anticipar rutas peligrosas. |
 
 ---
 
