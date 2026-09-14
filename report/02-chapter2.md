@@ -131,10 +131,10 @@ Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/
 | Campo | Detalle |
 | :--- | :--- |
 | **Entrevistado** | Jorge Mendoza |
-| **Imagen** | ![EntrevistaJorge](../assets/MigueITorresInterview.png){width=80%} |
+| **Imagen** | ![EntrevistaJorge](../assets/JorgeInterview.png){width=80%} |
 | **Edad** | 38 |
 | **Ocupación** | Conductor de transporte público |
-| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
 | **Resumen** | Jorge Mendoza, conductor de transporte público de 38 años, señala que los mayores riesgos ocurren durante las primeras horas de la mañana y al anochecer, especialmente en zonas con pocos pasajeros y antecedentes de robos. Menciona que los conductores cuentan con pocas herramientas de seguridad y dependen principalmente del celular para comunicarse ante emergencias. Considera importante contar con un sistema de monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si su objetivo es mejorar la seguridad y se comunica claramente su funcionamiento. También considera útil la validación mediante código QR. Finalmente, identifica el botón de emergencia como la función más importante, especialmente si permite enviar automáticamente una alerta junto con la ubicación del vehículo.
 
 
