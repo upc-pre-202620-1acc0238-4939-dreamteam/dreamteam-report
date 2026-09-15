@@ -624,6 +624,16 @@ pasajeros. A partir de ese modelo, el equipo avanzó hacia un análisis de
 mayor detalle para identificar los Bounded Contexts candidatos de la
 solución.
 
+<img src="../docs/bigPicture/Step 1.png">
+
+<img src="../docs/bigPicture/Step 2p1.png">
+
+<img src="../docs/bigPicture/Step 2p2.png">
+
+<img src="../docs/bigPicture/Step 3p1.png">
+
+<img src="../docs/bigPicture/Step 3p2.png">
+
 #### 2.5.1.1. Candidate Context Discovery
 
 Para identificar los Bounded Contexts candidatos, el equipo aplicó la técnica
