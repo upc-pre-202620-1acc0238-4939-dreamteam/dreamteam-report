@@ -920,318 +920,1225 @@ Ante una pérdida de conectividad, la aplicación mantiene los envíos pendiente
 
 ## 2.6. Tactical-Level Domain-Driven Design
 
-El backend de SafeBus se organiza en tres (3) Bounded Contexts que concentran los componentes del dominio y distinguen autenticación, perfil/viaje y gestión de seguridad. Cada contexto expone su API REST y se comunica de forma asíncrona con los demás mediante eventos de dominio publicados en un Message Broker, lo que permite reaccionar en tiempo real a validaciones y alertas de emergencia .
+A partir de los siete Bounded Contexts identificados en el nivel estratégico (sección 2.5), esta sección detalla el diseño táctico de cada uno: los building blocks de su Domain Layer, la exposición de capacidades en la Interface Layer, la orquestación de casos de uso en la Application Layer y los mecanismos técnicos de la Infrastructure Layer. La comunicación entre contextos se realiza de forma asíncrona mediante eventos de dominio publicados en un Message Broker, respetando los patrones de integración establecidos en el Context Mapping (2.5.2).
 
 | # | Bounded Context | Capabilities core | Rol en el Context Map |
 | :--- | :--- | :--- | :--- |
-| 2.6.1 | **IAM** | `iam` | Registro, autenticación y autorización de todos los actores. |
-| 2.6.2 | **User Management** | `usermanagement` | Perfiles, DNI y foto de rostro del pasajero, validación de operadores y ciclo del viaje con cierre por ubicación. |
-| 2.6.3 | **Alert Management** | `alertmanagement` | Emergencia directa del conductor; solicitudes de pasajeros con evidencia, umbral, aprobación y atención de emergencias. |
+| 2.6.1 | **Identity & Access Management** | Authentication, Session Management, Access Control | Shared Kernel (transversal) |
+| 2.6.2 | **Fleet & Workforce Management** | Shift Assignment, Case Response | Upstream de Trip; Conformist de Safety Case |
+| 2.6.3 | **Trip & Location Tracking** | Location Ingestion, Trip Lifecycle | Upstream de Safety Case y Passenger Journey |
+| 2.6.4 | **Passenger Journey & Occupancy** | Unit Verification, Occupancy Query | Downstream de Trip; origina alerta de pasajero |
+| 2.6.5 | **Safety Case Management** | Alert Activation, Case Prioritization, Case Status Tracking | Context core; dispara escalamiento |
+| 2.6.6 | **External Escalation** | Escalation Trigger, Authority Reporting, Resolution Confirmation | Downstream de Safety Case (ACL) |
+| 2.6.7 | **Risk Zone Intelligence** | Risk Report Collection, Report Corroboration, Preventive Alerting | Published Language hacia Trip |
+
+---
 
 ### 2.6.1. Bounded Context: Identity & Access Management
 
-Autentica a conductores y supervisores y protege el acceso a las operaciones y datos según el rol y la empresa. Al ser infraestructura transversal, se relaciona con los demás contextos como **Shared Kernel**.
+El Bounded Context **Identity & Access Management (IAM)** es responsable de autenticar a los actores del sistema (conductores, supervisores y administradores) y de proteger el acceso a las operaciones y datos según el rol y la empresa a la que pertenecen.
+
+Este contexto concentra las responsabilidades de identidad, credenciales y control de acceso, manteniéndolas separadas de la información descriptiva o de negocio de cada actor. Al ser infraestructura transversal, se relaciona con los demás Bounded Contexts como **Shared Kernel**: todos comparten el mismo modelo de identidad y sesión, referenciando a los usuarios mediante `UserId` sin duplicar la lógica de autenticación.
 
 #### 2.6.1.1. Domain Layer
 
-* **Entities:** `User`, `Role`, `Permission`
-* **Value Objects:** `EmailAddress`, `PasswordHash`, `PersonName`, `PhoneNumber`, `RoleType`, `PassengerLoginId` (identificador asociado al DNI, único y privado)
-* **Aggregates:** `User` (aggregate root; agrupa sus `Role` asignados)
-* **Factories:** `UserFactory`
-* **Domain Services:** `AuthenticationService`, `AccessControlPolicy`
-* **Repository interfaces:** `UserRepository`, `RoleRepository`, `SessionRepository`
+La Domain Layer concentra las reglas de negocio relacionadas con la autenticación, la gestión de sesiones y el control de acceso. Esta capa mantiene las invariantes del contexto IAM y no depende de frameworks de seguridad ni de mecanismos concretos de generación de tokens.
+
+##### Aggregate Roots
+
+###### User
+
+Representa a un actor autenticable del sistema. Mantiene sus credenciales y los roles que determinan sus permisos, sin exponer la contraseña en texto plano.
+
+**Atributos principales:**
+
+- `id: UserId`
+- `email: EmailAddress`
+- `passwordHash: PasswordHash`
+- `roles: List<Role>`
+- `companyId: CompanyId`
+- `status: UserStatus`
+- `createdAt: Instant`
+- `updatedAt: Instant`
+
+**Métodos principales:**
+
+- `authenticate(rawPassword: String): Boolean`
+- `assignRole(role: Role): void`
+- `changePassword(newHash: PasswordHash): void`
+- `activate(): void`
+- `deactivate(): void`
+
+El aggregate garantiza que un usuario desactivado no pueda autenticarse y que todo cambio de credencial se realice sobre un hash y nunca sobre la contraseña en claro.
+
+###### Session
+
+Representa una sesión activa de un usuario autenticado, incluyendo el par de tokens emitido y su vigencia.
+
+**Atributos principales:**
+
+- `id: SessionId`
+- `userId: UserId`
+- `tokenPair: TokenPair`
+- `issuedAt: Instant`
+- `expiresAt: Instant`
+- `revoked: Boolean`
+
+**Métodos principales:**
+
+- `refresh(): TokenPair`
+- `revoke(): void`
+- `isValid(): Boolean`
+
+##### Domain Services
+
+###### AuthenticationService
+
+Verifica las credenciales de un usuario y coordina la emisión de una nueva sesión.
+
+**Operaciones principales:**
+
+- `authenticate(email: EmailAddress, rawPassword: String): AuthResult`
+- `issueSession(user: User): Session`
+
+###### AccessControlPolicy
+
+Evalúa si un usuario tiene permiso para ejecutar una acción sobre un recurso según su rol y empresa.
+
+**Operaciones principales:**
+
+- `canAccess(user: User, resource: String, action: String): Boolean`
+
+##### Repository Interfaces
+
+###### UserRepository
+
+Abstracción para recuperar y persistir usuarios.
+
+**Operaciones principales:**
+
+- `findById(id: UserId): Optional<User>`
+- `findByEmail(email: EmailAddress): Optional<User>`
+- `save(user: User): User`
+
+###### RoleRepository
+
+Abstracción para gestionar los roles disponibles en el sistema.
+
+**Operaciones principales:**
+
+- `findById(id: RoleId): Optional<Role>`
+- `findByType(type: RoleType): Optional<Role>`
+- `save(role: Role): Role`
+
+###### SessionRepository
+
+Abstracción para recuperar y persistir sesiones.
+
+**Operaciones principales:**
+
+- `findById(id: SessionId): Optional<Session>`
+- `findActiveByUserId(userId: UserId): List<Session>`
+- `save(session: Session): Session`
 
 #### 2.6.1.2. Interface Layer
 
-* **Controllers:** `AuthenticationController`, `UsersController`, `RolesController`
-* **Consumers:** `PassengerJourneyEndedConsumer` (entrega el evento al manejador que conserva solicitudes previas y limita nuevas activaciones)
+La Interface Layer expone las capacidades de autenticación y gestión de usuarios hacia los clientes de SafeBus mediante interfaces HTTP, transformando las solicitudes en comandos o consultas procesados por la Application Layer.
+
+##### Backend API
+
+###### AuthenticationController
+
+Expone las operaciones de autenticación y ciclo de vida de la sesión.
+
+Responsabilidades principales:
+
+- iniciar sesión (sign in);
+- renovar el token de acceso (refresh token);
+- cerrar sesión (sign out).
+
+###### UsersController
+
+Expone las operaciones de registro y consulta de usuarios y asignación de roles.
+
+Responsabilidades principales:
+
+- registrar un usuario;
+- asignar un rol a un usuario;
+- consultar la información de acceso de un usuario.
 
 #### 2.6.1.3. Application Layer
 
-* **Command Handlers:** `SignUpCommandHandler`, `SignInCommandHandler`, `SignOutCommandHandler`, `AssignRoleToUserCommandHandler`
-* **Event Handlers:** `SeedRolesEventHandler`, `PassengerProfileCompletedEventHandler` (habilita la cuenta al completarse el perfil obligatorio)
+La Application Layer coordina los casos de uso de IAM utilizando los aggregates, políticas y repositorios de la Domain Layer, sin incorporar reglas de negocio propias del dominio.
+
+##### Command Handlers
+
+- `RegisterUserHandler`
+- `SignInHandler`
+- `RefreshTokenHandler`
+- `SignOutHandler`
+- `AssignRoleToUserHandler`
+
+##### Query Handlers
+
+- `GetUserHandler`
+- `GetUserRolesHandler`
+
+##### Event Handlers
+
+- `SeedRolesHandler`
 
 #### 2.6.1.4. Infrastructure Layer
 
-* **Repository implementations:** `UserRepositoryImpl`, `RoleRepositoryImpl`
-* **Message Brokers:** publica `UserRegisteredEvent` con identificador de cuenta y rol, sin DNI ni fotos, y `PassengerSignedOutEvent` para terminar el viaje al cerrar sesión; el registro del pasajero solo queda activo al completarse su perfil con la foto obligatoria. La coordinación de registro reutiliza un identificador de operación y compensa altas incompletas.
-* **Servicios externos:** `JwtTokenService` (generación de JWT/BearerToken), `HashingService` (BCrypt)
+La Infrastructure Layer implementa las abstracciones definidas por las capas internas y provee los mecanismos técnicos de persistencia, seguridad y comunicación con otros contextos.
+
+##### Repository Implementations
+
+###### UserRepositoryImpl
+
+Implementa `UserRepository` y gestiona la persistencia de los usuarios.
+
+###### RoleRepositoryImpl
+
+Implementa `RoleRepository` y gestiona la persistencia de los roles.
+
+###### SessionRepositoryImpl
+
+Implementa `SessionRepository` y gestiona el almacenamiento y la revocación de sesiones.
+
+##### Mappers
+
+###### UserMapper
+
+Traduce entre los objetos de persistencia y el aggregate `User`.
+
+###### SessionMapper
+
+Traduce entre las entidades persistentes y el aggregate `Session`.
+
+##### External Services
+
+###### JwtTokenProvider
+
+Genera y valida los tokens JWT/BearerToken utilizados en las sesiones.
+
+###### HashingService
+
+Implementa el hashing y la verificación de contraseñas mediante BCrypt.
+
+##### Event Publisher
+
+Publica `UserRegisteredEvent` y `UserAuthenticatedEvent` hacia los demás Bounded Contexts.
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/IAM.png">
+El siguiente diagrama presenta la arquitectura a nivel de componentes del Bounded Context **IAM**, mostrando la descomposición del backend de autenticación y su rol como Shared Kernel para el resto del sistema.
 
+La **Interface Layer** expone los `IAM REST Controllers`, que delegan en el `IAM Application Service`. La lógica del dominio se concentra en el aggregate `User` y en `AccessControlPolicy`. La **Infrastructure Layer** integra el `User Repository Adapter`, el `JWT Provider` y el `Event Publisher`, persistiendo en la `IAM Database`.
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/IAM-Class-Diagrams.png">
+El siguiente diagrama UML presenta los elementos principales de la Domain Layer de **IAM**, organizados alrededor de los Aggregate Roots `User` y `Session`.
+
+
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/IAM-DataBase.png">
+El siguiente diagrama representa el diseño de persistencia del Bounded Context **IAM**, con las tablas de usuarios, roles y sesiones.
+
+
+
+---
 
 ### 2.6.2. Bounded Context: Fleet & Workforce Management
 
+El Bounded Context **Fleet & Workforce Management** administra la relación entre la empresa de transporte, sus conductores y su flota, asignando recursos a rutas y actuando como **Operations Central** en la respuesta a los casos de seguridad.
+
+Provee la asignación (conductor, bus, ruta) que necesita Trip & Location Tracking para iniciar un viaje (relación *Customer/Supplier*) y recibe los casos notificados por Safety Case Management, adaptándose a su modelo de caso sin negociar su estructura (relación *Conformist*).
+
 #### 2.6.2.1. Domain Layer
 
-* **Entities:** `Driver` (Conductor), `TransportCompany` (Empresa), `Passenger` (Pasajero), `QrCredential`, `PassengerJourney`
-* **Value Objects:** `LicenseNumber` (licencia de conducir), `Ruc`, `Dni`, `Address`, `ContactInfo`, `QrCode`, `Habilitation` (habilitación), `ValidationStatus` (VALIDATED / REJECTED / PENDING), `FacePhotoReference`, `JourneyStatus` (ACTIVE / ENDED), `JourneyEndReason`, `SeparationEvidence` (distancia y duración, sin historial continuo de coordenadas del pasajero)
-* **Aggregates:** `DriverProfile` (aggregate root), `CompanyProfile`, `PassengerProfile`, `PassengerJourney`
-* **Factories:** `ProfileFactory`, `QrCredentialFactory`, `PassengerJourneyFactory`
-* **Domain Services:** `ProfileValidationService`, `OperatorHabilitationService`, `QrValidationService`, `PassengerRegistrationService`, `JourneyCompletionService`
-* **Repository interfaces:** `DriverRepository`, `CompanyRepository`, `PassengerRepository`, `QrCredentialRepository`, `PassengerJourneyRepository`
+La Domain Layer concentra las reglas de negocio relacionadas con la administración de la flota, la asignación de turnos y la respuesta operativa a los casos. Mantiene las invariantes del contexto y es independiente de la persistencia.
+
+##### Aggregate Roots
+
+###### Company
+
+Representa a la empresa de transporte y agrupa los recursos que administra: conductores, unidades y rutas.
+
+**Atributos principales:**
+
+- `id: CompanyId`
+- `ruc: Ruc`
+- `name: String`
+- `drivers: List<Driver>`
+- `vehicles: List<Vehicle>`
+- `routes: List<Route>`
+- `createdAt: Instant`
+- `updatedAt: Instant`
+
+**Métodos principales:**
+
+- `registerDriver(driver: Driver): void`
+- `registerVehicle(vehicle: Vehicle): void`
+- `registerRoute(route: Route): void`
+
+###### ShiftAssignment
+
+Representa la asignación de un turno que vincula a un conductor, una unidad y una ruta durante un periodo.
+
+**Atributos principales:**
+
+- `id: ShiftAssignmentId`
+- `driverId: DriverId`
+- `vehicleId: VehicleId`
+- `routeId: RouteId`
+- `shift: Shift`
+- `status: AssignmentStatus`
+- `assignedAt: Instant`
+
+**Métodos principales:**
+
+- `activate(): void`
+- `close(): void`
+- `isActive(): Boolean`
+
+El aggregate garantiza que una unidad y un conductor no tengan más de una asignación activa simultánea.
+
+###### CaseResponse
+
+Representa la atención que la central operativa (Operations Central) registra frente a un caso de seguridad notificado.
+
+**Atributos principales:**
+
+- `id: CaseResponseId`
+- `safetyCaseId: SafetyCaseId`
+- `responderId: UserId`
+- `status: ResponseStatus`
+- `actionTaken: String`
+- `respondedAt: Instant`
+
+**Métodos principales:**
+
+- `register(action: String): void`
+- `updateStatus(status: ResponseStatus): void`
+
+##### Domain Services
+
+###### ShiftAssignmentService
+
+Coordina la asignación de recursos verificando su disponibilidad.
+
+**Operaciones principales:**
+
+- `assign(driver: Driver, vehicle: Vehicle, route: Route, shift: Shift): ShiftAssignment`
+- `validateAvailability(driverId: DriverId, vehicleId: VehicleId): void`
+
+###### CaseResponseService
+
+Registra y actualiza la respuesta operativa frente a un caso.
+
+**Operaciones principales:**
+
+- `registerResponse(safetyCaseId: SafetyCaseId, responderId: UserId, action: String): CaseResponse`
+
+##### Repository Interfaces
+
+###### CompanyRepository
+
+**Operaciones principales:**
+
+- `findById(id: CompanyId): Optional<Company>`
+- `save(company: Company): Company`
+
+###### ShiftAssignmentRepository
+
+**Operaciones principales:**
+
+- `findById(id: ShiftAssignmentId): Optional<ShiftAssignment>`
+- `findActiveByVehicleId(vehicleId: VehicleId): Optional<ShiftAssignment>`
+- `save(assignment: ShiftAssignment): ShiftAssignment`
+
+###### CaseResponseRepository
+
+**Operaciones principales:**
+
+- `findBySafetyCaseId(safetyCaseId: SafetyCaseId): Optional<CaseResponse>`
+- `save(response: CaseResponse): CaseResponse`
 
 #### 2.6.2.2. Interface Layer
 
-* **Controllers:** `DriversController`, `CompaniesController`, `PassengersController`, `OperatorValidationController`, `PassengerJourneysController`
-* **Consumers:** `UserRegisteredConsumer` (crea el perfil cuando IAM registra un usuario)
+La Interface Layer expone las operaciones de gestión de flota, personal y respuesta operativa hacia los clientes de SafeBus.
+
+##### Backend API
+
+###### CompaniesController
+
+Expone la creación y consulta de empresas y sus recursos asociados.
+
+###### ShiftAssignmentsController
+
+Gestiona la asignación de turnos.
+
+Responsabilidades principales:
+
+- asignar un turno (conductor, bus, ruta);
+- consultar asignaciones activas;
+- cerrar una asignación.
+
+###### OperationsCentralController
+
+Expone las operaciones de la central para registrar la atención de un caso de seguridad.
+
+##### Event Consumers
+
+###### PanicAlertActivatedConsumer
+
+Recibe el evento `PanicAlertActivatedEvent` de Safety Case Management y registra el caso para su atención por la central.
 
 #### 2.6.2.3. Application Layer
 
-* **Command Handlers:** `CompletePassengerRegistrationCommandHandler`, `StartPassengerJourneyCommandHandler`, `EndPassengerJourneyCommandHandler`
-* **Event Handlers:** `DriverShiftClosedEventHandler` (termina viajes asociados), `PassengerSignedOutEventHandler`
-* **Cierre de viaje:** el móvil compara las ubicaciones durante el viaje; el backend registra una sola finalización con motivo y resumen de distancia/tiempo. No se expone el recorrido GPS del pasajero a la flota.
+La Application Layer orquesta los casos de uso de gestión de flota y respuesta operativa.
+
+##### Command Handlers
+
+- `RegisterCompanyHandler`
+- `RegisterDriverHandler`
+- `RegisterVehicleHandler`
+- `AssignShiftHandler`
+- `RespondToCaseHandler`
+
+##### Query Handlers
+
+- `GetFleetHandler`
+- `GetActiveAssignmentsHandler`
+- `GetCaseResponsesHandler`
+
+##### Event Handlers
+
+- `PanicAlertActivatedHandler`
 
 #### 2.6.2.4. Infrastructure Layer
 
-* **Repository implementations:** `DriverRepositoryImpl`, `CompanyRepositoryImpl`, `PassengerRepositoryImpl`, `QrCredentialRepositoryImpl`, `PassengerJourneyRepositoryImpl`
-* **Message Brokers:** consume `UserRegisteredEvent`; publica `DriverProfileCreatedEvent`, `OperatorValidatedEvent`, `PassengerProfileCompletedEvent` y `PassengerJourneyEndedEvent`; los eventos no incluyen DNI ni fotos de rostro
-* **Servicios externos:** `QrCodeGeneratorService` (ZXing) y almacenamiento privado de fotos de registro. La validación del QR utiliza registros de la empresa; recopilar DNI y foto de rostro no introduce reconocimiento facial ni consultas oficiales automáticas
+La Infrastructure Layer implementa la persistencia y la integración con servicios externos de validación.
+
+##### Repository Implementations
+
+###### CompanyRepositoryImpl
+
+Implementa `CompanyRepository` y gestiona la persistencia de la empresa y sus recursos.
+
+###### ShiftAssignmentRepositoryImpl
+
+Implementa `ShiftAssignmentRepository`.
+
+###### CaseResponseRepositoryImpl
+
+Implementa `CaseResponseRepository`.
+
+##### Mappers
+
+###### CompanyMapper
+
+Traduce entre los objetos de persistencia y el aggregate `Company`.
+
+###### ShiftAssignmentMapper
+
+Traduce entre las entidades persistentes y el aggregate `ShiftAssignment`.
+
+##### External Context Adapters
+
+###### HabilitationValidationAdapter
+
+Valida la licencia y habilitación de conductores y unidades ante fuentes externas (MTC/SUTRAN), sin incorporar su modelo interno dentro del contexto.
+
+##### Event Publisher
+
+Publica `ShiftAssignedEvent` hacia Trip & Location Tracking y consume `PanicAlertActivatedEvent`.
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/fleet-workforce.png">
+El siguiente diagrama presenta la arquitectura a nivel de componentes del Bounded Context **Fleet & Workforce Management**.
+
+
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/fleet-workforce-Class-Diagrams.png">
 
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/fleet-workforce-DB.png">
+
+---
 
 ### 2.6.3. Bounded Context: Trip & Location Tracking
 
-Gestiona el ciclo de vida del viaje de una unidad: inicio, ubicación en tiempo real y cierre. Depende de Fleet & Workforce Management para la asignación (conductor, bus, ruta) y es *upstream* crítico de Safety Case Management y Passenger Journey & Occupancy.
+El Bounded Context **Trip & Location Tracking** gestiona el ciclo de vida del viaje de una unidad: su inicio, la ingesta de ubicación en tiempo real y su cierre.
+
+Depende de Fleet & Workforce Management para recibir la asignación (conductor, bus, ruta) que habilita el inicio del viaje (relación *Customer/Supplier*), y es *upstream* crítico tanto de Safety Case Management como de Passenger Journey & Occupancy, a los que provee la ubicación y la confirmación del viaje activo.
 
 #### 2.6.3.1. Domain Layer
 
-* **Entities:** `EmergencyAlert`, `PassengerPanicRequest`, `IncidentEvidence`, `ApprovalDecision`, `ResponseAction`
-* **Value Objects:** `GeoLocation`, `EmergencySource` (DRIVER / PASSENGER_GROUP), `EmergencyStatus` (ACTIVE / IN_PROGRESS / CLOSED), `RequestGroupStatus` (COLLECTING / AWAITING_APPROVAL / EXPIRED / NOT_APPROVED / ACTIVATED), `RequestEligibility` (ELIGIBLE / LATE), `EvidencePhotoReference`, `Severity` (CRITICAL para conductor / HIGH para pasajeros), `ApprovalThreshold` (3 cuentas distintas / 5 minutos)
-* **Aggregates:** `EmergencyAlert` (agrupa respuesta y cierre), `PassengerRequestGroup` (bus y turno, solicitudes, evidencia de umbral y decisión de aprobación)
-* **Factories:** `DriverEmergencyFactory`, `PassengerRequestFactory`, `PassengerEmergencyFactory`
-* **Domain Services:** `AlertDispatchService`, `EmergencyPriorityService`, `PassengerThresholdService`, `PassengerApprovalService`
-* **Repository interfaces:** `AlertRepository`, `PassengerRequestGroupRepository`
+La Domain Layer concentra las reglas relacionadas con el ciclo de vida del viaje y la ingesta de ubicaciones, manteniendo la consistencia del recorrido.
+
+##### Aggregate Roots
+
+###### Trip
+
+Representa el viaje de una unidad desde su inicio hasta su cierre, agrupando las lecturas de ubicación registradas durante el recorrido.
+
+**Atributos principales:**
+
+- `id: TripId`
+- `assignmentRef: AssignmentRef`
+- `status: TripStatus`
+- `startedAt: Instant`
+- `closedAt: Instant`
+- `locationReadings: List<LocationReading>`
+
+**Métodos principales:**
+
+- `start(): void`
+- `ingestLocation(location: GeoLocation, speed: Speed): void`
+- `close(): void`
+- `lastKnownLocation(): GeoLocation`
+
+El aggregate garantiza que solo un viaje activo exista por unidad y que no se ingesten ubicaciones sobre un viaje cerrado.
+
+##### Domain Services
+
+###### LocationIngestionService
+
+Registra y valida las lecturas de ubicación recibidas durante un viaje activo.
+
+**Operaciones principales:**
+
+- `registerReading(trip: Trip, location: GeoLocation, speed: Speed): void`
+
+###### TripLifecycleService
+
+Coordina el inicio y cierre del viaje a partir de la asignación vigente.
+
+**Operaciones principales:**
+
+- `startTrip(assignment: AssignmentRef): Trip`
+- `closeTrip(trip: Trip): void`
+
+##### Repository Interfaces
+
+###### TripRepository
+
+**Operaciones principales:**
+
+- `findById(id: TripId): Optional<Trip>`
+- `findActiveByVehicleId(vehicleId: VehicleId): Optional<Trip>`
+- `save(trip: Trip): Trip`
+
+###### LocationRepository
+
+**Operaciones principales:**
+
+- `findLastByTripId(tripId: TripId): Optional<LocationReading>`
+- `save(reading: LocationReading): LocationReading`
 
 #### 2.6.3.2. Interface Layer
 
-* **Controllers:** `DriverPanicController`, `PassengerPanicRequestsController`, `PassengerApprovalsController`, `EmergencyAlertsController`, `BusSafetyHistoryController`
-* **Consumers:** `PassengerJourneyEndedConsumer` (entrega el evento al manejador que conserva solicitudes previas y limita nuevas activaciones)
+La Interface Layer expone las operaciones de gestión de viajes y de ingesta de ubicación.
+
+##### Backend API
+
+###### TripsController
+
+Expone el inicio, consulta y cierre de viajes.
+
+###### LocationController
+
+Recibe las lecturas de ubicación de la unidad en ruta y permite consultar la última ubicación conocida.
+
+##### Event Consumers
+
+###### ShiftAssignedConsumer
+
+Recibe `ShiftAssignedEvent` de Fleet & Workforce Management para habilitar el inicio del viaje.
+
+###### RiskZoneConfirmedConsumer
+
+Recibe `RiskZoneConfirmedEvent` de Risk Zone Intelligence (Published Language) para señalar zonas de riesgo en el recorrido.
 
 #### 2.6.3.3. Application Layer
 
-* **Command Handlers:** `TriggerDriverEmergencyCommandHandler`, `SubmitPassengerPanicRequestCommandHandler`, `ApprovePassengerEmergencyCommandHandler`, `DeclinePassengerEmergencyCommandHandler`, `AttendEmergencyCommandHandler`, `CloseEmergencyCommandHandler`
-* **Event Handlers:** `PassengerThresholdReachedEventHandler`, `PassengerJourneyEndedEventHandler` (conserva aportes ya recibidos y rechaza nuevas activaciones posteriores al fin del viaje)
-* **Atomicidad:** reintentos, solicitudes simultáneas y aprobaciones repetidas conservan un aporte por cuenta y una emergencia por agrupación aprobada. El cierre del viaje no elimina evidencia ni cancela una revisión ya habilitada.
+##### Command Handlers
+
+- `StartTripHandler`
+- `IngestLocationHandler`
+- `CloseTripHandler`
+
+##### Query Handlers
+
+- `GetTripHandler`
+- `GetActiveTripByVehicleHandler`
+- `GetLastLocationHandler`
+
+##### Event Handlers
+
+- `ShiftAssignedHandler`
+- `RiskZoneConfirmedHandler`
 
 #### 2.6.3.4. Infrastructure Layer
 
-* **Repository implementations:** `AlertRepositoryImpl`, `PassengerRequestGroupRepositoryImpl`
-* **Message Brokers:** publica `DriverEmergencyActivatedEvent`, `PassengerReviewRequiredEvent`, `PassengerEmergencyApprovedEvent` y `EmergencyStatusChangedEvent`; la notificación a clientes se filtra por rol y empresa
-* **Servicios externos:** almacenamiento privado de evidencia y entrega autenticada de eventos a la empresa mediante WebSocket. La revisión de solicitudes no envía una alarma de emergencia hasta que se registra su aprobación
+##### Repository Implementations
+
+###### TripRepositoryImpl
+
+Implementa `TripRepository`.
+
+###### LocationRepositoryImpl
+
+Implementa `LocationRepository`.
+
+##### Mappers
+
+###### TripMapper
+
+Traduce entre los objetos de persistencia y el aggregate `Trip`.
+
+##### External Context Adapters
+
+###### GpsProviderAdapter
+
+Obtiene la ubicación desde el GPS del dispositivo móvil del conductor.
+
+##### Event Publisher
+
+Consume `ShiftAssignedEvent` y publica `TripStartedEvent`, `TripLocationUpdatedEvent` y `TripClosedEvent`.
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/trip-location-tracking-c4.png">
+
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/trip-location-class-diagrams.png">
+
 
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/trip-location-db.png">
+
+
+---
 
 ### 2.6.4. Bounded Context: Passenger Journey & Occupancy
 
-Vincula a un pasajero con un viaje verificado y le da visibilidad del aforo de la unidad. Depende de Trip & Location Tracking para confirmar el viaje activo y el conteo de pasajeros, y origina la alerta de pánico del pasajero hacia Safety Case Management.
+El Bounded Context **Passenger Journey & Occupancy** vincula a un pasajero con un viaje verificado y le proporciona visibilidad del aforo de la unidad.
+
+Depende de Trip & Location Tracking para confirmar el viaje activo y obtener el conteo de pasajeros (relación *Customer/Supplier*), y origina la alerta de pánico del pasajero hacia Safety Case Management, que nace con el contexto de la sesión de viaje del pasajero.
 
 #### 2.6.4.1. Domain Layer
 
-* **Entities:** `PassengerJourney` (sesión de viaje del pasajero), `UnitVerification`, `OccupancySnapshot`
-* **Value Objects:** `QrCode`, `VerificationStatus` (VERIFIED / REJECTED), `PassengerCount`, `Capacity` (aforo máximo), `OccupancyLevel` (LOW / MEDIUM / FULL)
-* **Aggregates:** `PassengerJourney` (aggregate root)
-* **Factories:** `PassengerJourneyFactory`
-* **Domain Services:** `UnitVerificationService`, `OccupancyQueryService`
-* **Repository interfaces:** `PassengerJourneyRepository`, `OccupancyRepository`
+La Domain Layer concentra las reglas relacionadas con la verificación de la unidad, la sesión de viaje del pasajero y la consulta de aforo.
+
+##### Aggregate Roots
+
+###### PassengerJourney
+
+Representa la sesión de viaje de un pasajero sobre una unidad verificada.
+
+**Atributos principales:**
+
+- `id: PassengerJourneyId`
+- `tripId: TripId`
+- `unitVerification: UnitVerification`
+- `status: JourneyStatus`
+- `startedAt: Instant`
+- `endedAt: Instant`
+
+**Métodos principales:**
+
+- `verifyUnit(qr: QrCode): VerificationStatus`
+- `start(): void`
+- `requestPanic(): void`
+- `end(): void`
+
+###### OccupancySnapshot
+
+Representa una lectura del aforo de una unidad en un momento dado.
+
+**Atributos principales:**
+
+- `id: OccupancySnapshotId`
+- `tripId: TripId`
+- `passengerCount: PassengerCount`
+- `capacity: Capacity`
+- `level: OccupancyLevel`
+- `capturedAt: Instant`
+
+**Métodos principales:**
+
+- `updateCount(count: PassengerCount): void`
+- `occupancyLevel(): OccupancyLevel`
+
+##### Domain Services
+
+###### UnitVerificationService
+
+Verifica que el QR escaneado corresponde a una unidad con viaje activo.
+
+**Operaciones principales:**
+
+- `verify(qr: QrCode, activeTrip: TripId): VerificationStatus`
+
+###### OccupancyQueryService
+
+Calcula el aforo actual de una unidad a partir de la última lectura.
+
+**Operaciones principales:**
+
+- `currentOccupancy(tripId: TripId): OccupancySnapshot`
+
+##### Repository Interfaces
+
+###### PassengerJourneyRepository
+
+**Operaciones principales:**
+
+- `findById(id: PassengerJourneyId): Optional<PassengerJourney>`
+- `findActiveByTripId(tripId: TripId): List<PassengerJourney>`
+- `save(journey: PassengerJourney): PassengerJourney`
+
+###### OccupancyRepository
+
+**Operaciones principales:**
+
+- `findLastByTripId(tripId: TripId): Optional<OccupancySnapshot>`
+- `save(snapshot: OccupancySnapshot): OccupancySnapshot`
 
 #### 2.6.4.2. Interface Layer
 
-* **Controllers:** `UnitVerificationController`, `OccupancyController`, `PassengerJourneysController`
-* **Consumers:** `TripStartedConsumer`, `TripClosedConsumer` (de Trip & Location Tracking)
+##### Backend API
+
+###### UnitVerificationController
+
+Expone la verificación de la unidad mediante QR antes de abordar.
+
+###### OccupancyController
+
+Expone la consulta del aforo actual de una unidad.
+
+###### PassengerJourneysController
+
+Gestiona el inicio, la solicitud de pánico y el cierre de la sesión de viaje del pasajero.
+
+##### Event Consumers
+
+###### TripStartedConsumer
+
+Recibe `TripStartedEvent` para habilitar la verificación de la unidad.
+
+###### TripClosedConsumer
+
+Recibe `TripClosedEvent` para cerrar las sesiones de pasajeros de la unidad.
 
 #### 2.6.4.3. Application Layer
 
-* **Command Handlers:** `VerifyUnitCommandHandler`, `StartPassengerJourneyCommandHandler`, `RequestPassengerPanicCommandHandler`
-* **Event Handlers:** `TripClosedEventHandler` (cierra las sesiones de pasajeros de la unidad)
+##### Command Handlers
+
+- `VerifyUnitHandler`
+- `StartPassengerJourneyHandler`
+- `RequestPassengerPanicHandler`
+- `EndPassengerJourneyHandler`
+
+##### Query Handlers
+
+- `GetOccupancyHandler`
+- `GetPassengerJourneyHandler`
+
+##### Event Handlers
+
+- `TripStartedHandler`
+- `TripClosedHandler`
 
 #### 2.6.4.4. Infrastructure Layer
 
-* **Repository implementations:** `PassengerJourneyRepositoryImpl`, `OccupancyRepositoryImpl`
-* **Message Brokers:** consume `TripStartedEvent` y `TripClosedEvent`; publica `UnitVerifiedEvent` y `PassengerPanicRequestedEvent` (hacia Safety Case)
-* **Servicios externos:** fuente externa de conteo de pasajeros integrada mediante contrato de eventos (sensor real o simulador, según el prototipo)
+##### Repository Implementations
+
+###### PassengerJourneyRepositoryImpl
+
+Implementa `PassengerJourneyRepository`.
+
+###### OccupancyRepositoryImpl
+
+Implementa `OccupancyRepository`.
+
+##### Mappers
+
+###### PassengerJourneyMapper
+
+Traduce entre los objetos de persistencia y el aggregate `PassengerJourney`.
+
+###### OccupancyMapper
+
+Traduce entre las entidades persistentes y el aggregate `OccupancySnapshot`.
+
+##### External Context Adapters
+
+###### TripQueryAdapter
+
+Consulta a Trip & Location Tracking para confirmar el viaje activo, utilizando únicamente `TripId` como referencia externa (Anti-Corruption Layer de lectura).
+
+###### PassengerCountingSourceAdapter
+
+Integra la fuente externa de conteo de pasajeros mediante un contrato de eventos; el prototipo puede usar sensores reales o un simulador.
+
+##### Event Publisher
+
+Consume `TripStartedEvent` y `TripClosedEvent`; publica `UnitVerifiedEvent` y `PassengerPanicRequestedEvent`.
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/passenger-journey-occupan-c4.png">
+
 
 #### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/passenger-classdiagram.png">
+
 
 ##### 2.6.4.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/passenger-db.png">
+
 
 ---
 
 ### 2.6.5. Bounded Context: Safety Case Management
 
-Context core del sistema: recibe, prioriza y gestiona el ciclo de vida completo de una alerta de pánico, desde su activación hasta su cierre. Depende de Trip & Location Tracking (ubicación) y Passenger Journey & Occupancy (contexto del viaje del pasajero); provee casos a Fleet & Workforce Management y dispara el escalamiento hacia External Escalation.
+El Bounded Context **Safety Case Management** es el context core del sistema: recibe, prioriza y gestiona el ciclo de vida completo de una alerta de pánico, desde su activación hasta su cierre.
+
+Depende de Trip & Location Tracking para obtener la ubicación más reciente de la unidad y de Passenger Journey & Occupancy para el contexto del viaje cuando la alerta proviene de un pasajero. Provee los casos a Fleet & Workforce Management (relación *Conformist*) y dispara el escalamiento hacia External Escalation cuando el caso no es atendido a tiempo.
 
 #### 2.6.5.1. Domain Layer
 
-* **Entities:** `SafetyCase` (caso de seguridad), `Alert`, `CaseStatusHistory`
-* **Value Objects:** `AlertSource` (DRIVER / PASSENGER), `Priority`, `CaseStatus` (ACTIVE / ATTENDED / ESCALATED / CLOSED), `GeoLocation` (snapshot), `AlertType`
-* **Aggregates:** `SafetyCase` (aggregate root; agrupa `Alert` y `CaseStatusHistory`)
-* **Factories:** `SafetyCaseFactory`
-* **Domain Services:** `AlertActivationService`, `CasePrioritizationService`, `CaseStatusTrackingService`
-* **Repository interfaces:** `SafetyCaseRepository`, `AlertRepository`
+La Domain Layer concentra las reglas del ciclo de vida del caso de seguridad: activación de la alerta, priorización y seguimiento de estados.
+
+##### Aggregate Roots
+
+###### SafetyCase
+
+Representa un caso de seguridad originado por una alerta de pánico, controlando su prioridad, su estado y el historial de transiciones.
+
+**Atributos principales:**
+
+- `id: SafetyCaseId`
+- `alert: Alert`
+- `priority: Priority`
+- `status: CaseStatus`
+- `statusHistory: List<CaseStatusHistory>`
+- `locationSnapshot: GeoLocation`
+- `openedAt: Instant`
+- `closedAt: Instant`
+
+**Métodos principales:**
+
+- `activate(alert: Alert): void`
+- `prioritize(priority: Priority): void`
+- `attend(): void`
+- `escalate(): void`
+- `close(): void`
+
+El aggregate garantiza que las transiciones de estado sean válidas (por ejemplo, un caso cerrado no puede reabrirse ni escalarse).
+
+##### Domain Services
+
+###### AlertActivationService
+
+Crea el caso de seguridad a partir de una alerta y su ubicación asociada.
+
+**Operaciones principales:**
+
+- `activate(source: AlertSource, location: GeoLocation): SafetyCase`
+
+###### CasePrioritizationService
+
+Determina la prioridad del caso según el origen y el contexto.
+
+**Operaciones principales:**
+
+- `prioritize(case: SafetyCase): Priority`
+
+###### CaseStatusTrackingService
+
+Coordina las transiciones de estado del caso.
+
+**Operaciones principales:**
+
+- `transition(case: SafetyCase, newStatus: CaseStatus): void`
+
+##### Repository Interfaces
+
+###### SafetyCaseRepository
+
+**Operaciones principales:**
+
+- `findById(id: SafetyCaseId): Optional<SafetyCase>`
+- `findActive(): List<SafetyCase>`
+- `save(safetyCase: SafetyCase): SafetyCase`
+
+###### AlertRepository
+
+**Operaciones principales:**
+
+- `findById(id: AlertId): Optional<Alert>`
+- `save(alert: Alert): Alert`
 
 #### 2.6.5.2. Interface Layer
 
-* **Controllers:** `PanicButtonController`, `SafetyCasesController`
-* **Consumers:** `PassengerPanicRequestedConsumer` (de Passenger Journey), `CaseResolvedByAuthorityConsumer` (de External Escalation)
+##### Backend API
+
+###### PanicButtonController
+
+Expone la activación del botón de pánico para conductor y pasajero.
+
+###### SafetyCasesController
+
+Expone la consulta, priorización, actualización de estado y cierre de casos.
+
+##### Event Consumers
+
+###### PassengerPanicRequestedConsumer
+
+Recibe `PassengerPanicRequestedEvent` de Passenger Journey & Occupancy.
+
+###### CaseResolvedByAuthorityConsumer
+
+Recibe `CaseResolvedByAuthorityEvent` de External Escalation para cerrar el caso.
 
 #### 2.6.5.3. Application Layer
 
-* **Command Handlers:** `ActivateAlertCommandHandler`, `PrioritizeCaseCommandHandler`, `UpdateCaseStatusCommandHandler`, `EscalateCaseCommandHandler`
-* **Event Handlers:** `PassengerPanicRequestedEventHandler`, `CaseResolvedByAuthorityEventHandler`
+##### Command Handlers
+
+- `ActivateAlertHandler`
+- `PrioritizeCaseHandler`
+- `UpdateCaseStatusHandler`
+- `EscalateCaseHandler`
+- `CloseCaseHandler`
+
+##### Query Handlers
+
+- `GetSafetyCaseHandler`
+- `GetActiveCasesHandler`
+
+##### Event Handlers
+
+- `PassengerPanicRequestedHandler`
+- `CaseResolvedByAuthorityHandler`
 
 #### 2.6.5.4. Infrastructure Layer
 
-* **Repository implementations:** `SafetyCaseRepositoryImpl`, `AlertRepositoryImpl`
-* **Message Brokers:** consume `TripLocationUpdatedEvent` y `PassengerPanicRequestedEvent`; publica `PanicAlertActivatedEvent` (a Fleet) y `AlertEscalatedEvent` (a External Escalation)
-* **Servicios externos:** consulta de ubicación a Trip & Location Tracking con manejo propio de indisponibilidad (estados Stale / Unavailable) para no bloquearse ante fallas *upstream*
+##### Repository Implementations
+
+###### SafetyCaseRepositoryImpl
+
+Implementa `SafetyCaseRepository`.
+
+###### AlertRepositoryImpl
+
+Implementa `AlertRepository`.
+
+##### Mappers
+
+###### SafetyCaseMapper
+
+Traduce entre los objetos de persistencia y el aggregate `SafetyCase`.
+
+##### External Context Adapters
+
+###### TripLocationAdapter
+
+Consulta la ubicación más reciente a Trip & Location Tracking, con manejo propio de indisponibilidad (estados Stale / Unavailable) para no bloquearse ante una falla *upstream*.
+
+##### Event Publisher
+
+Consume `TripLocationUpdatedEvent` y `PassengerPanicRequestedEvent`; publica `PanicAlertActivatedEvent` (a Fleet) y `AlertEscalatedEvent` (a External Escalation).
 
 #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/safety-case-c4.png">
+
 
 #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/safety-case-classdiagram.png">
 
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/safety-db.png">
+
 
 ---
 
 ### 2.6.6. Bounded Context: External Escalation
 
-Deriva un caso hacia una autoridad externa (policía, aseguradora) cuando la gestión interna de la empresa no lo atiende a tiempo, y hace seguimiento hasta su cierre. Se integra con Safety Case Management mediante un **Anti-Corruption Layer** que traduce el modelo interno de caso al formato que espera la autoridad externa.
+El Bounded Context **External Escalation** deriva un caso hacia una autoridad externa (policía o aseguradora) cuando la gestión interna de la empresa no lo atiende a tiempo, y realiza el seguimiento hasta su cierre.
+
+Se integra con Safety Case Management mediante un **Anti-Corruption Layer**, que traduce el modelo interno de caso al formato que espera cada autoridad externa, aislando el modelo propio de sistemas que el equipo no controla.
 
 #### 2.6.6.1. Domain Layer
 
-* **Entities:** `EscalationCase`, `AuthorityReport`
-* **Value Objects:** `AuthorityType` (POLICE / INSURER), `EscalationStatus` (TRIGGERED / REPORTED / RESOLVED), `ReportReference`
-* **Aggregates:** `EscalationCase` (aggregate root; agrupa sus `AuthorityReport`)
-* **Factories:** `EscalationCaseFactory`
-* **Domain Services:** `AuthorityReportingService`, `ResolutionConfirmationService`
-* **Repository interfaces:** `EscalationRepository`
+La Domain Layer concentra las reglas del escalamiento externo: disparo, reporte a la autoridad y confirmación de resolución.
+
+##### Aggregate Roots
+
+###### EscalationCase
+
+Representa un caso derivado a una autoridad externa, agrupando los reportes emitidos y su estado de resolución.
+
+**Atributos principales:**
+
+- `id: EscalationCaseId`
+- `safetyCaseId: SafetyCaseId`
+- `authorityType: AuthorityType`
+- `status: EscalationStatus`
+- `reports: List<AuthorityReport>`
+- `triggeredAt: Instant`
+- `resolvedAt: Instant`
+
+**Métodos principales:**
+
+- `trigger(): void`
+- `reportToAuthority(report: AuthorityReport): void`
+- `confirmResolution(): void`
+
+##### Domain Services
+
+###### AuthorityReportingService
+
+Genera y envía el reporte hacia la autoridad correspondiente.
+
+**Operaciones principales:**
+
+- `report(escalationCase: EscalationCase, authority: AuthorityType): AuthorityReport`
+
+###### ResolutionConfirmationService
+
+Confirma la resolución del caso y notifica de vuelta al context de origen.
+
+**Operaciones principales:**
+
+- `confirm(escalationCase: EscalationCase): void`
+
+##### Repository Interfaces
+
+###### EscalationRepository
+
+**Operaciones principales:**
+
+- `findById(id: EscalationCaseId): Optional<EscalationCase>`
+- `findBySafetyCaseId(safetyCaseId: SafetyCaseId): Optional<EscalationCase>`
+- `save(escalationCase: EscalationCase): EscalationCase`
 
 #### 2.6.6.2. Interface Layer
 
-* **Controllers:** `ExternalEscalationController`
-* **Consumers:** `AlertEscalatedConsumer` (de Safety Case Management, vía ACL)
+##### Backend API
+
+###### ExternalEscalationController
+
+Expone la consulta del estado de los casos escalados.
+
+##### Event Consumers
+
+###### AlertEscalatedConsumer
+
+Recibe `AlertEscalatedEvent` de Safety Case Management (vía ACL) e inicia el escalamiento.
 
 #### 2.6.6.3. Application Layer
 
-* **Command Handlers:** `TriggerEscalationCommandHandler`, `ReportToAuthorityCommandHandler`, `ConfirmResolutionCommandHandler`
-* **Event Handlers:** `AlertEscalatedEventHandler`
+##### Command Handlers
+
+- `TriggerEscalationHandler`
+- `ReportToAuthorityHandler`
+- `ConfirmResolutionHandler`
+
+##### Query Handlers
+
+- `GetEscalationCaseHandler`
+
+##### Event Handlers
+
+- `AlertEscalatedHandler`
 
 #### 2.6.6.4. Infrastructure Layer
 
-* **Repository implementations:** `EscalationRepositoryImpl`
-* **Message Brokers:** consume `AlertEscalatedEvent`; publica `CaseResolvedByAuthorityEvent` (de vuelta a Safety Case)
-* **Servicios externos:** Anti-Corruption Layer hacia las APIs de la policía/aseguradora; notificaciones a la autoridad
+##### Repository Implementations
+
+###### EscalationRepositoryImpl
+
+Implementa `EscalationRepository`.
+
+##### Mappers
+
+###### EscalationCaseMapper
+
+Traduce entre los objetos de persistencia y el aggregate `EscalationCase`.
+
+##### External Context Adapters
+
+###### AuthorityGatewayAdapter
+
+Anti-Corruption Layer hacia las APIs de la policía o aseguradora, traduciendo el modelo interno de caso al formato externo.
+
+##### Event Publisher
+
+Consume `AlertEscalatedEvent`; publica `CaseResolvedByAuthorityEvent` de vuelta a Safety Case Management.
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/external-escalatio-c4.png">
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/external-escalation-classdiagram.png">
 
 ##### 2.6.6.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/external-escalation-db.png">
 
 ---
 
 ### 2.6.7. Bounded Context: Risk Zone Intelligence
 
-Recolecta y valida reportes de zonas de riesgo hechos por conductores, para anticipar y prevenir el paso por rutas peligrosas. Publica la información de zonas de riesgo hacia Trip & Location Tracking mediante un **Published Language**, sin dependencia transaccional fuerte.
+El Bounded Context **Risk Zone Intelligence** recolecta y valida reportes de zonas de riesgo hechos por los conductores, para anticipar y prevenir el paso por rutas peligrosas.
+
+Publica la información de zonas de riesgo hacia Trip & Location Tracking mediante un **Published Language**, con carácter informativo y sin una dependencia transaccional fuerte.
 
 #### 2.6.7.1. Domain Layer
 
-* **Entities:** `RiskReport` (reporte de zona), `RiskZone` (zona de riesgo)
-* **Value Objects:** `GeoArea` (área/polígono geográfico), `RiskLevel` (LOW / MEDIUM / HIGH), `CorroborationCount`, `ReportStatus` (PENDING / CONFIRMED)
-* **Aggregates:** `RiskZone` (aggregate root; agrupa los `RiskReport` que la corroboran)
-* **Factories:** `RiskReportFactory`
-* **Domain Services:** `ReportCorroborationService`, `PreventiveAlertingService`
-* **Repository interfaces:** `RiskReportRepository`, `RiskZoneRepository`
+La Domain Layer concentra las reglas de recolección, corroboración y confirmación de zonas de riesgo.
+
+##### Aggregate Roots
+
+###### RiskZone
+
+Representa una zona geográfica de riesgo, agrupando los reportes que la corroboran y controlando su confirmación.
+
+**Atributos principales:**
+
+- `id: RiskZoneId`
+- `area: GeoArea`
+- `riskLevel: RiskLevel`
+- `reports: List<RiskReport>`
+- `corroborationCount: CorroborationCount`
+- `status: ZoneStatus`
+- `confirmedAt: Instant`
+
+**Métodos principales:**
+
+- `addReport(report: RiskReport): void`
+- `corroborate(): void`
+- `confirm(): void`
+- `isConfirmed(): Boolean`
+
+El aggregate garantiza que una zona solo se considere confirmada al superar el umbral de corroboración por distintos conductores.
+
+##### Domain Services
+
+###### ReportCorroborationService
+
+Evalúa los reportes de una zona y determina cuándo alcanza el umbral de confirmación.
+
+**Operaciones principales:**
+
+- `corroborate(zone: RiskZone, report: RiskReport): void`
+
+###### PreventiveAlertingService
+
+Genera la alerta preventiva a partir de una zona confirmada.
+
+**Operaciones principales:**
+
+- `generateAlert(confirmedZone: RiskZone): void`
+
+##### Repository Interfaces
+
+###### RiskReportRepository
+
+**Operaciones principales:**
+
+- `findById(id: RiskReportId): Optional<RiskReport>`
+- `save(report: RiskReport): RiskReport`
+
+###### RiskZoneRepository
+
+**Operaciones principales:**
+
+- `findById(id: RiskZoneId): Optional<RiskZone>`
+- `findConfirmedByArea(area: GeoArea): List<RiskZone>`
+- `save(zone: RiskZone): RiskZone`
 
 #### 2.6.7.2. Interface Layer
 
-* **Controllers:** `RiskReportsController`, `RiskZonesController`
-* **Consumers:** —
+##### Backend API
+
+###### RiskReportsController
+
+Expone el envío de reportes de zonas de riesgo por parte de los conductores.
+
+###### RiskZonesController
+
+Expone la consulta de zonas de riesgo confirmadas.
 
 #### 2.6.7.3. Application Layer
 
-* **Command Handlers:** `SubmitRiskReportCommandHandler`, `CorroborateReportCommandHandler`
-* **Event Handlers:** `RiskReportSubmittedEventHandler`
+##### Command Handlers
+
+- `SubmitRiskReportHandler`
+- `CorroborateReportHandler`
+- `ConfirmRiskZoneHandler`
+
+##### Query Handlers
+
+- `GetRiskZonesHandler`
+- `GetRiskZonesByAreaHandler`
+
+##### Event Handlers
+
+- `RiskReportSubmittedHandler`
 
 #### 2.6.7.4. Infrastructure Layer
 
-* **Repository implementations:** `RiskReportRepositoryImpl`, `RiskZoneRepositoryImpl`
-* **Message Brokers:** publica `RiskZoneConfirmedEvent` (Published Language, consumido por Trip & Location Tracking)
-* **Servicios externos:** servicio de mapas/geolocalización para el modelado de zonas
+##### Repository Implementations
+
+###### RiskReportRepositoryImpl
+
+Implementa `RiskReportRepository`.
+
+###### RiskZoneRepositoryImpl
+
+Implementa `RiskZoneRepository`.
+
+##### Mappers
+
+###### RiskZoneMapper
+
+Traduce entre los objetos de persistencia y el aggregate `RiskZone`.
+
+##### External Context Adapters
+
+###### MapsGeoAdapter
+
+Provee el servicio de mapas/geolocalización para el modelado de las áreas de riesgo.
+
+##### Event Publisher
+
+Publica `RiskZoneConfirmedEvent` (Published Language, consumido por Trip & Location Tracking).
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/risk-zone-c4.png">
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/risk-zone-classdiagram.png">
 
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/risk-zone-db.png">
