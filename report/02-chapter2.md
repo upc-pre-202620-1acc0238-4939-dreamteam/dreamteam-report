@@ -860,18 +860,18 @@ Autentica a conductores y supervisores y protege el acceso a las operaciones y d
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/IAMC4.drawio.png">
+<img src="../docs/c4/IAM.png">
 
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/ClassDiagram-IAM.png">
+<img src="../docs/class-diagrams-backend/IAM-Class-Diagrams.png">
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/DataBase-IAM.png">
+<img src="../docs/database/IAM-DataBase.png">
 
 ### 2.6.2. Bounded Context: Fleet & Workforce Management
 
@@ -904,17 +904,17 @@ Administra la relación entre la empresa, sus conductores y su flota, asignando 
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/C4-2.drawio.png">
+<img src="../docs/c4/fleet-workforce.png">
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/ClassDiagram-User.png">
+<img src="../docs/class-diagrams-backend/fleet-workforce-Class-Diagrams.png">
 
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/DataBase-User.png">
+<img src="../docs/database/fleet-workforce-DB.png">
 
 ### 2.6.3. Bounded Context: Trip & Location Tracking
 
@@ -947,17 +947,17 @@ Gestiona el ciclo de vida del viaje de una unidad: inicio, ubicación en tiempo 
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-<img src="../docs/c4/C4-3.drawio.png">
+<img src="../docs/c4/trip-location-tracking-c4.png">
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
 
-<img src="../docs/class-diagrams-backend/ClassDiagram-Alert.png">
+<img src="../docs/class-diagrams-backend/trip-location-class-diagrams.png">
 
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
-<img src="../docs/database/DataBase-Alert.png">
+<img src="../docs/database/trip-location-db.png">
 
 ### 2.6.4. Bounded Context: Passenger Journey & Occupancy
 
@@ -990,17 +990,17 @@ Vincula a un pasajero con un viaje verificado y le da visibilidad del aforo de l
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+<img src="../docs/c4/passenger-journey-occupan-c4.png">
 
 #### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Insertar diagrama de clases de la capa de dominio]
+<img src="../docs/class-diagrams-backend/passenger-classdiagram.png">
 
 ##### 2.6.4.6.2. Bounded Context Database Design Diagram
 
-[Insertar diagrama de diseño de base de datos]
+<img src="../docs/database/passenger-db.png">
 
 ---
 
@@ -1035,17 +1035,17 @@ Context core del sistema: recibe, prioriza y gestiona el ciclo de vida completo 
 
 #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+<img src="../docs/c4/safety-case-c4.png">
 
 #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Insertar diagrama de clases de la capa de dominio]
+<img src="../docs/class-diagrams-backend/safety-case-classdiagram.png">
 
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
 
-[Insertar diagrama de diseño de base de datos]
+<img src="../docs/database/safety-db.png">
 
 ---
 
@@ -1080,17 +1080,17 @@ Deriva un caso hacia una autoridad externa (policía, aseguradora) cuando la ges
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+<img src="../docs/c4/external-escalatio-c4.png">
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Insertar diagrama de clases de la capa de dominio]
+<img src="../docs/class-diagrams-backend/external-escalation-classdiagram.png">
 
 ##### 2.6.6.6.2. Bounded Context Database Design Diagram
 
-[Insertar diagrama de diseño de base de datos]
+<img src="../docs/database/external-escalation-db.png">
 
 ---
 
@@ -1125,14 +1125,14 @@ Recolecta y valida reportes de zonas de riesgo hechos por conductores, para anti
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+<img src="../docs/c4/risk-zone-c4.png">
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Insertar diagrama de clases de la capa de dominio]
+<img src="../docs/class-diagrams-backend/risk-zone-classdiagram.png">
 
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
 
-[Insertar diagrama de diseño de base de datos]
+<img src="../docs/database/risk-zone-db.png">
