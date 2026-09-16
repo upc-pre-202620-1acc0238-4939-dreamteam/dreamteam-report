@@ -46,16 +46,17 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
+      <img src="../assets/MathiasImage.png" alt="Foto de Estudiante" width="180"/>
     </td>
     <td><b>Nombre:</b> Mathias Augusto Arechaga Saavedra</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo Estudiante</td>
+    <td><b>Código:</b> u202320699</td>
   </tr>
   <tr>
     <td>
-      <b>Descripción:</b><br/>
+      <b>Descripción:</b>
+        Soy Mathias Arechaga, estudiante de Ingeniería de Software y actualmente cursando el sexto ciclo. Me considero una persona responsable y orientada a crecer tanto en el ámbito académico como profesional. Me interesa el mundo de la programación porque me permite diseñar soluciones, afrontar retos y adquirir constantemente nuevos conocimientos tecnológicos. Cuento con manejo de HTML y conocimientos básicos de Python, lo que me facilita desarrollar proyectos simples mientras sigo perfeccionando mis competencias.<br/>
     </td>
   </tr>
 </table>
