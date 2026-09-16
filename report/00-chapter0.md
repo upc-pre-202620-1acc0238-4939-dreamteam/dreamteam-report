@@ -2,6 +2,50 @@
 
 ## Carátula
 
+<div align="center">
+
+![Universidad Peruana de Ciencias Aplicadas](https://github.com/user-attachments/assets/246a4dfb-6dd5-4909-a472-6cdce8319986){width=300px height=300px}
+
+# Universidad Peruana de Ciencias Aplicadas
+
+## Facultad de Ingeniería
+
+## Programa Académico de Ingeniería de Software
+
+**Código del curso:** 1ACC0238
+
+**Curso:** Aplicaciones para Dispositivos Móviles
+
+**NRC:** 4939
+
+**Docente del curso:** David Gerardo Quevedo Velasco
+
+---
+
+# Informe de Trabajo Final
+
+**Nombre del equipo:** Dreamteam  
+
+**Nombre del proyecto:** SafeBus
+
+---
+
+## Integrantes
+
+* u2024XXXXX - Acuache Lucas, Mathias Joaquin
+* u2024XXXXX - Arechaga Saavedra, Mathias Augusto
+* u2024XXXXX - Delgado Arriola, Leonardo Sebastian
+* u202410344 - Espinoza Orrego, Valentino Andre
+* u202414928 - Fernández Linares, Alvaro Sebastian
+
+---
+
+**Periodo:** 2026-02  
+
+*Septiembre, 2026*
+
+</div>
+
 ---
 
 ## Registro de Versiones del Informe
