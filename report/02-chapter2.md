@@ -817,40 +817,46 @@ relación entre Bounded Contexts establecidos en Domain-Driven Design.
 
 ## 2.6. Tactical-Level Domain-Driven Design
 
-El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que concentra los componentes reutilizables del dominio. Cada contexto expone su API REST y se comunica de forma asíncrona con los demás mediante eventos de dominio publicados en un Message Broker, lo que permite reaccionar en tiempo real a validaciones y alertas de emergencia .
+A partir de los siete Bounded Contexts identificados en el nivel estratégico (sección 2.5), en esta sección se detalla el diseño táctico de cada uno: sus building blocks de dominio y la distribución de responsabilidades en las capas Domain, Interface, Application e Infrastructure. La comunicación entre contextos se realiza de forma asíncrona mediante eventos de dominio publicados en un Message Broker, siguiendo los patrones de integración establecidos en el Context Mapping (2.5.2).
 
-| # | Bounded Context | Carpeta | Responsabilidad principal |
+| # | Bounded Context | Capabilities core | Rol en el Context Map |
 | :--- | :--- | :--- | :--- |
-| 2.6.1 | **IAM** | `iam` | Registro, autenticación y autorización de todos los actores. |
-| 2.6.2 | **User Management** | `usermanagement` | Perfiles de conductores, empresas y pasajeros; validación de operadores. |
-| 2.6.3 | **Alert Management** | `alertmanagement` | Botón de pánico, generación y despacho de alertas de emergencia. |
+| 2.6.1 | **Identity & Access Management** | Authentication, Session Management, Access Control | Shared Kernel (transversal) |
+| 2.6.2 | **Fleet & Workforce Management** | Shift Assignment, Case Response | Upstream de Trip; Conformist de Safety Case |
+| 2.6.3 | **Trip & Location Tracking** | Location Ingestion, Trip Lifecycle | Upstream de Safety Case y Passenger Journey |
+| 2.6.4 | **Passenger Journey & Occupancy** | Unit Verification, Occupancy Query | Downstream de Trip; origina alerta de pasajero |
+| 2.6.5 | **Safety Case Management** | Alert Activation, Case Prioritization, Case Status Tracking | Context core; dispara escalamiento |
+| 2.6.6 | **External Escalation** | Escalation Trigger, Authority Reporting, Resolution Confirmation | Downstream de Safety Case (ACL) |
+| 2.6.7 | **Risk Zone Intelligence** | Risk Report Collection, Report Corroboration, Preventive Alerting | Published Language hacia Trip |
 
-### 2.6.1. Bounded Context: IAM
+### 2.6.1. Bounded Context: Identity & Access Management
+
+Autentica a conductores y supervisores y protege el acceso a las operaciones y datos según el rol y la empresa. Al ser infraestructura transversal, se relaciona con los demás contextos como **Shared Kernel**.
 
 #### 2.6.1.1. Domain Layer
 
-* **Entities:** `User`, `Role`, `Permission`
-* **Value Objects:** `EmailAddress`, `PasswordHash`, `PersonName`, `PhoneNumber`, `RoleType`
-* **Aggregates:** `User` (aggregate root; agrupa sus `Role` asignados)
+* **Entities:** `User`, `Role`, `Session`
+* **Value Objects:** `EmailAddress`, `PasswordHash`, `RoleType` (DRIVER / SUPERVISOR / ADMIN), `CompanyId`, `TokenPair`
+* **Aggregates:** `User` (aggregate root; agrupa sus `Role`)
 * **Factories:** `UserFactory`
-* **Domain Services:** `AuthenticationService`, `PasswordPolicyService`
-* **Repository interfaces:** `UserRepository`, `RoleRepository`
+* **Domain Services:** `AuthenticationService`, `AccessControlPolicy`
+* **Repository interfaces:** `UserRepository`, `RoleRepository`, `SessionRepository`
 
 #### 2.6.1.2. Interface Layer
 
-* **Controllers:** `AuthenticationController`, `UsersController`, `RolesController`
+* **Controllers:** `AuthenticationController`, `UsersController`
 * **Consumers:** —
 
 #### 2.6.1.3. Application Layer
 
-* **Command Handlers:** `SignUpCommandHandler`, `SignInCommandHandler`, `AssignRoleToUserCommandHandler`
-* **Event Handlers:** `SeedRolesEventHandler`
+* **Command Handlers:** `RegisterUserCommandHandler`, `SignInCommandHandler`, `RefreshTokenCommandHandler`, `SignOutCommandHandler`
+* **Event Handlers:** —
 
 #### 2.6.1.4. Infrastructure Layer
 
-* **Repository implementations:** `UserRepositoryImpl`, `RoleRepositoryImpl`
-* **Message Brokers:** publica `UserRegisteredEvent`
-* **Servicios externos:** `JwtTokenService` (generación de JWT/BearerToken), `HashingService` (BCrypt)
+* **Repository implementations:** `UserRepositoryImpl`, `RoleRepositoryImpl`, `SessionRepositoryImpl`
+* **Message Brokers:** publica `UserRegisteredEvent`, `UserAuthenticatedEvent`
+* **Servicios externos:** `JwtTokenService` (JWT/BearerToken), `HashingService` (BCrypt)
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -867,25 +873,34 @@ El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que co
 
 <img src="../docs/database/DataBase-IAM.png">
 
-### 2.6.2. Bounded Context: User Management
+### 2.6.2. Bounded Context: Fleet & Workforce Management
 
-* **Entities:** `Driver` (Conductor), `TransportCompany` (Empresa), `Passenger` (Pasajero), `QrCredential`
-* **Value Objects:** `LicenseNumber` (licencia de conducir), `Ruc`, `Dni`, `Address`, `ContactInfo`, `QrCode`, `Habilitation` (habilitación), `ValidationStatus` (VALIDATED / REJECTED / PENDING)
-* **Aggregates:** `DriverProfile` (aggregate root), `CompanyProfile`, `PassengerProfile`
-* **Factories:** `ProfileFactory`, `QrCredentialFactory`
-* **Domain Services:** `ProfileValidationService`, `OperatorHabilitationService`, `QrValidationService`
-* **Repository interfaces:** `DriverRepository`, `CompanyRepository`, `PassengerRepository`, `QrCredentialRepository`
+Administra la relación entre la empresa, sus conductores y su flota, asignando recursos a rutas y actuando como **Operations Central** en la respuesta a casos. Provee la asignación que necesita Trip & Location Tracking y recibe los casos notificados por Safety Case Management (relación *Conformist*).
+
+#### 2.6.2.1. Domain Layer
+
+* **Entities:** `Company` (Empresa), `Driver` (Conductor), `Vehicle` (Unidad), `Route` (Ruta), `CaseResponse`
+* **Value Objects:** `Ruc`, `LicenseNumber`, `PlateNumber`, `RouteCode`, `Shift` (turno), `ResponseStatus`
+* **Aggregates:** `Company` (aggregate root; agrupa `Driver`, `Vehicle` y `Route`), `ShiftAssignment` (aggregate root)
+* **Factories:** `ShiftAssignmentFactory`
+* **Domain Services:** `ShiftAssignmentService`, `CaseResponseService`
+* **Repository interfaces:** `CompanyRepository`, `DriverRepository`, `VehicleRepository`, `RouteRepository`, `ShiftAssignmentRepository`
 
 #### 2.6.2.2. Interface Layer
 
-* **Controllers:** `DriversController`, `CompaniesController`, `PassengersController`, `OperatorValidationController`
-* **Consumers:** `UserRegisteredConsumer` (crea el perfil cuando IAM registra un usuario)
+* **Controllers:** `CompaniesController`, `DriversController`, `VehiclesController`, `RoutesController`, `ShiftAssignmentsController`, `OperationsCentralController`
+* **Consumers:** `PanicAlertActivatedConsumer` (registra el caso notificado por Safety Case Management)
+
+#### 2.6.2.3. Application Layer
+
+* **Command Handlers:** `RegisterDriverCommandHandler`, `RegisterVehicleCommandHandler`, `AssignShiftCommandHandler`, `RespondToCaseCommandHandler`
+* **Event Handlers:** `PanicAlertActivatedEventHandler`
 
 #### 2.6.2.4. Infrastructure Layer
 
-* **Repository implementations:** `DriverRepositoryImpl`, `CompanyRepositoryImpl`, `PassengerRepositoryImpl`, `QrCredentialRepositoryImpl`
-* **Message Brokers:** consume `UserRegisteredEvent`; publica `DriverProfileCreatedEvent` y `OperatorValidatedEvent`
-* **Servicios externos:** validación de licencias/habilitación ante MTC/SUTRAN, `QrCodeGeneratorService` (ZXing)
+* **Repository implementations:** `CompanyRepositoryImpl`, `DriverRepositoryImpl`, `VehicleRepositoryImpl`, `RouteRepositoryImpl`, `ShiftAssignmentRepositoryImpl`
+* **Message Brokers:** publica `ShiftAssignedEvent` (hacia Trip); consume `PanicAlertActivatedEvent` (de Safety Case)
+* **Servicios externos:** validación de licencias/habilitación ante MTC/SUTRAN
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -901,32 +916,34 @@ El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que co
 
 <img src="../docs/database/DataBase-User.png">
 
-### 2.6.3. Bounded Context: Alert Management
+### 2.6.3. Bounded Context: Trip & Location Tracking
+
+Gestiona el ciclo de vida del viaje de una unidad: inicio, ubicación en tiempo real y cierre. Depende de Fleet & Workforce Management para la asignación (conductor, bus, ruta) y es *upstream* crítico de Safety Case Management y Passenger Journey & Occupancy.
 
 #### 2.6.3.1. Domain Layer
 
-* **Entities:** `EmergencyAlert`, `Incident`, `ResponseAction`
-* **Value Objects:** `GeoLocation` (latitud/longitud), `AlertType` (asalto, siniestro, extorsión), `AlertStatus` (ACTIVE / ATTENDED / CLOSED), `Severity`
-* **Aggregates:** `EmergencyAlert` (aggregate root; agrupa sus `ResponseAction`)
-* **Factories:** `AlertFactory`
-* **Domain Services:** `AlertDispatchService`, `EmergencyPriorityService`
-* **Repository interfaces:** `AlertRepository`, `IncidentRepository`
+* **Entities:** `Trip` (Viaje), `LocationReading` (lectura de ubicación)
+* **Value Objects:** `GeoLocation` (latitud/longitud), `TripStatus` (STARTED / IN_PROGRESS / CLOSED), `AssignmentRef` (conductor, bus, ruta), `Speed`, `ReadingTimestamp`
+* **Aggregates:** `Trip` (aggregate root; agrupa sus `LocationReading`)
+* **Factories:** `TripFactory`
+* **Domain Services:** `LocationIngestionService`, `TripLifecycleService`
+* **Repository interfaces:** `TripRepository`, `LocationRepository`
 
 #### 2.6.3.2. Interface Layer
 
-* **Controllers:** `PanicButtonController`, `EmergencyAlertsController`
-* **Consumers:** —
+* **Controllers:** `TripsController`, `LocationController`
+* **Consumers:** `ShiftAssignedConsumer` (de Fleet), `RiskZoneConfirmedConsumer` (de Risk Zone Intelligence)
 
 #### 2.6.3.3. Application Layer
 
-* **Command Handlers:** `TriggerPanicAlertCommandHandler`, `AttendAlertCommandHandler`, `CloseIncidentCommandHandler`
-* **Event Handlers:** `AlertTriggeredEventHandler`
+* **Command Handlers:** `StartTripCommandHandler`, `IngestLocationCommandHandler`, `CloseTripCommandHandler`
+* **Event Handlers:** `ShiftAssignedEventHandler`
 
 #### 2.6.3.4. Infrastructure Layer
 
-* **Repository implementations:** `AlertRepositoryImpl`, `IncidentRepositoryImpl`
-* **Message Brokers:** publica `EmergencyAlertTriggeredEvent` (hacia Monitoring)
-* **Servicios externos:** notificaciones push (Firebase Cloud Messaging), pasarela SMS, integración con central de emergencias / serenazgo
+* **Repository implementations:** `TripRepositoryImpl`, `LocationRepositoryImpl`
+* **Message Brokers:** consume `ShiftAssignedEvent`; publica `TripStartedEvent`, `TripLocationUpdatedEvent`, `TripClosedEvent`
+* **Servicios externos:** GPS del dispositivo móvil, servicio de mapas/geolocalización
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -941,3 +958,181 @@ El backend de SafeBus se organiza de momento en tres (3) Bounded Contexts que co
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
 <img src="../docs/database/DataBase-Alert.png">
+
+### 2.6.4. Bounded Context: Passenger Journey & Occupancy
+
+Vincula a un pasajero con un viaje verificado y le da visibilidad del aforo de la unidad. Depende de Trip & Location Tracking para confirmar el viaje activo y el conteo de pasajeros, y origina la alerta de pánico del pasajero hacia Safety Case Management.
+
+#### 2.6.4.1. Domain Layer
+
+* **Entities:** `PassengerJourney` (sesión de viaje del pasajero), `UnitVerification`, `OccupancySnapshot`
+* **Value Objects:** `QrCode`, `VerificationStatus` (VERIFIED / REJECTED), `PassengerCount`, `Capacity` (aforo máximo), `OccupancyLevel` (LOW / MEDIUM / FULL)
+* **Aggregates:** `PassengerJourney` (aggregate root)
+* **Factories:** `PassengerJourneyFactory`
+* **Domain Services:** `UnitVerificationService`, `OccupancyQueryService`
+* **Repository interfaces:** `PassengerJourneyRepository`, `OccupancyRepository`
+
+#### 2.6.4.2. Interface Layer
+
+* **Controllers:** `UnitVerificationController`, `OccupancyController`, `PassengerJourneysController`
+* **Consumers:** `TripStartedConsumer`, `TripClosedConsumer` (de Trip & Location Tracking)
+
+#### 2.6.4.3. Application Layer
+
+* **Command Handlers:** `VerifyUnitCommandHandler`, `StartPassengerJourneyCommandHandler`, `RequestPassengerPanicCommandHandler`
+* **Event Handlers:** `TripClosedEventHandler` (cierra las sesiones de pasajeros de la unidad)
+
+#### 2.6.4.4. Infrastructure Layer
+
+* **Repository implementations:** `PassengerJourneyRepositoryImpl`, `OccupancyRepositoryImpl`
+* **Message Brokers:** consume `TripStartedEvent` y `TripClosedEvent`; publica `UnitVerifiedEvent` y `PassengerPanicRequestedEvent` (hacia Safety Case)
+* **Servicios externos:** fuente externa de conteo de pasajeros integrada mediante contrato de eventos (sensor real o simulador, según el prototipo)
+
+#### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
+
+[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+
+#### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
+
+[Insertar diagrama de clases de la capa de dominio]
+
+##### 2.6.4.6.2. Bounded Context Database Design Diagram
+
+[Insertar diagrama de diseño de base de datos]
+
+---
+
+### 2.6.5. Bounded Context: Safety Case Management
+
+Context core del sistema: recibe, prioriza y gestiona el ciclo de vida completo de una alerta de pánico, desde su activación hasta su cierre. Depende de Trip & Location Tracking (ubicación) y Passenger Journey & Occupancy (contexto del viaje del pasajero); provee casos a Fleet & Workforce Management y dispara el escalamiento hacia External Escalation.
+
+#### 2.6.5.1. Domain Layer
+
+* **Entities:** `SafetyCase` (caso de seguridad), `Alert`, `CaseStatusHistory`
+* **Value Objects:** `AlertSource` (DRIVER / PASSENGER), `Priority`, `CaseStatus` (ACTIVE / ATTENDED / ESCALATED / CLOSED), `GeoLocation` (snapshot), `AlertType`
+* **Aggregates:** `SafetyCase` (aggregate root; agrupa `Alert` y `CaseStatusHistory`)
+* **Factories:** `SafetyCaseFactory`
+* **Domain Services:** `AlertActivationService`, `CasePrioritizationService`, `CaseStatusTrackingService`
+* **Repository interfaces:** `SafetyCaseRepository`, `AlertRepository`
+
+#### 2.6.5.2. Interface Layer
+
+* **Controllers:** `PanicButtonController`, `SafetyCasesController`
+* **Consumers:** `PassengerPanicRequestedConsumer` (de Passenger Journey), `CaseResolvedByAuthorityConsumer` (de External Escalation)
+
+#### 2.6.5.3. Application Layer
+
+* **Command Handlers:** `ActivateAlertCommandHandler`, `PrioritizeCaseCommandHandler`, `UpdateCaseStatusCommandHandler`, `EscalateCaseCommandHandler`
+* **Event Handlers:** `PassengerPanicRequestedEventHandler`, `CaseResolvedByAuthorityEventHandler`
+
+#### 2.6.5.4. Infrastructure Layer
+
+* **Repository implementations:** `SafetyCaseRepositoryImpl`, `AlertRepositoryImpl`
+* **Message Brokers:** consume `TripLocationUpdatedEvent` y `PassengerPanicRequestedEvent`; publica `PanicAlertActivatedEvent` (a Fleet) y `AlertEscalatedEvent` (a External Escalation)
+* **Servicios externos:** consulta de ubicación a Trip & Location Tracking con manejo propio de indisponibilidad (estados Stale / Unavailable) para no bloquearse ante fallas *upstream*
+
+#### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
+
+[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+
+#### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
+
+[Insertar diagrama de clases de la capa de dominio]
+
+##### 2.6.5.6.2. Bounded Context Database Design Diagram
+
+[Insertar diagrama de diseño de base de datos]
+
+---
+
+### 2.6.6. Bounded Context: External Escalation
+
+Deriva un caso hacia una autoridad externa (policía, aseguradora) cuando la gestión interna de la empresa no lo atiende a tiempo, y hace seguimiento hasta su cierre. Se integra con Safety Case Management mediante un **Anti-Corruption Layer** que traduce el modelo interno de caso al formato que espera la autoridad externa.
+
+#### 2.6.6.1. Domain Layer
+
+* **Entities:** `EscalationCase`, `AuthorityReport`
+* **Value Objects:** `AuthorityType` (POLICE / INSURER), `EscalationStatus` (TRIGGERED / REPORTED / RESOLVED), `ReportReference`
+* **Aggregates:** `EscalationCase` (aggregate root; agrupa sus `AuthorityReport`)
+* **Factories:** `EscalationCaseFactory`
+* **Domain Services:** `AuthorityReportingService`, `ResolutionConfirmationService`
+* **Repository interfaces:** `EscalationRepository`
+
+#### 2.6.6.2. Interface Layer
+
+* **Controllers:** `ExternalEscalationController`
+* **Consumers:** `AlertEscalatedConsumer` (de Safety Case Management, vía ACL)
+
+#### 2.6.6.3. Application Layer
+
+* **Command Handlers:** `TriggerEscalationCommandHandler`, `ReportToAuthorityCommandHandler`, `ConfirmResolutionCommandHandler`
+* **Event Handlers:** `AlertEscalatedEventHandler`
+
+#### 2.6.6.4. Infrastructure Layer
+
+* **Repository implementations:** `EscalationRepositoryImpl`
+* **Message Brokers:** consume `AlertEscalatedEvent`; publica `CaseResolvedByAuthorityEvent` (de vuelta a Safety Case)
+* **Servicios externos:** Anti-Corruption Layer hacia las APIs de la policía/aseguradora; notificaciones a la autoridad
+
+#### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
+
+[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+
+#### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
+
+[Insertar diagrama de clases de la capa de dominio]
+
+##### 2.6.6.6.2. Bounded Context Database Design Diagram
+
+[Insertar diagrama de diseño de base de datos]
+
+---
+
+### 2.6.7. Bounded Context: Risk Zone Intelligence
+
+Recolecta y valida reportes de zonas de riesgo hechos por conductores, para anticipar y prevenir el paso por rutas peligrosas. Publica la información de zonas de riesgo hacia Trip & Location Tracking mediante un **Published Language**, sin dependencia transaccional fuerte.
+
+#### 2.6.7.1. Domain Layer
+
+* **Entities:** `RiskReport` (reporte de zona), `RiskZone` (zona de riesgo)
+* **Value Objects:** `GeoArea` (área/polígono geográfico), `RiskLevel` (LOW / MEDIUM / HIGH), `CorroborationCount`, `ReportStatus` (PENDING / CONFIRMED)
+* **Aggregates:** `RiskZone` (aggregate root; agrupa los `RiskReport` que la corroboran)
+* **Factories:** `RiskReportFactory`
+* **Domain Services:** `ReportCorroborationService`, `PreventiveAlertingService`
+* **Repository interfaces:** `RiskReportRepository`, `RiskZoneRepository`
+
+#### 2.6.7.2. Interface Layer
+
+* **Controllers:** `RiskReportsController`, `RiskZonesController`
+* **Consumers:** —
+
+#### 2.6.7.3. Application Layer
+
+* **Command Handlers:** `SubmitRiskReportCommandHandler`, `CorroborateReportCommandHandler`
+* **Event Handlers:** `RiskReportSubmittedEventHandler`
+
+#### 2.6.7.4. Infrastructure Layer
+
+* **Repository implementations:** `RiskReportRepositoryImpl`, `RiskZoneRepositoryImpl`
+* **Message Brokers:** publica `RiskZoneConfirmedEvent` (Published Language, consumido por Trip & Location Tracking)
+* **Servicios externos:** servicio de mapas/geolocalización para el modelado de zonas
+
+#### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
+
+[Insertar diagrama C4 a nivel de componentes del Bounded Context]
+
+#### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
+
+[Insertar diagrama de clases de la capa de dominio]
+
+##### 2.6.7.6.2. Bounded Context Database Design Diagram
+
+[Insertar diagrama de diseño de base de datos]
