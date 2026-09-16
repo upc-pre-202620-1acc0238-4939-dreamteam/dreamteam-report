@@ -22,7 +22,7 @@
 
 ---
 
-# Informe de Trabajo Final
+# Informe de Avance 1
 
 **Nombre del equipo:** Dreamteam  
 
