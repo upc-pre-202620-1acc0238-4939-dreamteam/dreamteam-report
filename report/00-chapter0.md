@@ -33,7 +33,7 @@
 ## Integrantes
 
 * u2024XXXXX - Acuache Lucas, Mathias Joaquin
-* u2024XXXXX - Arechaga Saavedra, Mathias Augusto
+* u202320699 - Arechaga Saavedra, Mathias Augusto
 * u2024XXXXX - Delgado Arriola, Leonardo Sebastian
 * u202410344 - Espinoza Orrego, Valentino Andre
 * u202414928 - Fernández Linares, Alvaro Sebastian
@@ -115,8 +115,8 @@ profesional una vez finalizada la carrera.
 * **Objetivo SMART 2:** 
 
 ### 2. **Arechaga Saavedra, Mathias Augusto**
-* **Objetivo SMART 1:** 
-* **Objetivo SMART 2:** 
+* **Objetivo SMART 1:** Dominar un framework backend moderno (Spring Boot, Node.js o .NET) y uno frontend (Angular, React o Vue) en un plazo de 10 meses, evidenciado en un proyecto integrador.
+* **Objetivo SMART 2:** Aprender un framework de deep learning (TensorFlow o PyTorch) en un lapso de 12 meses, desarrollando y publicando 2 proyectos de redes neuronales en mi repositorio de GitHub.
 
 ### 3. **Delgado Arriola, Leonardo Sebastian**
 * **Objetivo SMART 1:** 
