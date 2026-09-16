@@ -21,58 +21,9 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 **Visión**: Convertirnos en la plataforma lider de seguridad y trazabilidad en el transporte público de Latinoamérica, reconocida por reducir incidentes viales, empoderar a la autoridades con información oportuna y devolver la confianza ciudadana en el sistema de movilidad urbana.
 
 ### 1.1.2. Perfiles de integrantes del equipo
+### 1.1.2. Perfiles de integrantes del equipo
 
-<table>
-  <tr>
-    <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
-    </td>
-    <td><b>Nombre:</b> Nombre Estudiante</td>
-  </tr>
-  <tr>
-    <td><b>Código:</b> Codigo estudiante</td>
-  </tr>
-  <tr>
-    <td>
-      <b>Descripción:</b><br/>
-     
-    </td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td rowspan="4" align="center" width="200">
-      <img src="Foto ESTUDIANTE" alt="Foto de Estudiante" width="180"/>
-    </td>
-    <td><b>Nombre:</b> Nombre Estudiante</td>
-  </tr>
-  <tr>
-    <td><b>Código:</b> Codigo Estudiante</td>
-  </tr>
-  <tr>
-    <td>
-      <b>Descripción:</b><br/>
-    </td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
-    </td>
-    <td><b>Nombre:</b> Nombre </td>
-  </tr>
-  <tr>
-    <td><b>Código:</b> Codigo Estudiante </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Descripción:</b><br/>
-    </td>
-  </tr>
-</table>
+### 1.1.2. Perfiles de integrantes del equipo
 
 <table>
   <tr>
@@ -97,10 +48,10 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
     <td rowspan="4" align="center" width="200">
       <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
     </td>
-    <td><b>Nombre:</b> Nombre </td>
+    <td><b>Nombre:</b> Mathias Augusto Arechaga Saavedra</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo Estudiante </td>
+    <td><b>Código:</b> Codigo Estudiante</td>
   </tr>
   <tr>
     <td>
@@ -114,10 +65,10 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
     <td rowspan="4" align="center" width="200">
       <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
     </td>
-    <td><b>Nombre:</b> Nombre </td>
+    <td><b>Nombre:</b> Leonardo Sebastian Delgado Arriola</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo Estudiante </td>
+    <td><b>Código:</b> Codigo Estudiante</td>
   </tr>
   <tr>
     <td>
@@ -125,6 +76,42 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
     </td>
   </tr>
 </table>
+
+<table>
+  <tr>
+    <td rowspan="4" align="center" width="200">
+      <img src="../assets/VaIentinoImage.png" alt="Foto de Valentino Espinoza" width="180"/>
+    </td>
+    <td><b>Nombre:</b> Valentino Andre Espinoza Orrego</td>
+  </tr>
+  <tr>
+    <td><b>Código:</b> u202410344</td>
+  </tr>
+  <tr>
+    <td>
+      <b>Descripción:</b><br/>
+      Soy Valentino Andre Espinoza Orrego, estudiante de la carrera de Ingeniería de Software en la UPC, enfocado en el desarrollo ágil y el aprendizaje tecnológico continuo. Cuento con una sólida base académica y técnica orientada a la resolución eficiente de problemas complejos mediante el diseño de software funcional. Poseo experiencia práctica gestionando repositorios de código con Git y GitHub, además de competencias en el análisis de requerimientos y modelado de arquitecturas limpias para soluciones digitales. Me destaco por mi capacidad para integrarme con éxito en células de desarrollo colaborativo, donde aporto de forma proactiva ideas innovadoras que aseguren entregables de alto impacto y calidad técnica.
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td rowspan="4" align="center" width="200">
+      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
+    </td>
+    <td><b>Nombre:</b> Alvaro Sebastian Fernandez Linares</td>
+  </tr>
+  <tr>
+    <td><b>Código:</b> u202414928</td>
+  </tr>
+  <tr>
+    <td>
+      <b>Descripción:</b><br/>
+    </td>
+  </tr>
+</table>
+
 
 ## 1.2. Solution Profile
 
