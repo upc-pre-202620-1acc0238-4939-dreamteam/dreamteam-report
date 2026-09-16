@@ -114,7 +114,31 @@ Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/
 | **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
 | **Resumen** | La entrevista presenta a Carlos Garcia, conductor de transporte público en Lima, quien describe una jornada extensa y desgastante que inicia a las 4:00 a. m. y termina entre las 9:00 y 10:00 p. m. Señala que los momentos de mayor riesgo son de madrugada y durante la noche, especialmente al atravesar “zonas rojas” y al quedar solos en los paraderos finales. Destaca que la extorsión y los cobros de cupos son frecuentes, mientras que actualmente cuentan con pocas herramientas de seguridad, sin cámaras, botón de pánico ni comunicación rápida con la empresa. Carlos considera fundamental el monitoreo GPS en tiempo real y una alerta discreta para emergencias. Además, muestra una actitud positiva hacia SafeBus, especialmente hacia la validación mediante QR para identificar al conductor autorizado. Finalmente, considera que el botón de emergencia sería la función más importante, acompañado del monitoreo de ubicación para facilitar una respuesta rápida ante situaciones de peligro. | 
 
-**Estado del registro:** se conserva la entrevista de Carlos Garcia documentada por el equipo. Los cambios de alcance de esta revisión proceden de la reunión de QA y no se atribuyen a esa entrevista.
+### Entrevista 2: Miguel Torres
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Miguel Torres |
+| **Imagen** | ![EntrevistaMigueI](../assets/MigueITorresInterview.png){width=80%} |
+| **Edad** | 42 |
+| **Ocupación** | Conductor de transporte público |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Resumen** | Miguel Torres, conductor de transporte público de 42 años con 10 años de experiencia, señala que los mayores riesgos ocurren cuando hay pocos pasajeros, especialmente de madrugada o noche, y en zonas con antecedentes de robos. Menciona que actualmente la comunicación ante problemas depende principalmente del celular y de otros conductores, sin un sistema especializado. Considera útil un monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si se garantiza la privacidad de sus datos y valora la validación mediante código QR. Finalmente, considera que la función más importante sería una alerta de emergencia que envíe automáticamente la ubicación del vehículo para facilitar una respuesta rápida.
+| 
+
+### Entrevista 3: Jorge Mendoza
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Jorge Mendoza |
+| **Imagen** | ![EntrevistaJorge](../assets/JorgeInterview.png){width=80%} |
+| **Edad** | 38 |
+| **Ocupación** | Conductor de transporte público |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Resumen** | Jorge Mendoza, conductor de transporte público de 38 años, señala que los mayores riesgos ocurren durante las primeras horas de la mañana y al anochecer, especialmente en zonas con pocos pasajeros y antecedentes de robos. Menciona que los conductores cuentan con pocas herramientas de seguridad y dependen principalmente del celular para comunicarse ante emergencias. Considera importante contar con un sistema de monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si su objetivo es mejorar la seguridad y se comunica claramente su funcionamiento. También considera útil la validación mediante código QR. Finalmente, identifica el botón de emergencia como la función más importante, especialmente si permite enviar automáticamente una alerta junto con la ubicación del vehículo.
+
+
+**Estado del registro:** entrevistas pendientes de documentar. No se atribuyen respuestas a personas ni se presentan resultados de validación en esta versión.
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -252,7 +276,15 @@ Para entender mejor a nuestros usuarios, usamos el Empathy Map, para ponernos en
 
 ### 2.3.5. Big Picture EventStorming
 
-[Capturas y explicación del proceso — guía: https://bit.ly/bpes-guide]
+<img src="../docs/bigPicture/Step 1.png">
+
+<img src="../docs/bigPicture/Step 2p1.png">
+
+<img src="../docs/bigPicture/Step 2p2.png">
+
+<img src="../docs/bigPicture/Step 3p1.png">
+
+<img src="../docs/bigPicture/Step 3p2.png">
 
 ### 2.3.6. Ubiquitous Language
 
@@ -595,24 +627,198 @@ El Product Backlog ordena las historias por valor para el servicio y utiliza Sto
 
 ## 2.5. Strategic-Level Domain-Driven Design
 
+En esta sección el equipo aplica Domain-Driven Design a nivel estratégico para
+descomponer el sistema SafeBus en Bounded Contexts con límites naturales. El
+proceso parte del Big Picture EventStorming elaborado en la sección 2.3.5,
+avanza hacia la identificación de contexts candidatos, modela la colaboración
+entre ellos mediante Domain Storytelling, profundiza cada context con su
+Bounded Context Canvas, y cierra con el Context Mapping que define las
+relaciones y patrones de integración entre todos los contexts identificados.
+
 ### 2.5.1. EventStorming
+
+El proceso de EventStorming de nivel general se desarrolló en la sección
+2.3.5 (Big Picture EventStorming), donde se identificaron los eventos de
+negocio para los flujos de generación y atención de alertas, gestión de
+flota, escalamiento externo, prevención por zonas de riesgo y verificación de
+pasajeros. A partir de ese modelo, el equipo avanzó hacia un análisis de
+mayor detalle para identificar los Bounded Contexts candidatos de la
+solución.
+
+<img src="../docs/bigPicture/Step 1.png">
+
+<img src="../docs/bigPicture/Step 2p1.png">
+
+<img src="../docs/bigPicture/Step 2p2.png">
+
+<img src="../docs/bigPicture/Step 3p1.png">
+
+<img src="../docs/bigPicture/Step 3p2.png">
 
 #### 2.5.1.1. Candidate Context Discovery
 
-[Proceso y capturas]
+Para identificar los Bounded Contexts candidatos, el equipo aplicó la técnica
+**look-for-pivotal-events** sobre el conjunto completo de eventos del Big
+Picture. Un evento pivotal es aquel en el que la responsabilidad del negocio
+cambia de actor o de subdominio; estos eventos se resaltaron en amarillo
+dentro de cada agrupación.
+
+Como resultado, se identificaron siete Bounded Contexts candidatos:
+
+| # | Bounded Context candidato | Evento pivotal |
+|---|---|---|
+| 1 | Identity & Access Management | — (soporte transversal) |
+| 2 | Fleet & Workforce Management | Conductor asignado a la empresa |
+| 3 | Trip & Location Tracking | Viaje iniciado |
+| 4 | Passenger Journey & Occupancy | Unidad verificada por pasajero |
+| 5 | Safety Case Management | Botón de alerta activado |
+| 6 | External Escalation | Alerta escalada |
+| 7 | Risk Zone Intelligence | Zona de riesgo confirmada por otros conductores |
+
+El evento "Alerta escalada" (Safety Case Management) es el punto de conexión
+más claro con "Incidente reportado a autoridades" (External Escalation): ahí
+el negocio deja de manejar el caso internamente y lo transfiere a un actor
+externo (policía o aseguradora), lo que justifica tratarlos como contexts
+independientes en lugar de fusionarlos.
+
+<img src="../docs/candidateContextDiscovery/candidate-context-discovery.png">
 
 #### 2.5.1.2. Domain Message Flows Modeling
 
-[Domain Storytelling]
+Para visualizar cómo colaboran los Bounded Contexts candidatos al resolver
+los casos de uso principales del negocio, el equipo aplicó la técnica de
+Domain Storytelling sobre cuatro historias representativas, seleccionadas
+por involucrar la interacción de más de un context.
+
+**Historia 1 — Conductor inicia un viaje:** el conductor inicia sesión en
+Identity & Access Management, que consulta a Fleet & Workforce Management si
+el conductor está activo y asignado; Fleet confirma la asignación (conductor,
+bus, ruta) y Trip & Location Tracking activa el viaje y comienza a recibir la
+ubicación.
+
+<img src="../docs/domainStorytelling/historia-1-conductor-inicia-viaje.jpg">
+
+**Historia 2 — Pasajero verifica la unidad y consulta aforo:** Passenger
+Journey & Occupancy consulta a Trip & Location Tracking si la unidad
+escaneada tiene un viaje activo; al confirmarse, crea la sesión de viaje del
+pasajero y consulta el aforo actual.
+
+<img src="../docs/domainStorytelling/historia-2-pasajero-verifica-unidad.jpg">
+
+**Historia 3 — Se activa una alerta de pánico:** el conductor o el pasajero
+activan el botón de pánico en Safety Case Management, que consulta la
+ubicación más reciente a Trip & Location Tracking y notifica el nuevo caso a
+Fleet & Workforce Management (Operations Central), quien registra la acción
+realizada.
+
+<img src="../docs/domainStorytelling/historia-3-alerta-panico.jpg">
+
+**Historia 4 — Una alerta no atendida se escala externamente:** Safety Case
+Management detecta el evento pivotal "Alerta escalada" y notifica a External
+Escalation, que reporta el incidente a la autoridad correspondiente y
+confirma el cierre del caso de vuelta a Safety Case Management.
+
+<img src="../docs/domainStorytelling/historia-4-alerta-escalada.jpg">
 
 #### 2.5.1.3. Bounded Context Canvases
 
-[Un Bounded Context Canvas por cada BC, en orden de importancia]
+El equipo elaboró el Bounded Context Canvas de cada context candidato,
+priorizando según su importancia para el negocio. Los cuatro contexts core
+del sistema (Safety Case Management, Trip & Location Tracking, Passenger
+Journey & Occupancy y Fleet & Workforce Management) se desarrollaron con el
+proceso iterativo completo (Context Overview Definition, Business Rules
+Distillation & Ubiquitous Language Capture, Capability Analysis, Capability
+Layering, Dependencies Capture y Design Critique). Los tres contexts
+restantes (External Escalation, Risk Zone Intelligence e Identity & Access
+Management) se desarrollaron con un nivel de detalle inicial (Context
+Overview Definition y Capability Analysis), a profundizar en la siguiente
+entrega.
+
+**Safety Case Management**
+
+Recibe, prioriza y gestiona el ciclo de vida completo de una alerta de
+pánico desde su activación hasta su cierre. Es el context core del sistema:
+concentra las capabilities de Alert Activation, Case Prioritization y Case
+Status Tracking. Depende de Trip & Location Tracking para la ubicación de la
+unidad y de Passenger Journey & Occupancy para el contexto del viaje cuando
+la alerta proviene de un pasajero; provee casos a Fleet & Workforce
+Management y dispara el escalamiento hacia External Escalation.
+
+<img src="../docs/boundedContextCanvas/safety-case-management.png">
+
+**Trip & Location Tracking**
+
+Gestiona el ciclo de vida del viaje de una unidad: inicio, ubicación en
+tiempo real y cierre. Sus capabilities core son Location Ingestion y Trip
+Lifecycle. Depende de Fleet & Workforce Management para la asignación
+(conductor, bus, ruta), y es upstream crítico tanto de Safety Case
+Management como de Passenger Journey & Occupancy.
+
+<img src="../docs/boundedContextCanvas/trip-location-tracking.png">
+
+**Passenger Journey & Occupancy**
+
+Vincula a un pasajero con un viaje verificado y le da visibilidad del aforo
+de la unidad. Sus capabilities core son Unit Verification y Occupancy Query.
+Depende de Trip & Location Tracking para confirmar el viaje activo y el
+conteo de pasajeros, y origina la alerta de pánico del pasajero hacia Safety
+Case Management.
+
+<img src="../docs/boundedContextCanvas/passenger-journey-occupancy.png">
+
+**Fleet & Workforce Management**
+
+Administra la relación entre la empresa, sus conductores y su flota,
+asignando recursos a rutas y supervisando el desempeño operativo. Sus
+capabilities core son Shift Assignment y Case Response (ejercida como
+Operations Central). Provee la asignación que necesita Trip & Location
+Tracking y recibe los casos notificados por Safety Case Management.
+
+<img src="../docs/boundedContextCanvas/fleet-workforce-management.png">
+
+**External Escalation** *(nivel de detalle inicial)*
+
+Deriva un caso hacia una autoridad externa (policía, aseguradora) cuando la
+gestión interna de la empresa no lo atiende a tiempo, y hace seguimiento
+hasta su cierre. Capabilities: Escalation Trigger, Authority Reporting y
+Resolution Confirmation.
+
+<img src="../docs/boundedContextCanvas/external-escalation.png">
+
+**Risk Zone Intelligence** *(nivel de detalle inicial)*
+
+Recolecta y valida reportes de zonas de riesgo hechos por conductores, para
+anticipar y prevenir el paso por rutas peligrosas. Capabilities: Risk Report
+Collection, Report Corroboration y Preventive Alerting.
+
+<img src="../docs/boundedContextCanvas/risk-zone-intelligence.png">
+
+**Identity & Access Management** *(nivel de detalle inicial)*
+
+Autentica a conductores y supervisores, y protege el acceso a las
+operaciones y datos según su rol y empresa. Capabilities: Authentication,
+Session Management y Access Control.
+
+<img src="../docs/boundedContextCanvas/identity-access-management.png">
 
 ### 2.5.2. Context Mapping
 
-[Context maps y patrones DDD aplicados: Anti-corruption Layer, Conformist,
-Customer/Supplier, Shared Kernel]
+A partir de las dependencias identificadas en cada Bounded Context Canvas, el
+equipo elaboró el Context Map de la solución, aplicando los patrones de
+relación entre Bounded Contexts establecidos en Domain-Driven Design.
+
+<img src="../docs/contextMapping/context-map.jpg">
+
+| Upstream | Downstream | Patrón | Justificación |
+|---|---|---|---|
+| Fleet & Workforce Management | Trip & Location Tracking | Customer/Supplier | Fleet provee la asignación (conductor, bus, ruta) que Trip necesita para iniciar el viaje. |
+| Trip & Location Tracking | Safety Case Management | Customer/Supplier | Safety Case consume la ubicación más reciente, con manejo propio de indisponibilidad (Stale/Unavailable) para no bloquearse ante una falla upstream. |
+| Trip & Location Tracking | Passenger Journey & Occupancy | Customer/Supplier | Passenger Journey depende de que Trip confirme el viaje activo antes de crear la sesión del pasajero. |
+| Passenger Journey & Occupancy | Safety Case Management | Customer/Supplier | La alerta del pasajero nace con el contexto de su sesión de viaje. |
+| Safety Case Management | Fleet & Workforce Management | Conformist | Fleet, como Operations Central, se adapta al modelo de caso definido por Safety Case Management sin negociar su estructura. |
+| Safety Case Management | External Escalation | Anti-Corruption Layer | External Escalation traduce el modelo interno de caso al formato que espera una autoridad externa, aislando el modelo propio de un sistema que el equipo no controla. |
+| Risk Zone Intelligence | Trip & Location Tracking | Published Language | Risk Zone publica información de zonas de riesgo de forma informativa, sin una dependencia transaccional fuerte. |
+| Identity & Access Management | Fleet & Workforce Management, Trip & Location Tracking, Safety Case Management, Passenger Journey & Occupancy | Shared Kernel | Todos los contexts comparten el mismo modelo de identidad y sesión, al ser infraestructura transversal y no lógica de negocio propia de cada context. |
 
 ### 2.5.3. Software Architecture
 
@@ -634,13 +840,15 @@ Customer/Supplier, Shared Kernel]
 
 El backend de SafeBus se organiza en tres (3) Bounded Contexts que concentran los componentes del dominio y distinguen autenticación, perfil/viaje y gestión de seguridad. Cada contexto expone su API REST y se comunica de forma asíncrona con los demás mediante eventos de dominio publicados en un Message Broker, lo que permite reaccionar en tiempo real a validaciones y alertas de emergencia .
 
-| # | Bounded Context | Carpeta | Responsabilidad principal |
+| # | Bounded Context | Capabilities core | Rol en el Context Map |
 | :--- | :--- | :--- | :--- |
 | 2.6.1 | **IAM** | `iam` | Registro, autenticación y autorización de todos los actores. |
 | 2.6.2 | **User Management** | `usermanagement` | Perfiles, DNI y foto de rostro del pasajero, validación de operadores y ciclo del viaje con cierre por ubicación. |
 | 2.6.3 | **Alert Management** | `alertmanagement` | Emergencia directa del conductor; solicitudes de pasajeros con evidencia, umbral, aprobación y atención de emergencias. |
 
-### 2.6.1. Bounded Context: IAM
+### 2.6.1. Bounded Context: Identity & Access Management
+
+Autentica a conductores y supervisores y protege el acceso a las operaciones y datos según el rol y la empresa. Al ser infraestructura transversal, se relaciona con los demás contextos como **Shared Kernel**.
 
 #### 2.6.1.1. Domain Layer
 
@@ -648,8 +856,8 @@ El backend de SafeBus se organiza en tres (3) Bounded Contexts que concentran lo
 * **Value Objects:** `EmailAddress`, `PasswordHash`, `PersonName`, `PhoneNumber`, `RoleType`, `PassengerLoginId` (identificador asociado al DNI, único y privado)
 * **Aggregates:** `User` (aggregate root; agrupa sus `Role` asignados)
 * **Factories:** `UserFactory`
-* **Domain Services:** `AuthenticationService`, `PasswordPolicyService`
-* **Repository interfaces:** `UserRepository`, `RoleRepository`
+* **Domain Services:** `AuthenticationService`, `AccessControlPolicy`
+* **Repository interfaces:** `UserRepository`, `RoleRepository`, `SessionRepository`
 
 #### 2.6.1.2. Interface Layer
 
@@ -669,19 +877,20 @@ El backend de SafeBus se organiza en tres (3) Bounded Contexts que concentran lo
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Component Diagram C4 por Container]
+<img src="../docs/c4/IAM.png">
+
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+<img src="../docs/class-diagrams-backend/IAM-Class-Diagrams.png">
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
-[Database Diagram — tablas, columnas, constraints, relaciones]
+<img src="../docs/database/IAM-DataBase.png">
 
-### 2.6.2. Bounded Context: User Management
+### 2.6.2. Bounded Context: Fleet & Workforce Management
 
 #### 2.6.2.1. Domain Layer
 
@@ -711,19 +920,21 @@ El backend de SafeBus se organiza en tres (3) Bounded Contexts que concentran lo
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Component Diagram C4 por Container]
+<img src="../docs/c4/fleet-workforce.png">
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+<img src="../docs/class-diagrams-backend/fleet-workforce-Class-Diagrams.png">
 
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
 
-[Database Diagram — tablas, columnas, constraints, relaciones]
+<img src="../docs/database/fleet-workforce-DB.png">
 
-### 2.6.3. Bounded Context: Alert Management
+### 2.6.3. Bounded Context: Trip & Location Tracking
+
+Gestiona el ciclo de vida del viaje de una unidad: inicio, ubicación en tiempo real y cierre. Depende de Fleet & Workforce Management para la asignación (conductor, bus, ruta) y es *upstream* crítico de Safety Case Management y Passenger Journey & Occupancy.
 
 #### 2.6.3.1. Domain Layer
 
@@ -753,14 +964,192 @@ El backend de SafeBus se organiza en tres (3) Bounded Contexts que concentran lo
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Component Diagram C4 por Container]
+<img src="../docs/c4/trip-location-tracking-c4.png">
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+<img src="../docs/class-diagrams-backend/trip-location-class-diagrams.png">
 
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
-[Database Diagram — tablas, columnas, constraints, relaciones]
+<img src="../docs/database/trip-location-db.png">
+
+### 2.6.4. Bounded Context: Passenger Journey & Occupancy
+
+Vincula a un pasajero con un viaje verificado y le da visibilidad del aforo de la unidad. Depende de Trip & Location Tracking para confirmar el viaje activo y el conteo de pasajeros, y origina la alerta de pánico del pasajero hacia Safety Case Management.
+
+#### 2.6.4.1. Domain Layer
+
+* **Entities:** `PassengerJourney` (sesión de viaje del pasajero), `UnitVerification`, `OccupancySnapshot`
+* **Value Objects:** `QrCode`, `VerificationStatus` (VERIFIED / REJECTED), `PassengerCount`, `Capacity` (aforo máximo), `OccupancyLevel` (LOW / MEDIUM / FULL)
+* **Aggregates:** `PassengerJourney` (aggregate root)
+* **Factories:** `PassengerJourneyFactory`
+* **Domain Services:** `UnitVerificationService`, `OccupancyQueryService`
+* **Repository interfaces:** `PassengerJourneyRepository`, `OccupancyRepository`
+
+#### 2.6.4.2. Interface Layer
+
+* **Controllers:** `UnitVerificationController`, `OccupancyController`, `PassengerJourneysController`
+* **Consumers:** `TripStartedConsumer`, `TripClosedConsumer` (de Trip & Location Tracking)
+
+#### 2.6.4.3. Application Layer
+
+* **Command Handlers:** `VerifyUnitCommandHandler`, `StartPassengerJourneyCommandHandler`, `RequestPassengerPanicCommandHandler`
+* **Event Handlers:** `TripClosedEventHandler` (cierra las sesiones de pasajeros de la unidad)
+
+#### 2.6.4.4. Infrastructure Layer
+
+* **Repository implementations:** `PassengerJourneyRepositoryImpl`, `OccupancyRepositoryImpl`
+* **Message Brokers:** consume `TripStartedEvent` y `TripClosedEvent`; publica `UnitVerifiedEvent` y `PassengerPanicRequestedEvent` (hacia Safety Case)
+* **Servicios externos:** fuente externa de conteo de pasajeros integrada mediante contrato de eventos (sensor real o simulador, según el prototipo)
+
+#### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
+
+<img src="../docs/c4/passenger-journey-occupan-c4.png">
+
+#### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
+
+<img src="../docs/class-diagrams-backend/passenger-classdiagram.png">
+
+##### 2.6.4.6.2. Bounded Context Database Design Diagram
+
+<img src="../docs/database/passenger-db.png">
+
+---
+
+### 2.6.5. Bounded Context: Safety Case Management
+
+Context core del sistema: recibe, prioriza y gestiona el ciclo de vida completo de una alerta de pánico, desde su activación hasta su cierre. Depende de Trip & Location Tracking (ubicación) y Passenger Journey & Occupancy (contexto del viaje del pasajero); provee casos a Fleet & Workforce Management y dispara el escalamiento hacia External Escalation.
+
+#### 2.6.5.1. Domain Layer
+
+* **Entities:** `SafetyCase` (caso de seguridad), `Alert`, `CaseStatusHistory`
+* **Value Objects:** `AlertSource` (DRIVER / PASSENGER), `Priority`, `CaseStatus` (ACTIVE / ATTENDED / ESCALATED / CLOSED), `GeoLocation` (snapshot), `AlertType`
+* **Aggregates:** `SafetyCase` (aggregate root; agrupa `Alert` y `CaseStatusHistory`)
+* **Factories:** `SafetyCaseFactory`
+* **Domain Services:** `AlertActivationService`, `CasePrioritizationService`, `CaseStatusTrackingService`
+* **Repository interfaces:** `SafetyCaseRepository`, `AlertRepository`
+
+#### 2.6.5.2. Interface Layer
+
+* **Controllers:** `PanicButtonController`, `SafetyCasesController`
+* **Consumers:** `PassengerPanicRequestedConsumer` (de Passenger Journey), `CaseResolvedByAuthorityConsumer` (de External Escalation)
+
+#### 2.6.5.3. Application Layer
+
+* **Command Handlers:** `ActivateAlertCommandHandler`, `PrioritizeCaseCommandHandler`, `UpdateCaseStatusCommandHandler`, `EscalateCaseCommandHandler`
+* **Event Handlers:** `PassengerPanicRequestedEventHandler`, `CaseResolvedByAuthorityEventHandler`
+
+#### 2.6.5.4. Infrastructure Layer
+
+* **Repository implementations:** `SafetyCaseRepositoryImpl`, `AlertRepositoryImpl`
+* **Message Brokers:** consume `TripLocationUpdatedEvent` y `PassengerPanicRequestedEvent`; publica `PanicAlertActivatedEvent` (a Fleet) y `AlertEscalatedEvent` (a External Escalation)
+* **Servicios externos:** consulta de ubicación a Trip & Location Tracking con manejo propio de indisponibilidad (estados Stale / Unavailable) para no bloquearse ante fallas *upstream*
+
+#### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
+
+<img src="../docs/c4/safety-case-c4.png">
+
+#### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
+
+<img src="../docs/class-diagrams-backend/safety-case-classdiagram.png">
+
+##### 2.6.5.6.2. Bounded Context Database Design Diagram
+
+<img src="../docs/database/safety-db.png">
+
+---
+
+### 2.6.6. Bounded Context: External Escalation
+
+Deriva un caso hacia una autoridad externa (policía, aseguradora) cuando la gestión interna de la empresa no lo atiende a tiempo, y hace seguimiento hasta su cierre. Se integra con Safety Case Management mediante un **Anti-Corruption Layer** que traduce el modelo interno de caso al formato que espera la autoridad externa.
+
+#### 2.6.6.1. Domain Layer
+
+* **Entities:** `EscalationCase`, `AuthorityReport`
+* **Value Objects:** `AuthorityType` (POLICE / INSURER), `EscalationStatus` (TRIGGERED / REPORTED / RESOLVED), `ReportReference`
+* **Aggregates:** `EscalationCase` (aggregate root; agrupa sus `AuthorityReport`)
+* **Factories:** `EscalationCaseFactory`
+* **Domain Services:** `AuthorityReportingService`, `ResolutionConfirmationService`
+* **Repository interfaces:** `EscalationRepository`
+
+#### 2.6.6.2. Interface Layer
+
+* **Controllers:** `ExternalEscalationController`
+* **Consumers:** `AlertEscalatedConsumer` (de Safety Case Management, vía ACL)
+
+#### 2.6.6.3. Application Layer
+
+* **Command Handlers:** `TriggerEscalationCommandHandler`, `ReportToAuthorityCommandHandler`, `ConfirmResolutionCommandHandler`
+* **Event Handlers:** `AlertEscalatedEventHandler`
+
+#### 2.6.6.4. Infrastructure Layer
+
+* **Repository implementations:** `EscalationRepositoryImpl`
+* **Message Brokers:** consume `AlertEscalatedEvent`; publica `CaseResolvedByAuthorityEvent` (de vuelta a Safety Case)
+* **Servicios externos:** Anti-Corruption Layer hacia las APIs de la policía/aseguradora; notificaciones a la autoridad
+
+#### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
+
+<img src="../docs/c4/external-escalatio-c4.png">
+
+#### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
+
+<img src="../docs/class-diagrams-backend/external-escalation-classdiagram.png">
+
+##### 2.6.6.6.2. Bounded Context Database Design Diagram
+
+<img src="../docs/database/external-escalation-db.png">
+
+---
+
+### 2.6.7. Bounded Context: Risk Zone Intelligence
+
+Recolecta y valida reportes de zonas de riesgo hechos por conductores, para anticipar y prevenir el paso por rutas peligrosas. Publica la información de zonas de riesgo hacia Trip & Location Tracking mediante un **Published Language**, sin dependencia transaccional fuerte.
+
+#### 2.6.7.1. Domain Layer
+
+* **Entities:** `RiskReport` (reporte de zona), `RiskZone` (zona de riesgo)
+* **Value Objects:** `GeoArea` (área/polígono geográfico), `RiskLevel` (LOW / MEDIUM / HIGH), `CorroborationCount`, `ReportStatus` (PENDING / CONFIRMED)
+* **Aggregates:** `RiskZone` (aggregate root; agrupa los `RiskReport` que la corroboran)
+* **Factories:** `RiskReportFactory`
+* **Domain Services:** `ReportCorroborationService`, `PreventiveAlertingService`
+* **Repository interfaces:** `RiskReportRepository`, `RiskZoneRepository`
+
+#### 2.6.7.2. Interface Layer
+
+* **Controllers:** `RiskReportsController`, `RiskZonesController`
+* **Consumers:** —
+
+#### 2.6.7.3. Application Layer
+
+* **Command Handlers:** `SubmitRiskReportCommandHandler`, `CorroborateReportCommandHandler`
+* **Event Handlers:** `RiskReportSubmittedEventHandler`
+
+#### 2.6.7.4. Infrastructure Layer
+
+* **Repository implementations:** `RiskReportRepositoryImpl`, `RiskZoneRepositoryImpl`
+* **Message Brokers:** publica `RiskZoneConfirmedEvent` (Published Language, consumido por Trip & Location Tracking)
+* **Servicios externos:** servicio de mapas/geolocalización para el modelado de zonas
+
+#### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
+
+<img src="../docs/c4/risk-zone-c4.png">
+
+#### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
+
+<img src="../docs/class-diagrams-backend/risk-zone-classdiagram.png">
+
+##### 2.6.7.6.2. Bounded Context Database Design Diagram
+
+<img src="../docs/database/risk-zone-db.png">
