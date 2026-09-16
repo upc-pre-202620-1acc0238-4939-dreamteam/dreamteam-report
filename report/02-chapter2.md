@@ -822,17 +822,99 @@ relación entre Bounded Contexts establecidos en Domain-Driven Design.
 
 ### 2.5.3. Software Architecture
 
+La arquitectura de SafeBus describe cómo se organizan las aplicaciones móviles, los servicios y los datos que permiten identificar un viaje, registrar incidentes y coordinar su atención. Se utiliza C4 Model con Structurizr para presentar cuatro perspectivas complementarias: contexto, contenedores, componentes y despliegue. Las vistas representan una propuesta de diseño para las 24 historias de la sección 2.4; no constituyen evidencia de infraestructura ya implementada.
+
+El diseño conserva un backend modular compartido por las aplicaciones nativa y multiplataforma. Las responsabilidades de negocio se separan dentro de ese backend, con una base de datos operativa, almacenamiento privado de imágenes y un mecanismo de eventos de integración. De esta forma, las dos aplicaciones aplican las mismas condiciones para registro, aprobación de emergencias y finalización del viaje.
+
+La selección móvil se fundamenta en el sílabo: la Unidad 2 desarrolla Android con Kotlin y su bibliografía incluye Jetpack Compose; la Unidad 3 desarrolla Flutter, Dart y almacenamiento local con SQFLite y Drift. Se propone Kotlin con Jetpack Compose para Android y Flutter con Dart y Drift para la versión multiplataforma. Para los servicios se propone Java con Spring Boot, alternativa permitida por el enunciado, junto con PostgreSQL, RabbitMQ y un volumen privado de archivos. Estas últimas elecciones concretan el diseño y no se presentan como tecnologías obligatorias del sílabo. Firebase forma parte del temario, pero su mención no obliga a sustituir la API REST ni a incorporar otro servicio al flujo de emergencias.
+
+El límite funcional corresponde a las historias US01–US24. La atención y aprobación pertenecen a la empresa de transporte; External Escalation y Risk Zone Intelligence, identificados como candidatos en el análisis estratégico, quedan fuera de este despliegue inicial. La arquitectura utiliza las responsabilidades de Identity & Access Management, Fleet & Workforce Management, Trip & Location Tracking, Passenger Journey & Occupancy y Safety Case Management para cubrir el alcance vigente.
+
+Las cuatro vistas se generan desde un único [modelo Structurizr DSL](../docs/c4/software-architecture/workspace.dsl), que mantiene los mismos elementos y relaciones entre niveles.
+
 #### 2.5.3.1. Software Architecture Context Level Diagrams
 
-[Diagrama de contexto — C4 Model, herramienta Structurizr]
+**Introducción**
+
+La vista de contexto presenta SafeBus como un sistema completo y delimita sus relaciones con las personas y la fuente externa de conteo. Su propósito es explicar quién utiliza la solución y qué información intercambia, antes de describir las aplicaciones y servicios internos.
+
+![SafeBus: diagrama de contexto](../docs/c4/software-architecture/context.svg)
+
+**Explicación**
+
+El conductor valida su turno, comparte la ubicación del bus y activa una emergencia directa de prioridad Critical. El pasajero registra su cuenta con DNI y foto del rostro, verifica el QR de la unidad, consulta alertas y envía solicitudes de pánico con mensaje y foto del incidente. El representante de empresa conoce el servicio y solicita información mediante la landing; cuando actúa como supervisor autorizado, consulta la flota y registra las decisiones de atención.
+
+La solicitud de un pasajero no activa por sí sola una emergencia. Tres pasajeros distintos del mismo bus y turno, dentro de una ventana de cinco minutos, habilitan la revisión empresarial. La aprobación activa una emergencia High. El conductor mantiene prioridad y no depende de ese umbral ni de una aprobación previa.
+
+El único sistema externo de esta vista es la fuente de conteo de pasajeros, que entrega entradas, salidas y señales de vigencia para calcular el aforo que consulta la empresa. Puede consistir en un adaptador de sensores o en un simulador identificado durante el prototipo. El GPS y la cámara son recursos de los teléfonos utilizados por las aplicaciones; no se presentan como plataformas externas de negocio. La empresa coordina la atención a través de SafeBus, sin una integración automática con autoridades en este alcance.
 
 #### 2.5.3.2. Software Architecture Container Level Diagrams
 
-[Diagrama de contenedores]
+**Introducción**
 
-#### 2.5.3.3. Software Architecture Deployment Diagrams
+La vista de contenedores descompone SafeBus en sus aplicaciones, servicio de backend y almacenes de información. Cada contenedor representa una unidad de ejecución o almacenamiento del modelo C4. El diagrama muestra su responsabilidad, la tecnología propuesta y la comunicación necesaria para completar los recorridos de los tres roles.
 
-[Diagrama de despliegue]
+![SafeBus: diagrama de contenedores](../docs/c4/software-architecture/containers.svg)
+
+**Explicación**
+
+La solución contiene siete contenedores:
+
+| Contenedor | Tecnología propuesta | Responsabilidad |
+|---|---|---|
+| Landing Page | HTML5, CSS3 y JavaScript | Explicar el servicio y enviar solicitudes de contacto de empresas a la API. |
+| Native Android App | Kotlin, Jetpack Compose y SQLite | Ofrecer los recorridos por rol, utilizar GPS y cámara, y conservar datos pendientes cuando falta conexión. |
+| Cross-Platform App | Flutter, Dart y Drift sobre SQLite | Implementar los mismos recorridos y contratos de servicio para la estrategia multiplataforma. |
+| SafeBus API | Java y Spring Boot; REST y WebSocket | Aplicar las condiciones de acceso, asignación, viaje, aforo, solicitud, aprobación y atención. |
+| Operational Database | PostgreSQL | Conservar cuentas, asignaciones, viajes, posiciones del bus, conteos, solicitudes, decisiones y contactos. |
+| Private Image Store | Sistema de archivos en un volumen persistente privado | Guardar por separado las fotos del registro y las fotos de evidencia, con acceso a través de operaciones autorizadas de la API. |
+| Integration Message Broker | RabbitMQ | Transportar eventos de integración entre módulos del backend. |
+
+Las aplicaciones móviles consumen la API mediante HTTPS: utilizan JSON para operaciones y consultas, y cargas multipart para las imágenes. Los supervisores conectados reciben actualizaciones mediante WebSocket seguro (WSS). La fuente de conteo envía eventos ordenados y heartbeats por JSON/HTTPS. La landing consulta contenido estático y utiliza la API únicamente para registrar el contacto comercial; no accede a los datos operativos de la empresa.
+
+La API accede a PostgreSQL mediante JDBC, al volumen privado mediante operaciones del sistema de archivos y a RabbitMQ mediante AMQP. Los clientes no acceden directamente a esos almacenes. La base local de cada aplicación pertenece al contenedor móvil y permite conservar identificadores de viaje y envíos pendientes; su contenido sensible se protege con almacenamiento privado y mecanismos de claves de la plataforma.
+
+El teléfono del pasajero compara localmente su posición con la última ubicación autorizada del bus. Si la distancia supera 100 metros durante al menos 60 segundos y las muestras cumplen las condiciones de vigencia y precisión de US24, termina el viaje y comunica su finalización. El backend conserva el resumen del cierre, sin recibir un historial continuo de posiciones del pasajero. Kotlin y Flutter son implementaciones alternativas para el usuario y comparten estas mismas condiciones.
+
+#### 2.5.3.3. Software Architecture Components Level Diagrams
+
+**Introducción**
+
+La vista de componentes muestra la organización interna de SafeBus API. El límite del contenedor agrupa los módulos que colaboran para atender las solicitudes de los clientes. Se distinguen cinco componentes de negocio y dos componentes de soporte, todos dentro de un único backend desplegable.
+
+![SafeBus: componentes de la API](../docs/c4/software-architecture/components.svg)
+
+**Explicación**
+
+Identity & Access Management administra cuentas, autenticación y autorización por rol, empresa y titularidad. Fleet & Workforce Management administra empresas, conductores, buses, capacidades y asignaciones. Trip & Location Tracking valida la asignación al abrir el turno y conserva la ubicación del bus con su hora de captura y precisión.
+
+Passenger Journey & Occupancy completa el perfil del pasajero con DNI y foto del rostro, verifica el viaje mediante QR y registra su finalización. También procesa las entradas y salidas de la fuente de conteo y entrega el aforo únicamente al supervisor autorizado. Para cumplir estas responsabilidades consulta el turno activo en Trip & Location Tracking y la capacidad registrada en Fleet & Workforce Management.
+
+Safety Case Management conserva la evidencia y diferencia la activación directa del conductor de la agrupación de solicitudes de pasajeros. Este módulo verifica el viaje asociado, cuenta como máximo una contribución por cuenta dentro de la ventana y habilita la decisión empresarial al alcanzar tres participantes. La aprobación crea una sola emergencia y las repeticiones de una solicitud o decisión conservan el mismo resultado. El cierre del viaje mantiene la evidencia y las revisiones pendientes. La consulta compartida del bus entrega resúmenes; la consulta de solicitudes propias aplica la autorización del titular.
+
+Company Contact Intake valida y registra los contactos de la landing. Integration Events & Live Updates coordina la publicación y recepción de eventos y la entrega de actualizaciones WSS a la empresa correspondiente. Son componentes de soporte y no nuevos Bounded Contexts. La vista utiliza el cliente Android como representante de las interfaces móviles; Flutter consume los mismos contratos definidos en la vista de contenedores.
+
+Las consultas que requieren una respuesta inmediata se realizan mediante interfaces internas del backend. Los cambios de ciclo de vida se distribuyen mediante eventos de integración, como cierre de turno, cierre de viaje, grupo listo para revisión y emergencia activada. El backend registra los eventos pendientes junto con el cambio de negocio antes de publicarlos y utiliza identificadores para procesar reintentos sin duplicar efectos. La emergencia directa se registra antes de notificarla: una demora del broker no convierte su activación en una aprobación pendiente. Los clientes pueden recuperar el estado persistido mediante REST al reconectarse.
+
+La base de datos se comparte físicamente, pero cada módulo conserva la responsabilidad de escritura sobre sus datos. La colaboración entre módulos utiliza sus interfaces o eventos. Las imágenes permanecen en el volumen privado y se entregan a través de la API después de comprobar el permiso correspondiente.
+
+#### 2.5.3.4. Software Architecture Deployment Diagrams
+
+**Introducción**
+
+La vista de despliegue presenta un entorno piloto propuesto y ubica los contenedores en dispositivos y servicios de ejecución. Permite distinguir qué funciona en los teléfonos, qué se ejecuta en el servidor y dónde se conservan los datos persistentes.
+
+![SafeBus: despliegue propuesto para el piloto](../docs/c4/software-architecture/deployment.svg)
+
+**Explicación**
+
+Los teléfonos de conductor, pasajero y supervisor ejecutan una de las aplicaciones móviles. El navegador del representante ejecuta el JavaScript de la landing descargada desde el servidor web. El adaptador de conteo funciona en el dispositivo asociado al bus; durante las pruebas puede sustituirse por un simulador en una estación de trabajo identificada.
+
+El piloto se aloja en un servidor Linux con una entrada HTTPS y alojamiento estático mediante Nginx. Esta entrada sirve la landing y encamina las solicitudes de API y las conexiones WebSocket hacia un proceso Java con Spring Boot. PostgreSQL, RabbitMQ y el volumen persistente de imágenes pertenecen al entorno privado del servidor. El directorio de fotos no se publica como contenido estático.
+
+Las conexiones lógicas de los clientes con la API atraviesan la entrada HTTPS; el tramo interno hacia el proceso Java utiliza loopback. Los servicios de datos y mensajería no se exponen como puntos de acceso de los usuarios. El diagrama representa un único host para el piloto y no presupone alta disponibilidad ni un proveedor de nube contratado. Los datos operativos y las fotos se conservan en almacenamiento persistente independiente del reinicio de la API.
+
+Ante una pérdida de conectividad, la aplicación mantiene los envíos pendientes y señala su estado. El servidor aplica las condiciones temporales de las solicitudes de pasajeros al recibirlas y conserva los registros anteriores al cierre del viaje. Este despliegue permite evaluar la solución compartiendo infraestructura entre las dos implementaciones móviles.
 
 ---
 
