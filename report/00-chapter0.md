@@ -108,7 +108,24 @@ Student Outcome 7.
 Cada integrante formula al menos dos objetivos SMART orientados a su desarrollo
 profesional una vez finalizada la carrera.
 
-### [Apellidos, Nombres]
+## Objetivos SMART de Desarrollo Profesional
 
-1. [Objetivo SMART 1]
-2. [Objetivo SMART 2]
+### 1. **Acuache Lucas, Mathias Joaquin**
+* **Objetivo SMART 1:** 
+* **Objetivo SMART 2:** 
+
+### 2. **Arechaga Saavedra, Mathias Augusto**
+* **Objetivo SMART 1:** 
+* **Objetivo SMART 2:** 
+
+### 3. **Delgado Arriola, Leonardo Sebastian**
+* **Objetivo SMART 1:** 
+* **Objetivo SMART 2:** 
+
+### 4. **Espinoza Orrego, Valentino Andre**
+* **Objetivo SMART 1:** Integrar de forma avanzada herramientas de Inteligencia Artificial Generativa y codificación asistida (Agentic Coding) en entornos de desarrollo móvil para agilizar los ciclos de vida del software, completando dos cursos especializados en Google Cloud dentro de los primeros 6 meses como graduado.
+* **Objetivo SMART 2:** Desarrollar y lanzar un MVP (Producto Mínimo Viable) móvil multiplataforma que resuelva una problemática de logística empresarial en un lapso de 12 meses tras recibir el título profesional, aplicando marcos de trabajo ágiles aprendidos en la carrera.
+
+### 5. **Fernández Linares, Alvaro Sebastian**
+* **Objetivo SMART 1:** 
+* **Objetivo SMART 2:** 
