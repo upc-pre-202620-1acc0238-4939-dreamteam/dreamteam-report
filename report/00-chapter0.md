@@ -58,7 +58,7 @@
 
 ## Project Report Collaboration Insights
 
-> URL del repositorio: `https://github.com/<org>/<repo>`
+> URL del repositorio: `https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/dreamteam-report`
 
 ### AV1
 
