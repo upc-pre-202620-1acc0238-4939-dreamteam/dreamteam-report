@@ -28,7 +28,7 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Mathias Acuache" width="180"/>
+      <img src="../assets/mathias.png" alt="Foto de Mathias Acuache" width="180"/>
     </td>
     <td><b>Nombre:</b> Mathias Joaquin Acuache Lucas</td>
   </tr>
