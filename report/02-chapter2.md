@@ -1136,6 +1136,8 @@ El siguiente diagrama presenta la arquitectura a nivel de componentes del Bounde
 
 La **Interface Layer** expone los `IAM REST Controllers`, que delegan en el `IAM Application Service`. La lógica del dominio se concentra en el aggregate `User` y en `AccessControlPolicy`. La **Infrastructure Layer** integra el `User Repository Adapter`, el `JWT Provider` y el `Event Publisher`, persistiendo en la `IAM Database`.
 
+![IAMC4](../docs/c4/IAM-c4.png)
+
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
@@ -1143,11 +1145,13 @@ La **Interface Layer** expone los `IAM REST Controllers`, que delegan en el `IAM
 El siguiente diagrama UML presenta los elementos principales de la Domain Layer de **IAM**, organizados alrededor de los Aggregate Roots `User` y `Session`.
 
 
+![IAMClassDiagrams](../docs/class-diagrams-backend/IAM-diagrama-clases.png)
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
 El siguiente diagrama representa el diseño de persistencia del Bounded Context **IAM**, con las tablas de usuarios, roles y sesiones.
 
+![IAMClassDB](../docs/database/IAM-db.png)
 
 
 ---
@@ -1362,15 +1366,17 @@ Publica `ShiftAssignedEvent` hacia Trip & Location Tracking y consume `PanicAler
 
 El siguiente diagrama presenta la arquitectura a nivel de componentes del Bounded Context **Fleet & Workforce Management**.
 
-
+![FleetWorkForceC4](../docs/c4/fleetwork-c4.png)
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
 
+![FleetworkC4](../docs/class-diagrams-backend/fleetwork-diagramaclase.png)
 
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
 
+![FleetWorkDB](../docs/database/fleetwork-db.png)
 
 ---
 
@@ -1517,17 +1523,19 @@ Consume `ShiftAssignedEvent` y publica `TripStartedEvent`, `TripLocationUpdatedE
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
+![TripLocationC4](../docs/c4/triplocation-c4.png)
 
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
 
+![TripLocationClassDiagrams](../docs/class-diagrams-backend/triplocation-diagramaclase.png)
 
 
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
-
+![TripLocationDB](../docs/database/triplocation-db.png)
 
 ---
 
@@ -1699,17 +1707,18 @@ Consume `TripStartedEvent` y `TripClosedEvent`; publica `UnitVerifiedEvent` y `P
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 
+![PassengerC4](../docs/c4/passenger-c4.png)
 
 
 #### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
 
-
+![PassengerClassDiagrams](../docs/class-diagrams-backend/passenger-diagramaclase.png)
 
 ##### 2.6.4.6.2. Bounded Context Database Design Diagram
 
-
+![PassengerDB](../docs/database/passenger-db.png)
 
 ---
 
@@ -1865,16 +1874,18 @@ Consume `TripLocationUpdatedEvent` y `PassengerPanicRequestedEvent`; publica `Pa
 
 #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
 
+![SafetyC4](../docs/c4/safety-c4.png)
 
 
 #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
 
+![SafetyClassDiagrams](../docs/class-diagrams-backend/Safety-diagramaclase.png)
 
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
 
-
+![SafetyDB](../docs/database/Safety-db.png)
 
 ---
 
@@ -1994,14 +2005,18 @@ Consume `AlertEscalatedEvent`; publica `CaseResolvedByAuthorityEvent` de vuelta 
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
+![ExternalC4](../docs/c4/external-c4.png)
+
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
 
+![ExternalClassDiagrams](../docs/class-diagrams-backend/External-diagramaclase.png)
 
 ##### 2.6.6.6.2. Bounded Context Database Design Diagram
 
+![ExternalDB](../docs/database/External-db.png)
 
 ---
 
@@ -2134,11 +2149,15 @@ Publica `RiskZoneConfirmedEvent` (Published Language, consumido por Trip & Locat
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 
+![RiskZoneC4](../docs/c4/riskzone-c4.png)
+
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
 
+![RiskZoneClassDiagrams](../docs/class-diagrams-backend/Risk-diagramaclase.png)
 
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
 
+![RiskZoneDB](../docs/database/Risk-db.png)
