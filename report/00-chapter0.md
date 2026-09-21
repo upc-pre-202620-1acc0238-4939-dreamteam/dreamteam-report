@@ -128,5 +128,6 @@ profesional una vez finalizada la carrera.
 * **Objetivo SMART 2:** Desarrollar y lanzar un MVP (Producto Mínimo Viable) móvil multiplataforma que resuelva una problemática de logística empresarial en un lapso de 12 meses tras recibir el título profesional, aplicando marcos de trabajo ágiles aprendidos en la carrera.
 
 ### 5. **Fernández Linares, Alvaro Sebastian**
-* **Objetivo SMART 1:** 
-* **Objetivo SMART 2:** 
+* **Objetivo SMART 1:** Consolidar mi transición hacia Data Science e Inteligencia Artificial completando el curso GCI 2026 de la Universidad de Tokio sobre Data Science e IA durante este año, y aplicando lo aprendido en un proyecto propio de análisis de datos con Python (pandas, scikit-learn) dentro de los 6 meses posteriores a la graduación.
+
+* **Objetivo SMART 2:** Integrar mi base en arquitectura de software (DDD, hexagonal, CQRS) con la implementación práctica de IA, desarrollando y desplegando en un plazo de 10 meses tras egresar un sistema backend que incorpore un modelo de machine learning o un servicio de IA generativa como parte de su lógica de negocio, documentado en un repositorio público.
