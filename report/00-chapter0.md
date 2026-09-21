@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![Universidad Peruana de Ciencias Aplicadas](https://github.com/user-attachments/assets/246a4dfb-6dd5-4909-a472-6cdce8319986){width=300px height=300px}
+![Universidad Peruana de Ciencias Aplicadas](https://github.com/user-attachments/assets/246a4dfb-6dd5-4909-a472-6cdce8319986)
 
 # Universidad Peruana de Ciencias Aplicadas
 
