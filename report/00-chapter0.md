@@ -54,8 +54,8 @@ Student Outcome 7.
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |----------------------|----------------------|----------------|
-| Actualiza conceptos y conocimientos necesarios para su desarrollo profesional y en especial para su proyecto en soluciones de software. | **[Apellidos, Nombres]**<br>AV1: [completar] | [completar, acumulable] |
-| Reconoce la necesidad del aprendizaje permanente para el desempeño profesional y el desarrollo de proyectos en soluciones de software. | **[Apellidos, Nombres]**<br>AV1: [completar] | [completar, acumulable] |
+| Actualiza conceptos y conocimientos necesarios para su desarrollo profesional y en especial para su proyecto en soluciones de software. | **[Apellidos, Nombres]**<br>AV1: [completar] | AV1: El equipo actualizó y profundizó conocimientos en metodologías de Lean UX (User Personas, Journey Mapping As-Is, Empathy Mapping) y en Domain-Driven Design estratégico (EventStorming, Bounded Context Canvas, Context Mapping), aplicándolos directamente sobre el dominio real de SafeBus. Esto permitió pasar de conceptos teóricos revisados en clase a artefactos concretos que sustentan las decisiones de diseño del proyecto, evidenciando la capacidad del equipo de trasladar el aprendizaje del curso a un contexto de aplicación real. |
+| Reconoce la necesidad del aprendizaje permanente para el desempeño profesional y el desarrollo de proyectos en soluciones de software. | **[Apellidos, Nombres]**<br>AV1: [completar] | AV1: El equipo reconoció que el desarrollo del proyecto exige aprendizaje continuo más allá de lo revisado en clase, evidenciado en la necesidad de investigar y validar de forma autónoma el alcance correcto de técnicas como EventStorming y Bounded Context Canvas, así como en la decisión consciente de priorizar y documentar explícitamente los alcances pendientes (segmento de pasajero, Bounded Context Canvases livianos) en lugar de dejarlos como vacíos no declarados, mostrando conciencia del propio proceso de aprendizaje y de sus limitaciones de tiempo en esta primera entrega. |
 
 ---
 
