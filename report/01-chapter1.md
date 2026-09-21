@@ -99,7 +99,7 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
+      <img src="../assets/foto-alvaro-f.png" alt="Foto de Alvaro Fernandez" width="180"/>
     </td>
     <td><b>Nombre:</b> Alvaro Sebastian Fernandez Linares</td>
   </tr>
@@ -108,7 +108,9 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
   </tr>
   <tr>
     <td>
-      <b>Descripción:</b><br/>
+      <b>Descripción:
+      </b> Estudiante de 6to ciclo de Ingeniería de Software. Cuento con un nivel intermedio en C++ y bases sólidas en Java, lenguajes que me han permitido especializarme en el desarrollo backend, enfocándome en la lógica de negocio y la funcionalidad del servidor. Me defino como una persona responsable, organizada y con una fuerte orientación al trabajo en equipo y la eficiencia. Para este ciclo, mi objetivo en Aplicaciones para Dispositivos Móviles es aportar mi experiencia en desarrollo backend y diseño estratégico (Domain-Driven Design) a la construcción de SafeBus, aplicando estas bases al modelado del dominio, la definición de los Bounded Contexts y la lógica de negocio detrás de la seguridad de conductores y pasajeros.
+      <br/>
     </td>
   </tr>
 </table>
