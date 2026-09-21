@@ -38,7 +38,7 @@
 | Expansión a provincias. | Alto índice de extorsiones a transportistas en las rutas de operación. |
 | Acuerdos formales con la policía y autoridades. | Competidores grandes con más recursos podrían incorporar funciones de seguridad similares. |
 | Demanda creciente de soluciones de seguridad por el aumento de la inseguridad y la extorsión. | Resistencia al cambio y baja adopción tecnológica entre los transportistas. |
-| Tendencia a la formalización del transporte público y a exigir estándares de seguridad. | Informalidad del sector y dependencia de los presupuestos de los consorcios. |
+| Tendencia a la formalización d                l transporte público y a exigir estándares de seguridad. | Informalidad del sector y dependencia de los presupuestos de los consorcios. |
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
@@ -103,6 +103,8 @@ La siguiente guía incorpora a los tres segmentos. Es un instrumento propuesto: 
 
 Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/tbn>.mp4`
 
+### **Segmento 1: Conductores**
+
 ### Entrevista 1: Carlos Garcia
 
 | Campo | Detalle |
@@ -123,9 +125,7 @@ Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/
 | **Edad** | 42 |
 | **Ocupación** | Conductor de transporte público |
 | **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
-| **Resumen** | Miguel Torres, conductor de transporte público de 42 años con 10 años de experiencia, señala que los mayores riesgos ocurren cuando hay pocos pasajeros, especialmente de madrugada o noche, y en zonas con antecedentes de robos. Menciona que actualmente la comunicación ante problemas depende principalmente del celular y de otros conductores, sin un sistema especializado. Considera útil un monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si se garantiza la privacidad de sus datos y valora la validación mediante código QR. Finalmente, considera que la función más importante sería una alerta de emergencia que envíe automáticamente la ubicación del vehículo para facilitar una respuesta rápida.
-| 
-
+| **Resumen** | Miguel Torres, conductor de transporte público de 42 años con 10 años de experiencia, señala que los mayores riesgos ocurren cuando hay pocos pasajeros, especialmente de madrugada o noche, y en zonas con antecedentes de robos. Menciona que actualmente la comunicación ante problemas depende principalmente del celular y de otros conductores, sin un sistema especializado. Considera útil un monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si se garantiza la privacidad de sus datos y valora la validación mediante código QR. Finalmente, considera que la función más importante sería una alerta de emergencia que envíe automáticamente la ubicación del vehículo para facilitar una respuesta rápida. |
 ### Entrevista 3: Jorge Mendoza
 
 | Campo | Detalle |
@@ -135,14 +135,134 @@ Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/
 | **Edad** | 38 |
 | **Ocupación** | Conductor de transporte público |
 | **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
-| **Resumen** | Jorge Mendoza, conductor de transporte público de 38 años, señala que los mayores riesgos ocurren durante las primeras horas de la mañana y al anochecer, especialmente en zonas con pocos pasajeros y antecedentes de robos. Menciona que los conductores cuentan con pocas herramientas de seguridad y dependen principalmente del celular para comunicarse ante emergencias. Considera importante contar con un sistema de monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si su objetivo es mejorar la seguridad y se comunica claramente su funcionamiento. También considera útil la validación mediante código QR. Finalmente, identifica el botón de emergencia como la función más importante, especialmente si permite enviar automáticamente una alerta junto con la ubicación del vehículo.
+| **Resumen** | Jorge Mendoza, conductor de transporte público de 38 años, señala que los mayores riesgos ocurren durante las primeras horas de la mañana y al anochecer, especialmente en zonas con pocos pasajeros y antecedentes de robos. Menciona que los conductores cuentan con pocas herramientas de seguridad y dependen principalmente del celular para comunicarse ante emergencias. Considera importante contar con un sistema de monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si su objetivo es mejorar la seguridad y se comunica claramente su funcionamiento. También considera útil la validación mediante código QR. Finalmente, identifica el botón de emergencia como la función más importante, especialmente si permite enviar automáticamente una alerta junto con la ubicación del vehículo. |
 
+### **Segmento 2: Supervisores de Empresa**
 
-**Estado del registro:** entrevistas pendientes de documentar. No se atribuyen respuestas a personas ni se presentan resultados de validación en esta versión.
+### Entrevista 1: Carlos Blancas
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Carlos Blancas |
+| **Imagen** | <img src="../assets/EntrevistaCarlosBlancas.png" alt="Entrevista a Carlos Blancas"  height="250"/> |
+| **Edad** | 26 |
+| **Ocupación** | Supervisor de Empresa de Transporte Publico |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ) |
+|Inicio | 0:00 |
+| **Resumen** | El supervisor Carlos nos comenta que la operación diaria del consorcio se gestiona con controles tradicionales de asistencia en patio, donde la falta de herramientas modernas convierte el seguimiento de la flota en un proceso ciego una vez que los buses salen a la calle. Explica que la delincuencia, el cobro de cupos y los asaltos impactan de forma severa en los costos y la continuidad del servicio, demorando hasta media hora la llegada de auxilio policial debido a que las alertas dependen de llamadas telefónicas posteriores al hecho. Asimismo, destaca la vulnerabilidad que existe al no poder verificar digitalmente si el chofer programado entrega el volante a un conductor informal a mitad del recorrido. Concluye que la adopción de una herramienta tecnológica en vivo marcaría un antes y un después para la seguridad de las unidades, advirtiendo que su éxito dependerá de garantizar buena conectividad a internet y capacitar adecuadamente a los operadores para vencer la resistencia al cambio. |
+
+### Entrevista 2: Eduardo Velasquez
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Eduardo Velasquez |
+| **Imagen** |  <img src="../assets/EntrevistaEduardoVelasquez.png" alt="Entrevista a Eduardo Velasquez"  height="250"/> |
+| **Edad** | 22 |
+| **Ocupación** | Supervisor de empresa de transporte |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ) |
+|Inicio | 07:23 |
+| **Resumen** | El estudiante Eduardo nos comenta que su jornada inicia a las 5:00 a.m. despachando entre 40 y 50 buses mediante registros manuales en papel y coordinaciones básicas por WhatsApp, invirtiendo gran parte de su tiempo en reorganizar turnos por ausencias imprevistas. Señala que el control de seguridad es mayormente reactivo, apoyado en cámaras internas que solo se revisan tras ocurrir un incidente y en llamadas tardías de auxilio ante robos recurrentes o cobro de cupos en paraderos finales. Esta falta de visibilidad en tiempo real no solo expone a las tripulaciones y provoca renuncias de choferes, sino que también facilita que ocurran reemplazos no autorizados en plena ruta sin que la empresa se entere. Frente a este escenario, sostiene que una solución digital con botones de pánico silenciosos y validación de identidad del conductor sería de gran ayuda, siempre que la plataforma resulte fácil de usar y supere la desconfianza del personal frente al monitoreo continuo. |
+### Entrevista 3: Elverth Vasquez
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Elverth Vasquez |
+| **Imagen** | <img src="../assets/EntrevistaElverthVasquez.png" alt="Entrevista a Elverth Vasquez"  height="250"/> |
+| **Edad** | 21 |
+| **Ocupación** | Supervisor de empresa de transporte |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ) |
+|Inicio | 13:41 |
+| **Resumen** | Elverth nos comenta que su labor diaria se divide entre cuadrar la salida matutina de decenas de buses mediante planillas físicas y resolver retrasos causados por choferes que no asisten a su turno. Indica que el mayor desafío operativo radica en la vulnerabilidad frente a asaltos y presiones por extorsión, eventos que suelen reportarse con minutos de retraso mediante llamadas telefónicas, lo que anula la posibilidad de una respuesta policial oportuna y genera pérdidas económicas constantes. A esto se suma la imposibilidad de fiscalizar la unidad durante el recorrido, facilitando malas prácticas como la entrega del volante a terceros no autorizados sin el consentimiento de la empresa. Por ello, valora como indispensable una plataforma en tiempo real capaz de autenticar al conductor y emitir alertas inmediatas, remarcando que la principal barrera a considerar antes de implementarla será lidiar con los problemas de cobertura de red y la desconfianza de los trabajadores hacia la supervisión digital. |
 
 ### 2.2.3. Análisis de entrevistas
 
-El registro incluye la entrevista de conductor incorporada por el equipo. El análisis por segmento deberá distinguir esa evidencia de los cambios acordados en QA; no se atribuyen resultados nuevos a entrevistas de pasajeros o empresas.
+El análisis se basa en las fichas y los resúmenes de las seis entrevistas registradas en 2.2.2: tres del segmento Conductores y tres del segmento Supervisores de Empresa. Cada segmento cuenta con el mínimo de tres entrevistas indicado en el enunciado. Se comparan características objetivas —edad y actividades o condiciones de trabajo declaradas— y subjetivas —opiniones, prioridades, preocupaciones y condiciones de adopción— para sustentar los arquetipos de SafeBus.
+
+Los porcentajes se calculan por separado para cada segmento: **entrevistados cuyo registro menciona la característica / 3 × 100**. Así, una mención corresponde al 33,3 %, dos al 66,7 % y tres al 100 %. Cada persona cuenta una sola vez por característica, aunque la mencione varias veces. Las categorías pueden coincidir en una misma entrevista y sus porcentajes no deben sumarse. La ausencia de una mención no significa desacuerdo ni ausencia de esa característica. Estos resultados describen únicamente la muestra entrevistada; no estiman porcentajes de toda la población del transporte público.
+
+#### Segmento 1: Conductores de transporte público
+
+**Base de entrevistas**
+
+| Código | Entrevistado y registro de referencia | Edad | Contexto documentado |
+|---|---|---|---|
+| D1 | [Carlos Garcia](#entrevista-1-carlos-garcia) | 45 años | Describe una jornada desde las 4:00 a. m. hasta las 9:00–10:00 p. m., exposición a extorsiones y pocas herramientas de seguridad. |
+| D2 | [Miguel Torres](#entrevista-2-miguel-torres) | 42 años | Declara diez años de experiencia, comunicación mediante celular y otros conductores, y preocupación por la privacidad. |
+| D3 | [Jorge Mendoza](#entrevista-3-jorge-mendoza) | 38 años | Describe comunicación mediante celular, riesgos en horarios de baja afluencia y necesidad de comprender el funcionamiento de la solución. |
+
+Las edades registradas se encuentran entre 38 y 45 años, con una media de **41,7 años**. Los diez años de experiencia corresponden únicamente a Miguel; no se dispone de ese dato para calcular la experiencia media del segmento.
+
+**Características comunes y condiciones particulares**
+
+| Tipo | Característica identificada en el registro | Frecuencia | Porcentaje | Evidencia |
+|---|---|---|---|---|
+| Objetiva | Edad comprendida entre 38 y 45 años. | 3 de 3 | 100 % | D1, D2, D3: edades de las fichas. |
+| Objetiva, declarada | Describe mayor exposición al peligro de madrugada o de noche y en zonas vulnerables del recorrido. | 3 de 3 | 100 % | D1: zonas rojas y paraderos finales; D2: pocos pasajeros y antecedentes de robos; D3: primeras horas, anochecer y zonas con robos. |
+| Objetiva, declarada | Describe herramientas de seguridad escasas o ausencia de un sistema especializado de ayuda. | 3 de 3 | 100 % | D1: falta de cámaras, pánico y comunicación rápida; D2: comunicación sin sistema especializado; D3: pocas herramientas disponibles. |
+| Objetiva, declarada | Identifica el celular como medio actual de comunicación ante problemas. | 2 de 3 | 66,7 % | D2 y D3 lo mencionan expresamente. |
+| Subjetiva | Considera la alerta de emergencia como la función más importante de SafeBus. | 3 de 3 | 100 % | D1, D2 y D3 priorizan el botón o la alerta de emergencia. |
+| Subjetiva | Valora conocer la ubicación del vehículo o disponer de monitoreo en tiempo real. | 3 de 3 | 100 % | D1 destaca GPS; D2 y D3 valoran el monitoreo y el envío de ubicación con la alerta. |
+| Subjetiva | Valora la validación del conductor mediante código QR. | 3 de 3 | 100 % | D1, D2 y D3 expresan utilidad o valoración positiva del QR. |
+| Subjetiva | Condiciona su disposición a utilizar SafeBus a la privacidad de sus datos. | 1 de 3 | 33,3 % | D2 lo expresa como condición de adopción. |
+| Subjetiva | Vincula su disposición a usar SafeBus con una explicación clara de su funcionamiento y finalidad de seguridad. | 1 de 3 | 33,3 % | D3 expresa esta condición. |
+
+**Interpretación para el arquetipo del conductor**
+
+El patrón compartido es un conductor expuesto a situaciones de inseguridad que necesita avisar rápidamente y permitir que la empresa localice su unidad. La coincidencia de los tres registros en la prioridad de la alerta y la utilidad de la ubicación respalda que el arquetipo tenga como objetivo principal solicitar ayuda durante el servicio. La escasez de herramientas y la dependencia del celular explican su frustración ante una comunicación insuficiente.
+
+El QR recibe valoración positiva en las tres entrevistas y sustenta la necesidad de identificar al responsable del turno. Las condiciones de privacidad y claridad, aunque aparecen en una entrevista cada una, aportan necesidades de diseño que no deben atribuirse automáticamente a todo el segmento. El arquetipo puede recogerlas como consideraciones de adopción, indicando su origen. La muestra no permite deducir su marca de teléfono, sistema operativo, distrito, estado civil, composición familiar o nivel de habilidad digital.
+
+#### Segmento 2: Supervisores de empresa de transporte
+
+**Base de entrevistas**
+
+| Código | Entrevistado y registro de referencia | Edad | Inicio en el video del segmento | Contexto documentado |
+|---|---|---|---|---|
+| S1 | [Carlos Blancas](#entrevista-1-carlos-blancas) | 26 años | 00:00 | Describe controles tradicionales de asistencia, escasa visibilidad de la flota y necesidad de conectividad y capacitación. |
+| S2 | [Eduardo Velasquez](#entrevista-2-eduardo-velasquez) | 22 años | 07:23 | Describe despacho de 40–50 buses desde las 5:00 a. m., registros en papel, WhatsApp y reorganización de turnos. |
+| S3 | [Elverth Vasquez](#entrevista-3-elverth-vasquez) | 21 años | 13:41 | Describe planillas físicas, ausencias de conductores, reportes tardíos y dificultades de supervisión durante la ruta. |
+
+Las edades registradas se encuentran entre 21 y 26 años, con una media de **23 años**. La cantidad de 40–50 buses corresponde al caso de Eduardo y no representa el tamaño de flota de las tres empresas. Del mismo modo, la espera de hasta media hora para el auxilio policial aparece en el relato de Carlos; no constituye un tiempo medio de respuesta medido por el equipo.
+
+**Características comunes y condiciones particulares**
+
+| Tipo | Característica identificada en el registro | Frecuencia | Porcentaje | Evidencia |
+|---|---|---|---|---|
+| Objetiva | Edad comprendida entre 21 y 26 años. | 3 de 3 | 100 % | S1, S2, S3: edades de las fichas. |
+| Objetiva, declarada | Utiliza controles tradicionales o manuales para organizar asistencia, despacho o salida de unidades. | 3 de 3 | 100 % | S1: control de asistencia en patio; S2: registros en papel; S3: planillas físicas. |
+| Objetiva, declarada | Reorganiza la operación por ausencias de conductores. | 2 de 3 | 66,7 % | S2 reorganiza turnos; S3 resuelve retrasos por inasistencias. |
+| Objetiva, declarada | Recibe avisos de incidentes mediante llamadas posteriores al hecho o con retraso. | 3 de 3 | 100 % | S1, S2 y S3 describen reportes telefónicos tardíos. |
+| Objetiva, declarada | Señala dificultades para detectar sustituciones no autorizadas del conductor durante el recorrido. | 3 de 3 | 100 % | S1, S2 y S3 describen la entrega del volante o reemplazos sin conocimiento de la empresa. |
+| Objetiva, declarada | Describe asaltos y cobro de cupos o extorsión como problemas de la operación. | 3 de 3 | 100 % | S1, S2 y S3 relacionan estos hechos con afectaciones a la seguridad o continuidad del servicio. |
+| Subjetiva | Valora una solución digital para mejorar la seguridad y el control del servicio. | 3 de 3 | 100 % | S1 valora tecnología en vivo; S2, botones silenciosos y validación; S3, autenticación y alertas inmediatas. |
+| Subjetiva | Identifica resistencia al cambio o desconfianza hacia la supervisión digital como barrera de adopción. | 3 de 3 | 100 % | S1 menciona resistencia; S2 y S3 describen desconfianza del personal. |
+| Subjetiva | Considera la conectividad o cobertura de red una condición importante para la implementación. | 2 de 3 | 66,7 % | S1 destaca internet; S3, cobertura de red. |
+| Subjetiva | Destaca expresamente la capacitación de operadores. | 1 de 3 | 33,3 % | S1 la plantea para facilitar la adopción. |
+| Subjetiva | Destaca expresamente la facilidad de uso. | 1 de 3 | 33,3 % | S2 la plantea como condición de la plataforma. |
+
+**Interpretación para el arquetipo del supervisor**
+
+El patrón compartido es un responsable operativo que organiza las salidas y necesita conocer qué ocurre cuando las unidades dejan el patio. Los controles manuales, las llamadas tardías y la dificultad para identificar sustituciones del conductor aparecen en las tres entrevistas. Esto sustenta un arquetipo cuyo objetivo es disponer de información oportuna sobre la unidad y su responsable para coordinar la atención de incidentes.
+
+La resistencia o desconfianza del personal también aparece en los tres registros. Por ello, la adopción debe contemplar una explicación comprensible del propósito del monitoreo y de quién accede a los datos. La conectividad, citada por dos entrevistados, justifica distinguir información vigente, datos no disponibles y envíos pendientes. La capacitación y facilidad de uso tienen respaldo individual y complementan el perfil sin convertirse en características universales. Las edades observadas describen a estos participantes y no permiten afirmar que los supervisores del sector tengan necesariamente ese rango de edad.
+
+#### Síntesis de los segmentos e implicaciones para SafeBus
+
+Los conductores buscan comunicar un peligro y ser localizados; los supervisores necesitan recibir ese aviso, identificar al responsable de la unidad y coordinar la respuesta. Ambos segmentos valoran el apoyo digital, aunque el interés expresado todavía no demuestra adopción efectiva ni una reducción comprobada de incidentes o tiempos de atención.
+
+| Hallazgo y evidencia | Relación con el alcance del proyecto |
+|---|---|
+| Prioridad de la alerta para los tres conductores y reportes tardíos descritos por los tres supervisores. | Sustenta la necesidad de aviso y atención en US04, US10 y US20. La prioridad Critical del conductor es una decisión de diseño del proyecto. |
+| Valoración de ubicación por D1–D3 y falta de visibilidad operativa descrita por S1–S3. | Respalda la ubicación del bus y el monitoreo de US03, US11 y US18. |
+| Valoración del QR por D1–D3 y dificultad para controlar sustituciones por S1–S3. | Respalda la validación inicial y asignación de US01, US02 y US13. Un QR al inicio identifica el turno registrado, pero no prueba por sí solo quién conduce durante todo el recorrido. |
+| Privacidad indicada por D2 y desconfianza o resistencia descrita por S1–S3. | Refuerza el acceso por rol y la protección de datos de US16 y US17, junto con una explicación clara de su uso. |
+| Conectividad indicada por S1 y S3. | Refuerza los escenarios de envío pendiente, sincronización y recuperación incluidos en las historias de ubicación y emergencias. No demuestra todavía que esas soluciones funcionen en campo. |
+| Capacitación indicada por S1 y claridad o facilidad de uso indicadas por D3 y S2. | Orienta el contenido explicativo y las futuras pruebas de comprensión de los recorridos existentes. |
+
+Las entrevistas aportan sustento a las necesidades del conductor y de la empresa, pero no validan por sí solas la precisión de sensores, el cálculo de aforo ni las decisiones técnicas pendientes de prueba. Tampoco aportan evidencia directa del segmento Pasajeros: el registro con DNI y rostro, las solicitudes con mensaje y foto, el umbral de tres pasajeros en cinco minutos y el cierre a más de 100 metros durante 60 segundos proceden de los acuerdos de alcance y QA, y deben contrastarse con ese segmento.
+
+El perfil de cada arquetipo debe mantener esta distinción entre evidencia común, aportes individuales e hipótesis. Los registros no documentan de forma suficiente distrito de residencia, estado civil, composición familiar, marcas, navegador o dispositivo preferido; no se asignan valores ni porcentajes a esos datos. El análisis utiliza los resúmenes registrados y no incorpora nuevas transcripciones ni atribuye resultados de pruebas de uso a las entrevistas de descubrimiento.
+
 
 ---
 

@@ -25,7 +25,7 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
+      <img src="Foto ESTUDIANTE" alt="Foto de Estudiante" width="180"/>
     </td>
     <td><b>Nombre:</b> Nombre Estudiante</td>
   </tr>
@@ -48,11 +48,12 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
     <td><b>Nombre:</b> Nombre Estudiante</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo Estudiante</td>
+    <td><b>Código:</b> Codigo estudiante</td>
   </tr>
   <tr>
     <td>
       <b>Descripción:</b><br/>
+     
     </td>
   </tr>
 </table>
@@ -60,16 +61,18 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
+      <img src="/assets/LeonardoProfilePic.jpg" alt="Leonardo Delgado" width="180"/>
     </td>
-    <td><b>Nombre:</b> Nombre </td>
+    <td><b>Nombre:</b> Leonardo Sebastian Delgado Arriola</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo Estudiante </td>
+    <td><b>Código:</b> u202321020</td>
   </tr>
   <tr>
     <td>
       <b>Descripción:</b><br/>
+      Actualmente me encuentro en el sexto ciclo de la carrera de Ingenieria de Software, pose experiencia solida en algoritmos con C++, tambien añadir que puedo manejar frameworks para aplicaciones web como Angular o Vue, soy capaz de crear un sistema backend a traves de SpringBoot y con Java.
+      Todo esto lo voy aplicando con Domain Driven Design.
     </td>
   </tr>
 </table>
