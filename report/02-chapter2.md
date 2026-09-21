@@ -6,194 +6,2322 @@
 
 ### 2.1.1. Análisis competitivo
 
-Identificación de mínimo 3 competidores directos (o indirectos si no aplica).
-
 #### Competitive analysis landscape
 
-|                          | Su startup | Competidor 1 | Competidor 2 | Competidor 3 |
-|--------------------------|------------|---------------|---------------|---------------|
-| Overview                 |            |               |               |               |
-| Ventaja competitiva      |            |               |               |               |
-| Mercado objetivo         |            |               |               |               |
-| Estrategias de marketing |            |               |               |               |
-| Productos & Servicios    |            |               |               |               |
-| Precios & Costos         |            |               |               |               |
-| Canales de distribución  |            |               |               |               |
-
-#### Análisis SWOT
-
-| | Fortalezas | Debilidades | Oportunidades | Amenazas |
+| Competitive Analysis Landscape | | | | |
 |---|---|---|---|---|
-| Su startup | | | | |
-| Competidor 1 | | | | |
+| **¿Por qué llevar a cabo este análisis?** | Identificar ventajas competitivas frente a soluciones existentes en el mercado de seguridad para transporte público. | | | |
+| | **SafeBus (Nuestro startup)** | **Competidor 1 (Metropolitano)** | **Competidor 2 (RTP)** | **Competidor 3 (Mi Transporte)** |
+| **Ventaja competitiva** | Monitoreo en tiempo real, emergencia directa del conductor, solicitudes de pasajeros con evidencia y aprobación empresarial, y conteo para la empresa. | Infraestructura organizada, estaciones, rutas definidas, carriles exclusivos y cámaras de videovigilancia. | Tecnología incorporada: cámaras de seguridad, monitoreo en tiempo real y capacitación del personal. | Monitoreo y protocolos de seguimiento en tiempo real, reportes ciudadanos. |
+| **Mercado objetivo** | Consorcios/empresas de transporte público, conductores y pasajeros de unidades asociadas. | Usuarios urbanos de Lima Metropolitana. | Población de zonas periféricas, estudiantes y grupos vulnerables. | Población de zonas periféricas y estudiantes. |
+| **Estrategia de marketing** | Enfatiza la seguridad durante la ruta con un sistema integrado al vehículo. | Servicio rápido, moderno, formal y seguro, destacando eficiencia y orden. | Campaña "Yo Soy RTP", sustentabilidad con unidades eléctricas. | Posiciona el transporte como sistema integrado, moderno y eficiente. |
+| **Productos & Servicios** | Emergencia prioritaria del conductor, solicitudes de pasajeros con mensaje y foto, consulta de alertas del bus y aforo empresarial. | Transporte troncal, tarjeta recargable, estaciones seguras, información de rutas. | Servicio ordinario, expreso, Ecobús y Nochebús. | Transporte multimodal, Tarjeta Mi Movilidad, App Mi Saldo, Mi Pasaje. |
+| **Precios & Costos** | Desde S/. 99 por unidad/mes incluyendo instalación. 20% de descuento a partir de 3 unidades. | S/. 3.50 por viaje. | 40 céntimos (ordinario) a 1.50 soles (Nochebús). | Tarifa plana S/. 2.00, tarifa preferencial S/. 1.00. |
+| **Canales de distribución** | Web y móvil. | Web, móvil/recarga digital, puntos físicos. | App CDMX, tarjeta de movilidad integrada, sitio web oficial. | Web, móvil (App Mi Saldo), puntos físicos (OXXO, estaciones). |
+| **Fortalezas** | Equipo profesional comprometido con el bienestar del cliente. | Marca reconocida, sistema formal, modernización digital. | Tarifas sociales subsidiadas, flota moderna eléctrica, conductores capacitados. | Marca unificada, interoperabilidad, modernización de flota. |
+| **Oportunidades** | Expansión a provincias, acuerdos formales con la policía. | Expansión urbana, digitalización del servicio. | Expansión de rutas eléctricas para el Mundial 2026. | Crecimiento urbano hacia otros estados, crisis de combustibles. |
+| **Amenazas** | Alto índice de extorsiones a transportistas en sus rutas. | Inseguridad ciudadana, saturación en horas punta, fallas operativas. | Competencia del transporte concesionado informal, congestión vial. | Resistencia al cambio, inseguridad, incidentes de vandalismo. |
+
+
+## Análisis SWOT — SafeBus
+
+| Fortalezas | Debilidades |
+|---|---|
+| Tecnología diferenciadora: monitoreo en tiempo real, emergencia directa del conductor, solicitudes de pasajeros con evidencia y aprobación empresarial, y conteo para la empresa. | Marca nueva y poco reconocida frente a competidores consolidados (Metropolitano, RTP). |
+| Enfoque especializado en seguridad, que los competidores tratan solo como característica secundaria. | Canales limitados: solo web y móvil, sin puntos físicos de venta/atención. |
+| Precio competitivo y escalable: desde S/. 99 por unidad/mes, con 20% de descuento a partir de 3 unidades. | Dependencia de hardware/sensores: costos de instalación, mantenimiento y riesgo de fallas técnicas. |
+| Sistema integrado al vehículo, sin depender de estaciones ni infraestructura fija. | Mercado objetivo estrecho (consorcios y empresas): ingresos concentrados en pocos clientes grandes. |
+| Equipo profesional comprometido con el bienestar del cliente. | Startup en etapa temprana, aún no probada a gran escala. |
+
+| Oportunidades | Amenazas |
+|---|---|
+| Expansión a provincias. | Alto índice de extorsiones a transportistas en las rutas de operación. |
+| Acuerdos formales con la policía y autoridades. | Competidores grandes con más recursos podrían incorporar funciones de seguridad similares. |
+| Demanda creciente de soluciones de seguridad por el aumento de la inseguridad y la extorsión. | Resistencia al cambio y baja adopción tecnológica entre los transportistas. |
+| Tendencia a la formalización d                l transporte público y a exigir estándares de seguridad. | Informalidad del sector y dependencia de los presupuestos de los consorcios. |
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
-[Estrategias y tácticas]
+Para posicionar a SafeBus de manera competitiva, se plantean las siguientes estrategias:
+
+**Estrategias de vinculación y fidelización con usuarios clave:**
+
+**#1 Implementación colaborativa con conductores y empresas**  
+SafeBus adoptará un enfoque participativo, donde conductores y empresas de transporte formen parte del proceso de implementación y adaptación del sistema. Esto permitirá reducir la resistencia al cambio y asegurar que la solución se ajuste a necesidades reales del entorno.
+
+**#2 Programa integral de capacitación y soporte técnico continuo**  
+Se ofrecerán programas de capacitación para conductores y empresas, junto con soporte técnico constante. Esta estrategia responde a la baja adopción tecnológica en el sector.
+
+**#3 Empoderamiento del usuario como actor activo**  
+SafeBus integrará funcionalidades visibles para los usuarios (como monitoreo de rutas o estado del viaje), aumentando la percepción de seguridad.
+
+**Estrategias de diferenciación tecnológica y funcional:**
+
+**#1 Sistema integral de seguridad en tiempo real**  
+SafeBus integra una emergencia directa y prioritaria del conductor con solicitudes documentadas de pasajeros. Tres pasajeros distintos del mismo bus y turno en cinco minutos habilitan la aprobación empresarial. El pasajero se registra con DNI y foto de rostro, consulta alertas y finaliza su viaje automáticamente al alejarse del bus; la empresa conserva el monitoreo de aforo.
+
+**#2 Plataforma centralizada de información**  
+Se consolidará toda la información del vehículo (ubicación, alertas, estado) en un sistema único accesible para empresas.
+
+**#3 Integración de hardware y software**  
+La primera versión utiliza el GPS del teléfono y botones de pánico digitales. La fuente externa de conteo se integra mediante un contrato de eventos; el prototipo debe identificar si utiliza sensores reales o un simulador. Un botón físico adicional queda como posible ampliación.
+
+**#4 Seguimiento de alertas de seguridad**
+
+La central distingue emergencias directas del conductor y solicitudes de pasajeros pendientes de umbral o aprobación. Conserva evidencia, decisión, responsable y resultado, mientras los pasajeros consultan resúmenes de alertas de su bus y sus solicitudes propias.
+
+**Estrategias de posicionamiento y enfoque de mercado:**
+
+**#1 Enfoque en seguridad como valor principal**  
+SafeBus se posicionará como una solución centrada en la protección de conductores y pasajeros, destacando su impacto social.
+
+**#2 Segmentación hacia empresas formales de transporte**  
+Se priorizará trabajar con consorcios organizados que busquen mejorar su gestión y seguridad.
+
+**#3 Adaptación al contexto local (Perú)**  
+La solución estará diseñada considerando problemáticas reales como extorsión, informalidad y falta de regulación tecnológica.
+
+**#4 Alianzas estratégicas**  
+Se buscarán acuerdos con autoridades, municipalidades y entidades de seguridad para fortalecer la credibilidad y efectividad del sistema.
 
 ---
 
 ## 2.2. Entrevistas
 
 ### 2.2.1. Diseño de entrevistas
+A continuación se presentan las preguntas para las entrevistas a los segmentos objetivos
 
-[Preguntas principales y complementarias por segmento]
+La siguiente guía incorpora a los tres segmentos. Es un instrumento propuesto: las respuestas y conclusiones se registrarán después de realizar las entrevistas.
+
+| Segmento | Preguntas principales | Aspectos a profundizar |
+|---|---|---|
+| Conductor | ¿Cómo inicia y termina su turno? ¿Cómo solicita ayuda actualmente? ¿Qué ocurre si pierde conexión? | Tiempo disponible, uso del teléfono con el vehículo detenido, validación de identidad y comprensión de una alerta pendiente de envío. |
+| Empresa / supervisor | ¿Cómo asigna buses y conductores? ¿Quién recibe alertas y en qué horario? ¿Cómo registra la atención y contacta autoridades? | Datos disponibles, responsable del caso, necesidad de ubicación y aforo, restricciones de operación y capacidad de respuesta. |
+| Pasajero | ¿Cómo identifica el bus y al conductor? ¿Qué haría ante un peligro a bordo? ¿Qué necesita saber después de enviar evidencia y esperar otras solicitudes o la aprobación de la empresa? | Registro con DNI y rostro, QR, consulta de alertas del bus, mensaje y foto de evidencia, umbral de solicitudes, aprobación empresarial y cierre del viaje por ubicación. |
 
 ### 2.2.2. Registro de entrevistas
 
-Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/tbn>.mp4`
+Video consolidado: [upc-pre-<2026-02>-1acc0238-<4939>-<DreamTeam>-needfinding-<av1>.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQCIjCfVwUpQTKFviSXHskACAY1ddO-dSyWaDbUBPI11Cis?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=HCS0Ls)
 
-| # | Nombres y apellidos | Edad | Distrito | Timing en video | Screenshot |
-|---|----------------------|------|----------|------------------|------------|
-| 1 | | | | | |
+### **Segmento 1: Conductores**
 
-**Resumen entrevista 1:** [descriptivo]
+### Entrevista 1: Carlos Garcia
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Carlos Garcia |
+| **Imagen** | ![EntrevistaJulio](../assets/CG-Interview.png){width=80%} |
+| **Edad** | 45 |
+| **Ocupación** | Conductor de transporte público |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Resumen** | La entrevista presenta a Carlos Garcia, conductor de transporte público en Lima, quien describe una jornada extensa y desgastante que inicia a las 4:00 a. m. y termina entre las 9:00 y 10:00 p. m. Señala que los momentos de mayor riesgo son de madrugada y durante la noche, especialmente al atravesar “zonas rojas” y al quedar solos en los paraderos finales. Destaca que la extorsión y los cobros de cupos son frecuentes, mientras que actualmente cuentan con pocas herramientas de seguridad, sin cámaras, botón de pánico ni comunicación rápida con la empresa. Carlos considera fundamental el monitoreo GPS en tiempo real y una alerta discreta para emergencias. Además, muestra una actitud positiva hacia SafeBus, especialmente hacia la validación mediante QR para identificar al conductor autorizado. Finalmente, considera que el botón de emergencia sería la función más importante, acompañado del monitoreo de ubicación para facilitar una respuesta rápida ante situaciones de peligro. | 
+
+### Entrevista 2: Miguel Torres
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Miguel Torres |
+| **Imagen** | ![EntrevistaMigueI](../assets/MigueITorresInterview.png){width=80%} |
+| **Edad** | 42 |
+| **Ocupación** | Conductor de transporte público |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Resumen** | Miguel Torres, conductor de transporte público de 42 años con 10 años de experiencia, señala que los mayores riesgos ocurren cuando hay pocos pasajeros, especialmente de madrugada o noche, y en zonas con antecedentes de robos. Menciona que actualmente la comunicación ante problemas depende principalmente del celular y de otros conductores, sin un sistema especializado. Considera útil un monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si se garantiza la privacidad de sus datos y valora la validación mediante código QR. Finalmente, considera que la función más importante sería una alerta de emergencia que envíe automáticamente la ubicación del vehículo para facilitar una respuesta rápida. |
+### Entrevista 3: Jorge Mendoza
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Jorge Mendoza |
+| **Imagen** | ![EntrevistaJorge](../assets/JorgeInterview.png){width=80%} |
+| **Edad** | 38 |
+| **Ocupación** | Conductor de transporte público |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) |
+| **Resumen** | Jorge Mendoza, conductor de transporte público de 38 años, señala que los mayores riesgos ocurren durante las primeras horas de la mañana y al anochecer, especialmente en zonas con pocos pasajeros y antecedentes de robos. Menciona que los conductores cuentan con pocas herramientas de seguridad y dependen principalmente del celular para comunicarse ante emergencias. Considera importante contar con un sistema de monitoreo en tiempo real que permita conocer la ubicación del vehículo y detectar situaciones inusuales. Estaría dispuesto a utilizar SafeBus si su objetivo es mejorar la seguridad y se comunica claramente su funcionamiento. También considera útil la validación mediante código QR. Finalmente, identifica el botón de emergencia como la función más importante, especialmente si permite enviar automáticamente una alerta junto con la ubicación del vehículo. |
+
+### **Segmento 2: Supervisores de Empresa**
+
+### Entrevista 1: Carlos Blancas
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Carlos Blancas |
+| **Imagen** | <img src="../assets/EntrevistaCarlosBlancas.png" alt="Entrevista a Carlos Blancas"  height="250"/> |
+| **Edad** | 26 |
+| **Ocupación** | Supervisor de Empresa de Transporte Publico |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ) |
+|Inicio | 0:00 |
+| **Resumen** | El supervisor Carlos nos comenta que la operación diaria del consorcio se gestiona con controles tradicionales de asistencia en patio, donde la falta de herramientas modernas convierte el seguimiento de la flota en un proceso ciego una vez que los buses salen a la calle. Explica que la delincuencia, el cobro de cupos y los asaltos impactan de forma severa en los costos y la continuidad del servicio, demorando hasta media hora la llegada de auxilio policial debido a que las alertas dependen de llamadas telefónicas posteriores al hecho. Asimismo, destaca la vulnerabilidad que existe al no poder verificar digitalmente si el chofer programado entrega el volante a un conductor informal a mitad del recorrido. Concluye que la adopción de una herramienta tecnológica en vivo marcaría un antes y un después para la seguridad de las unidades, advirtiendo que su éxito dependerá de garantizar buena conectividad a internet y capacitar adecuadamente a los operadores para vencer la resistencia al cambio. |
+
+### Entrevista 2: Eduardo Velasquez
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Eduardo Velasquez |
+| **Imagen** |  <img src="../assets/EntrevistaEduardoVelasquez.png" alt="Entrevista a Eduardo Velasquez"  height="250"/> |
+| **Edad** | 22 |
+| **Ocupación** | Supervisor de empresa de transporte |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ) |
+|Inicio | 07:23 |
+| **Resumen** | El estudiante Eduardo nos comenta que su jornada inicia a las 5:00 a.m. despachando entre 40 y 50 buses mediante registros manuales en papel y coordinaciones básicas por WhatsApp, invirtiendo gran parte de su tiempo en reorganizar turnos por ausencias imprevistas. Señala que el control de seguridad es mayormente reactivo, apoyado en cámaras internas que solo se revisan tras ocurrir un incidente y en llamadas tardías de auxilio ante robos recurrentes o cobro de cupos en paraderos finales. Esta falta de visibilidad en tiempo real no solo expone a las tripulaciones y provoca renuncias de choferes, sino que también facilita que ocurran reemplazos no autorizados en plena ruta sin que la empresa se entere. Frente a este escenario, sostiene que una solución digital con botones de pánico silenciosos y validación de identidad del conductor sería de gran ayuda, siempre que la plataforma resulte fácil de usar y supere la desconfianza del personal frente al monitoreo continuo. |
+### Entrevista 3: Elverth Vasquez
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Elverth Vasquez |
+| **Imagen** | <img src="../assets/EntrevistaElverthVasquez.png" alt="Entrevista a Elverth Vasquez"  height="250"/> |
+| **Edad** | 21 |
+| **Ocupación** | Supervisor de empresa de transporte |
+| **Link** | [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQBZcF356bhvRaX_wjal_wAhAbh93SMPypsTmGJwciJAMWg?e=NE5tlH ) |
+|Inicio | 13:41 |
+| **Resumen** | Elverth nos comenta que su labor diaria se divide entre cuadrar la salida matutina de decenas de buses mediante planillas físicas y resolver retrasos causados por choferes que no asisten a su turno. Indica que el mayor desafío operativo radica en la vulnerabilidad frente a asaltos y presiones por extorsión, eventos que suelen reportarse con minutos de retraso mediante llamadas telefónicas, lo que anula la posibilidad de una respuesta policial oportuna y genera pérdidas económicas constantes. A esto se suma la imposibilidad de fiscalizar la unidad durante el recorrido, facilitando malas prácticas como la entrega del volante a terceros no autorizados sin el consentimiento de la empresa. Por ello, valora como indispensable una plataforma en tiempo real capaz de autenticar al conductor y emitir alertas inmediatas, remarcando que la principal barrera a considerar antes de implementarla será lidiar con los problemas de cobertura de red y la desconfianza de los trabajadores hacia la supervisión digital. |
 
 ### 2.2.3. Análisis de entrevistas
 
-[Análisis con sustento estadístico por segmento]
+El análisis se basa en las fichas y los resúmenes de las seis entrevistas registradas en 2.2.2: tres del segmento Conductores y tres del segmento Supervisores de Empresa. Cada segmento cuenta con el mínimo de tres entrevistas indicado en el enunciado. Se comparan características objetivas —edad y actividades o condiciones de trabajo declaradas— y subjetivas —opiniones, prioridades, preocupaciones y condiciones de adopción— para sustentar los arquetipos de SafeBus.
+
+Los porcentajes se calculan por separado para cada segmento: **entrevistados cuyo registro menciona la característica / 3 × 100**. Así, una mención corresponde al 33,3 %, dos al 66,7 % y tres al 100 %. Cada persona cuenta una sola vez por característica, aunque la mencione varias veces. Las categorías pueden coincidir en una misma entrevista y sus porcentajes no deben sumarse. La ausencia de una mención no significa desacuerdo ni ausencia de esa característica. Estos resultados describen únicamente la muestra entrevistada; no estiman porcentajes de toda la población del transporte público.
+
+#### Segmento 1: Conductores de transporte público
+
+**Base de entrevistas**
+
+| Código | Entrevistado y registro de referencia | Edad | Contexto documentado |
+|---|---|---|---|
+| D1 | [Carlos Garcia](#entrevista-1-carlos-garcia) | 45 años | Describe una jornada desde las 4:00 a. m. hasta las 9:00–10:00 p. m., exposición a extorsiones y pocas herramientas de seguridad. |
+| D2 | [Miguel Torres](#entrevista-2-miguel-torres) | 42 años | Declara diez años de experiencia, comunicación mediante celular y otros conductores, y preocupación por la privacidad. |
+| D3 | [Jorge Mendoza](#entrevista-3-jorge-mendoza) | 38 años | Describe comunicación mediante celular, riesgos en horarios de baja afluencia y necesidad de comprender el funcionamiento de la solución. |
+
+Las edades registradas se encuentran entre 38 y 45 años, con una media de **41,7 años**. Los diez años de experiencia corresponden únicamente a Miguel; no se dispone de ese dato para calcular la experiencia media del segmento.
+
+**Características comunes y condiciones particulares**
+
+| Tipo | Característica identificada en el registro | Frecuencia | Porcentaje | Evidencia |
+|---|---|---|---|---|
+| Objetiva | Edad comprendida entre 38 y 45 años. | 3 de 3 | 100 % | D1, D2, D3: edades de las fichas. |
+| Objetiva, declarada | Describe mayor exposición al peligro de madrugada o de noche y en zonas vulnerables del recorrido. | 3 de 3 | 100 % | D1: zonas rojas y paraderos finales; D2: pocos pasajeros y antecedentes de robos; D3: primeras horas, anochecer y zonas con robos. |
+| Objetiva, declarada | Describe herramientas de seguridad escasas o ausencia de un sistema especializado de ayuda. | 3 de 3 | 100 % | D1: falta de cámaras, pánico y comunicación rápida; D2: comunicación sin sistema especializado; D3: pocas herramientas disponibles. |
+| Objetiva, declarada | Identifica el celular como medio actual de comunicación ante problemas. | 2 de 3 | 66,7 % | D2 y D3 lo mencionan expresamente. |
+| Subjetiva | Considera la alerta de emergencia como la función más importante de SafeBus. | 3 de 3 | 100 % | D1, D2 y D3 priorizan el botón o la alerta de emergencia. |
+| Subjetiva | Valora conocer la ubicación del vehículo o disponer de monitoreo en tiempo real. | 3 de 3 | 100 % | D1 destaca GPS; D2 y D3 valoran el monitoreo y el envío de ubicación con la alerta. |
+| Subjetiva | Valora la validación del conductor mediante código QR. | 3 de 3 | 100 % | D1, D2 y D3 expresan utilidad o valoración positiva del QR. |
+| Subjetiva | Condiciona su disposición a utilizar SafeBus a la privacidad de sus datos. | 1 de 3 | 33,3 % | D2 lo expresa como condición de adopción. |
+| Subjetiva | Vincula su disposición a usar SafeBus con una explicación clara de su funcionamiento y finalidad de seguridad. | 1 de 3 | 33,3 % | D3 expresa esta condición. |
+
+**Interpretación para el arquetipo del conductor**
+
+El patrón compartido es un conductor expuesto a situaciones de inseguridad que necesita avisar rápidamente y permitir que la empresa localice su unidad. La coincidencia de los tres registros en la prioridad de la alerta y la utilidad de la ubicación respalda que el arquetipo tenga como objetivo principal solicitar ayuda durante el servicio. La escasez de herramientas y la dependencia del celular explican su frustración ante una comunicación insuficiente.
+
+El QR recibe valoración positiva en las tres entrevistas y sustenta la necesidad de identificar al responsable del turno. Las condiciones de privacidad y claridad, aunque aparecen en una entrevista cada una, aportan necesidades de diseño que no deben atribuirse automáticamente a todo el segmento. El arquetipo puede recogerlas como consideraciones de adopción, indicando su origen. La muestra no permite deducir su marca de teléfono, sistema operativo, distrito, estado civil, composición familiar o nivel de habilidad digital.
+
+#### Segmento 2: Supervisores de empresa de transporte
+
+**Base de entrevistas**
+
+| Código | Entrevistado y registro de referencia | Edad | Inicio en el video del segmento | Contexto documentado |
+|---|---|---|---|---|
+| S1 | [Carlos Blancas](#entrevista-1-carlos-blancas) | 26 años | 00:00 | Describe controles tradicionales de asistencia, escasa visibilidad de la flota y necesidad de conectividad y capacitación. |
+| S2 | [Eduardo Velasquez](#entrevista-2-eduardo-velasquez) | 22 años | 07:23 | Describe despacho de 40–50 buses desde las 5:00 a. m., registros en papel, WhatsApp y reorganización de turnos. |
+| S3 | [Elverth Vasquez](#entrevista-3-elverth-vasquez) | 21 años | 13:41 | Describe planillas físicas, ausencias de conductores, reportes tardíos y dificultades de supervisión durante la ruta. |
+
+Las edades registradas se encuentran entre 21 y 26 años, con una media de **23 años**. La cantidad de 40–50 buses corresponde al caso de Eduardo y no representa el tamaño de flota de las tres empresas. Del mismo modo, la espera de hasta media hora para el auxilio policial aparece en el relato de Carlos; no constituye un tiempo medio de respuesta medido por el equipo.
+
+**Características comunes y condiciones particulares**
+
+| Tipo | Característica identificada en el registro | Frecuencia | Porcentaje | Evidencia |
+|---|---|---|---|---|
+| Objetiva | Edad comprendida entre 21 y 26 años. | 3 de 3 | 100 % | S1, S2, S3: edades de las fichas. |
+| Objetiva, declarada | Utiliza controles tradicionales o manuales para organizar asistencia, despacho o salida de unidades. | 3 de 3 | 100 % | S1: control de asistencia en patio; S2: registros en papel; S3: planillas físicas. |
+| Objetiva, declarada | Reorganiza la operación por ausencias de conductores. | 2 de 3 | 66,7 % | S2 reorganiza turnos; S3 resuelve retrasos por inasistencias. |
+| Objetiva, declarada | Recibe avisos de incidentes mediante llamadas posteriores al hecho o con retraso. | 3 de 3 | 100 % | S1, S2 y S3 describen reportes telefónicos tardíos. |
+| Objetiva, declarada | Señala dificultades para detectar sustituciones no autorizadas del conductor durante el recorrido. | 3 de 3 | 100 % | S1, S2 y S3 describen la entrega del volante o reemplazos sin conocimiento de la empresa. |
+| Objetiva, declarada | Describe asaltos y cobro de cupos o extorsión como problemas de la operación. | 3 de 3 | 100 % | S1, S2 y S3 relacionan estos hechos con afectaciones a la seguridad o continuidad del servicio. |
+| Subjetiva | Valora una solución digital para mejorar la seguridad y el control del servicio. | 3 de 3 | 100 % | S1 valora tecnología en vivo; S2, botones silenciosos y validación; S3, autenticación y alertas inmediatas. |
+| Subjetiva | Identifica resistencia al cambio o desconfianza hacia la supervisión digital como barrera de adopción. | 3 de 3 | 100 % | S1 menciona resistencia; S2 y S3 describen desconfianza del personal. |
+| Subjetiva | Considera la conectividad o cobertura de red una condición importante para la implementación. | 2 de 3 | 66,7 % | S1 destaca internet; S3, cobertura de red. |
+| Subjetiva | Destaca expresamente la capacitación de operadores. | 1 de 3 | 33,3 % | S1 la plantea para facilitar la adopción. |
+| Subjetiva | Destaca expresamente la facilidad de uso. | 1 de 3 | 33,3 % | S2 la plantea como condición de la plataforma. |
+
+**Interpretación para el arquetipo del supervisor**
+
+El patrón compartido es un responsable operativo que organiza las salidas y necesita conocer qué ocurre cuando las unidades dejan el patio. Los controles manuales, las llamadas tardías y la dificultad para identificar sustituciones del conductor aparecen en las tres entrevistas. Esto sustenta un arquetipo cuyo objetivo es disponer de información oportuna sobre la unidad y su responsable para coordinar la atención de incidentes.
+
+La resistencia o desconfianza del personal también aparece en los tres registros. Por ello, la adopción debe contemplar una explicación comprensible del propósito del monitoreo y de quién accede a los datos. La conectividad, citada por dos entrevistados, justifica distinguir información vigente, datos no disponibles y envíos pendientes. La capacitación y facilidad de uso tienen respaldo individual y complementan el perfil sin convertirse en características universales. Las edades observadas describen a estos participantes y no permiten afirmar que los supervisores del sector tengan necesariamente ese rango de edad.
+
+#### Síntesis de los segmentos e implicaciones para SafeBus
+
+Los conductores buscan comunicar un peligro y ser localizados; los supervisores necesitan recibir ese aviso, identificar al responsable de la unidad y coordinar la respuesta. Ambos segmentos valoran el apoyo digital, aunque el interés expresado todavía no demuestra adopción efectiva ni una reducción comprobada de incidentes o tiempos de atención.
+
+| Hallazgo y evidencia | Relación con el alcance del proyecto |
+|---|---|
+| Prioridad de la alerta para los tres conductores y reportes tardíos descritos por los tres supervisores. | Sustenta la necesidad de aviso y atención en US04, US10 y US20. La prioridad Critical del conductor es una decisión de diseño del proyecto. |
+| Valoración de ubicación por D1–D3 y falta de visibilidad operativa descrita por S1–S3. | Respalda la ubicación del bus y el monitoreo de US03, US11 y US18. |
+| Valoración del QR por D1–D3 y dificultad para controlar sustituciones por S1–S3. | Respalda la validación inicial y asignación de US01, US02 y US13. Un QR al inicio identifica el turno registrado, pero no prueba por sí solo quién conduce durante todo el recorrido. |
+| Privacidad indicada por D2 y desconfianza o resistencia descrita por S1–S3. | Refuerza el acceso por rol y la protección de datos de US16 y US17, junto con una explicación clara de su uso. |
+| Conectividad indicada por S1 y S3. | Refuerza los escenarios de envío pendiente, sincronización y recuperación incluidos en las historias de ubicación y emergencias. No demuestra todavía que esas soluciones funcionen en campo. |
+| Capacitación indicada por S1 y claridad o facilidad de uso indicadas por D3 y S2. | Orienta el contenido explicativo y las futuras pruebas de comprensión de los recorridos existentes. |
+
+Las entrevistas aportan sustento a las necesidades del conductor y de la empresa, pero no validan por sí solas la precisión de sensores, el cálculo de aforo ni las decisiones técnicas pendientes de prueba. Tampoco aportan evidencia directa del segmento Pasajeros: el registro con DNI y rostro, las solicitudes con mensaje y foto, el umbral de tres pasajeros en cinco minutos y el cierre a más de 100 metros durante 60 segundos proceden de los acuerdos de alcance y QA, y deben contrastarse con ese segmento.
+
+El perfil de cada arquetipo debe mantener esta distinción entre evidencia común, aportes individuales e hipótesis. Los registros no documentan de forma suficiente distrito de residencia, estado civil, composición familiar, marcas, navegador o dispositivo preferido; no se asignan valores ni porcentajes a esos datos. El análisis utiliza los resúmenes registrados y no incorpora nuevas transcripciones ni atribuye resultados de pruebas de uso a las entrevistas de descubrimiento.
+
 
 ---
 
 ## 2.3. Needfinding
 
-### 2.3.1. User Personas
+Las necesidades siguientes son hipótesis que deberán contrastarse mediante entrevistas de los tres segmentos. Los nuevos requisitos de pasajero proceden de QA; no se presentan como conclusiones estadísticas de la entrevista registrada.
 
-[Fichas de User Persona por segmento — herramienta: UXPressia]
+#### 2.3.1 User Personas
+
+Los perfiles representan a los actores del alcance. Los materiales existentes de conductor y supervisor deben contrastarse con entrevistas; el perfil de pasajero incorporado en esta revisión es provisional, sin atribuirle evidencia empírica.
+
+**Segmento #1: Conductores (operarios) de transporte público**
+
+<img src="../assets/Segmento1Persona.png">
+
+**Segmento #2: Empresas o consorcios de transporte público**
+
+<img src="../assets/Segmento2Persona.png">
+
+**Segmento #3: Pasajeros de transporte público — perfil provisional**
+
+| Aspecto | Hipótesis de perfil a validar |
+|---|---|
+| Identificación | Pasajero frecuente de una unidad asociada a SafeBus; no representa a una persona entrevistada. |
+| Contexto | Usa transporte público en Lima y Callao y dispone de un teléfono compatible. |
+| Objetivos | Identificar el bus y su conductor, consultar alertas de la unidad, enviar evidencia de un incidente y terminar su asociación al bajar. |
+| Dificultades | Distinguir solicitud de emergencia, reunir evidencia, conocer el estado del umbral y aprobación y evitar que el viaje permanezca activo al bajar. |
+| Necesidades | Registro con DNI y foto de rostro, QR de viaje, solicitud con mensaje y foto del incidente, historial resumido del bus, seguimiento privado y cierre automático con permisos de ubicación. |
+| Validación pendiente | Entrevistas, frecuencia de uso, barreras de accesibilidad y acceso efectivo a teléfono y datos móviles. |
+
+El perfil y los mapas del tercer segmento deben trasladarse a UXPressia. Los materiales gráficos previos de los otros segmentos requieren revisión contra este alcance móvil; no se consideran actualizados automáticamente por esta edición textual.
+
+---
 
 ### 2.3.2. User Task Matrix
 
-| Task | [User Persona 1] Frecuencia | [User Persona 1] Importancia | [User Persona 2] Frecuencia | [User Persona 2] Importancia |
-|------|---|---|---|---|
-| | | | | |
+Las matrices existentes describen actividades del contexto del conductor y de la empresa, incluyendo tareas que SafeBus no automatiza. Sus frecuencias e importancia son hipótesis pendientes de contraste; no se presentan como mediciones de entrevistas. El alcance implementable se determina en 2.4.
+
+**Segmento objetivo #1 — José Mamani Quispe**
+
+| Actividades | Frecuencia | Importancia |
+|-------------|-----------|-------------|
+| Iniciar jornada y verificar el estado de la unidad antes de salir | Con frecuencia | Alta |
+| Confirmar la ruta asignada y horario de salida con la empresa | Con frecuencia | Alta |
+| Cobrar pasaje y controlar el flujo de subida y bajada de pasajeros | Con frecuencia | Alta |
+| Reportar incidentes o percances al encargado de la empresa | A veces | Alta |
+| Evaluar zonas de riesgo durante la ruta y tomar desvíos si es necesario | Frecuente | Alta |
+| Pagar cuota o cupo a personas externas que operan en la ruta | Frecuente | Media |
+| Comunicarse con otros conductores vía celular ante situaciones de riesgo | A veces | Alta |
+| Registrar el cierre de turno y entregar la unidad al siguiente conductor | Con frecuencia | Alta |
+
+**Segmento objetivo #2 — Luis Ramírez Nombera**
+
+| Actividades | Frecuencia | Importancia |
+|-------------|-----------|-------------|
+| Supervisar las unidades de transporte en ruta | Con frecuencia | Alta |
+| Coordinar con conductores durante la jornada | Con frecuencia | Alta |
+| Atender incidentes o reportes de seguridad | Con frecuencia | Alta |
+| Comunicarse con autoridades (policía, emergencia) | A veces | Alta |
+| Verificar documentación de conductores | A veces | Media |
+| Gestionar problemas de extorsión o amenazas | Con frecuencia | Alta |
+| Revisar estado operativo de las unidades | Con frecuencia | Alta |
+| Recibir reportes de pasajeros o quejas | A veces | Media |
+| Resolver problemas sin información en tiempo real | Con frecuencia | Alta |
+| Evaluar implementación de nuevas tecnologías | A veces | Media |
+
+**Segmento objetivo #3 — Pasajero frecuente (tareas propuestas, pendientes de validación)**
+
+| Actividad | Momento previsto | Importancia propuesta |
+|---|---|---|
+| Registrarse con DNI y foto de rostro | Antes del primer viaje | Alta |
+| Escanear el QR y verificar la unidad | Al abordar | Alta |
+| Consultar alertas registradas en el bus | Durante el viaje | Alta |
+| Enviar solicitud de pánico con mensaje y foto | Ante un peligro durante el viaje | Alta |
+| Consultar umbral, aprobación y atención de su solicitud | Después de reportar | Alta |
+| Comprobar el cierre automático al alejarse o terminar el viaje manualmente | Al bajar de la unidad | Media |
 
 ### 2.3.3. User Journey Mapping
 
-[Journey Maps As-Is por User Persona]
+Los gráficos existentes describen hipótesis del recorrido **actual, sin SafeBus (As-Is)**: aparición del incidente, dificultad para pedir ayuda y respuesta limitada. Se conservan como antecedentes a contrastar mediante entrevistas. La matriz del pasajero completa ese mismo enfoque. El recorrido futuro con la aplicación se especifica por separado en el To-Be Scenario Mapping de 2.4.
+
+
+**Segmento objetivo #1 — José Mamani Quispe**
+
+<img src="../assets/Segmento Objetivo 1 - JourneyMap.png">
+
+
+**Segmento objetivo #2 — Luis Ramírez Nombera**
+
+<img src="../assets/Segmento Objetivo 2 - JourneyMap.png">
+
+**Segmento objetivo #3 — Pasajero (hipótesis del recorrido actual, sin SafeBus)**
+
+| Etapa | Acción actual supuesta | Dificultad a validar | Oportunidad para SafeBus |
+|---|---|---|---|
+| Registro | Utiliza medios de transporte sin una cuenta vinculada a reportes. | Puede no existir una identidad asociada a una solicitud. | Registro con DNI y rostro mediante US23. |
+| Abordaje | Observa la placa y la información visible del vehículo. | No cuenta con una referencia digital del conductor asignado. | Verificar los datos registrados de la unidad mediante US06. |
+| Información de seguridad | Consulta comentarios o avisos informales sobre la unidad. | No conoce qué alertas se registraron en el bus. | Consultar el resumen de alertas y solicitudes mediante US07. |
+| Incidente | Busca ayuda de otra persona o intenta llamar. | Le cuesta documentar el hecho y saber cómo será evaluado. | Solicitud con mensaje y foto, umbral de pasajeros y aprobación empresarial (US08, US10). |
+| Seguimiento | Espera una respuesta o vuelve a contactar. | No distingue recepción, evaluación y atención. | Consulta de umbral, aprobación y estado mediante US09 y US10. |
+| Salida | Baja de la unidad y continúa su trayecto. | Una asociación digital podría quedar activa por olvido. | Cierre automático por alejamiento o manual mediante US24. |
+
+
+
+---
 
 ### 2.3.4. Empathy Mapping
 
-[Empathy Maps por User Persona]
+Para entender mejor a nuestros usuarios, usamos el Empathy Map, para ponernos en su lugar y entender mejor sus necesidades y deseos.
+
+**#1er Segmento Objetivo:**
+
+<img src="../assets/Empathy map Segmento 1.png">
+
+**#2do Segmento Objetivo:**
+
+<img src="../assets/Empathy map Segmento 2.png">
+
+**#3er Segmento Objetivo — Pasajero (hipótesis de empatía, no citas de entrevistas):**
+
+| Dimensión | Hipótesis a contrastar |
+|---|---|
+| Piensa / siente | Necesita saber si puede pedir ayuda sin llamar la atención y si alguien recibió el aviso. |
+| Ve / oye | Encuentra información limitada sobre la unidad y recibe comentarios sobre inseguridad en el transporte. |
+| Dice / hace | Revisa datos y alertas del bus, documenta incidentes y consulta el estado de su solicitud. |
+| Dificultades | Falta de conexión, desconocimiento del conductor y falta de respuesta visible. |
+| Beneficios esperados | Identificar la unidad, consultar alertas, enviar evidencia, conocer la decisión de la empresa y terminar el viaje al bajar. |
+
+
+---
 
 ### 2.3.5. Big Picture EventStorming
 
-[Capturas y explicación del proceso — guía: https://bit.ly/bpes-guide]
+<img src="../docs/bigPicture/Step 1.png">
+
+<img src="../docs/bigPicture/Step 2p1.png">
+
+<img src="../docs/bigPicture/Step 2p2.png">
+
+<img src="../docs/bigPicture/Step 3p1.png">
+
+<img src="../docs/bigPicture/Step 3p2.png">
 
 ### 2.3.6. Ubiquitous Language
 
 | Term (English) | Término (Español) | Definición |
-|-----------------|--------------------|------------|
-| | | |
+|---|---|---|
+| Driver Shift | Turno del conductor | Periodo asignado a conductor, bus y ruta; su cierre conserva los registros de seguridad. |
+| Passenger Account | Cuenta de pasajero | Cuenta creada con DNI, foto de rostro y contraseña; el registro no equivale a una verificación oficial de identidad. |
+| Passenger Journey | Viaje del pasajero | Asociación de una cuenta con bus y turno mediante QR; termina por alejamiento válido, cierre manual, salida de sesión o cierre del turno. |
+| Passenger Panic Request | Solicitud de pánico del pasajero | Reporte con mensaje y foto del incidente; una solicitud individual no activa una emergencia. |
+| Passenger Request Group | Agrupación de solicitudes | Solicitudes del mismo bus y turno en una ventana de cinco minutos; cuenta una contribución por pasajero registrado. |
+| Approval Threshold | Umbral de aprobación | Tres pasajeros distintos con solicitudes completas en cinco minutos habilitan revisión de la empresa. |
+| Driver Emergency | Emergencia del conductor | Alerta directa de prioridad Critical que no requiere umbral, mensaje, foto ni aprobación previa. |
+| Passenger Emergency | Emergencia de pasajeros | Alerta de prioridad High activada por aprobación empresarial de una agrupación elegible. |
+| Incident Evidence | Evidencia del incidente | Mensaje y foto adjuntos a una solicitud, distintos del DNI y foto del registro. |
+| Emergency Status | Estado de emergencia | Active, In progress y Closed; no se confunde con Collecting requests o Awaiting company approval. |
+| Automatic Journey Completion | Cierre automático de viaje | Finalización por separación mayor a 100 metros durante 60 segundos con ubicaciones recientes y precisas. |
+| Operations Central | Central de operaciones | Supervisores de la empresa que revisan solicitudes y atienden emergencias. |
+| Passenger Count | Conteo de pasajeros | Aforo derivado de eventos de entrada y salida, disponible para la empresa con estado de validez. |
+| Bus Capacity | Capacidad del bus | Límite registrado por la empresa para interpretar la ocupación. |
 
 ---
 
 ## 2.4. Requirements specification
 
+SafeBus atiende a conductores, pasajeros registrados y supervisores de empresas de transporte. El conductor valida su turno y su botón de pánico activa directamente una emergencia de prioridad máxima para la empresa. El pasajero se registra con DNI, foto de su rostro y contraseña, vincula su viaje mediante el QR del bus y consulta las alertas registradas en esa unidad.
+
+El botón del pasajero envía una **solicitud con mensaje y foto del incidente**. Al reunir **3 pasajeros distintos del mismo bus y turno en 5 minutos**, el sistema habilita la revisión de la empresa; la emergencia se activa después de su aprobación. Cada cuenta aporta una sola contribución al umbral por agrupación. La consulta de aforo corresponde a la empresa. El viaje del pasajero termina automáticamente al permanecer a **más de 100 metros del bus durante 60 segundos**, con ubicaciones válidas, o mediante cierre manual.
+
+La especificación contiene **24 historias, numeradas de US01 a US24 y agrupadas en 7 épicas**: 18 funcionales, 4 técnicas y 2 Spike Stories. Las condiciones de cada función se detallan en sus criterios de aceptación.
+
+#### To-Be Scenario Mapping
+
+| Actor | Inicio del servicio | Durante el viaje | Ante un incidente | Finalización |
+|---|---|---|---|---|
+| Conductor | Ingresa, consulta su asignación y valida el turno (US16, US02, US01). | Comparte la ubicación del bus (US03). | Activa una emergencia directa y prioritaria sin requerir solicitudes de pasajeros ni aprobación (US04). | Cierra el turno y detiene su ubicación; conserva casos abiertos (US05). |
+| Pasajero | Registra DNI, foto de rostro y contraseña; inicia sesión y escanea el QR de la unidad (US23, US16, US06). | Consulta alertas del bus; la app compara su ubicación con la del bus para detectar la salida (US07, US18, US24). | Envía mensaje y foto; su solicitud participa en el umbral de 3 pasajeros en 5 minutos y consulta la decisión de la empresa (US08, US09, US10). | Al alejarse más de 100 metros durante 60 segundos se cierra el viaje y se detiene la ubicación; puede terminarlo manualmente y mantiene acceso a sus solicitudes (US24, US09). |
+| Supervisor | Ingresa y asigna conductor, bus, ruta y capacidad (US16, US13, US12). | Supervisa posición, aforo y estados de seguridad (US11). | Atiende primero emergencias del conductor; revisa evidencia de grupos elegibles y aprueba o rechaza emergencias de pasajeros (US10, US20). | Registra atención y resultado de cierre sin confundir cierre de viaje con cierre de emergencia (US10). |
+
 ### 2.4.1. User Stories
+
+Las historias de usuario fueron formuladas siguiendo las directrices de especificación ágil de requisitos de Cohn (2004), identificando actor, necesidad, beneficio, prioridad y épica. Los criterios de aceptación siguen la estructura Given–When–Then de Gherkin y describen resultados comprobables. Las Technical Stories utilizan el actor Developer; las Spike Stories incluyen un objetivo, un límite de tiempo y evidencia de investigación.
 
 #### Epics
 
-- [Epic 1]
+| Epic ID | Epic | Propósito | User Stories |
+|---|---|---|---|
+| EP01 | **Driver Shift and Safety** — Turno y seguridad del conductor | Validar el turno, compartir la ubicación del bus y activar emergencias directas con prioridad máxima. | US01, US02, US03, US04, US05 |
+| EP02 | **Passenger Identity, Journey and Safety** — Identidad, viaje y seguridad del pasajero | Registrar DNI y rostro, vincular el viaje, consultar alertas, enviar solicitudes con evidencia y terminar el viaje al alejarse del bus. | US06, US07, US08, US09, US23, US24 |
+| EP03 | **Emergency Review and Response** — Revisión y atención de emergencias | Priorizar emergencias del conductor y aprobar o rechazar agrupaciones de solicitudes de pasajeros antes de atenderlas. | US10 |
+| EP04 | **Fleet Monitoring and Setup** — Monitoreo y asignación de unidades | Consultar ubicación, aforo y estado de seguridad de la flota; registrar capacidades y asignar unidades. | US11, US12, US13 |
+| EP05 | **Service Information and Contact** — Presentación y contacto | Explicar el servicio y sus dos procesos de alerta mediante la landing y recibir solicitudes de información. | US14, US15 |
+| EP06 | **User Access and Protected Service Integration** — Acceso y comunicación protegida | Autenticar los tres roles y proteger identidad, evidencia y servicios de ubicación, conteo y notificaciones. | US16, US17, US18, US19, US20 |
+| EP07 | **Technical Feasibility Spikes** — Investigaciones técnicas breves | Evaluar el GPS de conductor y pasajero y la recepción consistente de eventos de conteo. | US21, US22 |
 
-#### User Stories
+#### User Story Catalogue
+
+| Story ID | User | Title | Priority | Epic | Type |
+|---|---|---|---|---|---|
+| **US01** | Public Transport Driver | Validate an Assigned Shift with a Driver QR Credential | High | EP01 | Functional |
+| **US02** | Public Transport Driver | Consult Assigned Route and Shift Details | High | EP01 | Functional |
+| **US03** | Public Transport Driver | Share Bus Location During an Active Shift | High | EP01 | Functional |
+| **US04** | Public Transport Driver | Trigger an Immediate Driver Emergency Alert | High | EP01 | Functional |
+| **US05** | Public Transport Driver | Close a Driver Shift | Medium | EP01 | Functional |
+| **US06** | Bus Passenger | Verify a Bus and Start a Passenger Journey | High | EP02 | Functional |
+| **US07** | Bus Passenger | Consult the Alerts Reported on My Bus | High | EP02 | Functional |
+| **US08** | Bus Passenger | Submit a Passenger Panic Request with Message and Photo | High | EP02 | Functional |
+| **US09** | Bus Passenger | Consult the Status of My Passenger Panic Requests | Medium | EP02 | Functional |
+| **US10** | Fleet Supervisor | Approve Passenger Emergencies and Prioritize Driver Alerts | High | EP03 | Functional |
+| **US11** | Fleet Supervisor | Monitor Fleet Location and Occupancy | High | EP04 | Functional |
+| **US12** | Fleet Supervisor | Maintain the Recorded Capacity of a Bus | Medium | EP04 | Functional |
+| **US13** | Fleet Supervisor | Assign a Driver and Bus to a Route Shift | High | EP04 | Functional |
+| **US14** | Transport Company Representative | Consult SafeBus Service Information | Medium | EP05 | Functional |
+| **US15** | Transport Company Representative | Submit a Company Contact Request | Medium | EP05 | Functional |
+| **US16** | Registered User | Sign In and Sign Out by User Role | High | EP06 | Functional |
+| **US17** | Developer | Protect Role Access, Passenger Identity and Evidence | High | EP06 | Technical |
+| **US18** | Developer | Provide Bus Location for Monitoring and Journey Completion | High | EP06 | Technical |
+| **US19** | Developer | Provide a RESTful Passenger-Count Service | High | EP06 | Technical |
+| **US20** | Developer | Deliver Driver Emergencies and Passenger Review Notifications | High | EP06 | Technical |
+| **US21** | Developer | Spike Background GPS for Driver Tracking and Passenger Exit | High | EP07 | Spike |
+| **US22** | Developer | Spike Ordered Passenger-Count Event Ingestion | High | EP07 | Spike |
+| **US23** | Bus Passenger | Register a Passenger Account with DNI and Face Photo | High | EP02 | Functional |
+| **US24** | Bus Passenger | Automatically End a Journey When Moving Away from the Bus | High | EP02 | Functional |
+
+#### Detailed User Stories
+
+##### US01 — Validate an Assigned Shift with a Driver QR Credential
 
 | Story ID | User | Priority | Epic |
-|----------|------|----------|------|
-| **Title** | | | |
-| **Description** | | | |
-| **Acceptance Criteria** | Given... When... Then... | | |
+|---|---|---|---|
+| **US01** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
+| **Title** | Validate an Assigned Shift with a Driver QR Credential | | |
+| **Description** | As a Public Transport Driver, I want to validate my assigned shift with my driver QR credential so that the company identifies the authorized driver responsible for the bus. | | |
+| **Acceptance Criteria** | **Scenario 1: Activate an assigned shift**<br>Given the authenticated driver has a valid company-issued QR credential and an assigned, unstarted shift<br>When SafeBus validates the credential for that shift<br>Then SafeBus activates the shift, associates the driver, bus and route, and records the start time<br><br>**Scenario 2: Reject an invalid assignment**<br>Given the credential is expired, disabled, belongs to another driver, or has no matching assignment<br>When the driver requests shift validation<br>Then SafeBus rejects activation, identifies the reason, and preserves the existing shift state | | |
 
-#### Technical Stories
+##### US02 — Consult Assigned Route and Shift Details
 
-[Redactadas con rol "Developer", AC en formato Gherkin]
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US02** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
+| **Title** | Consult Assigned Route and Shift Details | | |
+| **Description** | As a Public Transport Driver, I want to consult my assigned route and shift details so that I know the bus, route and service schedule that I must follow. | | |
+| **Acceptance Criteria** | **Scenario 1: Consult an assignment**<br>Given the authenticated driver has an assigned shift<br>When the driver requests the assignment<br>Then SafeBus provides the bus plate, route name, origin, destination, scheduled start and scheduled end<br><br>**Scenario 2: Handle a missing assignment**<br>Given the authenticated driver has no assigned shift<br>When the driver requests the assignment<br>Then SafeBus reports that no assignment is available and does not substitute another driver's assignment | | |
 
-#### Spike Stories
+##### US03 — Share Bus Location During an Active Shift
 
-[Ver Anexo D del enunciado como referencia de estructura]
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US03** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
+| **Title** | Share Bus Location During an Active Shift | | |
+| **Description** | As a Public Transport Driver, I want the mobile app to share my bus location during my active shift so that Operations Central can locate the unit when assistance is needed. | | |
+| **Acceptance Criteria** | **Scenario 1: Share a current location**<br>Given the driver has an active shift, grants location permission and has connectivity<br>When the app obtains a location sample at a sampling interval of 30 seconds<br>Then SafeBus sends the event identifier, coordinates, accuracy, capture time, bus and shift to the location service<br><br>**Scenario 2: Synchronize locally stored samples**<br>Given the app captures three samples while connectivity is unavailable<br>When connectivity returns during an authenticated session<br>Then the app submits the locally persisted samples with their original identifiers and times, removes acknowledged samples from the pending queue, and does not replace a newer current position with an older sample<br><br>**Scenario 3: Stop collecting location**<br>Given the shift closes or the driver withdraws location permission<br>When the app evaluates location collection<br>Then the app stops collecting new samples and reports that live location is unavailable; already pending samples remain associated with their original shift | | |
+
+##### US04 — Trigger an Immediate Driver Emergency Alert
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US04** | Public Transport Driver | High | EP01 — Driver Shift and Safety |
+| **Title** | Trigger an Immediate Driver Emergency Alert | | |
+| **Description** | As a Public Transport Driver, I want to trigger an emergency directly from my driver panic button so that my company receives a critical alert without waiting for passenger requests or supervisor approval. | | |
+| **Acceptance Criteria** | **Scenario 1: Activate a driver emergency immediately**<br>Given the authenticated driver has an active assigned shift and connectivity<br>When the driver activates the panic function<br>Then SafeBus immediately creates a Critical emergency in Active state for the company, preserving driver, bus, route, activation time and available location and count; it requires neither a message nor a photo, no passenger threshold and no prior approval, and emits no activation sound or vibration on the driver device<br><br>**Scenario 2: Record an emergency without connectivity**<br>Given the driver has a locally stored active-shift association and no network connection<br>When the driver activates panic<br>Then the app stores the alert securely as Pending transmission with its original context and identifier; after reconnection and authorized delivery, SafeBus activates one Critical emergency and records both original activation time and receipt time<br><br>**Scenario 3: Preserve driver priority**<br>Given passenger requests for the same bus are below threshold, awaiting approval or already approved<br>When the server receives a driver panic activation<br>Then SafeBus creates or identifies the driver emergency with Critical priority, processes it ahead of passenger review items and does not wait for or change the approval decision on those passenger requests<br><br>**Scenario 4: Consult a driver emergency**<br>Given the authenticated driver owns a delivered driver alert<br>When the driver requests its status<br>Then SafeBus returns Active, In progress or Closed with its timestamp and permitted response, without exposing private information from other reports | | |
+
+##### US05 — Close a Driver Shift
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US05** | Public Transport Driver | Medium | EP01 — Driver Shift and Safety |
+| **Title** | Close a Driver Shift | | |
+| **Description** | As a Public Transport Driver, I want to close my completed shift so that the company records the end of my responsibility and the app stops collecting my location. | | |
+| **Acceptance Criteria** | **Scenario 1: Close an active shift**<br>Given the authenticated driver has an active shift<br>When the driver requests closure<br>Then SafeBus records the closing time and last available operational data, closes the shift, ends passenger journeys associated with that shift and stops further collection of driver and passenger journey location<br><br>**Scenario 2: Keep existing safety records**<br>Given an emergency or passenger request group remains open when its original shift closes<br>When SafeBus closes the shift<br>Then SafeBus preserves requests, evidence, contributor counts already accepted, approval state and emergency history for company follow-up; it does not close or reject a safety record solely because the shift ended | | |
+
+##### US06 — Verify a Bus and Start a Passenger Journey
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US06** | Bus Passenger | High | EP02 — Passenger Identity, Journey and Safety |
+| **Title** | Verify a Bus and Start a Passenger Journey | | |
+| **Description** | As a Bus Passenger, I want to verify a bus QR after signing into my passenger account and start a journey so that my requests and journey location belong to the correct bus and my registered identity. | | |
+| **Acceptance Criteria** | **Scenario 1: Start an authenticated journey**<br>Given the passenger has an active account created with DNI and face photo, is signed in and scans a registered bus QR with connectivity and an active driver shift<br>When SafeBus validates the bus<br>Then SafeBus returns plate, company, route, assigned driver public name and company validation status, then creates one active journey linked to the passenger account, bus and shift and stores that association securely on the device<br><br>**Scenario 2: Reject an invalid start**<br>Given the passenger is not authenticated, the QR is unreadable or unknown, or the bus has no active shift<br>When the passenger requests journey activation<br>Then SafeBus creates no journey and identifies the access or verification problem without exposing private account information<br><br>**Scenario 3: Enable location for journey completion**<br>Given the authenticated passenger starts a verified journey and grants the location permissions required by the mobile platform<br>When the app begins checking the separation from the bus<br>Then the app collects passenger location only during the active journey to evaluate US24, uses the current bus location and reports the availability of automatic completion; denied permission leaves manual completion available and does not block an otherwise valid journey<br><br>**Scenario 4: Avoid overlapping journeys**<br>Given the passenger already has an active journey<br>When the passenger repeats the same bus scan or requests a different bus<br>Then SafeBus returns the existing journey for the same bus and requires the current journey to end before starting a different one | | |
+
+##### US07 — Consult the Alerts Reported on My Bus
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US07** | Bus Passenger | High | EP02 — Passenger Identity, Journey and Safety |
+| **Title** | Consult the Alerts Reported on My Bus | | |
+| **Description** | As a Bus Passenger, I want to consult a privacy-preserving summary of alerts and passenger requests on the bus of my active journey so that I can understand the reported safety situation and its response status. | | |
+| **Acceptance Criteria** | **Scenario 1: Consult bus safety reports**<br>Given the authenticated passenger has an active journey and the same bus and shift have driver emergencies or passenger request groups<br>When the passenger requests the bus alert history<br>Then SafeBus returns each public reference, source, recorded time, distinct request count where applicable and state: Collecting requests, Awaiting company approval, Not approved, Expired, Active, In progress or Closed; it excludes DNI, face photos, evidence photos, free-text reports, passenger identity and internal notes<br><br>**Scenario 2: Handle an empty history**<br>Given the passenger has an active journey but its bus and shift have no safety records<br>When the passenger requests bus alerts<br>Then SafeBus returns an empty history and states that no reports are recorded, without claiming that the bus is risk-free<br><br>**Scenario 3: Limit access to the journey bus**<br>Given the requested bus or shift differs from the passenger's active journey, or the journey has ended<br>When the passenger requests the bus-wide history<br>Then SafeBus rejects access; the account retains access to its own submitted requests through US09 | | |
+
+##### US08 — Submit a Passenger Panic Request with Message and Photo
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US08** | Bus Passenger | High | EP02 — Passenger Identity, Journey and Safety |
+| **Title** | Submit a Passenger Panic Request with Message and Photo | | |
+| **Description** | As a Bus Passenger, I want to submit a panic request with a message and an incident photo for my active bus journey so that the company can review documented requests when enough distinct passengers report danger. | | |
+| **Acceptance Criteria** | **Scenario 1: Record a complete request below threshold**<br>Given the authenticated passenger has an active verified journey and provides a message of 1 to 500 characters and one decodable JPEG or PNG incident photo no larger than 5 MB<br>When SafeBus receives the complete request with an original activation time no older than five minutes<br>Then SafeBus records the request, evidence, account, journey, bus, shift and timestamps once, associates it with the current bus-and-shift group, and counts that account at most once; fewer than three distinct accounts leave the group Collecting requests and create no emergency<br><br>**Scenario 2: Reach the passenger threshold**<br>Given a Collecting requests group for the same bus and shift contains complete requests from two distinct registered passenger accounts within a five-minute window starting at the first accepted request<br>When SafeBus receives the third eligible request from a different account before the window expires<br>Then SafeBus freezes the qualifying contributors, moves the group to Awaiting company approval and notifies the company that approval is available; it does not activate an emergency before approval and simultaneous qualifying submissions create only one approval item<br><br>**Scenario 3: Reject incomplete evidence and prevent duplicate votes**<br>Given a request has no message or incident photo, the photo cannot be decoded or exceeds 5 MB, or the same passenger retries or submits another request for the same group<br>When SafeBus validates the submission<br>Then SafeBus rejects incomplete evidence without counting it, returns the original reference for an identical retry, and allows at most one contribution per passenger account to the group; a face photo supplied at registration is not automatically reused as incident evidence<br><br>**Scenario 4: Expire a group below threshold**<br>Given a Collecting requests group has fewer than three distinct contributors and its five-minute window expires<br>When SafeBus evaluates the group<br>Then SafeBus marks it Expired, retains its records and creates no emergency; a later eligible request starts a new window without reusing expired contributions<br><br>**Scenario 5: Synchronize an offline request**<br>Given the app securely stores a complete passenger request and its original journey context without connectivity<br>When connectivity and authorized account access return<br>Then SafeBus accepts the record once and preserves evidence and original timestamps; it contributes to the threshold only if it arrives within five minutes of activation, the journey is still active and a collecting group window is open; a timely request for an existing review or emergency follows Scenario 6, while an ineligible late request is stored as Late without contributing to a threshold<br><br>**Scenario 6: Preserve an existing review or emergency**<br>Given a group for the bus and shift is Awaiting company approval or is linked to an Active or In progress emergency<br>When another eligible passenger submits a complete request<br>Then SafeBus attaches it as additional evidence without creating a second approval item or emergency and preserves the original threshold evidence; after a group is Not approved or Closed, new eligible requests start a new group | | |
+
+##### US09 — Consult the Status of My Passenger Panic Requests
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US09** | Bus Passenger | Medium | EP02 — Passenger Identity, Journey and Safety |
+| **Title** | Consult the Status of My Passenger Panic Requests | | |
+| **Description** | As a Bus Passenger, I want to consult the status of my submitted panic requests and their linked emergencies so that I know whether my evidence is waiting for other requests, company approval or emergency attention. | | |
+| **Acceptance Criteria** | **Scenario 1: Consult request progress**<br>Given the authenticated passenger owns a recorded request<br>When the passenger requests its status<br>Then SafeBus returns the account's own message and evidence reference, submission time, group count and current status, distinguishing Collecting requests, Awaiting company approval, Expired, Not approved and Late from an Active, In progress or Closed emergency<br><br>**Scenario 2: Consult a decision after leaving**<br>Given the passenger journey has ended but the passenger account owns a request in a group reviewed by the company<br>When the passenger requests that record<br>Then SafeBus returns the approval or non-approval state, decision time and user-facing response without requiring an active journey or exposing other passengers' evidence<br><br>**Scenario 3: Protect another account**<br>Given the authenticated passenger requests another passenger's private record<br>When SafeBus evaluates ownership<br>Then SafeBus rejects the request and discloses no message, evidence or personal data<br><br>**Scenario 4: Distinguish an offline draft**<br>Given a request remains on the device without server acknowledgement<br>When the passenger consults its status<br>Then the app reports Pending transmission and does not count it toward the server threshold or describe it as a received emergency | | |
+
+##### US10 — Approve Passenger Emergencies and Prioritize Driver Alerts
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US10** | Fleet Supervisor | High | EP03 — Emergency Review and Response |
+| **Title** | Approve Passenger Emergencies and Prioritize Driver Alerts | | |
+| **Description** | As a Fleet Supervisor, I want to approve eligible passenger request groups and attend emergencies while prioritizing direct driver alerts so that the company distinguishes corroborated passenger requests from immediate driver emergencies and records each response. | | |
+| **Acceptance Criteria** | **Scenario 1: Attend a direct driver emergency**<br>Given SafeBus has received a driver panic and activated a Critical emergency<br>When an authorized company supervisor starts attention<br>Then SafeBus changes the emergency from Active to In progress and records the responsible supervisor and attention time without a passenger threshold or approval step<br><br>**Scenario 2: Approve a qualifying passenger group**<br>Given a group for the supervisor's company has at least three distinct eligible passenger accounts within its five-minute window and is Awaiting company approval<br>When the supervisor reviews the messages and incident photos and approves the group<br>Then SafeBus records the approver and time, activates exactly one High-priority passenger emergency, notifies company operations and updates the linked passenger requests; a repeated approval returns the same emergency<br><br>**Scenario 3: Prevent premature approval or record non-approval**<br>Given a group is below threshold or has expired, or the supervisor declines an eligible group with a reason<br>When the supervisor submits a decision<br>Then SafeBus rejects approval for an ineligible group; for a declined eligible group it records Not approved, the reason and a user-facing response without creating an emergency<br><br>**Scenario 4: Start attention and close an emergency**<br>Given a driver or approved passenger emergency belongs to the company<br>When the authorized supervisor starts attention and later submits an outcome<br>Then SafeBus records Active to In progress with responsible supervisor and start time, then In progress to Closed with outcome and closing time; closure without started attention or an outcome is rejected<br><br>**Scenario 5: Preserve the agreed priority**<br>Given driver emergencies, approved passenger emergencies and groups awaiting approval coexist<br>When the supervisor consults pending work<br>Then SafeBus orders direct driver emergencies first, approved passenger emergencies next and passenger approval items separately; a driver panic is never blocked by an unfinished passenger approval | | |
+
+##### US11 — Monitor Fleet Location and Occupancy
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US11** | Fleet Supervisor | High | EP04 — Fleet Monitoring and Setup |
+| **Title** | Monitor Fleet Location and Occupancy | | |
+| **Description** | As a Fleet Supervisor, I want to consult my company's active buses and their location and occupancy status so that I can locate a unit and assess the available information during an incident. | | |
+| **Acceptance Criteria** | **Scenario 1: Consult fleet and safety state**<br>Given the authenticated supervisor has buses assigned to their company<br>When the supervisor requests fleet information<br>Then SafeBus returns bus, route, driver, shift, available location and count with timestamps, direct driver emergencies, passenger group counts and approval states; the mobile client uses an external cartographic service for bus positions and distinguishes Awaiting company approval from Active emergencies<br><br>**Scenario 2: Identify outdated location**<br>Given the latest bus location sample is older than three minutes or absent<br>When SafeBus evaluates fleet location<br>Then SafeBus reports Stale with the last capture time or Unavailable when absent and does not present an old sample as current<br><br>**Scenario 3: Handle map-service failure**<br>Given the external map service is unavailable but fleet data is accessible<br>When the supervisor requests fleet information<br>Then SafeBus retains coordinates, timestamps, occupancy and safety records and reports that the map is unavailable | | |
+
+##### US12 — Maintain the Recorded Capacity of a Bus
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US12** | Fleet Supervisor | Medium | EP04 — Fleet Monitoring and Setup |
+| **Title** | Maintain the Recorded Capacity of a Bus | | |
+| **Description** | As a Fleet Supervisor, I want to record the passenger capacity of a bus using its company-held technical record so that SafeBus evaluates occupancy against the correct limit. | | |
+| **Acceptance Criteria** | **Scenario 1: Record a capacity**<br>Given the supervisor is authorized for the bus and supplies a positive integer capacity and a technical-record reference<br>When SafeBus receives the capacity update<br>Then SafeBus stores the capacity, reference, author and update time and applies the capacity to subsequent occupancy queries without changing the passenger count<br><br>**Scenario 2: Reject an invalid capacity**<br>Given the submitted capacity is zero, negative or non-integer, or the reference is absent<br>When SafeBus validates the update<br>Then SafeBus rejects the update, identifies the reason and preserves the last valid capacity | | |
+
+##### US13 — Assign a Driver and Bus to a Route Shift
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US13** | Fleet Supervisor | High | EP04 — Fleet Monitoring and Setup |
+| **Title** | Assign a Driver and Bus to a Route Shift | | |
+| **Description** | As a Fleet Supervisor, I want to assign an existing driver and bus to a route and shift period so that the driver can validate the correct service and the company knows who is responsible. | | |
+| **Acceptance Criteria** | **Scenario 1: Create a shift assignment**<br>Given the company has an enabled driver, bus and route with no overlapping assignment and a valid start and end period<br>When the supervisor records the assignment<br>Then SafeBus stores driver, bus, route, planned period and author and makes the assignment available to that driver<br><br>**Scenario 2: Reject a conflicting or foreign assignment**<br>Given the driver or bus has an overlapping assignment, belongs to another company, or is disabled<br>When the supervisor submits the assignment<br>Then SafeBus rejects the request, identifies the conflict or access limitation and preserves existing assignments | | |
+
+##### US14 — Consult SafeBus Service Information
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US14** | Transport Company Representative | Medium | EP05 — Service Information and Contact |
+| **Title** | Consult SafeBus Service Information | | |
+| **Description** | As a Transport Company Representative, I want to consult the published SafeBus service information so that I understand its benefits and the service scope for my company. | | |
+| **Acceptance Criteria** | **Scenario 1: Explain both safety processes**<br>Given a representative requests the static landing content<br>When the site serves the service description<br>Then the content explains driver QR validation, passenger registration with DNI and face photo, bus alert history, immediate driver emergencies, passenger message-and-photo requests with a three-passenger threshold in five minutes and company approval, automatic journey completion, company-only occupancy monitoring and contact options<br><br>**Scenario 2: Consult service terms and languages**<br>Given the representative requests terms or a supported language<br>When the site serves the corresponding content<br>Then the site provides current terms and consistent English or Latin American Spanish content, using English by default | | |
+
+##### US15 — Submit a Company Contact Request
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US15** | Transport Company Representative | Medium | EP05 — Service Information and Contact |
+| **Title** | Submit a Company Contact Request | | |
+| **Description** | As a Transport Company Representative, I want to submit my company and contact details so that the SafeBus team can respond to my request for information or a demonstration. | | |
+| **Acceptance Criteria** | **Scenario 1: Register a contact request**<br>Given the representative supplies a company name, contact name, syntactically valid email and contact consent<br>When SafeBus receives the contact request with a unique submission identifier<br>Then SafeBus stores the request and receipt time and returns a receipt reference; retries with the same identifier return the same reference<br><br>**Scenario 2: Reject invalid contact details**<br>Given a required name, a valid email or contact consent is missing<br>When SafeBus validates the request<br>Then SafeBus identifies the invalid field and stores no contact request | | |
+
+##### US16 — Sign In and Sign Out by User Role
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US16** | Registered User | High | EP06 — User Access and Protected Service Integration |
+| **Title** | Sign In and Sign Out by User Role | | |
+| **Description** | As a Registered User, I want to sign in and sign out with the credentials for my driver, supervisor or passenger account so that I access my permitted operations and end access on the device. | | |
+| **Acceptance Criteria** | **Scenario 1: Sign in with role-based credentials**<br>Given an active driver or supervisor has a company account, or a passenger has completed DNI-and-face-photo registration<br>When the user submits valid account credentials<br>Then SafeBus creates an authenticated session for the stored role; passengers use DNI and password, while company users use their provisioned credentials<br><br>**Scenario 2: Reject invalid sign-in**<br>Given the account is disabled, registration is incomplete or the supplied credentials are invalid<br>When the user attempts sign-in<br>Then SafeBus creates no authenticated session and returns a generic sign-in failure without exposing stored DNI or photos<br><br>**Scenario 3: Sign out and stop personal collection**<br>Given an authenticated user signs out from the mobile device<br>When the app completes sign-out<br>Then the app removes local access credentials and stops collecting location; for a passenger it ends or queues the end of the active journey with reason Sign out, preserves existing submitted requests and requires renewed authorized access to synchronize protected pending records | | |
+
+##### US17 — Protect Role Access, Passenger Identity and Evidence
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US17** | Developer | High | EP06 — User Access and Protected Service Integration |
+| **Title** | Protect Role Access, Passenger Identity and Evidence | | |
+| **Description** | As a Developer, I want to protect account identity, journeys and incident evidence by role, ownership and company so that clients access only the information necessary for their permitted operations. | | |
+| **Acceptance Criteria** | **Scenario 1: Authorize a company operation**<br>Given a supervisor has a valid unexpired signed token and a matching company scope<br>When the client requests its fleet or a passenger group awaiting review<br>Then the API returns HTTP 200 with authorized operational data and incident evidence; DNI and registration face photos are excluded from routine fleet and alert responses<br><br>**Scenario 2: Reject invalid authentication**<br>Given a protected request has a missing, expired or invalid token<br>When the API evaluates authentication<br>Then the API returns HTTP 401 and discloses no private resource<br><br>**Scenario 3: Reject a forbidden operation**<br>Given a driver requests a supervisor decision, a supervisor requests another company's data, or a passenger requests someone else's private request<br>When the API evaluates permissions<br>Then the API returns HTTP 403 and preserves the protected resource<br><br>**Scenario 4: Provide redacted bus history**<br>Given an authenticated passenger has an active journey for a bus<br>When GET /api/v1/vehicles/{id}/safety-history is requested for that bus and shift<br>Then the API returns HTTP 200 with the US07 summary and no identities, registration photos, incident photos or free-text reports; requests without an active association return HTTP 403<br><br>**Scenario 5: Protect identity and images at storage and delivery**<br>Given the registration or request service receives a permitted image<br>When the service stores it and later serves it to an authorized operation<br>Then the service keeps the object private, transmits it through an authenticated protected channel, stores passwords as hashes and excludes DNI and images from routine logs and public media URLs; requesting another account's identity image is denied | | |
+
+##### US18 — Provide Bus Location for Monitoring and Journey Completion
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US18** | Developer | High | EP06 — User Access and Protected Service Integration |
+| **Title** | Provide Bus Location for Monitoring and Journey Completion | | |
+| **Description** | As a Developer, I want to receive driver location events and provide the latest bus position to authorized supervisors and associated passengers so that fleet monitoring and automatic passenger journey completion use timestamped bus data. | | |
+| **Acceptance Criteria** | **Scenario 1: Accept driver location**<br>Given an authorized driver submits an event identifier, its assigned shift, capture time, accuracy and valid coordinates<br>When POST /api/v1/location-events validates the event<br>Then the API returns HTTP 201, persists the event and updates the current position only if it is newer than the stored sample; an identical retry returns HTTP 200 without duplication<br><br>**Scenario 2: Reject invalid coordinates or unauthorized tracking**<br>Given a payload is missing a required field, has latitude outside -90 to 90 or longitude outside -180 to 180, or the client is not the assigned driver<br>When the location API validates the request<br>Then the API returns HTTP 422 for invalid data or HTTP 403 for an unauthorized source and preserves the last valid position<br><br>**Scenario 3: Expose the journey bus position**<br>Given a valid passenger account has an active journey or an authorized supervisor manages the bus<br>When GET /api/v1/vehicles/{id}/location processes the request<br>Then the API returns HTTP 200 with coordinates, capture time and accuracy for the authorized bus; US24 independently requires data no older than 60 seconds and accuracy at most 30 meters before ending a journey<br><br>**Scenario 4: Reject unrelated passenger access**<br>Given a passenger has no active journey for the requested bus or their journey has ended<br>When the passenger requests the bus position<br>Then the API returns HTTP 403; passenger location used for separation checks remains local to the device and is not exposed in the company fleet feed | | |
+
+##### US19 — Provide a RESTful Passenger-Count Service
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US19** | Developer | High | EP06 — User Access and Protected Service Integration |
+| **Title** | Provide a RESTful Passenger-Count Service | | |
+| **Description** | As a Developer, I want to process ordered entry and exit events from a registered counting source so that SafeBus provides a reliable passenger count without double counting retries. | | |
+| **Acceptance Criteria** | **Scenario 1: Initialize and process an ordered count**<br>Given a registered source has an authenticated association with a bus and shift and a confirmed initial empty-bus count of zero<br>When POST /api/v1/occupancy-events receives the next sequential entry or exit event with an identifier and capture time<br>Then the API returns HTTP 201, applies the increment or decrement once and records the resulting count and sequence; counts above capacity remain valid and are classified as Over capacity<br><br>**Scenario 2: Reject an impossible or unregistered event**<br>Given the payload is malformed, the source is not registered, or the next exit would reduce the count below zero<br>When the occupancy API validates the request<br>Then the API returns HTTP 422 for malformed or impossible data or HTTP 403 for an unauthorized source, preserves the last valid count and marks a count inconsistency as Unavailable pending reconciliation<br><br>**Scenario 3: Handle repeated and out-of-order delivery**<br>Given the API has accepted sequence 10 and receives an identical retry of 10 or sequence 12 before 11<br>When the API evaluates the sequence<br>Then the identical retry returns HTTP 200 without changing the count; sequence 12 returns HTTP 409 identifying expected sequence 11 and marks the count Unavailable until the source replays the missing sequence and following events successfully<br><br>**Scenario 4: Maintain source freshness**<br>Given a registered source has a valid initialized count and sends a heartbeat at least once per minute even when no passenger boards or exits<br>When an authorized company supervisor requests occupancy<br>Then the API returns HTTP 200 with count, capacity, last count time, last heartbeat time and validity; it reports Stale when the heartbeat is older than two minutes and Unavailable when initialization or sequence consistency is missing<br><br>**Scenario 5: Restrict occupancy access**<br>Given an authenticated passenger requests fleet occupancy data<br>When the occupancy API evaluates the role<br>Then the API returns HTTP 403; passenger bus information is provided through US06 and US07 without occupancy values | | |
+
+##### US20 — Deliver Driver Emergencies and Passenger Review Notifications
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US20** | Developer | High | EP06 — User Access and Protected Service Integration |
+| **Title** | Deliver Driver Emergencies and Passenger Review Notifications | | |
+| **Description** | As a Developer, I want to deliver different notifications for direct emergencies and passenger approval items so that the company receives the right urgency and can recover safety state after disconnection. | | |
+| **Acceptance Criteria** | **Scenario 1: Notify a direct emergency**<br>Given the driver emergency has been persisted and authorized supervisor subscriptions are connected under a test network with round-trip time at most 200 ms, two buses and five subscriptions<br>When the service publishes the driver event<br>Then the service delivers EmergencyActivated with Critical priority within five seconds after persistence, independent of any passenger request count<br><br>**Scenario 2: Notify threshold and approval separately**<br>Given a passenger group reaches three distinct contributors within five minutes<br>When the group becomes Awaiting company approval<br>Then the service sends PassengerReviewRequired to the responsible company without sending EmergencyActivated; approval through US10 subsequently sends EmergencyActivated with High priority once<br><br>**Scenario 3: Recover state without duplicates**<br>Given a supervisor connection is interrupted while driver emergencies, passenger requests or decisions are stored<br>When the client reconnects and authenticates<br>Then the client retrieves open emergencies and review groups via REST, reconciles records by identifier and resumes authorized live notifications without duplicating cases or approvals<br><br>**Scenario 4: Reject a foreign subscription**<br>Given a supervisor token belongs to one company<br>When the client subscribes to another company's events<br>Then the service rejects the subscription and sends no foreign data | | |
+
+##### US21 — Spike Background GPS for Driver Tracking and Passenger Exit
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US21** | Developer | High | EP07 — Technical Feasibility Spikes |
+| **Title** | Spike Background GPS for Driver Tracking and Passenger Exit | | |
+| **Description** | As a Developer, I want to compare background-location behavior for driver tracking and passenger separation checks within a 12-hour investigation so that US03 and US24 use a measured configuration with known battery, accuracy and permission behavior. | | |
+| **Acceptance Criteria** | **Scenario 1: Compare the two mobile uses**<br>Given the developer has a physical Android device, 15- and 30-second profiles and a budget of at most 10 battery percentage points per hour<br>When the developer runs one-hour tests for each profile in driver and passenger modes plus one baseline hour within 12 hours<br>Then the report records device and OS, raw measurements, sample gaps, accuracy and battery consumption and recommends a profile or rejects both; it distinguishes measured results from any full-shift estimates<br><br>**Scenario 2: Test automatic exit boundaries**<br>Given the app under test compares passenger and bus positions and the exit condition is more than 100 meters for at least 60 seconds with samples no more than 30 seconds apart, accuracy at most 30 meters and age at most 60 seconds<br>When the developer tests below-boundary distances, brief separation, sustained separation, denied permission and stale or inaccurate positions<br>Then the report records correct and false closures, background limitations and source documentation, and identifies implementation requirements for native and cross-platform clients without claiming unperformed platform tests | | |
+
+##### US22 — Spike Ordered Passenger-Count Event Ingestion
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US22** | Developer | High | EP07 — Technical Feasibility Spikes |
+| **Title** | Spike Ordered Passenger-Count Event Ingestion | | |
+| **Description** | As a Developer, I want to test passenger-count event ingestion through the REST contract within a 16-hour investigation so that the team knows whether the counting source can maintain a consistent count despite interruptions. | | |
+| **Acceptance Criteria** | **Scenario 1: Run the ingestion proof of concept**<br>Given a prototype sensor adapter or an explicitly identified simulator emits device, bus, shift, sequence, event identifier and entry or exit events using the US19 REST contract<br>When the developer tests a known event sequence, a five-minute interruption and reconnection within the 16-hour time box<br>Then the report compares the final count against the known expected count, records receipt delay and event loss, identifies the actual source used and provides an implementation recommendation for US19<br><br>**Scenario 2: Test duplicate and missing events**<br>Given the source repeats an entry, delays an exit and omits a sequence number<br>When the developer runs the proof of concept<br>Then the report demonstrates or records failure of duplicate rejection, gap handling and recovery, lists the sources consulted and the implementation tasks; a simulator-only test explicitly leaves physical-sensor accuracy unvalidated | | |
+
+##### US23 — Register a Passenger Account with DNI and Face Photo
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US23** | Bus Passenger | High | EP02 — Passenger Identity, Journey and Safety |
+| **Title** | Register a Passenger Account with DNI and Face Photo | | |
+| **Description** | As a Bus Passenger, I want to register an account with my DNI, a photo of my face and a password so that my journeys and requests are associated with one registered passenger account. | | |
+| **Acceptance Criteria** | **Scenario 1: Create a complete passenger account**<br>Given the passenger provides an eight-digit DNI not already registered, a password of at least eight characters, one decodable JPEG or PNG face photo no larger than 5 MB and acceptance of current terms and the stated data-use purpose<br>When SafeBus receives the complete registration<br>Then SafeBus creates a Passenger account with a unique account identifier, stores the normalized DNI and face image privately and the password as a hash, records the acceptance version and time and allows subsequent sign-in; registration records supplied identity data and does not claim an official identity or biometric match<br><br>**Scenario 2: Reject missing or invalid registration data**<br>Given the DNI format is invalid, a required field or acceptance is absent, or the face image is missing, undecodable or larger than 5 MB<br>When SafeBus validates registration<br>Then SafeBus creates no active account and identifies the invalid field; an interrupted upload does not leave a usable account without the required photo<br><br>**Scenario 3: Prevent duplicate DNI accounts**<br>Given an account already uses the submitted normalized DNI<br>When another registration is submitted with that DNI<br>Then SafeBus creates no second account and exposes no stored identity data or photo; requests from one account count as one contributor in US08<br><br>**Scenario 4: Keep the two photo purposes separate**<br>Given the passenger completed registration with a face photo<br>When the passenger later submits a panic request<br>Then SafeBus requires a separate incident evidence photo for US08 and does not expose or substitute the registration photo as bus-alert evidence | | |
+
+##### US24 — Automatically End a Journey When Moving Away from the Bus
+
+| Story ID | User | Priority | Epic |
+|---|---|---|---|
+| **US24** | Bus Passenger | High | EP02 — Passenger Identity, Journey and Safety |
+| **Title** | Automatically End a Journey When Moving Away from the Bus | | |
+| **Description** | As a Bus Passenger, I want the app to end my journey when location samples show that I have moved away from the bus so that I am no longer associated with a bus after leaving it and location collection stops. | | |
+| **Acceptance Criteria** | **Scenario 1: End after sustained separation**<br>Given the passenger has an active journey, grants the required location permission and passenger and bus samples have capture ages at most 60 seconds and reported accuracy at most 30 meters<br>When valid separation samples remain greater than 100 meters for at least 60 seconds, with no gap between consecutive comparisons greater than 30 seconds<br>Then the app ends that journey once with reason Automatic separation, records completion time and the qualifying distance-and-time summary, informs the passenger and stops new passenger location collection; the service retains the end summary without storing a continuous passenger GPS history<br><br>**Scenario 2: Avoid premature or unreliable completion**<br>Given the separation check has not yet established more than 100 meters for 60 continuous seconds<br>When the app evaluates the next comparison<br>Then valid separation above 100 meters continues the timer until 60 seconds; separation at most 100 meters, missing or stale locations, insufficient accuracy or a comparison gap greater than 30 seconds resets it; the app keeps the journey active until the full condition holds and never infers exit from lost connectivity or permission alone<br><br>**Scenario 3: Allow explicit completion and synchronize a queued end**<br>Given automatic completion is unavailable or a valid local completion cannot reach the server<br>When the passenger ends the journey manually or authorized connectivity returns after a local automatic end<br>Then the app stops local journey collection immediately and synchronizes one end event with its original identifier, time and reason; the server rejects new requests activated after that end time and retains earlier safety submissions without counting late offline submissions toward a new threshold<br><br>**Scenario 4: Preserve existing requests after exit**<br>Given the journey has recorded passenger requests or an approved emergency<br>When the journey ends automatically, manually, on sign-out or on driver shift closure<br>Then SafeBus preserves submitted evidence, frozen qualifying contributions and company decisions, keeps US09 available to the authenticated owner and does not silently cancel a request or emergency because the passenger left | | |
 
 ### 2.4.2. Impact Mapping
 
-[Business Goals SMART, Actors/Personas, Impacts, Deliverables, User Stories]
+El Impact Mapping vincula la identificación del servicio, la atención diferenciada de emergencias, la experiencia del pasajero registrado y la adopción empresarial con sus historias. Las siguientes metas corresponden al primer mes de operación piloto y expresan resultados esperados. BG02 mide por separado el porcentaje de emergencias del conductor atendidas en plazo y el de grupos de pasajeros con decisión en plazo; la espera para reunir el umbral se registra aparte. BG03 mide los porcentajes de éxito de pasajeros y supervisores sobre los participantes evaluados de cada rol.
+
+<img src="../assets/SafeBus - Impact Mapping.png">
 
 ### 2.4.3. Product Backlog
 
-> URL público del Product Backlog: [completar]
+El Product Backlog ordena las historias por valor para el servicio y utiliza Story Points de la escala 1, 2, 3, 5 y 8. La landing se considera desde el primer sprint. El orden de valor no reemplaza las dependencias: el registro y acceso del pasajero habilitan el inicio del viaje, sus solicitudes con evidencia y el cierre automático.
 
 | # Orden | User Story Id | Título | Story Points | Sprint |
-|---------|----------------|--------|----------------|--------|
-| 1 | US01 | | | |
+|---|---|---|---|---|
+| 1 | US04 | Trigger an Immediate Driver Emergency Alert | 5 | |
+| 2 | US08 | Submit a Passenger Panic Request with Message and Photo | 8 | |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | 8 | |
+| 4 | US23 | Register a Passenger Account with DNI and Face Photo | 5 | |
+| 5 | US01 | Validate an Assigned Shift with a Driver QR Credential | 3 | |
+| 6 | US06 | Verify a Bus and Start a Passenger Journey | 3 | |
+| 7 | US07 | Consult the Alerts Reported on My Bus | 3 | |
+| 8 | US24 | Automatically End a Journey When Moving Away from the Bus | 5 | |
+| 9 | US11 | Monitor Fleet Location and Occupancy | 5 | |
+| 10 | US03 | Share Bus Location During an Active Shift | 5 | |
+| 11 | US14 | Consult SafeBus Service Information | 2 | |
+| 12 | US15 | Submit a Company Contact Request | 2 | |
+| 13 | US13 | Assign a Driver and Bus to a Route Shift | 3 | |
+| 14 | US16 | Sign In and Sign Out by User Role | 3 | |
+| 15 | US17 | Protect Role Access, Passenger Identity and Evidence | 5 | |
+| 16 | US02 | Consult Assigned Route and Shift Details | 2 | |
+| 17 | US21 | Spike Background GPS for Driver Tracking and Passenger Exit | 5 | |
+| 18 | US22 | Spike Ordered Passenger-Count Event Ingestion | 5 | |
+| 19 | US19 | Provide a RESTful Passenger-Count Service | 5 | |
+| 20 | US18 | Provide Bus Location for Monitoring and Journey Completion | 3 | |
+| 21 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | 5 | |
+| 22 | US12 | Maintain the Recorded Capacity of a Bus | 2 | |
+| 23 | US05 | Close a Driver Shift | 3 | |
+| 24 | US09 | Consult the Status of My Passenger Panic Requests | 3 | |
 
 ---
 
 ## 2.5. Strategic-Level Domain-Driven Design
 
+En esta sección el equipo aplica los principios fundamentales de Domain-Driven Design (DDD) propuestos por Evans (2003), así como los enfoques modernos de descomposición de sistemas en contextos delimitados y microservicios analizados por Zhong et al. (2024) y Ünlü et al. (2024). El propósito es descomponer el sistema SafeBus en Bounded Contexts con límites naturales y alta cohesión. El proceso parte del Big Picture EventStorming elaborado en la sección 2.3.5, avanza hacia la identificación de contexts candidatos, modela la colaboración entre ellos mediante Domain Storytelling, profundiza cada context con su Bounded Context Canvas, y cierra con el Context Mapping que define las relaciones y patrones de integración entre todos los contexts identificados.
+
 ### 2.5.1. EventStorming
+
+El proceso de EventStorming de nivel general se desarrolló en la sección
+2.3.5 (Big Picture EventStorming), donde se identificaron los eventos de
+negocio para los flujos de emergencia del conductor, registro y viaje del
+pasajero, solicitudes de pánico de pasajeros con umbral y aprobación de la
+empresa, gestión de flota, escalamiento externo y prevención por zonas de
+riesgo. A partir de ese modelo, el equipo avanzó hacia un análisis de mayor
+detalle para identificar los Bounded Contexts candidatos de la solución.
+
+<img src="../docs/bigPicture/Step 1.png">
+
+<img src="../docs/bigPicture/Step 2.png">
+
+<img src="../docs/bigPicture/Step 3.png">
 
 #### 2.5.1.1. Candidate Context Discovery
 
-[Proceso y capturas]
+Para identificar los Bounded Contexts candidatos, el equipo aplicó la técnica
+**look-for-pivotal-events** sobre el conjunto completo de eventos del Big
+Picture. Un evento pivotal es aquel en el que la responsabilidad del negocio
+cambia de actor o de subdominio; estos eventos se resaltaron en amarillo
+dentro de cada agrupación.
+
+Como resultado, se identificaron siete Bounded Contexts candidatos:
+
+| # | Bounded Context candidato | Evento pivotal |
+|---|---|---|
+| 1 | Identity & Access Management | — (soporte transversal) |
+| 2 | Fleet & Workforce Management | Conductor asignado a la empresa |
+| 3 | Trip & Location Tracking | Viaje iniciado |
+| 4 | Passenger Identity & Journey | Unidad verificada por pasajero |
+| 5 | Safety Case Management | Botón de alerta activado (conductor) / Grupo aprobado por supervisor (pasajero) |
+| 6 | External Escalation | Alerta escalada |
+| 7 | Risk Zone Intelligence | Zona de riesgo confirmada por otros conductores |
+
+Safety Case Management presenta dos eventos pivotales porque la emergencia
+puede originarse por dos caminos: la activación directa del conductor, que la
+crea de inmediato, y la aprobación del supervisor sobre un grupo de
+solicitudes de pasajeros que alcanzó el umbral. En ambos casos, la
+responsabilidad pasa a la empresa, que atiende la emergencia.
+
+El evento "Alerta escalada" (Safety Case Management) es el punto de conexión
+más claro con "Incidente reportado a autoridades" (External Escalation): ahí
+el negocio deja de manejar el caso internamente y lo transfiere a un actor
+externo (policía o aseguradora), lo que justifica tratarlos como contexts
+independientes en lugar de fusionarlos.
+
+<img src="../docs/candidateContextDiscovery/candidate-context-discovery.png">
 
 #### 2.5.1.2. Domain Message Flows Modeling
 
-[Domain Storytelling]
+Para visualizar cómo colaboran los Bounded Contexts candidatos al resolver
+los casos de uso principales del negocio, el equipo aplicó la técnica de
+Domain Storytelling sobre cinco historias representativas, seleccionadas
+por involucrar la interacción de más de un context.
+
+**Historia 1 — Conductor inicia un viaje:** el conductor inicia sesión en
+Identity & Access Management, que consulta a Fleet & Workforce Management si
+el conductor está activo y asignado; Fleet confirma la asignación (conductor,
+bus, ruta) y Trip & Location Tracking activa el viaje y comienza a recibir la
+ubicación.
+
+<img src="../docs/domainStorytelling/historia-1-conductor-inicia-viaje.jpg">
+
+**Historia 2 — Pasajero se registra, verifica el bus e inicia su viaje:** el
+pasajero registra su cuenta con DNI, foto de rostro y contraseña en Passenger
+Identity & Journey, que entrega sus credenciales a Identity & Access
+Management para el inicio de sesión. Luego escanea el QR del bus; Passenger
+Identity & Journey consulta a Trip & Location Tracking si el bus tiene un
+turno activo y, al confirmarse, crea el viaje del pasajero. Durante el viaje,
+Trip & Location Tracking provee la ubicación del bus para evaluar el cierre
+automático cuando el pasajero se aleja.
+
+<img src="../docs/domainStorytelling/historia-2-pasajero-verifica-unidad.png">
+
+**Historia 3 — El conductor activa una emergencia inmediata:** el conductor
+activa el botón de pánico en Safety Case Management, que consulta la
+ubicación más reciente a Trip & Location Tracking, activa una emergencia
+Critical sin umbral ni aprobación y la notifica con prioridad máxima a Fleet
+& Workforce Management, cuyo supervisor inicia la atención y registra el
+resultado.
+
+<img src="../docs/domainStorytelling/historia-3-alerta-panico.png">
+
+**Historia 4 — Una emergencia no atendida se escala externamente:** Safety
+Case Management detecta el evento pivotal "Alerta escalada" y notifica a
+External Escalation, que reporta el incidente a la autoridad correspondiente
+y confirma el cierre del caso de vuelta a Safety Case Management.
+
+<img src="../docs/domainStorytelling/historia-4-alerta-escalada.jpg">
+
+**Historia 5 — Solicitud de pánico del pasajero con umbral y aprobación:** el
+pasajero envía una solicitud con mensaje y foto de evidencia desde Passenger
+Identity & Journey, que la entrega a Safety Case Management con el contexto
+del viaje. Safety Case Management registra la solicitud en el grupo del bus,
+contando una sola solicitud por cuenta; cuando tres cuentas distintas
+reportan dentro de cinco minutos, el grupo pasa a espera de aprobación y se
+solicita su revisión a Fleet & Workforce Management. Si el supervisor lo
+aprueba, se activa una emergencia High; en ambos casos, el estado queda
+visible para el pasajero.
+
+<img src="../docs/domainStorytelling/historia-5-solicitud-pasajero.png">
 
 #### 2.5.1.3. Bounded Context Canvases
 
-[Un Bounded Context Canvas por cada BC, en orden de importancia]
+El equipo elaboró el Bounded Context Canvas de cada context candidato,
+priorizando según su importancia para el negocio. Los cuatro contexts core
+del sistema (Safety Case Management, Trip & Location Tracking, Passenger
+Identity & Journey y Fleet & Workforce Management) se desarrollaron con el
+proceso iterativo completo (Context Overview Definition, Business Rules
+Distillation & Ubiquitous Language Capture, Capability Analysis, Capability
+Layering, Dependencies Capture y Design Critique). Los tres contexts
+restantes (External Escalation, Risk Zone Intelligence e Identity & Access
+Management) se desarrollaron con un nivel de detalle inicial (Context
+Overview Definition y Capability Analysis), a profundizar en la siguiente
+entrega.
+
+**Safety Case Management**
+
+Gestiona el ciclo de vida de las emergencias desde dos caminos de origen: la
+emergencia inmediata del conductor, que se activa con prioridad Critical sin
+umbral ni aprobación, y las solicitudes de pánico de pasajeros, que requieren
+mensaje y foto, la corroboración de tres cuentas distintas en cinco minutos y
+la aprobación del supervisor para convertirse en una emergencia High. Se
+modela con dos aggregates, Emergency y PassengerRequestGroup, porque tienen
+ciclos de vida y reglas de consistencia distintos. Sus capabilities core son
+Driver Emergency Activation, Threshold Corroboration, Emergency Approval y
+Priority Ordering; esta última garantiza que la emergencia del conductor se
+atienda siempre antes que las revisiones de pasajeros. Recibe la ubicación
+de Trip & Location Tracking y las solicitudes de Passenger Identity &
+Journey, entrega emergencias y grupos pendientes a Fleet & Workforce
+Management y dispara el escalamiento hacia External Escalation.
+
+<img src="../docs/boundedContextCanvas/safety-case-management.png">
+
+**Trip & Location Tracking**
+
+Gestiona el turno del conductor, la ubicación en tiempo real y el conteo de
+pasajeros de cada bus. Se modela con tres aggregates: DriverShift
+(activación y cierre del turno), VehicleLocation (muestras de ubicación cada
+30 segundos) y BusOccupancy (eventos de entrada y salida del contador), ya
+que la ubicación y el conteo llegan con alta frecuencia y no deben bloquear
+el estado del turno. Sus capabilities core son Location Ingestion, Occupancy
+Tracking y Status Classification, que clasifica la ubicación y el conteo
+como Current, Stale o Unavailable. Depende de Fleet & Workforce Management
+para la asignación y es upstream crítico de Safety Case Management y de
+Passenger Identity & Journey; al cerrar un turno finaliza los viajes de
+pasajeros asociados, sin cerrar emergencias ni solicitudes abiertas.
+
+<img src="../docs/boundedContextCanvas/trip-location-tracking.png">
+
+**Passenger Identity & Journey**
+
+Registra la identidad del pasajero (DNI, foto de rostro y contraseña) y lo
+vincula a un viaje verificado mediante el QR del bus. Sus capabilities core
+son Identity Registration, Unit Verification y Journey Lifecycle, que
+incluye el cierre automático del viaje cuando el pasajero se aleja más de
+100 metros del bus durante 60 segundos. La identidad del pasajero se
+mantiene en este context y no en Identity & Access Management, que solo
+guarda sus credenciales, para conservar ese Shared Kernel genérico. Expone
+además un historial de alertas del bus que no revela identidades, fotos ni
+mensajes. El aforo del bus no es accesible para el pasajero.
+
+<img src="../docs/boundedContextCanvas/passenger-identity-journey.png">
+
+**Fleet & Workforce Management**
+
+Administra la empresa, su flota y sus conductores, asigna turnos y actúa
+como Operations Central. Se modela con tres aggregates: Company (empresa,
+flota y capacidad de cada bus), Driver (invitación, validación de documentos
+y vinculación de conductores) y ShiftAssignment (asignación de conductor y
+bus a una ruta y periodo). Sus capabilities core son Shift Assignment y
+Emergency Review, mediante la cual el supervisor atiende emergencias y
+aprueba o rechaza los grupos de solicitudes de pasajeros. Provee la
+asignación a Trip & Location Tracking, recibe emergencias y grupos
+pendientes desde Safety Case Management y le devuelve la decisión de
+aprobación.
+
+<img src="../docs/boundedContextCanvas/fleet-workforce-management.png">
+
+**External Escalation** *(nivel de detalle inicial)*
+
+Deriva un caso hacia una autoridad externa (policía, aseguradora) cuando la
+gestión interna de la empresa no lo atiende a tiempo, y hace seguimiento
+hasta su cierre. Capabilities: Escalation Trigger, Authority Reporting y
+Resolution Confirmation.
+
+<img src="../docs/boundedContextCanvas/external-escalation.png">
+
+**Risk Zone Intelligence** *(nivel de detalle inicial)*
+
+Recolecta y valida reportes de zonas de riesgo hechos por conductores, para
+anticipar y prevenir el paso por rutas peligrosas. Capabilities: Risk Report
+Collection, Report Corroboration y Preventive Alerting.
+
+<img src="../docs/boundedContextCanvas/risk-zone-intelligence.png">
+
+**Identity & Access Management** *(nivel de detalle inicial)*
+
+Autentica a conductores, supervisores y pasajeros, y protege el acceso a las
+operaciones y datos según su rol, empresa y propiedad de la información.
+Capabilities: Authentication, Session Management y Access Control.
+
+<img src="../docs/boundedContextCanvas/identity-access-management.png">
 
 ### 2.5.2. Context Mapping
 
-[Context maps y patrones DDD aplicados: Anti-corruption Layer, Conformist,
-Customer/Supplier, Shared Kernel]
+A partir de las dependencias identificadas en cada Bounded Context Canvas, el
+equipo elaboró el Context Map de la solución, aplicando los patrones de
+relación entre Bounded Contexts establecidos en Domain-Driven Design.
+
+<img src="../docs/contextMapping/context-map.png">
+
+| Upstream | Downstream | Patrón | Justificación |
+|---|---|---|---|
+| Fleet & Workforce Management | Trip & Location Tracking | Customer/Supplier | Fleet provee la asignación (conductor, bus, ruta) que Trip necesita para iniciar el turno. |
+| Trip & Location Tracking | Safety Case Management | Customer/Supplier | Safety Case consume la ubicación más reciente, con manejo propio de indisponibilidad (Stale/Unavailable) para no bloquearse ante una falla upstream. |
+| Trip & Location Tracking | Passenger Identity & Journey | Customer/Supplier | Passenger Identity & Journey depende de que Trip confirme el turno activo antes de crear el viaje del pasajero, y de la ubicación del bus para el cierre automático. |
+| Passenger Identity & Journey | Safety Case Management | Customer/Supplier | Las solicitudes de pánico del pasajero llegan con el contexto de su viaje, su mensaje y su foto de evidencia. |
+| Safety Case Management | Fleet & Workforce Management | Conformist | Fleet, como Operations Central, se adapta al modelo de emergencia y de grupo de solicitudes definido por Safety Case Management sin negociar su estructura. |
+| Fleet & Workforce Management | Safety Case Management | Customer/Supplier | Safety Case depende de la decisión de aprobación o rechazo del supervisor para convertir un grupo de solicitudes en una emergencia. |
+| Safety Case Management | External Escalation | Anti-Corruption Layer | External Escalation traduce el modelo interno de caso al formato que espera una autoridad externa, aislando el modelo propio de un sistema que el equipo no controla. |
+| Risk Zone Intelligence | Trip & Location Tracking | Published Language | Risk Zone publica información de zonas de riesgo de forma informativa, sin una dependencia transaccional fuerte. |
+| Identity & Access Management | Fleet & Workforce Management, Trip & Location Tracking, Safety Case Management, Passenger Identity & Journey | Shared Kernel | Todos los contexts comparten el mismo modelo de autenticación y sesión, al ser infraestructura transversal y no lógica de negocio propia de cada context. |
+
+La relación entre Safety Case Management y Fleet & Workforce Management
+aparece en ambos sentidos porque corresponde a dos flujos distintos: Safety
+Case Management entrega emergencias y grupos pendientes que Fleet consume
+tal como están modelados (Conformist), mientras que la decisión de
+aprobación del supervisor es la que Safety Case Management necesita para
+activar una emergencia de pasajero (Customer/Supplier).
 
 ### 2.5.3. Software Architecture
 
+La arquitectura de SafeBus describe cómo se organizan las aplicaciones móviles, los servicios y los datos que permiten identificar un viaje, registrar incidentes y coordinar su atención. Se utiliza el modelo C4 formulado por Brown (2024) con Structurizr para presentar cuatro perspectivas complementarias: contexto, contenedores, componentes y despliegue. Las vistas representan una propuesta de diseño para las 24 historias de la sección 2.4; no constituyen evidencia de infraestructura ya implementada.
+
+El diseño conserva un backend modular compartido por las aplicaciones nativa y multiplataforma. Las responsabilidades de negocio se separan dentro de ese backend, con una base de datos operativa, almacenamiento privado de imágenes y un mecanismo de eventos de integración. De esta forma, las dos aplicaciones aplican las mismas condiciones para registro, aprobación de emergencias y finalización del viaje.
+
+La selección móvil se fundamenta en el sílabo: la Unidad 2 desarrolla Android con Kotlin y su bibliografía incluye Jetpack Compose (Android Developers, 2024); la Unidad 3 desarrolla Flutter, Dart y almacenamiento local con SQFLite y Drift. Se propone Kotlin con Jetpack Compose para Android y Flutter con Dart y Drift para la versión multiplataforma. Para los servicios se propone Java con Spring Boot (Spring Framework, 2024), alternativa permitida por el enunciado, junto con PostgreSQL (PostgreSQL Global Development Group, 2024), RabbitMQ (2024) y un volumen privado de archivos. Estas últimas elecciones concretan el diseño y no se presentan como tecnologías obligatorias del sílabo. Firebase forma parte del temario, pero su mención no obliga a sustituir la API REST ni a incorporar otro servicio al flujo de emergencias.
+
+El límite funcional corresponde a las historias US01–US24. La atención y aprobación pertenecen a la empresa de transporte; External Escalation y Risk Zone Intelligence, identificados como candidatos en el análisis estratégico, quedan fuera de este despliegue inicial. La arquitectura utiliza las responsabilidades de Identity & Access Management, Fleet & Workforce Management, Trip & Location Tracking, Passenger Journey & Occupancy y Safety Case Management para cubrir el alcance vigente.
+
+Las cuatro vistas se generan desde un único [modelo Structurizr DSL](../docs/c4/software-architecture/workspace.dsl), que mantiene los mismos elementos y relaciones entre niveles.
+
 #### 2.5.3.1. Software Architecture Context Level Diagrams
 
-[Diagrama de contexto — C4 Model, herramienta Structurizr]
+**Introducción**
+
+La vista de contexto presenta SafeBus como un sistema completo y delimita sus relaciones con las personas y la fuente externa de conteo. Su propósito es explicar quién utiliza la solución y qué información intercambia, antes de describir las aplicaciones y servicios internos.
+
+![SafeBus: diagrama de contexto](../docs/c4/software-architecture/context.svg)
+
+**Explicación**
+
+El conductor valida su turno, comparte la ubicación del bus y activa una emergencia directa de prioridad Critical. El pasajero registra su cuenta con DNI y foto del rostro, verifica el QR de la unidad, consulta alertas y envía solicitudes de pánico con mensaje y foto del incidente. El representante de empresa conoce el servicio y solicita información mediante la landing; cuando actúa como supervisor autorizado, consulta la flota y registra las decisiones de atención.
+
+La solicitud de un pasajero no activa por sí sola una emergencia. Tres pasajeros distintos del mismo bus y turno, dentro de una ventana de cinco minutos, habilitan la revisión empresarial. La aprobación activa una emergencia High. El conductor mantiene prioridad y no depende de ese umbral ni de una aprobación previa.
+
+El único sistema externo de esta vista es la fuente de conteo de pasajeros, que entrega entradas, salidas y señales de vigencia para calcular el aforo que consulta la empresa. Puede consistir en un adaptador de sensores o en un simulador identificado durante el prototipo. El GPS y la cámara son recursos de los teléfonos utilizados por las aplicaciones; no se presentan como plataformas externas de negocio. La empresa coordina la atención a través de SafeBus, sin una integración automática con autoridades en este alcance.
 
 #### 2.5.3.2. Software Architecture Container Level Diagrams
 
-[Diagrama de contenedores]
+**Introducción**
 
-#### 2.5.3.3. Software Architecture Deployment Diagrams
+La vista de contenedores descompone SafeBus en sus aplicaciones, servicio de backend y almacenes de información. Cada contenedor representa una unidad de ejecución o almacenamiento del modelo C4. El diagrama muestra su responsabilidad, la tecnología propuesta y la comunicación necesaria para completar los recorridos de los tres roles.
 
-[Diagrama de despliegue]
+![SafeBus: diagrama de contenedores](../docs/c4/software-architecture/containers.svg)
+
+**Explicación**
+
+La solución contiene siete contenedores:
+
+| Contenedor | Tecnología propuesta | Responsabilidad |
+|---|---|---|
+| Landing Page | HTML5, CSS3 y JavaScript | Explicar el servicio y enviar solicitudes de contacto de empresas a la API. |
+| Native Android App | Kotlin, Jetpack Compose y SQLite | Ofrecer los recorridos por rol, utilizar GPS y cámara, y conservar datos pendientes cuando falta conexión. |
+| Cross-Platform App | Flutter, Dart y Drift sobre SQLite | Implementar los mismos recorridos y contratos de servicio para la estrategia multiplataforma. |
+| SafeBus API | Java y Spring Boot; REST y WebSocket | Aplicar las condiciones de acceso, asignación, viaje, aforo, solicitud, aprobación y atención. |
+| Operational Database | PostgreSQL | Conservar cuentas, asignaciones, viajes, posiciones del bus, conteos, solicitudes, decisiones y contactos. |
+| Private Image Store | Sistema de archivos en un volumen persistente privado | Guardar por separado las fotos del registro y las fotos de evidencia, con acceso a través de operaciones autorizadas de la API. |
+| Integration Message Broker | RabbitMQ | Transportar eventos de integración entre módulos del backend. |
+
+Las aplicaciones móviles consumen la API mediante HTTPS: utilizan JSON para operaciones y consultas, y cargas multipart para las imágenes. Los supervisores conectados reciben actualizaciones mediante WebSocket seguro (WSS). La fuente de conteo envía eventos ordenados y heartbeats por JSON/HTTPS. La landing consulta contenido estático y utiliza la API únicamente para registrar el contacto comercial; no accede a los datos operativos de la empresa.
+
+La API accede a PostgreSQL mediante JDBC, al volumen privado mediante operaciones del sistema de archivos y a RabbitMQ mediante AMQP. Los clientes no acceden directamente a esos almacenes. La base local de cada aplicación pertenece al contenedor móvil y permite conservar identificadores de viaje y envíos pendientes; su contenido sensible se protege con almacenamiento privado y mecanismos de claves de la plataforma.
+
+El teléfono del pasajero compara localmente su posición con la última ubicación autorizada del bus. Si la distancia supera 100 metros durante al menos 60 segundos y las muestras cumplen las condiciones de vigencia y precisión de US24, termina el viaje y comunica su finalización. El backend conserva el resumen del cierre, sin recibir un historial continuo de posiciones del pasajero. Kotlin y Flutter son implementaciones alternativas para el usuario y comparten estas mismas condiciones.
+
+#### 2.5.3.3. Software Architecture Components Level Diagrams
+
+**Introducción**
+
+La vista de componentes muestra la organización interna de SafeBus API. El límite del contenedor agrupa los módulos que colaboran para atender las solicitudes de los clientes. Se distinguen cinco componentes de negocio y dos componentes de soporte, todos dentro de un único backend desplegable.
+
+![SafeBus: componentes de la API](../docs/c4/software-architecture/components.svg)
+
+**Explicación**
+
+Identity & Access Management administra cuentas, autenticación y autorización por rol, empresa y titularidad. Fleet & Workforce Management administra empresas, conductores, buses, capacidades y asignaciones. Trip & Location Tracking valida la asignación al abrir el turno y conserva la ubicación del bus con su hora de captura y precisión.
+
+Passenger Journey & Occupancy completa el perfil del pasajero con DNI y foto del rostro, verifica el viaje mediante QR y registra su finalización. También procesa las entradas y salidas de la fuente de conteo y entrega el aforo únicamente al supervisor autorizado. Para cumplir estas responsabilidades consulta el turno activo en Trip & Location Tracking y la capacidad registrada en Fleet & Workforce Management.
+
+Safety Case Management conserva la evidencia y diferencia la activación directa del conductor de la agrupación de solicitudes de pasajeros. Este módulo verifica el viaje asociado, cuenta como máximo una contribución por cuenta dentro de la ventana y habilita la decisión empresarial al alcanzar tres participantes. La aprobación crea una sola emergencia y las repeticiones de una solicitud o decisión conservan el mismo resultado. El cierre del viaje mantiene la evidencia y las revisiones pendientes. La consulta compartida del bus entrega resúmenes; la consulta de solicitudes propias aplica la autorización del titular.
+
+Company Contact Intake valida y registra los contactos de la landing. Integration Events & Live Updates coordina la publicación y recepción de eventos y la entrega de actualizaciones WSS a la empresa correspondiente. Son componentes de soporte y no nuevos Bounded Contexts. La vista utiliza el cliente Android como representante de las interfaces móviles; Flutter consume los mismos contratos definidos en la vista de contenedores.
+
+Las consultas que requieren una respuesta inmediata se realizan mediante interfaces internas del backend. Los cambios de ciclo de vida se distribuyen mediante eventos de integración, como cierre de turno, cierre de viaje, grupo listo para revisión y emergencia activada. El backend registra los eventos pendientes junto con el cambio de negocio antes de publicarlos y utiliza identificadores para procesar reintentos sin duplicar efectos. La emergencia directa se registra antes de notificarla: una demora del broker no convierte su activación en una aprobación pendiente. Los clientes pueden recuperar el estado persistido mediante REST al reconectarse.
+
+La base de datos se comparte físicamente, pero cada módulo conserva la responsabilidad de escritura sobre sus datos. La colaboración entre módulos utiliza sus interfaces o eventos. Las imágenes permanecen en el volumen privado y se entregan a través de la API después de comprobar el permiso correspondiente.
+
+#### 2.5.3.4. Software Architecture Deployment Diagrams
+
+**Introducción**
+
+La vista de despliegue presenta un entorno piloto propuesto y ubica los contenedores en dispositivos y servicios de ejecución. Permite distinguir qué funciona en los teléfonos, qué se ejecuta en el servidor y dónde se conservan los datos persistentes.
+
+![SafeBus: despliegue propuesto para el piloto](../docs/c4/software-architecture/deployment.svg)
+
+**Explicación**
+
+Los teléfonos de conductor, pasajero y supervisor ejecutan una de las aplicaciones móviles. El navegador del representante ejecuta el JavaScript de la landing descargada desde el servidor web. El adaptador de conteo funciona en el dispositivo asociado al bus; durante las pruebas puede sustituirse por un simulador en una estación de trabajo identificada.
+
+El piloto se aloja en un servidor Linux con una entrada HTTPS y alojamiento estático mediante Nginx. Esta entrada sirve la landing y encamina las solicitudes de API y las conexiones WebSocket hacia un proceso Java con Spring Boot. PostgreSQL, RabbitMQ y el volumen persistente de imágenes pertenecen al entorno privado del servidor. El directorio de fotos no se publica como contenido estático.
+
+Las conexiones lógicas de los clientes con la API atraviesan la entrada HTTPS; el tramo interno hacia el proceso Java utiliza loopback. Los servicios de datos y mensajería no se exponen como puntos de acceso de los usuarios. El diagrama representa un único host para el piloto y no presupone alta disponibilidad ni un proveedor de nube contratado. Los datos operativos y las fotos se conservan en almacenamiento persistente independiente del reinicio de la API.
+
+Ante una pérdida de conectividad, la aplicación mantiene los envíos pendientes y señala su estado. El servidor aplica las condiciones temporales de las solicitudes de pasajeros al recibirlas y conserva los registros anteriores al cierre del viaje. Este despliegue permite evaluar la solución compartiendo infraestructura entre las dos implementaciones móviles.
 
 ---
 
 ## 2.6. Tactical-Level Domain-Driven Design
 
-> Duplicar la siguiente subsección `2.6.x` por cada Bounded Context identificado.
+A partir de los siete Bounded Contexts identificados en el nivel estratégico (sección 2.5), esta sección detalla el diseño táctico de cada uno: los building blocks de su Domain Layer, la exposición de capacidades en la Interface Layer, la orquestación de casos de uso en la Application Layer y los mecanismos técnicos de la Infrastructure Layer. La comunicación entre contextos se realiza de forma asíncrona mediante eventos de dominio publicados en un Message Broker, respetando los patrones de integración establecidos en el Context Mapping (2.5.2).
 
-### 2.6.1. Bounded Context: [Nombre del Bounded Context]
+![DESIGN-LEVEL](../docs/designLevel/DesignLevelES.png)
+
+| # | Bounded Context | Capabilities core | Rol en el Context Map |
+| :--- | :--- | :--- | :--- |
+| 2.6.1 | **Identity & Access Management** | Authentication, Session Management, Access Control | Shared Kernel (transversal) |
+| 2.6.2 | **Fleet & Workforce Management** | Shift Assignment, Case Response | Upstream de Trip; Conformist de Safety Case |
+| 2.6.3 | **Trip & Location Tracking** | Location Ingestion, Trip Lifecycle | Upstream de Safety Case y Passenger Journey |
+| 2.6.4 | **Passenger Journey & Occupancy** | Unit Verification, Occupancy Query | Downstream de Trip; origina alerta de pasajero |
+| 2.6.5 | **Safety Case Management** | Alert Activation, Case Prioritization, Case Status Tracking | Context core; dispara escalamiento |
+| 2.6.6 | **External Escalation** | Escalation Trigger, Authority Reporting, Resolution Confirmation | Downstream de Safety Case (ACL) |
+| 2.6.7 | **Risk Zone Intelligence** | Risk Report Collection, Report Corroboration, Preventive Alerting | Published Language hacia Trip |
+
+---
+
+### 2.6.1. Bounded Context: Identity & Access Management
+
+El Bounded Context **Identity & Access Management (IAM)** es responsable de autenticar a los actores del sistema (conductores, supervisores y administradores) y de proteger el acceso a las operaciones y datos según el rol y la empresa a la que pertenecen.
+
+Este contexto concentra las responsabilidades de identidad, credenciales y control de acceso, manteniéndolas separadas de la información descriptiva o de negocio de cada actor. Al ser infraestructura transversal, se relaciona con los demás Bounded Contexts como **Shared Kernel**: todos comparten el mismo modelo de identidad y sesión, referenciando a los usuarios mediante `UserId` sin duplicar la lógica de autenticación.
 
 #### 2.6.1.1. Domain Layer
 
-[Entities, Value Objects, Aggregates, Factories, Domain Services, Repository interfaces]
+La Domain Layer concentra las reglas de negocio relacionadas con la autenticación, la gestión de sesiones y el control de acceso. Esta capa mantiene las invariantes del contexto IAM y no depende de frameworks de seguridad ni de mecanismos concretos de generación de tokens.
+
+##### Aggregate Roots
+
+###### User
+
+Representa a un actor autenticable del sistema. Mantiene sus credenciales y los roles que determinan sus permisos, sin exponer la contraseña en texto plano.
+
+**Atributos principales:**
+
+- `id: UserId`
+- `email: EmailAddress`
+- `passwordHash: PasswordHash`
+- `roles: List<Role>`
+- `companyId: CompanyId`
+- `status: UserStatus`
+- `createdAt: Instant`
+- `updatedAt: Instant`
+
+**Métodos principales:**
+
+- `authenticate(rawPassword: String): Boolean`
+- `assignRole(role: Role): void`
+- `changePassword(newHash: PasswordHash): void`
+- `activate(): void`
+- `deactivate(): void`
+
+El aggregate garantiza que un usuario desactivado no pueda autenticarse y que todo cambio de credencial se realice sobre un hash y nunca sobre la contraseña en claro.
+
+###### Session
+
+Representa una sesión activa de un usuario autenticado, incluyendo el par de tokens emitido y su vigencia.
+
+**Atributos principales:**
+
+- `id: SessionId`
+- `userId: UserId`
+- `tokenPair: TokenPair`
+- `issuedAt: Instant`
+- `expiresAt: Instant`
+- `revoked: Boolean`
+
+**Métodos principales:**
+
+- `refresh(): TokenPair`
+- `revoke(): void`
+- `isValid(): Boolean`
+
+##### Domain Services
+
+###### AuthenticationService
+
+Verifica las credenciales de un usuario y coordina la emisión de una nueva sesión.
+
+**Operaciones principales:**
+
+- `authenticate(email: EmailAddress, rawPassword: String): AuthResult`
+- `issueSession(user: User): Session`
+
+###### AccessControlPolicy
+
+Evalúa si un usuario tiene permiso para ejecutar una acción sobre un recurso según su rol y empresa.
+
+**Operaciones principales:**
+
+- `canAccess(user: User, resource: String, action: String): Boolean`
+
+##### Repository Interfaces
+
+###### UserRepository
+
+Abstracción para recuperar y persistir usuarios.
+
+**Operaciones principales:**
+
+- `findById(id: UserId): Optional<User>`
+- `findByEmail(email: EmailAddress): Optional<User>`
+- `save(user: User): User`
+
+###### RoleRepository
+
+Abstracción para gestionar los roles disponibles en el sistema.
+
+**Operaciones principales:**
+
+- `findById(id: RoleId): Optional<Role>`
+- `findByType(type: RoleType): Optional<Role>`
+- `save(role: Role): Role`
+
+###### SessionRepository
+
+Abstracción para recuperar y persistir sesiones.
+
+**Operaciones principales:**
+
+- `findById(id: SessionId): Optional<Session>`
+- `findActiveByUserId(userId: UserId): List<Session>`
+- `save(session: Session): Session`
 
 #### 2.6.1.2. Interface Layer
 
-[Controllers, Consumers]
+La Interface Layer expone las capacidades de autenticación y gestión de usuarios hacia los clientes de SafeBus mediante interfaces HTTP, transformando las solicitudes en comandos o consultas procesados por la Application Layer.
+
+##### Backend API
+
+###### AuthenticationController
+
+Expone las operaciones de autenticación y ciclo de vida de la sesión.
+
+Responsabilidades principales:
+
+- iniciar sesión (sign in);
+- renovar el token de acceso (refresh token);
+- cerrar sesión (sign out).
+
+###### UsersController
+
+Expone las operaciones de registro y consulta de usuarios y asignación de roles.
+
+Responsabilidades principales:
+
+- registrar un usuario;
+- asignar un rol a un usuario;
+- consultar la información de acceso de un usuario.
 
 #### 2.6.1.3. Application Layer
 
-[Command Handlers, Event Handlers]
+La Application Layer coordina los casos de uso de IAM utilizando los aggregates, políticas y repositorios de la Domain Layer, sin incorporar reglas de negocio propias del dominio.
+
+##### Command Handlers
+
+- `RegisterUserHandler`
+- `SignInHandler`
+- `RefreshTokenHandler`
+- `SignOutHandler`
+- `AssignRoleToUserHandler`
+
+##### Query Handlers
+
+- `GetUserHandler`
+- `GetUserRolesHandler`
+
+##### Event Handlers
+
+- `SeedRolesHandler`
 
 #### 2.6.1.4. Infrastructure Layer
 
-[Repository implementations, Message Brokers, servicios externos]
+La Infrastructure Layer implementa las abstracciones definidas por las capas internas y provee los mecanismos técnicos de persistencia, seguridad y comunicación con otros contextos.
+
+##### Repository Implementations
+
+###### UserRepositoryImpl
+
+Implementa `UserRepository` y gestiona la persistencia de los usuarios.
+
+###### RoleRepositoryImpl
+
+Implementa `RoleRepository` y gestiona la persistencia de los roles.
+
+###### SessionRepositoryImpl
+
+Implementa `SessionRepository` y gestiona el almacenamiento y la revocación de sesiones.
+
+##### Mappers
+
+###### UserMapper
+
+Traduce entre los objetos de persistencia y el aggregate `User`.
+
+###### SessionMapper
+
+Traduce entre las entidades persistentes y el aggregate `Session`.
+
+##### External Services
+
+###### JwtTokenProvider
+
+Genera y valida los tokens JWT/BearerToken utilizados en las sesiones.
+
+###### HashingService
+
+Implementa el hashing y la verificación de contraseñas mediante BCrypt.
+
+##### Event Publisher
+
+Publica `UserRegisteredEvent` y `UserAuthenticatedEvent` hacia los demás Bounded Contexts.
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-[Component Diagram C4 por Container]
+El siguiente diagrama presenta la arquitectura a nivel de componentes del Bounded Context **IAM**, mostrando la descomposición del backend de autenticación y su rol como Shared Kernel para el resto del sistema.
+
+La **Interface Layer** expone los `IAM REST Controllers`, que delegan en el `IAM Application Service`. La lógica del dominio se concentra en el aggregate `User` y en `AccessControlPolicy`. La **Infrastructure Layer** integra el `User Repository Adapter`, el `JWT Provider` y el `Event Publisher`, persistiendo en la `IAM Database`.
+
+![IAMC4](../docs/c4/IAM-c4.png)
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-[Class Diagram UML — atributos, métodos, scope, relaciones calificadas]
+El siguiente diagrama UML presenta los elementos principales de la Domain Layer de **IAM**, organizados alrededor de los Aggregate Roots `User` y `Session`.
+
+
+![IAMClassDiagrams](../docs/class-diagrams-backend/IAM-diagrama-clases.png)
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
-[Database Diagram — tablas, columnas, constraints, relaciones]
+El siguiente diagrama representa el diseño de persistencia del Bounded Context **IAM**, con las tablas de usuarios, roles y sesiones.
+
+![IAMClassDB](../docs/database/IAM-db.png)
+
+
+---
+
+### 2.6.2. Bounded Context: Fleet & Workforce Management
+
+El Bounded Context **Fleet & Workforce Management** administra la relación entre la empresa de transporte, sus conductores y su flota, asignando recursos a rutas y actuando como **Operations Central** en la respuesta a los casos de seguridad.
+
+Provee la asignación (conductor, bus, ruta) que necesita Trip & Location Tracking para iniciar un viaje (relación *Customer/Supplier*) y recibe los casos notificados por Safety Case Management, adaptándose a su modelo de caso sin negociar su estructura (relación *Conformist*).
+
+#### 2.6.2.1. Domain Layer
+
+La Domain Layer concentra las reglas de negocio relacionadas con la administración de la flota, la asignación de turnos y la respuesta operativa a los casos. Mantiene las invariantes del contexto y es independiente de la persistencia.
+
+##### Aggregate Roots
+
+###### Company
+
+Representa a la empresa de transporte y agrupa los recursos que administra: conductores, unidades y rutas.
+
+**Atributos principales:**
+
+- `id: CompanyId`
+- `ruc: Ruc`
+- `name: String`
+- `drivers: List<Driver>`
+- `vehicles: List<Vehicle>`
+- `routes: List<Route>`
+- `createdAt: Instant`
+- `updatedAt: Instant`
+
+**Métodos principales:**
+
+- `registerDriver(driver: Driver): void`
+- `registerVehicle(vehicle: Vehicle): void`
+- `registerRoute(route: Route): void`
+
+###### ShiftAssignment
+
+Representa la asignación de un turno que vincula a un conductor, una unidad y una ruta durante un periodo.
+
+**Atributos principales:**
+
+- `id: ShiftAssignmentId`
+- `driverId: DriverId`
+- `vehicleId: VehicleId`
+- `routeId: RouteId`
+- `shift: Shift`
+- `status: AssignmentStatus`
+- `assignedAt: Instant`
+
+**Métodos principales:**
+
+- `activate(): void`
+- `close(): void`
+- `isActive(): Boolean`
+
+El aggregate garantiza que una unidad y un conductor no tengan más de una asignación activa simultánea.
+
+###### CaseResponse
+
+Representa la atención que la central operativa (Operations Central) registra frente a un caso de seguridad notificado.
+
+**Atributos principales:**
+
+- `id: CaseResponseId`
+- `safetyCaseId: SafetyCaseId`
+- `responderId: UserId`
+- `status: ResponseStatus`
+- `actionTaken: String`
+- `respondedAt: Instant`
+
+**Métodos principales:**
+
+- `register(action: String): void`
+- `updateStatus(status: ResponseStatus): void`
+
+##### Domain Services
+
+###### ShiftAssignmentService
+
+Coordina la asignación de recursos verificando su disponibilidad.
+
+**Operaciones principales:**
+
+- `assign(driver: Driver, vehicle: Vehicle, route: Route, shift: Shift): ShiftAssignment`
+- `validateAvailability(driverId: DriverId, vehicleId: VehicleId): void`
+
+###### CaseResponseService
+
+Registra y actualiza la respuesta operativa frente a un caso.
+
+**Operaciones principales:**
+
+- `registerResponse(safetyCaseId: SafetyCaseId, responderId: UserId, action: String): CaseResponse`
+
+##### Repository Interfaces
+
+###### CompanyRepository
+
+**Operaciones principales:**
+
+- `findById(id: CompanyId): Optional<Company>`
+- `save(company: Company): Company`
+
+###### ShiftAssignmentRepository
+
+**Operaciones principales:**
+
+- `findById(id: ShiftAssignmentId): Optional<ShiftAssignment>`
+- `findActiveByVehicleId(vehicleId: VehicleId): Optional<ShiftAssignment>`
+- `save(assignment: ShiftAssignment): ShiftAssignment`
+
+###### CaseResponseRepository
+
+**Operaciones principales:**
+
+- `findBySafetyCaseId(safetyCaseId: SafetyCaseId): Optional<CaseResponse>`
+- `save(response: CaseResponse): CaseResponse`
+
+#### 2.6.2.2. Interface Layer
+
+La Interface Layer expone las operaciones de gestión de flota, personal y respuesta operativa hacia los clientes de SafeBus.
+
+##### Backend API
+
+###### CompaniesController
+
+Expone la creación y consulta de empresas y sus recursos asociados.
+
+###### ShiftAssignmentsController
+
+Gestiona la asignación de turnos.
+
+Responsabilidades principales:
+
+- asignar un turno (conductor, bus, ruta);
+- consultar asignaciones activas;
+- cerrar una asignación.
+
+###### OperationsCentralController
+
+Expone las operaciones de la central para registrar la atención de un caso de seguridad.
+
+##### Event Consumers
+
+###### PanicAlertActivatedConsumer
+
+Recibe el evento `PanicAlertActivatedEvent` de Safety Case Management y registra el caso para su atención por la central.
+
+#### 2.6.2.3. Application Layer
+
+La Application Layer orquesta los casos de uso de gestión de flota y respuesta operativa.
+
+##### Command Handlers
+
+- `RegisterCompanyHandler`
+- `RegisterDriverHandler`
+- `RegisterVehicleHandler`
+- `AssignShiftHandler`
+- `RespondToCaseHandler`
+
+##### Query Handlers
+
+- `GetFleetHandler`
+- `GetActiveAssignmentsHandler`
+- `GetCaseResponsesHandler`
+
+##### Event Handlers
+
+- `PanicAlertActivatedHandler`
+
+#### 2.6.2.4. Infrastructure Layer
+
+La Infrastructure Layer implementa la persistencia y la integración con servicios externos de validación.
+
+##### Repository Implementations
+
+###### CompanyRepositoryImpl
+
+Implementa `CompanyRepository` y gestiona la persistencia de la empresa y sus recursos.
+
+###### ShiftAssignmentRepositoryImpl
+
+Implementa `ShiftAssignmentRepository`.
+
+###### CaseResponseRepositoryImpl
+
+Implementa `CaseResponseRepository`.
+
+##### Mappers
+
+###### CompanyMapper
+
+Traduce entre los objetos de persistencia y el aggregate `Company`.
+
+###### ShiftAssignmentMapper
+
+Traduce entre las entidades persistentes y el aggregate `ShiftAssignment`.
+
+##### External Context Adapters
+
+###### HabilitationValidationAdapter
+
+Valida la licencia y habilitación de conductores y unidades ante fuentes externas (MTC/SUTRAN), sin incorporar su modelo interno dentro del contexto.
+
+##### Event Publisher
+
+Publica `ShiftAssignedEvent` hacia Trip & Location Tracking y consume `PanicAlertActivatedEvent`.
+
+#### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
+
+El siguiente diagrama presenta la arquitectura a nivel de componentes del Bounded Context **Fleet & Workforce Management**.
+
+![FleetWorkForceC4](../docs/c4/fleetwork-c4.png)
+
+#### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
+
+![FleetworkC4](../docs/class-diagrams-backend/fleetwork-diagramaclase.png)
+
+##### 2.6.2.6.2. Bounded Context Database Design Diagram
+
+![FleetWorkDB](../docs/database/fleetwork-db.png)
+
+---
+
+### 2.6.3. Bounded Context: Trip & Location Tracking
+
+El Bounded Context **Trip & Location Tracking** gestiona el ciclo de vida del viaje de una unidad: su inicio, la ingesta de ubicación en tiempo real y su cierre.
+
+Depende de Fleet & Workforce Management para recibir la asignación (conductor, bus, ruta) que habilita el inicio del viaje (relación *Customer/Supplier*), y es *upstream* crítico tanto de Safety Case Management como de Passenger Journey & Occupancy, a los que provee la ubicación y la confirmación del viaje activo.
+
+#### 2.6.3.1. Domain Layer
+
+La Domain Layer concentra las reglas relacionadas con el ciclo de vida del viaje y la ingesta de ubicaciones, manteniendo la consistencia del recorrido.
+
+##### Aggregate Roots
+
+###### Trip
+
+Representa el viaje de una unidad desde su inicio hasta su cierre, agrupando las lecturas de ubicación registradas durante el recorrido.
+
+**Atributos principales:**
+
+- `id: TripId`
+- `assignmentRef: AssignmentRef`
+- `status: TripStatus`
+- `startedAt: Instant`
+- `closedAt: Instant`
+- `locationReadings: List<LocationReading>`
+
+**Métodos principales:**
+
+- `start(): void`
+- `ingestLocation(location: GeoLocation, speed: Speed): void`
+- `close(): void`
+- `lastKnownLocation(): GeoLocation`
+
+El aggregate garantiza que solo un viaje activo exista por unidad y que no se ingesten ubicaciones sobre un viaje cerrado.
+
+##### Domain Services
+
+###### LocationIngestionService
+
+Registra y valida las lecturas de ubicación recibidas durante un viaje activo.
+
+**Operaciones principales:**
+
+- `registerReading(trip: Trip, location: GeoLocation, speed: Speed): void`
+
+###### TripLifecycleService
+
+Coordina el inicio y cierre del viaje a partir de la asignación vigente.
+
+**Operaciones principales:**
+
+- `startTrip(assignment: AssignmentRef): Trip`
+- `closeTrip(trip: Trip): void`
+
+##### Repository Interfaces
+
+###### TripRepository
+
+**Operaciones principales:**
+
+- `findById(id: TripId): Optional<Trip>`
+- `findActiveByVehicleId(vehicleId: VehicleId): Optional<Trip>`
+- `save(trip: Trip): Trip`
+
+###### LocationRepository
+
+**Operaciones principales:**
+
+- `findLastByTripId(tripId: TripId): Optional<LocationReading>`
+- `save(reading: LocationReading): LocationReading`
+
+#### 2.6.3.2. Interface Layer
+
+La Interface Layer expone las operaciones de gestión de viajes y de ingesta de ubicación.
+
+##### Backend API
+
+###### TripsController
+
+Expone el inicio, consulta y cierre de viajes.
+
+###### LocationController
+
+Recibe las lecturas de ubicación de la unidad en ruta y permite consultar la última ubicación conocida.
+
+##### Event Consumers
+
+###### ShiftAssignedConsumer
+
+Recibe `ShiftAssignedEvent` de Fleet & Workforce Management para habilitar el inicio del viaje.
+
+###### RiskZoneConfirmedConsumer
+
+Recibe `RiskZoneConfirmedEvent` de Risk Zone Intelligence (Published Language) para señalar zonas de riesgo en el recorrido.
+
+#### 2.6.3.3. Application Layer
+
+##### Command Handlers
+
+- `StartTripHandler`
+- `IngestLocationHandler`
+- `CloseTripHandler`
+
+##### Query Handlers
+
+- `GetTripHandler`
+- `GetActiveTripByVehicleHandler`
+- `GetLastLocationHandler`
+
+##### Event Handlers
+
+- `ShiftAssignedHandler`
+- `RiskZoneConfirmedHandler`
+
+#### 2.6.3.4. Infrastructure Layer
+
+##### Repository Implementations
+
+###### TripRepositoryImpl
+
+Implementa `TripRepository`.
+
+###### LocationRepositoryImpl
+
+Implementa `LocationRepository`.
+
+##### Mappers
+
+###### TripMapper
+
+Traduce entre los objetos de persistencia y el aggregate `Trip`.
+
+##### External Context Adapters
+
+###### GpsProviderAdapter
+
+Obtiene la ubicación desde el GPS del dispositivo móvil del conductor.
+
+##### Event Publisher
+
+Consume `ShiftAssignedEvent` y publica `TripStartedEvent`, `TripLocationUpdatedEvent` y `TripClosedEvent`.
+
+#### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
+
+![TripLocationC4](../docs/c4/triplocation-c4.png)
+
+
+#### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
+
+![TripLocationClassDiagrams](../docs/class-diagrams-backend/triplocation-diagramaclase.png)
+
+
+##### 2.6.3.6.2. Bounded Context Database Design Diagram
+
+![TripLocationDB](../docs/database/triplocation-db.png)
+
+---
+
+### 2.6.4. Bounded Context: Passenger Journey & Occupancy
+
+El Bounded Context **Passenger Journey & Occupancy** vincula a un pasajero con un viaje verificado y le proporciona visibilidad del aforo de la unidad.
+
+Depende de Trip & Location Tracking para confirmar el viaje activo y obtener el conteo de pasajeros (relación *Customer/Supplier*), y origina la alerta de pánico del pasajero hacia Safety Case Management, que nace con el contexto de la sesión de viaje del pasajero.
+
+#### 2.6.4.1. Domain Layer
+
+La Domain Layer concentra las reglas relacionadas con la verificación de la unidad, la sesión de viaje del pasajero y la consulta de aforo.
+
+##### Aggregate Roots
+
+###### PassengerJourney
+
+Representa la sesión de viaje de un pasajero sobre una unidad verificada.
+
+**Atributos principales:**
+
+- `id: PassengerJourneyId`
+- `tripId: TripId`
+- `unitVerification: UnitVerification`
+- `status: JourneyStatus`
+- `startedAt: Instant`
+- `endedAt: Instant`
+
+**Métodos principales:**
+
+- `verifyUnit(qr: QrCode): VerificationStatus`
+- `start(): void`
+- `requestPanic(): void`
+- `end(): void`
+
+###### OccupancySnapshot
+
+Representa una lectura del aforo de una unidad en un momento dado.
+
+**Atributos principales:**
+
+- `id: OccupancySnapshotId`
+- `tripId: TripId`
+- `passengerCount: PassengerCount`
+- `capacity: Capacity`
+- `level: OccupancyLevel`
+- `capturedAt: Instant`
+
+**Métodos principales:**
+
+- `updateCount(count: PassengerCount): void`
+- `occupancyLevel(): OccupancyLevel`
+
+##### Domain Services
+
+###### UnitVerificationService
+
+Verifica que el QR escaneado corresponde a una unidad con viaje activo.
+
+**Operaciones principales:**
+
+- `verify(qr: QrCode, activeTrip: TripId): VerificationStatus`
+
+###### OccupancyQueryService
+
+Calcula el aforo actual de una unidad a partir de la última lectura.
+
+**Operaciones principales:**
+
+- `currentOccupancy(tripId: TripId): OccupancySnapshot`
+
+##### Repository Interfaces
+
+###### PassengerJourneyRepository
+
+**Operaciones principales:**
+
+- `findById(id: PassengerJourneyId): Optional<PassengerJourney>`
+- `findActiveByTripId(tripId: TripId): List<PassengerJourney>`
+- `save(journey: PassengerJourney): PassengerJourney`
+
+###### OccupancyRepository
+
+**Operaciones principales:**
+
+- `findLastByTripId(tripId: TripId): Optional<OccupancySnapshot>`
+- `save(snapshot: OccupancySnapshot): OccupancySnapshot`
+
+#### 2.6.4.2. Interface Layer
+
+##### Backend API
+
+###### UnitVerificationController
+
+Expone la verificación de la unidad mediante QR antes de abordar.
+
+###### OccupancyController
+
+Expone la consulta del aforo actual de una unidad.
+
+###### PassengerJourneysController
+
+Gestiona el inicio, la solicitud de pánico y el cierre de la sesión de viaje del pasajero.
+
+##### Event Consumers
+
+###### TripStartedConsumer
+
+Recibe `TripStartedEvent` para habilitar la verificación de la unidad.
+
+###### TripClosedConsumer
+
+Recibe `TripClosedEvent` para cerrar las sesiones de pasajeros de la unidad.
+
+#### 2.6.4.3. Application Layer
+
+##### Command Handlers
+
+- `VerifyUnitHandler`
+- `StartPassengerJourneyHandler`
+- `RequestPassengerPanicHandler`
+- `EndPassengerJourneyHandler`
+
+##### Query Handlers
+
+- `GetOccupancyHandler`
+- `GetPassengerJourneyHandler`
+
+##### Event Handlers
+
+- `TripStartedHandler`
+- `TripClosedHandler`
+
+#### 2.6.4.4. Infrastructure Layer
+
+##### Repository Implementations
+
+###### PassengerJourneyRepositoryImpl
+
+Implementa `PassengerJourneyRepository`.
+
+###### OccupancyRepositoryImpl
+
+Implementa `OccupancyRepository`.
+
+##### Mappers
+
+###### PassengerJourneyMapper
+
+Traduce entre los objetos de persistencia y el aggregate `PassengerJourney`.
+
+###### OccupancyMapper
+
+Traduce entre las entidades persistentes y el aggregate `OccupancySnapshot`.
+
+##### External Context Adapters
+
+###### TripQueryAdapter
+
+Consulta a Trip & Location Tracking para confirmar el viaje activo, utilizando únicamente `TripId` como referencia externa (Anti-Corruption Layer de lectura).
+
+###### PassengerCountingSourceAdapter
+
+Integra la fuente externa de conteo de pasajeros mediante un contrato de eventos; el prototipo puede usar sensores reales o un simulador.
+
+##### Event Publisher
+
+Consume `TripStartedEvent` y `TripClosedEvent`; publica `UnitVerifiedEvent` y `PassengerPanicRequestedEvent`.
+
+#### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
+
+![PassengerC4](../docs/c4/passenger-c4.png)
+
+
+#### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
+
+![PassengerClassDiagrams](../docs/class-diagrams-backend/passenger-diagramaclase.png)
+
+##### 2.6.4.6.2. Bounded Context Database Design Diagram
+
+![PassengerDB](../docs/database/passenger-db.png)
+
+---
+
+### 2.6.5. Bounded Context: Safety Case Management
+
+El Bounded Context **Safety Case Management** es el context core del sistema: recibe, prioriza y gestiona el ciclo de vida completo de una alerta de pánico, desde su activación hasta su cierre.
+
+Depende de Trip & Location Tracking para obtener la ubicación más reciente de la unidad y de Passenger Journey & Occupancy para el contexto del viaje cuando la alerta proviene de un pasajero. Provee los casos a Fleet & Workforce Management (relación *Conformist*) y dispara el escalamiento hacia External Escalation cuando el caso no es atendido a tiempo.
+
+#### 2.6.5.1. Domain Layer
+
+La Domain Layer concentra las reglas del ciclo de vida del caso de seguridad: activación de la alerta, priorización y seguimiento de estados.
+
+##### Aggregate Roots
+
+###### SafetyCase
+
+Representa un caso de seguridad originado por una alerta de pánico, controlando su prioridad, su estado y el historial de transiciones.
+
+**Atributos principales:**
+
+- `id: SafetyCaseId`
+- `alert: Alert`
+- `priority: Priority`
+- `status: CaseStatus`
+- `statusHistory: List<CaseStatusHistory>`
+- `locationSnapshot: GeoLocation`
+- `openedAt: Instant`
+- `closedAt: Instant`
+
+**Métodos principales:**
+
+- `activate(alert: Alert): void`
+- `prioritize(priority: Priority): void`
+- `attend(): void`
+- `escalate(): void`
+- `close(): void`
+
+El aggregate garantiza que las transiciones de estado sean válidas (por ejemplo, un caso cerrado no puede reabrirse ni escalarse).
+
+##### Domain Services
+
+###### AlertActivationService
+
+Crea el caso de seguridad a partir de una alerta y su ubicación asociada.
+
+**Operaciones principales:**
+
+- `activate(source: AlertSource, location: GeoLocation): SafetyCase`
+
+###### CasePrioritizationService
+
+Determina la prioridad del caso según el origen y el contexto.
+
+**Operaciones principales:**
+
+- `prioritize(case: SafetyCase): Priority`
+
+###### CaseStatusTrackingService
+
+Coordina las transiciones de estado del caso.
+
+**Operaciones principales:**
+
+- `transition(case: SafetyCase, newStatus: CaseStatus): void`
+
+##### Repository Interfaces
+
+###### SafetyCaseRepository
+
+**Operaciones principales:**
+
+- `findById(id: SafetyCaseId): Optional<SafetyCase>`
+- `findActive(): List<SafetyCase>`
+- `save(safetyCase: SafetyCase): SafetyCase`
+
+###### AlertRepository
+
+**Operaciones principales:**
+
+- `findById(id: AlertId): Optional<Alert>`
+- `save(alert: Alert): Alert`
+
+#### 2.6.5.2. Interface Layer
+
+##### Backend API
+
+###### PanicButtonController
+
+Expone la activación del botón de pánico para conductor y pasajero.
+
+###### SafetyCasesController
+
+Expone la consulta, priorización, actualización de estado y cierre de casos.
+
+##### Event Consumers
+
+###### PassengerPanicRequestedConsumer
+
+Recibe `PassengerPanicRequestedEvent` de Passenger Journey & Occupancy.
+
+###### CaseResolvedByAuthorityConsumer
+
+Recibe `CaseResolvedByAuthorityEvent` de External Escalation para cerrar el caso.
+
+#### 2.6.5.3. Application Layer
+
+##### Command Handlers
+
+- `ActivateAlertHandler`
+- `PrioritizeCaseHandler`
+- `UpdateCaseStatusHandler`
+- `EscalateCaseHandler`
+- `CloseCaseHandler`
+
+##### Query Handlers
+
+- `GetSafetyCaseHandler`
+- `GetActiveCasesHandler`
+
+##### Event Handlers
+
+- `PassengerPanicRequestedHandler`
+- `CaseResolvedByAuthorityHandler`
+
+#### 2.6.5.4. Infrastructure Layer
+
+##### Repository Implementations
+
+###### SafetyCaseRepositoryImpl
+
+Implementa `SafetyCaseRepository`.
+
+###### AlertRepositoryImpl
+
+Implementa `AlertRepository`.
+
+##### Mappers
+
+###### SafetyCaseMapper
+
+Traduce entre los objetos de persistencia y el aggregate `SafetyCase`.
+
+##### External Context Adapters
+
+###### TripLocationAdapter
+
+Consulta la ubicación más reciente a Trip & Location Tracking, con manejo propio de indisponibilidad (estados Stale / Unavailable) para no bloquearse ante una falla *upstream*.
+
+##### Event Publisher
+
+Consume `TripLocationUpdatedEvent` y `PassengerPanicRequestedEvent`; publica `PanicAlertActivatedEvent` (a Fleet) y `AlertEscalatedEvent` (a External Escalation).
+
+#### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
+
+![SafetyC4](../docs/c4/safety-c4.png)
+
+
+#### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
+
+![SafetyClassDiagrams](../docs/class-diagrams-backend/Safety-diagramaclase.png)
+
+##### 2.6.5.6.2. Bounded Context Database Design Diagram
+
+![SafetyDB](../docs/database/safety-db.png)
+
+---
+
+### 2.6.6. Bounded Context: External Escalation
+
+El Bounded Context **External Escalation** deriva un caso hacia una autoridad externa (policía o aseguradora) cuando la gestión interna de la empresa no lo atiende a tiempo, y realiza el seguimiento hasta su cierre.
+
+Se integra con Safety Case Management mediante un **Anti-Corruption Layer**, que traduce el modelo interno de caso al formato que espera cada autoridad externa, aislando el modelo propio de sistemas que el equipo no controla.
+
+#### 2.6.6.1. Domain Layer
+
+La Domain Layer concentra las reglas del escalamiento externo: disparo, reporte a la autoridad y confirmación de resolución.
+
+##### Aggregate Roots
+
+###### EscalationCase
+
+Representa un caso derivado a una autoridad externa, agrupando los reportes emitidos y su estado de resolución.
+
+**Atributos principales:**
+
+- `id: EscalationCaseId`
+- `safetyCaseId: SafetyCaseId`
+- `authorityType: AuthorityType`
+- `status: EscalationStatus`
+- `reports: List<AuthorityReport>`
+- `triggeredAt: Instant`
+- `resolvedAt: Instant`
+
+**Métodos principales:**
+
+- `trigger(): void`
+- `reportToAuthority(report: AuthorityReport): void`
+- `confirmResolution(): void`
+
+##### Domain Services
+
+###### AuthorityReportingService
+
+Genera y envía el reporte hacia la autoridad correspondiente.
+
+**Operaciones principales:**
+
+- `report(escalationCase: EscalationCase, authority: AuthorityType): AuthorityReport`
+
+###### ResolutionConfirmationService
+
+Confirma la resolución del caso y notifica de vuelta al context de origen.
+
+**Operaciones principales:**
+
+- `confirm(escalationCase: EscalationCase): void`
+
+##### Repository Interfaces
+
+###### EscalationRepository
+
+**Operaciones principales:**
+
+- `findById(id: EscalationCaseId): Optional<EscalationCase>`
+- `findBySafetyCaseId(safetyCaseId: SafetyCaseId): Optional<EscalationCase>`
+- `save(escalationCase: EscalationCase): EscalationCase`
+
+#### 2.6.6.2. Interface Layer
+
+##### Backend API
+
+###### ExternalEscalationController
+
+Expone la consulta del estado de los casos escalados.
+
+##### Event Consumers
+
+###### AlertEscalatedConsumer
+
+Recibe `AlertEscalatedEvent` de Safety Case Management (vía ACL) e inicia el escalamiento.
+
+#### 2.6.6.3. Application Layer
+
+##### Command Handlers
+
+- `TriggerEscalationHandler`
+- `ReportToAuthorityHandler`
+- `ConfirmResolutionHandler`
+
+##### Query Handlers
+
+- `GetEscalationCaseHandler`
+
+##### Event Handlers
+
+- `AlertEscalatedHandler`
+
+#### 2.6.6.4. Infrastructure Layer
+
+##### Repository Implementations
+
+###### EscalationRepositoryImpl
+
+Implementa `EscalationRepository`.
+
+##### Mappers
+
+###### EscalationCaseMapper
+
+Traduce entre los objetos de persistencia y el aggregate `EscalationCase`.
+
+##### External Context Adapters
+
+###### AuthorityGatewayAdapter
+
+Anti-Corruption Layer hacia las APIs de la policía o aseguradora, traduciendo el modelo interno de caso al formato externo.
+
+##### Event Publisher
+
+Consume `AlertEscalatedEvent`; publica `CaseResolvedByAuthorityEvent` de vuelta a Safety Case Management.
+
+#### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
+
+![ExternalC4](../docs/c4/external-c4.png)
+
+
+#### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
+
+![ExternalClassDiagrams](../docs/class-diagrams-backend/External-diagramaclase.png)
+
+##### 2.6.6.6.2. Bounded Context Database Design Diagram
+
+![ExternalDB](../docs/database/External-db.png)
+
+---
+
+### 2.6.7. Bounded Context: Risk Zone Intelligence
+
+El Bounded Context **Risk Zone Intelligence** recolecta y valida reportes de zonas de riesgo hechos por los conductores, para anticipar y prevenir el paso por rutas peligrosas.
+
+Publica la información de zonas de riesgo hacia Trip & Location Tracking mediante un **Published Language**, con carácter informativo y sin una dependencia transaccional fuerte.
+
+#### 2.6.7.1. Domain Layer
+
+La Domain Layer concentra las reglas de recolección, corroboración y confirmación de zonas de riesgo.
+
+##### Aggregate Roots
+
+###### RiskZone
+
+Representa una zona geográfica de riesgo, agrupando los reportes que la corroboran y controlando su confirmación.
+
+**Atributos principales:**
+
+- `id: RiskZoneId`
+- `area: GeoArea`
+- `riskLevel: RiskLevel`
+- `reports: List<RiskReport>`
+- `corroborationCount: CorroborationCount`
+- `status: ZoneStatus`
+- `confirmedAt: Instant`
+
+**Métodos principales:**
+
+- `addReport(report: RiskReport): void`
+- `corroborate(): void`
+- `confirm(): void`
+- `isConfirmed(): Boolean`
+
+El aggregate garantiza que una zona solo se considere confirmada al superar el umbral de corroboración por distintos conductores.
+
+##### Domain Services
+
+###### ReportCorroborationService
+
+Evalúa los reportes de una zona y determina cuándo alcanza el umbral de confirmación.
+
+**Operaciones principales:**
+
+- `corroborate(zone: RiskZone, report: RiskReport): void`
+
+###### PreventiveAlertingService
+
+Genera la alerta preventiva a partir de una zona confirmada.
+
+**Operaciones principales:**
+
+- `generateAlert(confirmedZone: RiskZone): void`
+
+##### Repository Interfaces
+
+###### RiskReportRepository
+
+**Operaciones principales:**
+
+- `findById(id: RiskReportId): Optional<RiskReport>`
+- `save(report: RiskReport): RiskReport`
+
+###### RiskZoneRepository
+
+**Operaciones principales:**
+
+- `findById(id: RiskZoneId): Optional<RiskZone>`
+- `findConfirmedByArea(area: GeoArea): List<RiskZone>`
+- `save(zone: RiskZone): RiskZone`
+
+#### 2.6.7.2. Interface Layer
+
+##### Backend API
+
+###### RiskReportsController
+
+Expone el envío de reportes de zonas de riesgo por parte de los conductores.
+
+###### RiskZonesController
+
+Expone la consulta de zonas de riesgo confirmadas.
+
+#### 2.6.7.3. Application Layer
+
+##### Command Handlers
+
+- `SubmitRiskReportHandler`
+- `CorroborateReportHandler`
+- `ConfirmRiskZoneHandler`
+
+##### Query Handlers
+
+- `GetRiskZonesHandler`
+- `GetRiskZonesByAreaHandler`
+
+##### Event Handlers
+
+- `RiskReportSubmittedHandler`
+
+#### 2.6.7.4. Infrastructure Layer
+
+##### Repository Implementations
+
+###### RiskReportRepositoryImpl
+
+Implementa `RiskReportRepository`.
+
+###### RiskZoneRepositoryImpl
+
+Implementa `RiskZoneRepository`.
+
+##### Mappers
+
+###### RiskZoneMapper
+
+Traduce entre los objetos de persistencia y el aggregate `RiskZone`.
+
+##### External Context Adapters
+
+###### MapsGeoAdapter
+
+Provee el servicio de mapas/geolocalización para el modelado de las áreas de riesgo.
+
+##### Event Publisher
+
+Publica `RiskZoneConfirmedEvent` (Published Language, consumido por Trip & Location Tracking).
+
+#### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
+
+![RiskZoneC4](../docs/c4/riskzone-c4.png)
+
+
+#### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
+
+![RiskZoneClassDiagrams](../docs/class-diagrams-backend/Risk-diagramaclase.png)
+
+##### 2.6.7.6.2. Bounded Context Database Design Diagram
+
+![RiskZoneDB](../docs/database/Risk-db.png)
