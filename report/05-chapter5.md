@@ -74,6 +74,18 @@ validación. Recomendaciones sobre roadmap.]
 ---
 
 # Anexos
+## Anexo. Enlaces y Recursos Digitales del Proyecto
+
+| Recurso | Descripción | Identificador / Enlace |
+| :--- | :--- | :--- |
+| **Organización GitHub** | Espacio oficial de la startup | [GitHub Org](https://github.com/upc-pre-202620-1acc0238-4939-dreamteam) |
+| **Repositorio del Reporte** | Código fuente del informe Markdown | [dreamteam-report](https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/dreamteam-report) |
+| **Video de Exposición AV1** | Exposición síncrona/asíncrona (≤ 15 min) | `upc-pre-202620-1acc0238-4939-dreamteam-expo-av1.mp4` — [Ver Video]([completar-url]) |
+| **Video Needfinding Interviews** | Compilación de entrevistas a conductores | `upc-pre-202620-1acc0238-4939-dreamteam-needfinding-av1.mp4` — [Ver Video]([completar-url]) |
+| **Entrevista 1 (Carlos García)** | Grabación individual (Conductor, 45 años) | [Ver en SharePoint Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQDxbGA3NcI4QJTFe6GnCx8pAQvz3SOZwqUSE4nQZNJK-xc?e=GFwsLX) |
+| **Entrevista 2 (Miguel Torres)** | Grabación individual (Conductor, 42 años) | [Ver en SharePoint Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQC9FCvjAeQ1RZ8q5zTOY0kYAV6r-v6TR54tpsqDX0SajP4?e=ueAqmB) |
+| **Entrevista 3 (Jorge Mendoza)** | Grabación individual (Conductor, 38 años) | [Ver en SharePoint Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202410344_upc_edu_pe/IQD4wjK9m5zCTYguNpfw6csmAUHHSHx-iHAi5NocSGR3BJU?e=ujXq9R) |
+| **Reporte de Participación AV1** | Evaluación de desempeño del Team Leader | `upc-pre-202620-1acc0238-4939-dreamteam-performance-av1.docx` — [Ver Documento]([completar-url]) |
 
 ## Anexo A. Student Outcome
 

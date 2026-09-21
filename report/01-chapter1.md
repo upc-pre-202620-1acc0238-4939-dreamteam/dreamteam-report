@@ -20,22 +20,23 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 
 **Visión**: Convertirnos en la plataforma lider de seguridad y trazabilidad en el transporte público de Latinoamérica, reconocida por reducir incidentes viales, empoderar a la autoridades con información oportuna y devolver la confianza ciudadana en el sistema de movilidad urbana.
 
+
 ### 1.1.2. Perfiles de integrantes del equipo
 
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto ESTUDIANTE" alt="Foto de Estudiante" width="180"/>
+      <img src="../assets/mathias.png" alt="Foto de Mathias Acuache" width="180"/>
     </td>
-    <td><b>Nombre:</b> Nombre Estudiante</td>
+    <td><b>Nombre:</b> Mathias Joaquin Acuache Lucas</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo estudiante</td>
+    <td><b>Código:</b> u202314898</td>
   </tr>
   <tr>
     <td>
       <b>Descripción:</b><br/>
-     
+      Soy Mathias Joaquin Acuache Lucas, me encuentro en el septimo ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB,tambien poder crear un Frontend y Backend basico, en vue.js, java,etc.Además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos.Asimismo me considero una persona que le gusta aprender nuevas cosas, aportar las ideas que tenga en mente y apartir de ello presentar buenos trabajos.
     </td>
   </tr>
 </table>
@@ -43,17 +44,17 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto ESTUDIANTE" alt="Foto de Estudiante" width="180"/>
+      <img src="../assets/MathiasImage.png" alt="Foto de Estudiante" width="180"/>
     </td>
-    <td><b>Nombre:</b> Nombre Estudiante</td>
+    <td><b>Nombre:</b> Mathias Augusto Arechaga Saavedra</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo estudiante</td>
+    <td><b>Código:</b> u202320699</td>
   </tr>
   <tr>
     <td>
-      <b>Descripción:</b><br/>
-     
+      <b>Descripción:</b>
+        Soy Mathias Arechaga, estudiante de Ingeniería de Software y actualmente cursando el sexto ciclo. Me considero una persona responsable y orientada a crecer tanto en el ámbito académico como profesional. Me interesa el mundo de la programación porque me permite diseñar soluciones, afrontar retos y adquirir constantemente nuevos conocimientos tecnológicos. Cuento con manejo de HTML y conocimientos básicos de Python, lo que me facilita desarrollar proyectos simples mientras sigo perfeccionando mis competencias.<br/>
     </td>
   </tr>
 </table>
@@ -80,17 +81,17 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Mathias Acuache" width="180"/>
+      <img src="../assets/VaIentinoImage.png" alt="Foto de Valentino Espinoza" width="180"/>
     </td>
-    <td><b>Nombre:</b> Mathias Joaquin Acuache Lucas</td>
+    <td><b>Nombre:</b> Valentino Andre Espinoza Orrego</td>
   </tr>
   <tr>
-    <td><b>Código:</b> u202314898</td>
+    <td><b>Código:</b> u202410344</td>
   </tr>
   <tr>
     <td>
       <b>Descripción:</b><br/>
-      Soy Mathias Joaquin Acuache Lucas, me encuentro en el septimo ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB,tambien poder crear un Frontend y Backend basico, en vue.js, java,etc.Además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos.Asimismo me considero una persona que le gusta aprender nuevas cosas, aportar las ideas que tenga en mente y apartir de ello presentar buenos trabajos.
+      Soy Valentino Andre Espinoza Orrego, estudiante de la carrera de Ingeniería de Software en la UPC, enfocado en el desarrollo ágil y el aprendizaje tecnológico continuo. Cuento con una sólida base académica y técnica orientada a la resolución eficiente de problemas complejos mediante el diseño de software funcional. Poseo experiencia práctica gestionando repositorios de código con Git y GitHub, además de competencias en el análisis de requerimientos y modelado de arquitecturas limpias para soluciones digitales. Me destaco por mi capacidad para integrarme con éxito en células de desarrollo colaborativo, donde aporto de forma proactiva ideas innovadoras que aseguren entregables de alto impacto y calidad técnica.
     </td>
   </tr>
 </table>
@@ -100,10 +101,10 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
     <td rowspan="4" align="center" width="200">
       <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
     </td>
-    <td><b>Nombre:</b> Nombre </td>
+    <td><b>Nombre:</b> Alvaro Sebastian Fernandez Linares</td>
   </tr>
   <tr>
-    <td><b>Código:</b> Codigo Estudiante </td>
+    <td><b>Código:</b> u202414928</td>
   </tr>
   <tr>
     <td>
@@ -112,22 +113,6 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
   </tr>
 </table>
 
-<table>
-  <tr>
-    <td rowspan="4" align="center" width="200">
-      <img src="Foto Estudiante" alt="Foto de Estudiante" width="180"/>
-    </td>
-    <td><b>Nombre:</b> Nombre </td>
-  </tr>
-  <tr>
-    <td><b>Código:</b> Codigo Estudiante </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Descripción:</b><br/>
-    </td>
-  </tr>
-</table>
 
 ## 1.2. Solution Profile
 
