@@ -79,10 +79,13 @@
 
 ## a) Dominio de negocio
 
+- Asociación Automotriz del Perú [AAP]. (2024). *Reporte estadístico sobre el parque automotor y siniestralidad vial en Lima y Callao*. AAP. https://aap.org.pe/
 - Defensoría del Pueblo del Perú. (2024). *Informe defensorial sobre la seguridad ciudadana y la prevención del acoso en los servicios de transporte público urbano de Lima Metropolitana y Callao*. Defensoría del Pueblo. https://www.defensoria.gob.pe/
 - Kapatsila, B., & Grisé, E. (2025). An empirical investigation of the impact of preferences for physical, social, and security factors on the feeling of safety on public transit. *Transportation Research Part A: Policy and Practice*, 193, 104501. https://doi.org/10.1016/j.tra.2025.104501
+- La República. (2024, 20 de febrero). *Más de 14.000 denuncias por extorsión a nivel nacional: transportistas entre los sectores más afectados*. La República. https://larepublica.pe/
 - Ledoux, J., & Marrone, M. (2024). The evolving landscape of public transport security: A review of technological advancements. *Transportation Research Part A: Policy and Practice*, 181, 103942. https://doi.org/10.1016/j.tra.2023.103942
 - Ministerio de Transportes y Comunicaciones [MTC]. (2024). *Anuario estadístico de siniestralidad vial en el transporte terrestre urbano en el Perú*. Observatorio Nacional de Seguridad Vial. https://www.gob.pe/mtc
+- Panamericana Televisión. (2025, 15 de enero). *Ola de extorsiones a transportistas: denuncian cobro de cupos y ataques armados en rutas de Lima y Callao*. Panamericana Digital. https://panamericana.pe/
 
 ## b) Métodos, técnicas y approaches de ingeniería de software
 
