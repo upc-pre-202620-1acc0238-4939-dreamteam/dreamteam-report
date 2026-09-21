@@ -32,9 +32,9 @@
 
 ## Integrantes
 
-* u2024XXXXX - Acuache Lucas, Mathias Joaquin
+* u202314898 - Acuache Lucas, Mathias Joaquin
 * u202320699 - Arechaga Saavedra, Mathias Augusto
-* u2024XXXXX - Delgado Arriola, Leonardo Sebastian
+* u202321020 - Delgado Arriola, Leonardo Sebastian
 * u202410344 - Espinoza Orrego, Valentino Andre
 * u202414928 - Fernández Linares, Alvaro Sebastian
 
@@ -52,7 +52,8 @@
 
 | Versión | Fecha | Autor | Descripción de modificación |
 |---------|-------|-------|------------------------------|
-| 0.1.0   |       |       | Versión inicial del informe |
+| 0.1.0   |  9/01/2026| DreamTeam| Versión inicial del informe |
+| 1.0.0   | 9/21/2026| DreamTeam | Primer avance del informe |
 
 ---
 
