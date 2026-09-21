@@ -112,8 +112,8 @@ profesional una vez finalizada la carrera.
 ## Objetivos SMART de Desarrollo Profesional
 
 ### 1. **Acuache Lucas, Mathias Joaquin**
-* **Objetivo SMART 1:** 
-* **Objetivo SMART 2:** 
+* **Objetivo SMART 1:** Poder dominar un framework de fronted y backend moderno como React o Vue y Node.js o Net, de esta manera poder tener una noción de como realizar apps web de manera correcta y poder dominar bien DDD.
+* **Objetivo SMART 2:** Desarrollar una aplicación movil de manera correcta siguiendo todos los lineamientos para el desarrollo y poder adaptarme de manera rapida a los frameworks para móvil.
 
 ### 2. **Arechaga Saavedra, Mathias Augusto**
 * **Objetivo SMART 1:** Dominar un framework backend moderno (Spring Boot, Node.js o .NET) y uno frontend (Angular, React o Vue) en un plazo de 10 meses, evidenciado en un proyecto integrador.
