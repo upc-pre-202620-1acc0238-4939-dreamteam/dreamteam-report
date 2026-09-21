@@ -119,8 +119,8 @@ profesional una vez finalizada la carrera.
 * **Objetivo SMART 2:** Aprender un framework de deep learning (TensorFlow o PyTorch) en un lapso de 12 meses, desarrollando y publicando 2 proyectos de redes neuronales en mi repositorio de GitHub.
 
 ### 3. **Delgado Arriola, Leonardo Sebastian**
-* **Objetivo SMART 1:** 
-* **Objetivo SMART 2:** 
+* **Objetivo SMART 1:** Diseñar y desplegar una arquitectura de integración continua y entrega continua (CI/CD) para una aplicación web escalable, incorporando pruebas automatizadas y contenedores Docker en un lapso de 8 meses posteriores a la graduación, evidenciado en un pipeline funcional en GitHub Actions.
+* **Objetivo SMART 2:** Consolidar competencias en desarrollo backend de alto rendimiento construyendo una API RESTful con soporte para procesamiento en tiempo real (mediante WebSockets o colas de mensajería) en un período de 6 meses, validada con una suite de pruebas de carga que soporte al menos 500 solicitudes concurrentes.
 
 ### 4. **Espinoza Orrego, Valentino Andre**
 * **Objetivo SMART 1:** Integrar de forma avanzada herramientas de Inteligencia Artificial Generativa y codificación asistida (Agentic Coding) en entornos de desarrollo móvil para agilizar los ciclos de vida del software, completando dos cursos especializados en Google Cloud dentro de los primeros 6 meses como graduado.
