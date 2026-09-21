@@ -2055,7 +2055,7 @@ Consume `TripLocationUpdatedEvent` y `PassengerPanicRequestedEvent`; publica `Pa
 
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
 
-![SafetyDB](../docs/database/Safety-db.png)
+![SafetyDB](../docs/database/safety-db.png)
 
 ---
 
