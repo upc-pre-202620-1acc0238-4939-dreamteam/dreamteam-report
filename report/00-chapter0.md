@@ -63,8 +63,9 @@
 
 ### AV1
 
-[Explicación de cómo se desarrollaron las actividades de elaboración del informe +
-capturas de los analíticos de colaboración/commits de GitHub]
+### DreamTeam - Report Repository
+
+  <img src="../docs/insights/team-insights.png" alt="Foto de Estudiante"/>
 
 ---
 
