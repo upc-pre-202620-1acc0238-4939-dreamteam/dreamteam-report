@@ -101,7 +101,7 @@ La siguiente guía incorpora a los tres segmentos. Es un instrumento propuesto: 
 
 ### 2.2.2. Registro de entrevistas
 
-Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-needfinding-<avn/tbn>.mp4`
+Video consolidado: [upc-pre-<2026-02>-1acc0238-<4939>-<DreamTeam>-needfinding-<av1>.mp4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321020_upc_edu_pe/IQCIjCfVwUpQTKFviSXHskACAY1ddO-dSyWaDbUBPI11Cis?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=HCS0Ls)
 
 ### **Segmento 1: Conductores**
 
