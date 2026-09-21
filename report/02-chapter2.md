@@ -759,21 +759,17 @@ relaciones y patrones de integración entre todos los contexts identificados.
 
 El proceso de EventStorming de nivel general se desarrolló en la sección
 2.3.5 (Big Picture EventStorming), donde se identificaron los eventos de
-negocio para los flujos de generación y atención de alertas, gestión de
-flota, escalamiento externo, prevención por zonas de riesgo y verificación de
-pasajeros. A partir de ese modelo, el equipo avanzó hacia un análisis de
-mayor detalle para identificar los Bounded Contexts candidatos de la
-solución.
+negocio para los flujos de emergencia del conductor, registro y viaje del
+pasajero, solicitudes de pánico de pasajeros con umbral y aprobación de la
+empresa, gestión de flota, escalamiento externo y prevención por zonas de
+riesgo. A partir de ese modelo, el equipo avanzó hacia un análisis de mayor
+detalle para identificar los Bounded Contexts candidatos de la solución.
 
 <img src="../docs/bigPicture/Step 1.png">
 
-<img src="../docs/bigPicture/Step 2p1.png">
+<img src="../docs/bigPicture/Step 2.png">
 
-<img src="../docs/bigPicture/Step 2p2.png">
-
-<img src="../docs/bigPicture/Step 3p1.png">
-
-<img src="../docs/bigPicture/Step 3p2.png">
+<img src="../docs/bigPicture/Step 3.png">
 
 #### 2.5.1.1. Candidate Context Discovery
 
@@ -790,10 +786,16 @@ Como resultado, se identificaron siete Bounded Contexts candidatos:
 | 1 | Identity & Access Management | — (soporte transversal) |
 | 2 | Fleet & Workforce Management | Conductor asignado a la empresa |
 | 3 | Trip & Location Tracking | Viaje iniciado |
-| 4 | Passenger Journey & Occupancy | Unidad verificada por pasajero |
-| 5 | Safety Case Management | Botón de alerta activado |
+| 4 | Passenger Identity & Journey | Unidad verificada por pasajero |
+| 5 | Safety Case Management | Botón de alerta activado (conductor) / Grupo aprobado por supervisor (pasajero) |
 | 6 | External Escalation | Alerta escalada |
 | 7 | Risk Zone Intelligence | Zona de riesgo confirmada por otros conductores |
+
+Safety Case Management presenta dos eventos pivotales porque la emergencia
+puede originarse por dos caminos: la activación directa del conductor, que la
+crea de inmediato, y la aprobación del supervisor sobre un grupo de
+solicitudes de pasajeros que alcanzó el umbral. En ambos casos, la
+responsabilidad pasa a la empresa, que atiende la emergencia.
 
 El evento "Alerta escalada" (Safety Case Management) es el punto de conexión
 más claro con "Incidente reportado a autoridades" (External Escalation): ahí
@@ -807,7 +809,7 @@ independientes en lugar de fusionarlos.
 
 Para visualizar cómo colaboran los Bounded Contexts candidatos al resolver
 los casos de uso principales del negocio, el equipo aplicó la técnica de
-Domain Storytelling sobre cuatro historias representativas, seleccionadas
+Domain Storytelling sobre cinco historias representativas, seleccionadas
 por involucrar la interacción de más de un context.
 
 **Historia 1 — Conductor inicia un viaje:** el conductor inicia sesión en
@@ -818,34 +820,51 @@ ubicación.
 
 <img src="../docs/domainStorytelling/historia-1-conductor-inicia-viaje.jpg">
 
-**Historia 2 — Pasajero verifica la unidad y consulta aforo:** Passenger
-Journey & Occupancy consulta a Trip & Location Tracking si la unidad
-escaneada tiene un viaje activo; al confirmarse, crea la sesión de viaje del
-pasajero y consulta el aforo actual.
+**Historia 2 — Pasajero se registra, verifica el bus e inicia su viaje:** el
+pasajero registra su cuenta con DNI, foto de rostro y contraseña en Passenger
+Identity & Journey, que entrega sus credenciales a Identity & Access
+Management para el inicio de sesión. Luego escanea el QR del bus; Passenger
+Identity & Journey consulta a Trip & Location Tracking si el bus tiene un
+turno activo y, al confirmarse, crea el viaje del pasajero. Durante el viaje,
+Trip & Location Tracking provee la ubicación del bus para evaluar el cierre
+automático cuando el pasajero se aleja.
 
-<img src="../docs/domainStorytelling/historia-2-pasajero-verifica-unidad.jpg">
+<img src="../docs/domainStorytelling/historia-2-pasajero-verifica-unidad.png">
 
-**Historia 3 — Se activa una alerta de pánico:** el conductor o el pasajero
-activan el botón de pánico en Safety Case Management, que consulta la
-ubicación más reciente a Trip & Location Tracking y notifica el nuevo caso a
-Fleet & Workforce Management (Operations Central), quien registra la acción
-realizada.
+**Historia 3 — El conductor activa una emergencia inmediata:** el conductor
+activa el botón de pánico en Safety Case Management, que consulta la
+ubicación más reciente a Trip & Location Tracking, activa una emergencia
+Critical sin umbral ni aprobación y la notifica con prioridad máxima a Fleet
+& Workforce Management, cuyo supervisor inicia la atención y registra el
+resultado.
 
-<img src="../docs/domainStorytelling/historia-3-alerta-panico.jpg">
+<img src="../docs/domainStorytelling/historia-3-alerta-panico.png">
 
-**Historia 4 — Una alerta no atendida se escala externamente:** Safety Case
-Management detecta el evento pivotal "Alerta escalada" y notifica a External
-Escalation, que reporta el incidente a la autoridad correspondiente y
-confirma el cierre del caso de vuelta a Safety Case Management.
+**Historia 4 — Una emergencia no atendida se escala externamente:** Safety
+Case Management detecta el evento pivotal "Alerta escalada" y notifica a
+External Escalation, que reporta el incidente a la autoridad correspondiente
+y confirma el cierre del caso de vuelta a Safety Case Management.
 
 <img src="../docs/domainStorytelling/historia-4-alerta-escalada.jpg">
+
+**Historia 5 — Solicitud de pánico del pasajero con umbral y aprobación:** el
+pasajero envía una solicitud con mensaje y foto de evidencia desde Passenger
+Identity & Journey, que la entrega a Safety Case Management con el contexto
+del viaje. Safety Case Management registra la solicitud en el grupo del bus,
+contando una sola solicitud por cuenta; cuando tres cuentas distintas
+reportan dentro de cinco minutos, el grupo pasa a espera de aprobación y se
+solicita su revisión a Fleet & Workforce Management. Si el supervisor lo
+aprueba, se activa una emergencia High; en ambos casos, el estado queda
+visible para el pasajero.
+
+<img src="../docs/domainStorytelling/historia-5-solicitud-pasajero.png">
 
 #### 2.5.1.3. Bounded Context Canvases
 
 El equipo elaboró el Bounded Context Canvas de cada context candidato,
 priorizando según su importancia para el negocio. Los cuatro contexts core
 del sistema (Safety Case Management, Trip & Location Tracking, Passenger
-Journey & Occupancy y Fleet & Workforce Management) se desarrollaron con el
+Identity & Journey y Fleet & Workforce Management) se desarrollaron con el
 proceso iterativo completo (Context Overview Definition, Business Rules
 Distillation & Ubiquitous Language Capture, Capability Analysis, Capability
 Layering, Dependencies Capture y Design Critique). Los tres contexts
@@ -856,43 +875,64 @@ entrega.
 
 **Safety Case Management**
 
-Recibe, prioriza y gestiona el ciclo de vida completo de una alerta de
-pánico desde su activación hasta su cierre. Es el context core del sistema:
-concentra las capabilities de Alert Activation, Case Prioritization y Case
-Status Tracking. Depende de Trip & Location Tracking para la ubicación de la
-unidad y de Passenger Journey & Occupancy para el contexto del viaje cuando
-la alerta proviene de un pasajero; provee casos a Fleet & Workforce
+Gestiona el ciclo de vida de las emergencias desde dos caminos de origen: la
+emergencia inmediata del conductor, que se activa con prioridad Critical sin
+umbral ni aprobación, y las solicitudes de pánico de pasajeros, que requieren
+mensaje y foto, la corroboración de tres cuentas distintas en cinco minutos y
+la aprobación del supervisor para convertirse en una emergencia High. Se
+modela con dos aggregates, Emergency y PassengerRequestGroup, porque tienen
+ciclos de vida y reglas de consistencia distintos. Sus capabilities core son
+Driver Emergency Activation, Threshold Corroboration, Emergency Approval y
+Priority Ordering; esta última garantiza que la emergencia del conductor se
+atienda siempre antes que las revisiones de pasajeros. Recibe la ubicación
+de Trip & Location Tracking y las solicitudes de Passenger Identity &
+Journey, entrega emergencias y grupos pendientes a Fleet & Workforce
 Management y dispara el escalamiento hacia External Escalation.
 
 <img src="../docs/boundedContextCanvas/safety-case-management.png">
 
 **Trip & Location Tracking**
 
-Gestiona el ciclo de vida del viaje de una unidad: inicio, ubicación en
-tiempo real y cierre. Sus capabilities core son Location Ingestion y Trip
-Lifecycle. Depende de Fleet & Workforce Management para la asignación
-(conductor, bus, ruta), y es upstream crítico tanto de Safety Case
-Management como de Passenger Journey & Occupancy.
+Gestiona el turno del conductor, la ubicación en tiempo real y el conteo de
+pasajeros de cada bus. Se modela con tres aggregates: DriverShift
+(activación y cierre del turno), VehicleLocation (muestras de ubicación cada
+30 segundos) y BusOccupancy (eventos de entrada y salida del contador), ya
+que la ubicación y el conteo llegan con alta frecuencia y no deben bloquear
+el estado del turno. Sus capabilities core son Location Ingestion, Occupancy
+Tracking y Status Classification, que clasifica la ubicación y el conteo
+como Current, Stale o Unavailable. Depende de Fleet & Workforce Management
+para la asignación y es upstream crítico de Safety Case Management y de
+Passenger Identity & Journey; al cerrar un turno finaliza los viajes de
+pasajeros asociados, sin cerrar emergencias ni solicitudes abiertas.
 
 <img src="../docs/boundedContextCanvas/trip-location-tracking.png">
 
-**Passenger Journey & Occupancy**
+**Passenger Identity & Journey**
 
-Vincula a un pasajero con un viaje verificado y le da visibilidad del aforo
-de la unidad. Sus capabilities core son Unit Verification y Occupancy Query.
-Depende de Trip & Location Tracking para confirmar el viaje activo y el
-conteo de pasajeros, y origina la alerta de pánico del pasajero hacia Safety
-Case Management.
+Registra la identidad del pasajero (DNI, foto de rostro y contraseña) y lo
+vincula a un viaje verificado mediante el QR del bus. Sus capabilities core
+son Identity Registration, Unit Verification y Journey Lifecycle, que
+incluye el cierre automático del viaje cuando el pasajero se aleja más de
+100 metros del bus durante 60 segundos. La identidad del pasajero se
+mantiene en este context y no en Identity & Access Management, que solo
+guarda sus credenciales, para conservar ese Shared Kernel genérico. Expone
+además un historial de alertas del bus que no revela identidades, fotos ni
+mensajes. El aforo del bus no es accesible para el pasajero.
 
-<img src="../docs/boundedContextCanvas/passenger-journey-occupancy.png">
+<img src="../docs/boundedContextCanvas/passenger-identity-journey.png">
 
 **Fleet & Workforce Management**
 
-Administra la relación entre la empresa, sus conductores y su flota,
-asignando recursos a rutas y supervisando el desempeño operativo. Sus
-capabilities core son Shift Assignment y Case Response (ejercida como
-Operations Central). Provee la asignación que necesita Trip & Location
-Tracking y recibe los casos notificados por Safety Case Management.
+Administra la empresa, su flota y sus conductores, asigna turnos y actúa
+como Operations Central. Se modela con tres aggregates: Company (empresa,
+flota y capacidad de cada bus), Driver (invitación, validación de documentos
+y vinculación de conductores) y ShiftAssignment (asignación de conductor y
+bus a una ruta y periodo). Sus capabilities core son Shift Assignment y
+Emergency Review, mediante la cual el supervisor atiende emergencias y
+aprueba o rechaza los grupos de solicitudes de pasajeros. Provee la
+asignación a Trip & Location Tracking, recibe emergencias y grupos
+pendientes desde Safety Case Management y le devuelve la decisión de
+aprobación.
 
 <img src="../docs/boundedContextCanvas/fleet-workforce-management.png">
 
@@ -915,9 +955,9 @@ Collection, Report Corroboration y Preventive Alerting.
 
 **Identity & Access Management** *(nivel de detalle inicial)*
 
-Autentica a conductores y supervisores, y protege el acceso a las
-operaciones y datos según su rol y empresa. Capabilities: Authentication,
-Session Management y Access Control.
+Autentica a conductores, supervisores y pasajeros, y protege el acceso a las
+operaciones y datos según su rol, empresa y propiedad de la información.
+Capabilities: Authentication, Session Management y Access Control.
 
 <img src="../docs/boundedContextCanvas/identity-access-management.png">
 
@@ -927,18 +967,26 @@ A partir de las dependencias identificadas en cada Bounded Context Canvas, el
 equipo elaboró el Context Map de la solución, aplicando los patrones de
 relación entre Bounded Contexts establecidos en Domain-Driven Design.
 
-<img src="../docs/contextMapping/context-map.jpg">
+<img src="../docs/contextMapping/context-map.png">
 
 | Upstream | Downstream | Patrón | Justificación |
 |---|---|---|---|
-| Fleet & Workforce Management | Trip & Location Tracking | Customer/Supplier | Fleet provee la asignación (conductor, bus, ruta) que Trip necesita para iniciar el viaje. |
+| Fleet & Workforce Management | Trip & Location Tracking | Customer/Supplier | Fleet provee la asignación (conductor, bus, ruta) que Trip necesita para iniciar el turno. |
 | Trip & Location Tracking | Safety Case Management | Customer/Supplier | Safety Case consume la ubicación más reciente, con manejo propio de indisponibilidad (Stale/Unavailable) para no bloquearse ante una falla upstream. |
-| Trip & Location Tracking | Passenger Journey & Occupancy | Customer/Supplier | Passenger Journey depende de que Trip confirme el viaje activo antes de crear la sesión del pasajero. |
-| Passenger Journey & Occupancy | Safety Case Management | Customer/Supplier | La alerta del pasajero nace con el contexto de su sesión de viaje. |
-| Safety Case Management | Fleet & Workforce Management | Conformist | Fleet, como Operations Central, se adapta al modelo de caso definido por Safety Case Management sin negociar su estructura. |
+| Trip & Location Tracking | Passenger Identity & Journey | Customer/Supplier | Passenger Identity & Journey depende de que Trip confirme el turno activo antes de crear el viaje del pasajero, y de la ubicación del bus para el cierre automático. |
+| Passenger Identity & Journey | Safety Case Management | Customer/Supplier | Las solicitudes de pánico del pasajero llegan con el contexto de su viaje, su mensaje y su foto de evidencia. |
+| Safety Case Management | Fleet & Workforce Management | Conformist | Fleet, como Operations Central, se adapta al modelo de emergencia y de grupo de solicitudes definido por Safety Case Management sin negociar su estructura. |
+| Fleet & Workforce Management | Safety Case Management | Customer/Supplier | Safety Case depende de la decisión de aprobación o rechazo del supervisor para convertir un grupo de solicitudes en una emergencia. |
 | Safety Case Management | External Escalation | Anti-Corruption Layer | External Escalation traduce el modelo interno de caso al formato que espera una autoridad externa, aislando el modelo propio de un sistema que el equipo no controla. |
 | Risk Zone Intelligence | Trip & Location Tracking | Published Language | Risk Zone publica información de zonas de riesgo de forma informativa, sin una dependencia transaccional fuerte. |
-| Identity & Access Management | Fleet & Workforce Management, Trip & Location Tracking, Safety Case Management, Passenger Journey & Occupancy | Shared Kernel | Todos los contexts comparten el mismo modelo de identidad y sesión, al ser infraestructura transversal y no lógica de negocio propia de cada context. |
+| Identity & Access Management | Fleet & Workforce Management, Trip & Location Tracking, Safety Case Management, Passenger Identity & Journey | Shared Kernel | Todos los contexts comparten el mismo modelo de autenticación y sesión, al ser infraestructura transversal y no lógica de negocio propia de cada context. |
+
+La relación entre Safety Case Management y Fleet & Workforce Management
+aparece en ambos sentidos porque corresponde a dos flujos distintos: Safety
+Case Management entrega emergencias y grupos pendientes que Fleet consume
+tal como están modelados (Conformist), mientras que la decisión de
+aprobación del supervisor es la que Safety Case Management necesita para
+activar una emergencia de pasajero (Customer/Supplier).
 
 ### 2.5.3. Software Architecture
 
@@ -1041,6 +1089,8 @@ Ante una pérdida de conectividad, la aplicación mantiene los envíos pendiente
 ## 2.6. Tactical-Level Domain-Driven Design
 
 A partir de los siete Bounded Contexts identificados en el nivel estratégico (sección 2.5), esta sección detalla el diseño táctico de cada uno: los building blocks de su Domain Layer, la exposición de capacidades en la Interface Layer, la orquestación de casos de uso en la Application Layer y los mecanismos técnicos de la Infrastructure Layer. La comunicación entre contextos se realiza de forma asíncrona mediante eventos de dominio publicados en un Message Broker, respetando los patrones de integración establecidos en el Context Mapping (2.5.2).
+
+![DESIGN-LEVEL](../docs/designLevel/DesignLevelES.png)
 
 | # | Bounded Context | Capabilities core | Rol en el Context Map |
 | :--- | :--- | :--- | :--- |
