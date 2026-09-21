@@ -445,7 +445,7 @@ La especificación contiene **24 historias, numeradas de US01 a US24 y agrupadas
 
 ### 2.4.1. User Stories
 
-Las historias identifican actor, necesidad, beneficio, prioridad y épica. Los criterios siguen Given–When–Then y describen resultados comprobables. Las Technical Stories utilizan el actor Developer; las Spike Stories incluyen un objetivo, un límite de tiempo y evidencia de investigación.
+Las historias de usuario fueron formuladas siguiendo las directrices de especificación ágil de requisitos de Cohn (2004), identificando actor, necesidad, beneficio, prioridad y épica. Los criterios de aceptación siguen la estructura Given–When–Then de Gherkin y describen resultados comprobables. Las Technical Stories utilizan el actor Developer; las Spike Stories incluyen un objetivo, un límite de tiempo y evidencia de investigación.
 
 #### Epics
 
@@ -747,13 +747,7 @@ El Product Backlog ordena las historias por valor para el servicio y utiliza Sto
 
 ## 2.5. Strategic-Level Domain-Driven Design
 
-En esta sección el equipo aplica Domain-Driven Design a nivel estratégico para
-descomponer el sistema SafeBus en Bounded Contexts con límites naturales. El
-proceso parte del Big Picture EventStorming elaborado en la sección 2.3.5,
-avanza hacia la identificación de contexts candidatos, modela la colaboración
-entre ellos mediante Domain Storytelling, profundiza cada context con su
-Bounded Context Canvas, y cierra con el Context Mapping que define las
-relaciones y patrones de integración entre todos los contexts identificados.
+En esta sección el equipo aplica los principios fundamentales de Domain-Driven Design (DDD) propuestos por Evans (2003), así como los enfoques modernos de descomposición de sistemas en contextos delimitados y microservicios analizados por Zhong et al. (2024) y Ünlü et al. (2024). El propósito es descomponer el sistema SafeBus en Bounded Contexts con límites naturales y alta cohesión. El proceso parte del Big Picture EventStorming elaborado en la sección 2.3.5, avanza hacia la identificación de contexts candidatos, modela la colaboración entre ellos mediante Domain Storytelling, profundiza cada context con su Bounded Context Canvas, y cierra con el Context Mapping que define las relaciones y patrones de integración entre todos los contexts identificados.
 
 ### 2.5.1. EventStorming
 
@@ -990,11 +984,11 @@ activar una emergencia de pasajero (Customer/Supplier).
 
 ### 2.5.3. Software Architecture
 
-La arquitectura de SafeBus describe cómo se organizan las aplicaciones móviles, los servicios y los datos que permiten identificar un viaje, registrar incidentes y coordinar su atención. Se utiliza C4 Model con Structurizr para presentar cuatro perspectivas complementarias: contexto, contenedores, componentes y despliegue. Las vistas representan una propuesta de diseño para las 24 historias de la sección 2.4; no constituyen evidencia de infraestructura ya implementada.
+La arquitectura de SafeBus describe cómo se organizan las aplicaciones móviles, los servicios y los datos que permiten identificar un viaje, registrar incidentes y coordinar su atención. Se utiliza el modelo C4 formulado por Brown (2024) con Structurizr para presentar cuatro perspectivas complementarias: contexto, contenedores, componentes y despliegue. Las vistas representan una propuesta de diseño para las 24 historias de la sección 2.4; no constituyen evidencia de infraestructura ya implementada.
 
 El diseño conserva un backend modular compartido por las aplicaciones nativa y multiplataforma. Las responsabilidades de negocio se separan dentro de ese backend, con una base de datos operativa, almacenamiento privado de imágenes y un mecanismo de eventos de integración. De esta forma, las dos aplicaciones aplican las mismas condiciones para registro, aprobación de emergencias y finalización del viaje.
 
-La selección móvil se fundamenta en el sílabo: la Unidad 2 desarrolla Android con Kotlin y su bibliografía incluye Jetpack Compose; la Unidad 3 desarrolla Flutter, Dart y almacenamiento local con SQFLite y Drift. Se propone Kotlin con Jetpack Compose para Android y Flutter con Dart y Drift para la versión multiplataforma. Para los servicios se propone Java con Spring Boot, alternativa permitida por el enunciado, junto con PostgreSQL, RabbitMQ y un volumen privado de archivos. Estas últimas elecciones concretan el diseño y no se presentan como tecnologías obligatorias del sílabo. Firebase forma parte del temario, pero su mención no obliga a sustituir la API REST ni a incorporar otro servicio al flujo de emergencias.
+La selección móvil se fundamenta en el sílabo: la Unidad 2 desarrolla Android con Kotlin y su bibliografía incluye Jetpack Compose (Android Developers, 2024); la Unidad 3 desarrolla Flutter, Dart y almacenamiento local con SQFLite y Drift. Se propone Kotlin con Jetpack Compose para Android y Flutter con Dart y Drift para la versión multiplataforma. Para los servicios se propone Java con Spring Boot (Spring Framework, 2024), alternativa permitida por el enunciado, junto con PostgreSQL (PostgreSQL Global Development Group, 2024), RabbitMQ (2024) y un volumen privado de archivos. Estas últimas elecciones concretan el diseño y no se presentan como tecnologías obligatorias del sílabo. Firebase forma parte del temario, pero su mención no obliga a sustituir la API REST ni a incorporar otro servicio al flujo de emergencias.
 
 El límite funcional corresponde a las historias US01–US24. La atención y aprobación pertenecen a la empresa de transporte; External Escalation y Risk Zone Intelligence, identificados como candidatos en el análisis estratégico, quedan fuera de este despliegue inicial. La arquitectura utiliza las responsabilidades de Identity & Access Management, Fleet & Workforce Management, Trip & Location Tracking, Passenger Journey & Occupancy y Safety Case Management para cubrir el alcance vigente.
 
