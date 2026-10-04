@@ -632,11 +632,45 @@ US23 Contraseña-Termino y Foto del Rostro:
 
 ### 3.1.4.2. Mobile Applications Wireflow Diagrams
 
-Un Wireflow por cada User Goal.
+Wireflow 1: Validar Turno antes de salir, en este user goal el conductor quiere iniciar sesión y validar turno escaneado con el QR.
 
-**User Goal:** [completar]
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow1.png" alt="Wireframe" width="650">
 
-[Diagrama + explicación del flujo]
+Wireflow 2: Activar una emergencia de forma inmediata, user goal el conductor quiere activar una emergencia con un solo gesto.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow2.png" alt="Wireframe" width="650">
+
+Wireflow 3: Crear cuenta e ingresar, el user goal el pasajero quiere crear una cuenta con DNI y una contraseña para usar la aplicación.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow3.png" alt="Wireframe" width="650">
+
+Wireflow 4: Iniciar un viaje en bus, user goal el pasajero quiere escanear el QR del bus para verificar la unidad e iniciar un viaje de seguridad.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow4.png" alt="Wireframe" width="650">
+
+Wireflow 5: Consultar las alertas del bus, user goal el pasajero quiere revisar las alertas del bus en el que viajo para decidir con información actual.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow5.png" alt="Wireframe" width="650">
+
+Wireflow 6: Enviar una solicitud de pánico con evidencia y seguir estado, el user goal el pasajero quiere enviar una solicitud con un mensaje y evidencia.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow6.png" alt="Wireframe" width="650">
+
+Wireflow 7: Terminar viaje, user goal el pasajero quiere terminar mi viaje con la aplicación.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow7.png" alt="Wireframe" width="650">
+
+Wireflow 8: Monitorear la flota, user goal como supervisor quiero ver las unidades en un mapa y en una lista para saber su estado operativo
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow8.png" alt="Wireframe" width="650">
+
+Wireflow 9: Atender una emergencia del conductor, user goal las emergencias activas de mis conductores, tomarlas en atención y cerrarlas con un resultado.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow9.png" alt="Wireframe" width="650">
+
+Wireflow 10: Revisar una solicitud grupal de pasajeros, user goal el supervisor quiere revisar los mensajes y fotos de un grupo de pasajeros y aprobar o rechazar la solicitud para generar una emergencia solo cuando corresponda.
+
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow10.png" alt="Wireframe" width="650">
 
 ### 3.1.4.3. Mobile Applications Mock-ups
 
