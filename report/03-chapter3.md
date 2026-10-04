@@ -570,13 +570,70 @@ Al reconectarse, el supervisor recupera los casos abiertos y las revisiones pend
 
 ## 3.1.3. Landing Page UI Design
 
+La landing page de SafeBus presenta el servicio a representantes de empresas de transporte de Lima y Callao y los conduce hacia una solicitud de demostración. Su diseño responde a **US14 — Consult SafeBus Service Information** y **US15 — Submit a Company Contact Request**: primero explica la propuesta de valor y los procesos de seguridad, luego muestra las herramientas para la empresa, el precio y el formulario de contacto.
+
+Los diseños de referencia se encuentran en `docs/ui-design` e incluyen wireframes y mock-ups para **navegador de escritorio y navegador móvil**. La versión móvil corresponde a la misma página web adaptada a un teléfono; las pantallas de las aplicaciones Kotlin y Flutter se desarrollan en la sección 3.1.4. Las vistas de la aplicación incluidas en la landing son ilustraciones del servicio con datos ficticios.
+
+El recorrido principal es **conocer SafeBus → comprender cómo funciona → evaluar sus beneficios y precio → solicitar una demostración**. La acción *Request a demo* se repite en el encabezado, la presentación inicial y la tarjeta de precio, y culmina en el formulario. Las etiquetas de las láminas están en inglés, idioma inicial definido en US14; el selector EN / ES representa el acceso a la versión en español latinoamericano.
+
 ### 3.1.3.1. Landing Page Wireframe
 
-[Wireframes Desktop y Mobile Web Browser — Figma]
+Los wireframes establecen la jerarquía del contenido y la distribución de los componentes antes de aplicar el acabado visual. Utilizan una escala de grises, contornos, bloques de texto y espacios reservados para ilustraciones e íconos, de modo que se pueda revisar el orden de lectura y la presencia de las acciones principales.
+
+**Wireframe para navegador de escritorio**
+
+![Wireframe de la landing page de SafeBus para navegador de escritorio](../docs/ui-design/SafeBus—DesktopWireframe.png)
+
+*Wireframe de escritorio: estructura completa de la landing page de SafeBus.*
+
+La composición aprovecha el ancho disponible para presentar contenido relacionado en paralelo. El encabezado reúne la marca, las anclas *How it works*, *Benefits*, *Pricing* y *Contact*, el selector de idioma y la acción de demostración. La presentación inicial combina el mensaje principal con un espacio para la ilustración del bus y la aplicación.
+
+| Bloque | Contenido del wireframe | Propósito en el recorrido |
+|---|---|---|
+| Presentación inicial | Eslogan *Safer journeys, faster response*, descripción para empresas y botones *Request a demo* y *How it works*. | Comunicar el valor del servicio y ofrecer un siguiente paso visible. |
+| How it works | Dos tarjetas: tres pasos para el conductor y cinco para el pasajero. | Diferenciar la emergencia directa del conductor de la solicitud con evidencia y aprobación empresarial. |
+| Benefits for your company | Tres tarjetas sobre prioridad de emergencias, revisión de evidencia y seguimiento de incidentes. | Relacionar el servicio con las tareas del supervisor. |
+| Find the right bus in your fleet | Explicación y vista ilustrativa de *Fleet*, con búsqueda, filtros, mapa/lista y detalle de una unidad ficticia. | Mostrar cómo la empresa consulta su propia flota, ubicación, aforo y estado. |
+| Tools for everyday fleet management | Seis tarjetas: validación QR, emergencia del conductor, solicitudes con evidencia, ubicación y aforo, gestión priorizada y reintento de envío. | Resumir las capacidades operativas de SafeBus. |
+| Pricing | Tarjeta desde **S/ 99 por bus al mes**, instalación incluida, descuento del **20 % desde tres buses** y botón de demostración. | Presentar la propuesta comercial antes del contacto. |
+| Contacto | Campos *Company name*, *Contact name* y *Email*, botón *Request a demo* y enlace a términos y uso de datos. | Recoger los datos de la empresa interesada conforme a US15. |
+| Pie de página | Marca, referencia a DreamTeam, términos, contacto, idiomas y espacios reservados para redes sociales. | Facilitar información complementaria al terminar el recorrido. |
+
+La explicación de *How it works* conserva la diferencia del dominio: el conductor valida su turno con QR y activa una emergencia sin formulario ni aprobación previa; el pasajero verifica el bus, envía mensaje y foto, y requiere **tres pasajeros distintos en cinco minutos** para habilitar la revisión. La emergencia de pasajeros se crea solo después de la aprobación de la empresa. Los avisos junto a las tarjetas refuerzan que una solicitud individual no activa automáticamente una emergencia y que el envío requiere conectividad.
+
+**Wireframe para navegador móvil**
+
+![Wireframe de la landing page de SafeBus para navegador móvil](../docs/ui-design/SafeBus—MobileWireframe.png)
+
+*Wireframe móvil: reorganización del contenido en una sola columna.*
+
+La versión móvil mantiene el mismo contenido y orden, pero sustituye la navegación horizontal del encabezado por un ícono de menú junto a la marca y al botón *Request a demo*. El texto de presentación precede a la ilustración y sus dos acciones se apilan. Las tarjetas del conductor y pasajero, los beneficios y las seis herramientas pasan a una columna; la vista de *Fleet* aparece después de su explicación. El precio y el formulario también se ubican debajo de sus textos introductorios.
+
+Esta adaptación permite recorrer la página mediante desplazamiento vertical y mantiene disponibles las llamadas a la demostración en distintos puntos del recorrido. Los campos del formulario se presentan con sus etiquetas encima, mientras que los términos y el contacto siguen accesibles en el pie de página.
 
 ### 3.1.3.2. Landing Page Mock-up
 
-[Mock-ups Desktop y Mobile Web Browser]
+Los mock-ups aplican la identidad visual de SafeBus a la estructura de los wireframes. Incorporan el logotipo, la ilustración del bus protegido, íconos, colores de marca, tarjetas y ejemplos de estados de seguridad. El resultado sirve como referencia visual para la implementación de la landing, en conjunto con las pautas de la sección 3.1.1 y la navegación de la sección 3.1.2.5.
+
+**Mock-up para navegador de escritorio**
+
+![Mock-up de la landing page de SafeBus para navegador de escritorio](../docs/ui-design/SafeBus—DesktopMockup.png)
+
+*Mock-up de escritorio: aplicación de la identidad visual y de los estados de seguridad.*
+
+El azul oscuro de marca destaca los títulos, botones principales y la sección de contacto; el verde aparece en el logotipo y los íconos. Los fondos claros y las tarjetas blancas separan los bloques de lectura. La sección de flota utiliza un fondo azul claro para destacar la vista ilustrativa del supervisor, y el contacto combina texto blanco sobre azul oscuro con un formulario en una tarjeta blanca.
+
+La ilustración inicial representa un bus, un escudo y un teléfono con ejemplos de la bandeja de casos. La tarjeta *Prioritized emergency management* amplía esa distinción mediante tres estados con etiqueta: **Critical — Driver** en rojo, **High — Passenger approved** en naranja y **Pending approval** en ámbar. Así, el color se acompaña de texto e íconos y la revisión pendiente se diferencia de las emergencias activas.
+
+La vista ilustrativa de *Fleet* muestra búsqueda por placa, ruta o conductor, filtros de estado de seguridad, vigencia de ubicación, aforo y ruta, y las opciones *Map* / *List*. El ejemplo **DEMO-001** incluye ubicación, hora de actualización, ocupación y una advertencia de ubicación desactualizada. La lámina identifica estos datos como ficticios y el mapa como esquemático; explica que la consulta pertenece a la aplicación del supervisor y se limita a la flota de su empresa.
+
+**Mock-up para navegador móvil**
+
+![Mock-up de la landing page de SafeBus para navegador móvil](<../docs/ui-design/SafeBus—Mobile mockup.png>)
+
+*Mock-up móvil: identidad visual de SafeBus aplicada al recorrido vertical de la landing.*
+
+El mock-up móvil conserva los colores, etiquetas, ilustraciones y estados del escritorio sobre la distribución de una columna definida en el wireframe. El encabezado compacto mantiene la marca, la acción de demostración y el menú; las tarjetas se apilan y la vista de flota conserva sus filtros y el detalle de muestra. El bloque final de contacto y el pie de página retoman el fondo azul oscuro, dando continuidad visual al cierre del recorrido.
 
 ---
 
