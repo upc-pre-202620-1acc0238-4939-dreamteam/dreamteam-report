@@ -120,6 +120,10 @@ Los tres productos digitales se publican sobre Microsoft Azure y Firebase. El ba
 | `SPRING_DATASOURCE_USERNAME` | Usuario de la base de datos |
 | `SPRING_DATASOURCE_PASSWORD` | Contraseña de la base de datos |
 | `APP_CORS_ALLOWED_ORIGINS` | Orígenes web autorizados a consumir la API |
+| `SAFEBUS_JWT_SECRET` | Secreto con el que se firman los tokens JWT (mínimo 32 caracteres) |
+| `SAFEBUS_BOOTSTRAP_COMPANY` | Nombre de la empresa que se crea en el primer arranque |
+| `SAFEBUS_BOOTSTRAP_SUPERVISOR_LOGIN` | Código del primer supervisor, creado solo si la base está vacía |
+| `SAFEBUS_BOOTSTRAP_SUPERVISOR_PASSWORD` | Contraseña inicial de ese supervisor |
 
 Los secretos se configuran únicamente como Application Settings y nunca se versionan en el repositorio.
 
@@ -174,7 +178,11 @@ az webapp config appsettings set -g $RG -n $APP --settings \
   SPRING_DATASOURCE_URL="jdbc:mysql://$MYSQL.mysql.database.azure.com:3306/safebus?sslMode=REQUIRED" \
   SPRING_DATASOURCE_USERNAME=safebusadmin \
   SPRING_DATASOURCE_PASSWORD='<password>' \
-  APP_CORS_ALLOWED_ORIGINS="https://<url-de-la-landing>"
+  APP_CORS_ALLOWED_ORIGINS="https://<url-de-la-landing>" \
+  SAFEBUS_JWT_SECRET='<secreto-de-32-caracteres-o-mas>' \
+  SAFEBUS_BOOTSTRAP_COMPANY="<nombre-de-la-empresa>" \
+  SAFEBUS_BOOTSTRAP_SUPERVISOR_LOGIN="<codigo-del-supervisor>" \
+  SAFEBUS_BOOTSTRAP_SUPERVISOR_PASSWORD='<password-inicial>'
 az webapp restart -g $RG -n $APP
 ```
 
