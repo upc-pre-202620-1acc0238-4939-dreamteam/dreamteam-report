@@ -634,43 +634,43 @@ US23 Contraseña-Termino y Foto del Rostro:
 
 Wireflow 1: Validar Turno antes de salir, en este user goal el conductor quiere iniciar sesión y validar turno escaneado con el QR.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow1.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow1.png" alt="Wireflow" width="650">
 
 Wireflow 2: Activar una emergencia de forma inmediata, user goal el conductor quiere activar una emergencia con un solo gesto.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow2.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow2.png" alt="Wireflow" width="650">
 
 Wireflow 3: Crear cuenta e ingresar, el user goal el pasajero quiere crear una cuenta con DNI y una contraseña para usar la aplicación.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow3.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow3.png" alt="Wireflow" width="650">
 
 Wireflow 4: Iniciar un viaje en bus, user goal el pasajero quiere escanear el QR del bus para verificar la unidad e iniciar un viaje de seguridad.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow4.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow4.png" alt="Wireflow" width="650">
 
 Wireflow 5: Consultar las alertas del bus, user goal el pasajero quiere revisar las alertas del bus en el que viajo para decidir con información actual.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow5.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow5.png" alt="Wireflow" width="650">
 
 Wireflow 6: Enviar una solicitud de pánico con evidencia y seguir estado, el user goal el pasajero quiere enviar una solicitud con un mensaje y evidencia.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow6.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow6.png" alt="Wireflow" width="650">
 
 Wireflow 7: Terminar viaje, user goal el pasajero quiere terminar mi viaje con la aplicación.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow7.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow7.png" alt="Wireflow" width="650">
 
 Wireflow 8: Monitorear la flota, user goal como supervisor quiero ver las unidades en un mapa y en una lista para saber su estado operativo
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow8.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow8.png" alt="Wireflow" width="650">
 
 Wireflow 9: Atender una emergencia del conductor, user goal las emergencias activas de mis conductores, tomarlas en atención y cerrarlas con un resultado.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow9.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow9.png" alt="Wireflow" width="650">
 
 Wireflow 10: Revisar una solicitud grupal de pasajeros, user goal el supervisor quiere revisar los mensajes y fotos de un grupo de pasajeros y aprobar o rechazar la solicitud para generar una emergencia solo cuando corresponda.
 
-<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow10.png" alt="Wireframe" width="650">
+<img src="../docs/ux-ui-mobile-design/wireflow/Wireflow10.png" alt="Wireflow" width="650">
 
 ### 3.1.4.3. Mobile Applications Mock-ups
 
@@ -707,7 +707,41 @@ US23 Contraseña y Terminos con Foto del Rostro:
 
 ### 3.1.4.4. Mobile Applications User Flow Diagrams
 
-Un User Flow por cada User Goal (happy path + unhappy paths).
+User Flow 1: User goal iniciar sesión y validar turno en QR, Happy Path -> Iniciar sesión de manera correcta, Unhappy Path -> Credenciales Invalidas
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow1.png" alt="User Flow" width="650">
+
+User Flow 2: User goal activar una emergencia con un solo gesto, Happy Path -> Turno activado de manera correcta, Unhappy Path -> Sin Conexión
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow2.png" alt="User Flow" width="650">
+
+User Flow 3: User goal crear una cuenta en la aplicación, Happy Path->Credenciales correctas, Unhappy Path -> DNI ya registrado
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow3.png" alt="User Flow" width="650">
+
+User Flow 4: User Goal escanerar el QR del bus para verificar la unidad e iniciar sesión, Happy Path -> Viaje escaneado de manera correcta, Unhappy Path -> QR invalido o sin Turno
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow4.png" alt="User Flow" width="650">
+
+User Flow 5: User goal como pasajero revisar las alertas del bus, Happy Path -> viaje activo, Unhappy Path -> Sin reportes 
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow5.png" alt="User Flow" width="650">
+
+User Flow 6: User goal como pasajero enviar una solicitud con mensaje y foto del incidente, Happy Path -> viaje activo de manera correcta, Unhappy Path -> Datos invalidos
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow6.png" alt="User Flow" width="650">
+
+User Flow 7: User goal ver las unidades en el mapa y en una lista para saber su estado operativo, Happy Path -> Monitoreo la flota de manera correcta, Unhappy Path -> Credenciales Invalidas
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow7.png" alt="User Flow" width="650">
+
+User Flow 8: User goal ver las emergencias de mis conductores, Happy Path -> Atender una emergencia del conductor, Unhappy Path -> Ninguna 
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow8.png" alt="User Flow" width="650">
+
+User Flow 9: User goal revisar los mensajes y fotos de un grupo de pasajeros y aprobar o rechazar la solicitud para generar una emergencia, Happy Path -> Solicitud de pasajeros de manera correcta, Unhappy Path -> Solicitud Rechazada
+
+<img src="../docs/ux-ui-mobile-design/userflow/Userflow9.png" alt="User Flow" width="650">
 
 ### 3.1.4.5. Mobile Applications Prototyping
 
