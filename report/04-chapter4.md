@@ -18,7 +18,7 @@ Esta sección establece las decisiones y convenciones que mantienen la consisten
 | Arquitectura de software | Structurizr (C4 Model) | Diagramas de contexto, contenedores, componentes y despliegue | https://structurizr.com |
 | Desarrollo backend | Java 21 (Eclipse Temurin), Maven, Spring Boot 4.0.6, Spring Data JPA, Lombok | Implementación de los Web Services RESTful | https://adoptium.net · https://maven.apache.org · https://spring.io/projects/spring-boot |
 | Desarrollo de la Landing Page | HTML5, CSS3 y JavaScript | Sitio web estático del modelo de negocio | https://developer.mozilla.org |
-| Desarrollo móvil | [completar: Kotlin con Android Studio / Flutter con Dart] | Aplicación móvil | [URL] |
+| Desarrollo móvil | Kotlin, Android Studio y Gradle | Aplicación móvil para Android | https://kotlinlang.org · https://developer.android.com/studio |
 | Documentación de servicios | springdoc-openapi (Swagger UI) | Documentación OpenAPI de los endpoints | https://springdoc.org |
 | Pruebas | JUnit 5 y Spring Boot Test | Pruebas unitarias y de integración del backend | https://junit.org/junit5 |
 | Base de datos | H2 (desarrollo local) y MySQL 8 (producción) | Persistencia | https://www.mysql.com |
@@ -73,8 +73,7 @@ Todos los identificadores (paquetes, clases, métodos, variables, tablas y rutas
 | Java | Google Java Style Guide | https://google.github.io/styleguide/javaguide.html |
 | HTML y CSS | Google HTML/CSS Style Guide | https://google.github.io/styleguide/htmlcssguide.html |
 | JavaScript | Google JavaScript Style Guide | https://google.github.io/styleguide/jsguide.html |
-| Kotlin *(si aplica)* | Kotlin Coding Conventions | https://kotlinlang.org/docs/coding-conventions.html |
-| Dart *(si aplica)* | Effective Dart | https://dart.dev/effective-dart |
+| Kotlin | Kotlin Coding Conventions | https://kotlinlang.org/docs/coding-conventions.html |
 | Gherkin (`.feature`) | Writing better Gherkin | https://cucumber.io/docs/bdd/better-gherkin/ |
 
 La adopción se verifica en la revisión de cada Pull Request.
@@ -100,7 +99,7 @@ Los tres productos digitales se publican sobre Microsoft Azure y Firebase. El ba
 | Web Services | Azure Container Registry y Azure App Service (Linux, contenedor) | Repositorio del backend, rama `main` | Imagen Docker construida con el `Dockerfile` del repositorio |
 | Base de datos | Azure Database for MySQL, Flexible Server | — | El esquema lo crea Hibernate al iniciar la aplicación |
 | Landing Page | Azure Static Web Apps | Repositorio de la Landing Page, rama `main` | Flujo de GitHub Actions que Azure genera y que se ejecuta en cada push a `main` |
-| Aplicación móvil | Firebase App Distribution | Repositorio de la aplicación móvil | Compilación del APK o AAB y distribución a un grupo de testers *(se completa en TB2)* |
+| Aplicación móvil | Firebase App Distribution | Repositorio de la aplicación móvil | Compilación del APK o AAB con Gradle y distribución a un grupo de testers *(se completa en TB2)* |
 
 **Entornos del backend.**
 
