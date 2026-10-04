@@ -593,8 +593,42 @@ Los wireframes deben representar los siguientes flujos y estados del alcance, co
 | Alertas del bus | Lista de resúmenes por bus y turno, origen, fecha, conteo y estado; sin DNI, fotos ni mensajes de terceros. | US07 |
 | Solicitud con evidencia | Mensaje, foto del incidente, validación y estados de envío, umbral, aprobación y atención. | US08, US09 |
 | Emergencia del conductor | Activación inmediata, prioridad máxima, envío sin conexión y seguimiento. | US04 |
-| Revisión de la empresa | Evidencia autorizada, umbral alcanzado, aprobar/rechazar y resultado de atención. | US10, US11 |
-| Fin de viaje | Detección de alejamiento, cierre confirmado, falta de precisión o permisos y opción manual. | US24 |
+| Revisión de la empresa | Evidencia autorizada, umbral alcanzado, aprobar/rechazar y resultado de atención. | US10, US11 || Fin de viaje | Detección de alejamiento, cierre confirmado, falta de precisión o permisos y opción manual. | US24 |
+
+A continuación se mostrara los diversos wireframes que se ha realizado teniendo en cuenta las user stories de nuestro proyecto:
+
+US01 Escaner QR del Conductor y Turno Validado:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/US01 · Escanear QR del conductor.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US01 · Turno validado.png" alt="Wireframe" width="250">
+
+US02 Sin Turno Asignado y Turno Asignado:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/US02 · Sin turno asignado.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US02 · Turno asignado.png" alt="Wireframe" width="250">
+
+US04 Emergencia del Conductor:
+
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/wireframeUS04-2.png" alt="Wireframe" width="250">
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/wireframeUS04.png" alt="Wireframe" width="250">
+
+US06 Bus Verificado y Viaje:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/US06 · Bus verificado.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US06 · Viaje sin viaje activo.png" alt="Wireframe" width="250">
+
+US07 Alerta de Bus y Sin reportes:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/US07 · Alertas del bus.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US07 · Sin reportes.png" alt="Wireframe" width="250">
+
+US08 Solicitud con evidencia:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/wireframeUS08-1.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/wireframeuUS08-2.png" alt="Wireframe" width="250">
+
+US010 Revisión de la Empresa:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/wireframeUS10-1.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/wireframeUS10-2.png" alt="Wireframe" width="250">
+
+US11 Flota en Lista y Mapa:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/US11 · Flota en lista.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US11 · Flota en mapa.png" alt="Wireframe" width="250">
+
+US16 Crear Cuenta e Iniciar Sesion:
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/US16 · Bienvenida.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US16 · Cree su cuenta.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US16 · Iniciar sesión.png" alt="Wireframe" width="250">
+
+US23 Contraseña-Termino y Foto del Rostro:
+
+<img src="../docs/ux-ui-mobile-design/wireframes-mobile/US23 · Contraseña y términos.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/wireframes-mobile/US23 · Foto del rostro.png" alt="Wireframe" width="250">
 
 ### 3.1.4.2. Mobile Applications Wireflow Diagrams
 
