@@ -640,15 +640,40 @@ Un Wireflow por cada User Goal.
 
 ### 3.1.4.3. Mobile Applications Mock-ups
 
-[Mock-ups de la aplicación]
+US01 Escaner QR y Turno valido:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US01 · Escanear QR del conductor.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US01 · Turno validado.png" alt="Wireframe" width="250">
+
+US02 Turno Asignado:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US02 · Sin turno asignado.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US02 · Turno asignado.png" alt="Wireframe" width="250">
+
+US04 Emergencia Enviada y Turno:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US04 · Emergencia enviada.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US04 · Mi turno.png" alt="Wireframe" width="250">
+
+US06 Bus Verificado y Viaje activo:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US06 · Bus verificado.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US06 · Viaje sin viaje activo.png" alt="Wireframe" width="250">
+
+US07 Alertas Bus y Sin reportes:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US07 · Alertas del bus.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US07 · Sin reportes.png" alt="Wireframe" width="240">
+
+US08 Enviar Solicitudes y Mis Solicitudes:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US08 · Enviar solicitud de pánico.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US08 · Mis solicitudes.png" alt="Wireframe" width="210">
+
+US10 Emergencias y Revisar grupo:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US10 · Emergencias.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US10 · Revisar grupo.png" alt="Wireframe" width="240">
+
+US11 Flota en lista y Mapa:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US11 · Flota en lista.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US11 · Flota en mapa.png" alt="Wireframe" width="250">
+
+US16 Bienvenida, Crear Cuenta e Iniciar:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US16 · Bienvenida.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US16 · Cree su cuenta.png" alt="Wireframe" width="250">
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US16 · Iniciar sesión.png" alt="Wireframe" width="250">
+
+US23 Contraseña y Terminos con Foto del Rostro:
+<img src="../docs/ux-ui-mobile-design/mockups-mobile/US23 · Contraseña y términos.png" alt="Wireframe" width="250"><img src="../docs/ux-ui-mobile-design/mockups-mobile/US23 · Foto del rostro.png" alt="Wireframe" width="250">
 
 ### 3.1.4.4. Mobile Applications User Flow Diagrams
 
 Un User Flow por cada User Goal (happy path + unhappy paths).
-
-**User Goal:** [completar]
-
-[Diagrama + explicación]
 
 ### 3.1.4.5. Mobile Applications Prototyping
 
