@@ -367,11 +367,93 @@ A continuación, se presenta la relación de commits de implementación registra
 
 #### 4.2.2.5. Testing Suite Evidence for Sprint Review
 
-[Unit / Integration / Acceptance tests — archivos .feature en Gherkin]
+En esta sección se detalla el conjunto de pruebas unitarias, de integración y de aceptación automatizadas construidas para verificar el comportamiento de los Web Services del backend, garantizando el cumplimiento de los criterios de aceptación de las historias de usuario del Sprint 2. El equipo implementó una estrategia de pruebas multinivel utilizando JUnit 5 y Spring Boot Test para la lógica interna y controladores REST, junto con el enfoque Behavior-Driven Development (BDD) mediante Cucumber y especificaciones ejecutables en lenguaje Gherkin.
+
+##### Relación de Pruebas Diseñadas
+
+* **Pruebas Unitarias (Unit Tests):**
+  * `EmergencyTest`: Evalúa la creación de la raíz de agregado `Emergency`, la asignación obligatoria de severidad `CRITICAL` para activaciones de conductores, la inicialización en estado `ACTIVE`, y la prohibición de transiciones inválidas de estado (e.g., intentar iniciar atención sobre una emergencia previamente cerrada).
+  * `VehicleLocationTest` & `LocationEventTest`: Verifican la inmutabilidad de los eventos de telemetría, el cálculo de vigencia de las muestras de coordenadas GPS y las reglas de orden temporal.
+  * `GeoPointTest`: Valida el objeto de valor `GeoPoint`, comprobando la validación de rango de latitud (-90 a 90) y longitud (-180 a 180), así como la fórmula de distancia geodésica (Haversine).
+
+* **Pruebas de Integración (Integration Tests & Concurrency):**
+  * `DriverEmergencyControllerTest`: Verifica el ciclo de vida completo del endpoint `POST /api/v1/driver-emergencies`, comprobando la persistencia en base de datos H2 en memoria, el retorno de código HTTP 201 Created y la correspondencia de los campos de respuesta (`id`, `status`, `priority`, `activatedAt`, `receivedAt`).
+  * `EmergencyAttentionControllerTest`: Evalúa la operación `POST /api/v1/emergencies/{id}/start-attention`, comprobando la asignación del supervisor responsable, el cambio de estado a `IN_PROGRESS` y el control de acceso multitenant entre diferentes empresas.
+  * `VehicleLocationControllerTest` & `LocationEventControllerTest`: Prueban la ingesta masiva de telemetría y la consulta de la última coordenada conocida de una unidad de transporte.
+  * Pruebas de concurrencia: Evalúan el bloqueo optimista y la integridad transaccional ante solicitudes simultáneas de atención y eventos de geolocalización de alta frecuencia.
+
+##### Pruebas de Aceptación BDD (Archivos `.feature` en Gherkin)
+
+Las pruebas de aceptación fueron redactadas en archivos `.feature` bajo la sintaxis Given-When-Then, enlazadas directamente con las historias de usuario correspondientes:
+
+###### Archivo: `safetycase-driver-emergency.feature` (Relacionado con US04)
+Ruta: `src/test/resources/features/safetycase-driver-emergency.feature`
+
+```gherkin
+Feature: Driver Emergency (US04)
+
+  # US04 S1 – Driver with an active shift creates an emergency
+  Scenario: Driver creates a new emergency with coordinates
+    Given a driver has an active shift
+    When POST /api/v1/driver-emergencies with a valid UUID id, shiftId, activatedAt and coordinates
+    Then the response status is 201
+    And the response body contains id, status "ACTIVE", priority "CRITICAL", activatedAt, receivedAt
+
+  Scenario: Driver creates a new emergency without coordinates
+    Given a driver has an active shift
+    When POST /api/v1/driver-emergencies with a valid UUID id, shiftId, activatedAt and no coordinates
+    Then the response status is 201
+    And the stored emergency has a null location
+
+  # US04 S2 – Offline-queued emergency and idempotent retry
+  Scenario: Emergency with an old activatedAt is accepted and stores both timestamps
+    Given a driver has an active shift
+    When POST /api/v1/driver-emergencies with activatedAt set to an hour in the past
+    Then the response status is 201
+    And the stored activatedAt differs from receivedAt
+
+  Scenario: Identical retry of an already-stored emergency returns 200 and one row
+    Given a driver has already created an emergency with a given id and payload
+    When POST /api/v1/driver-emergencies with the same id and the same payload
+    Then the response status is 200
+    And the response body contains the same id
+    And the database still contains exactly one emergency row
+```
+
+###### Archivo: `safetycase-emergency-attention.feature` (Relacionado con US10)
+Ruta: `src/test/resources/features/safetycase-emergency-attention.feature`
+
+```gherkin
+Feature: Emergency Attention (US10)
+
+  # US10 S1 – Supervisor starts attention on a driver emergency
+  Scenario: Supervisor of the same company starts attention
+    Given an ACTIVE emergency belonging to company C
+    When POST /api/v1/emergencies/{id}/start-attention with a supervisor JWT for company C
+    Then the response status is 200
+    And the response body contains id, status "IN_PROGRESS", responsibleSupervisorId, attentionStartedAt
+    And the stored emergency has status IN_PROGRESS
+
+  Scenario: Starting attention twice returns INVALID_TRANSITION
+    Given an emergency is already IN_PROGRESS
+    When POST /api/v1/emergencies/{id}/start-attention again with the same supervisor
+    Then the response status is 409
+    And the response code is "INVALID_TRANSITION"
+    And the stored status and responsibleSupervisorId are unchanged
+```
+
+##### Repositorio de Pruebas y Commits de Testing
+
+> **Repositorio oficial de especificaciones BDD (Acceptance Criteria):** `https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/Acceptance-Criteria`  
+> **Ruta en backend para suite de pruebas automatizadas:** `https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend/tree/develop/src/test`
+
+A continuación, se presenta la tabla con los commits específicos de pruebas automatizadas registrados durante el sprint:
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
-|------------|--------|-----------|-------------------|------------------------|-----------------|
-| | | | | | |
+|---|---|:---:|---|---|:---:|
+| `upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend` | `feature/safetycase-driver-emergency` | `53f1f6c` | `test(safetycase): add Gherkin feature files for US04 and US10` | Add BDD feature specifications and step definitions for driver emergency triggers and supervisor approvals. | 05/10/2026 |
+| `upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend` | `feature/safetycase-driver-emergency` | `bcc5afc` | `test(safetycase): add concurrency tests for emergency creation and attention` | Verify thread safety and optimistic locking on concurrent emergency status transitions. | 05/10/2026 |
+| `upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend` | `feature/trip-location` | `867d9c0` | `test(trip): add concurrency tests for location event recording` | Ensure consistent ingestion order and database integrity under high-frequency location streams. | 05/10/2026 |
 
 #### 4.2.2.6. Execution Evidence for Sprint Review
 
