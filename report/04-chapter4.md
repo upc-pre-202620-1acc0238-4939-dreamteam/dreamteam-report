@@ -202,7 +202,14 @@ Para publicar una nueva versión se repite el paso 2 con una nueva etiqueta de i
 
 ## 4.2. Landing Page & Mobile Application Implementation
 
-> Duplicar la sección `4.2.x` por cada Sprint.
+Esta sección registra la implementación de los productos de SafeBus por Sprint: la planificación, la distribución del trabajo, el Sprint Backlog y las evidencias de desarrollo, pruebas, ejecución, documentación de servicios, despliegue y colaboración. Los repositorios de producto pertenecen a la organización del equipo en GitHub y siguen las convenciones de la sección 4.1.2 (GitFlow, Conventional Commits y Semantic Versioning).
+
+| Producto | Repositorio | Rama de integración |
+|---|---|---|
+| Web Services | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend | `develop` |
+| Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing | `main` |
+| Aplicación móvil | [completar] | `main` |
+
 
 ### 4.2.1. Sprint 1
 
