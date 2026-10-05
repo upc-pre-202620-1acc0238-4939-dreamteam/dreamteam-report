@@ -300,11 +300,11 @@ Para optimizar la coordinación y efectividad durante el desarrollo del Sprint 2
 
 | Team Member (Apellidos, Nombres) | GitHub Username | Driver Safety & Location (US03, US04) | Passenger Identity & QR Journey (US06, US23, US24) | Passenger Panic & Threshold Management (US08) | Telemetry Services & Event Dispatch (US18, US20) |
 |---|---|:---:|:---:|:---:|:---:|
-| **Delgado Arriola, Leonardo Sebastian** | `LeonardoDelgadoA` | **L** | C | C | C |
-| **Acuache Lucas, Mathias Joaquin** | `mathias-acuache` | C | **L** | C | C |
-| **Arechaga Saavedra, Mathias Augusto** | `MathiasArechaga` | C | C | **L** | C |
-| **Espinoza Orrego, Valentino Andre** | `ValentinoEspinoza` | C | C | C | **L** |
-| **Fernández Linares, Alvaro Sebastian** | `alvarofdez` | C | C | **L** | C |
+| **Delgado Arriola, Leonardo Sebastian** | `leodev77` | **L** | C | C | C |
+| **Acuache Lucas, Mathias Joaquin** | `MathiasA25` | C | **L** | C | C |
+| **Arechaga Saavedra, Mathias Augusto** | `MathZell` | C | C | **L** | C |
+| **Espinoza Orrego, Valentino Andre** | `valentinoespinoza13` | C | C | C | **L** |
+| **Fernández Linares, Alvaro Sebastian** | `ORION-tech-c` | C | C | **L** | C |
 
 #### 4.2.2.3. Sprint Backlog 2
 
