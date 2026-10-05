@@ -717,31 +717,31 @@ El Impact Mapping vincula la identificación del servicio, la atención diferenc
 El Product Backlog ordena las historias por valor para el servicio y utiliza Story Points de la escala 1, 2, 3, 5 y 8. La landing se considera desde el primer sprint. El orden de valor no reemplaza las dependencias: el registro y acceso del pasajero habilitan el inicio del viaje, sus solicitudes con evidencia y el cierre automático.
 
 | # Orden | User Story Id | Título | Story Points | Sprint |
-|---|---|---|---|---|
-| 1 | US04 | Trigger an Immediate Driver Emergency Alert | 5 | |
-| 2 | US08 | Submit a Passenger Panic Request with Message and Photo | 8 | |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | 8 | |
-| 4 | US23 | Register a Passenger Account with DNI and Face Photo | 5 | |
-| 5 | US01 | Validate an Assigned Shift with a Driver QR Credential | 3 | |
-| 6 | US06 | Verify a Bus and Start a Passenger Journey | 3 | |
-| 7 | US07 | Consult the Alerts Reported on My Bus | 3 | |
-| 8 | US24 | Automatically End a Journey When Moving Away from the Bus | 5 | |
-| 9 | US11 | Monitor Fleet Location and Occupancy | 5 | |
-| 10 | US03 | Share Bus Location During an Active Shift | 5 | |
-| 11 | US14 | Consult SafeBus Service Information | 2 | |
-| 12 | US15 | Submit a Company Contact Request | 2 | |
-| 13 | US13 | Assign a Driver and Bus to a Route Shift | 3 | |
-| 14 | US16 | Sign In and Sign Out by User Role | 3 | |
-| 15 | US17 | Protect Role Access, Passenger Identity and Evidence | 5 | |
-| 16 | US02 | Consult Assigned Route and Shift Details | 2 | |
-| 17 | US21 | Spike Background GPS for Driver Tracking and Passenger Exit | 5 | |
-| 18 | US22 | Spike Ordered Passenger-Count Event Ingestion | 5 | |
-| 19 | US19 | Provide a RESTful Passenger-Count Service | 5 | |
-| 20 | US18 | Provide Bus Location for Monitoring and Journey Completion | 3 | |
-| 21 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | 5 | |
-| 22 | US12 | Maintain the Recorded Capacity of a Bus | 2 | |
-| 23 | US05 | Close a Driver Shift | 3 | |
-| 24 | US09 | Consult the Status of My Passenger Panic Requests | 3 | |
+|---|---|---|---|:---:|
+| 1 | US04 | Trigger an Immediate Driver Emergency Alert | 5 | Sprint 2 |
+| 2 | US08 | Submit a Passenger Panic Request with Message and Photo | 8 | Sprint 2 |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | 8 | Sprint 3 |
+| 4 | US23 | Register a Passenger Account with DNI and Face Photo | 5 | Sprint 2 |
+| 5 | US01 | Validate an Assigned Shift with a Driver QR Credential | 3 | Sprint 1 |
+| 6 | US06 | Verify a Bus and Start a Passenger Journey | 3 | Sprint 2 |
+| 7 | US07 | Consult the Alerts Reported on My Bus | 3 | Sprint 3 |
+| 8 | US24 | Automatically End a Journey When Moving Away from the Bus | 5 | Sprint 3 |
+| 9 | US11 | Monitor Fleet Location and Occupancy | 5 | Sprint 3 |
+| 10 | US03 | Share Bus Location During an Active Shift | 5 | Sprint 2 |
+| 11 | US14 | Consult SafeBus Service Information | 2 | Sprint 1 |
+| 12 | US15 | Submit a Company Contact Request | 2 | Sprint 1 |
+| 13 | US13 | Assign a Driver and Bus to a Route Shift | 3 | Sprint 1 |
+| 14 | US16 | Sign In and Sign Out by User Role | 3 | Sprint 1 |
+| 15 | US17 | Protect Role Access, Passenger Identity and Evidence | 5 | Sprint 1 |
+| 16 | US02 | Consult Assigned Route and Shift Details | 2 | Sprint 1 |
+| 17 | US21 | Spike Background GPS for Driver Tracking and Passenger Exit | 5 | Sprint 1 |
+| 18 | US22 | Spike Ordered Passenger-Count Event Ingestion | 5 | Sprint 1 |
+| 19 | US19 | Provide a RESTful Passenger-Count Service | 5 | Sprint 3 |
+| 20 | US18 | Provide Bus Location for Monitoring and Journey Completion | 3 | Sprint 2 |
+| 21 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | 5 | Sprint 2 |
+| 22 | US12 | Maintain the Recorded Capacity of a Bus | 2 | Sprint 3 |
+| 23 | US05 | Close a Driver Shift | 3 | Sprint 3 |
+| 24 | US09 | Consult the Status of My Passenger Panic Requests | 3 | Sprint 3 |
 
 ---
 
