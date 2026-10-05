@@ -72,19 +72,19 @@
 
 ### DreamTeam - Report Repository
 
-  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+  <img src="../docs/insights/report-insights-tb1.png" alt="insights-av1"/>
 
 ### DreamTeam - Safebus Landing Page Repository
 
-  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+  <img src="../docs/insights/landing-insights-tb1.png" alt="insights-av1"/>
 
 ### DreamTeam - Safebus Mobile Repository
 
-  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+  <img src="../docs/insights/mobile-insights-tb1.png" alt="insights-av1"/>
 
 ### DreamTeam - Safebus API Repository
 
-  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+  <img src="../docs/insights/api-insights-tb1.png" alt="insights-av1"/>
 
 ---
 
