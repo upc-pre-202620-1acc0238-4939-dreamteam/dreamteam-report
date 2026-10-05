@@ -685,7 +685,11 @@ El despliegue sigue el procedimiento de la sección 4.1.4. Durante el Sprint se 
 
 El formulario de contacto depende del servidor Node.js: publicar únicamente la carpeta `dist` en un hosting estático muestra el sitio, pero no registra solicitudes. El archivo SQLite debe guardarse en un almacenamiento persistente y privado.
 
-#### 4.2.2.1 Sprint 2
+### 4.2.2. Sprint 2
+
+#### 4.2.2.1. Sprint Planning 2
+
+En esta sección se especifican los acuerdos y parámetros fundamentales establecidos durante la sesión de planificación del Sprint 2. El equipo analizó los resultados de la entrega previa y organizó el trabajo requerido para materializar las funcionalidades críticas de seguridad, telemetría y ciclo de viaje en las aplicaciones móviles y el backend. A continuación, se presenta el cuadro de resumen del Sprint Planning Meeting:
 
 | Sprint # | Sprint 2 |
 |---|---|
@@ -776,9 +780,7 @@ A continuación, se presenta la relación de commits de implementación registra
 | `upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend` | `feature/trip-shift-activation` | `e93fee6` | `feat(fleet): add findDriverByUserAccountId and findBusCompanyId to facade` | Provide lookup operations to link authenticated IAM user with fleet driver profile. | 05/10/2026 |
 | `upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile` | `main` | `3e19095` | `feat: first ui demo implementation` | Initial layout and core mobile user interface screens for driver and passenger flows. | 05/10/2026 |
 
-#### 4.2.2.5. Software Deployment Evidence for Sprint Review
-
-El despliegue sigue el procedimiento de la sección 4.1.4. Durante el Sprint se dejó preparado en el repositorio de Web Services todo lo necesario para publicar el servicio como contenedor, y en el repositorio de la Landing Page, la compilación del sitio y la configuración de su servidor.
+#### 4.2.2.5. Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas unitarias, de integración y de aceptación automatizadas construidas para verificar el comportamiento de los Web Services del backend, garantizando el cumplimiento de los criterios de aceptación de las historias de usuario del Sprint 2. El equipo implementó una estrategia de pruebas multinivel utilizando JUnit 5 y Spring Boot Test para la lógica interna y controladores REST, junto con el enfoque Behavior-Driven Development (BDD) mediante Cucumber y especificaciones ejecutables en lenguaje Gherkin.
 
@@ -868,7 +870,7 @@ A continuación, se presenta la tabla con los commits específicos de pruebas au
 | `upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend` | `feature/safetycase-driver-emergency` | `bcc5afc` | `test(safetycase): add concurrency tests for emergency creation and attention` | Verify thread safety and optimistic locking on concurrent emergency status transitions. | 05/10/2026 |
 | `upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend` | `feature/trip-location` | `867d9c0` | `test(trip): add concurrency tests for location event recording` | Ensure consistent ingestion order and database integrity under high-frequency location streams. | 05/10/2026 |
 
-**Landing Page.**
+#### 4.2.2.6. Execution Evidence for Sprint Review
 
 Durante el Sprint 2, el equipo completó la implementación y verificación funcional de las interfaces móviles clave para los roles de Conductor (*Driver*), Pasajero (*Passenger*) y Supervisor de flota (*Supervisor*), correspondientes a las historias de usuario prioritarias del sprint (US03, US04, US06, US08, US18, US20 y US23). A continuación, se detallan los flujos implementados y su correlación con la arquitectura y criterios de aceptación:
 
@@ -931,7 +933,7 @@ De acuerdo con las pautas de entrega de la rúbrica oficial, el equipo produjo y
 * **Duración:** 05:42 minutos
 * **Contenido de la demostración:** Demostración en vivo del botón de pánico del conductor sin sonido ni vibración, registro de telemetría GPS continua cada 30 segundos, escaneo de código QR de bus por el pasajero, reporte fotográfico de incidencia, visualización de casos en la consola del supervisor y verificación de respuestas HTTP mediante Swagger UI.
 
-El formulario de contacto depende del servidor Node.js: publicar únicamente la carpeta `dist` en un hosting estático muestra el sitio, pero no registra solicitudes. El archivo SQLite debe guardarse en un almacenamiento persistente y privado.
+#### 4.2.2.7. Services Documentation Evidence for Sprint Review
 
 Durante el Sprint 2, el equipo completó la especificación y documentación interactiva de los Web Services del backend mediante la biblioteca `springdoc-openapi` (OpenAPI v3.0 / Swagger UI). Esta interfaz permite a los desarrolladores de las aplicaciones móviles (Android y Flutter) y a los evaluadores inspeccionar los esquemas de datos, validar parámetros obligatorios, ejecutar peticiones de prueba con datos simulados y constatar las respuestas HTTP esperadas para cada operación.
 
@@ -967,6 +969,7 @@ A continuación, se presenta la relación de endpoints documentados para las fun
 | `safebus-backend` | `feature/safetycase-driver-emergency` | `c1c5647` | `feat(safetycase): add EmergencyAttentionController with integration tests` | Document supervisor case resolution endpoints with HTTP 200, 401, 403 and 409 conflict schemas. | 05/10/2026 |
 | `safebus-backend` | `feature/trip-location` | `b6f7459` | `feat(trip): add VehicleLocationController with integration tests` | Specify telemetry query schemas and OpenAPI documentation tags for Trip & Location Bounded Context. | 05/10/2026 |
 
+#### 4.2.2.8. Software Deployment Evidence for Sprint Review
 
 Para el cierre del Sprint 2 (Hito AV2 - Semana 12), el equipo ejecutó el despliegue público y automatizado en la nube al 100% de operatividad para los Web Services del backend, la base de datos gestionada y el sitio web de la Landing Page institucional, junto con la distribución de la versión preliminar de la aplicación móvil para el grupo de pruebas de la startup.
 
@@ -1028,11 +1031,11 @@ El despliegue fue comprobado satisfactoriamente mediante inspección del endpoin
 A continuación, se presenta el diagrama de arquitectura de despliegue estructurado bajo el Modelo C4 (Deployment Level):
 
 <div align="center">
-  <img src="../docs/c4/deployment-diagram.png" alt="Deployment Diagram C4 Model SafeBus" width="700"/>
+  <img src="../docs/c4/deployment-diagram-v1.png" alt="Deployment Diagram C4 Model SafeBus" width="700"/>
   <p><i>Figura 4.2.2.8.1: Diagrama de Despliegue en la Nube (C4 Model) de la solución SafeBus</i></p>
 </div>
 
-Los siguientes analíticos se obtuvieron del historial de commits de los tres repositorios de la organización (todas las ramas, sin contar los merge commits), entre el 30/09/2026 y el 04/10/2026.
+#### 4.2.2.9. Team Collaboration Insights during Sprint
 
 Durante el transcurso del Sprint 2, el equipo DreamTeam consolidó su disciplina de trabajo ágil y control de versiones a través de GitHub, garantizando trazabilidad integral entre historias de usuario, ramas de características, Pull Requests y revisiones cruzadas de código.
 
