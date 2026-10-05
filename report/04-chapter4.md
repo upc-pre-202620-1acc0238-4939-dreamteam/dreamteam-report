@@ -10,7 +10,6 @@ Esta sección establece las decisiones y convenciones que mantienen la consisten
 
 | Actividad | Producto | Propósito en el proyecto | Ruta de referencia |
 |---|---|---|---|
-| Gestión de proyecto | [completar: Trello / Jira / YouTrack] | Product Backlog y tablero de Sprint | [URL] |
 | Needfinding | UXPressia | User Personas, Journey Maps, Empathy Maps e Impact Map | https://uxpressia.com |
 | Modelado de dominio | Miro | EventStorming, Domain Storytelling, Bounded Context Canvas y Context Map | https://miro.com |
 | Diseño UX/UI | Figma | Wireframes, mock-ups y prototipos | https://www.figma.com |
@@ -35,9 +34,10 @@ El equipo utiliza GitHub como plataforma de control de versiones, dentro de la o
 | Producto | Repositorio |
 |---|---|
 | Informe del proyecto | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/dreamteam-report |
-| Landing Page | [URL del repositorio] |
-| Web Services (backend) | [URL del repositorio] |
-| Aplicación móvil | [URL del repositorio] |
+| Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing |
+| Web Services (backend) | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend |
+| Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile |
+| Criterios de Aceptación (BDD) | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/Acceptance-Criteria |
 
 El repositorio del backend incluye el proyecto y sus archivos de pruebas, tanto unitarias como de integración y aceptación.
 
@@ -209,66 +209,22 @@ Para publicar una nueva versión se repite el paso 2 con una nueva etiqueta de i
 #### 4.2.1.1. Sprint Planning 1
 
 | Sprint # | Sprint 1 |
-|----------|----------|
-| **Date** | |
-| **Time** | |
-| **Location** | |
-| **Prepared By** | |
-| **Attendees** | |
-| **Sprint n-1 Review Summary** | N/A (primer sprint) |
-| **Sprint n-1 Retrospective Summary** | N/A (primer sprint) |
-| **Sprint Goal** | Our focus is on... We believe it delivers... to... This will be confirmed when... |
-| **Sprint Velocity** | |
-| **Sum of Story Points** | |
-
-#### 4.2.1.2. Aspect Leaders and Collaborators
-
-| Team Member (Apellidos, Nombres) | GitHub Username | [Aspecto 1] | [Aspecto 2] |
-|-------------------------------------|--------------------|----------------|----------------|
-| | | | |
-
-#### 4.2.1.3. Sprint Backlog 1
-
-> URL público del Board: [completar]
-
-| Sprint | US Id | US Title | Work-Item Id | Task Title | Description | Estimation (h) | Assigned To | Status |
-|--------|-------|----------|----------------|-------------|--------------|------------------|---------------|--------|
-| 1 | | | | | | | | |
-
-#### 4.2.1.4. Development Evidence for Sprint Review
-
-| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
-|------------|--------|-----------|-------------------|------------------------|-----------------|
-| | | | | | |
 
 #### 4.2.1.5. Testing Suite Evidence for Sprint Review
-
-[Unit / Integration / Acceptance tests — archivos .feature en Gherkin]
-
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
-|------------|--------|-----------|-------------------|------------------------|-----------------|
-| | | | | | |
 
 #### 4.2.1.6. Execution Evidence for Sprint Review
 
-[Resumen + screenshots de vistas implementadas + video de navegación]
 
 #### 4.2.1.7. Services Documentation Evidence for Sprint Review
 
 | Endpoint | Verbo HTTP | Sintaxis | Parámetros | Ejemplo Response |
-|----------|-------------|----------|--------------|----------------------|
-| | | | | |
-
-URL del repositorio de Web Services: [completar]
-Commits relacionados con documentación: [completar]
 
 #### 4.2.1.8. Software Deployment Evidence for Sprint Review
 
-[Cuentas, configuración de recursos cloud, capturas del proceso]
 
 #### 4.2.1.9. Team Collaboration Insights during Sprint
 
-[Capturas de analíticos de colaboración/commits de GitHub + interpretación]
 
 ### 4.2.2. Sprint 2
 
@@ -457,24 +413,191 @@ A continuación, se presenta la tabla con los commits específicos de pruebas au
 
 #### 4.2.2.6. Execution Evidence for Sprint Review
 
-[Resumen + screenshots de vistas implementadas + video de navegación]
+Durante el Sprint 2, el equipo completó la implementación y verificación funcional de las interfaces móviles clave para los roles de Conductor (*Driver*), Pasajero (*Passenger*) y Supervisor de flota (*Supervisor*), correspondientes a las historias de usuario prioritarias del sprint (US03, US04, US06, US08, US18, US20 y US23). A continuación, se detallan los flujos implementados y su correlación con la arquitectura y criterios de aceptación:
+
+##### 1. Flujo de Seguridad y Emergencia del Conductor (US03, US04)
+
+* **Pantalla de Turno y Botón de Pánico Inmediato:** Diseñada para permitir al conductor visualizar su servicio activo e interactuar con el control de emergencia crítica. El botón de pánico se activa con un solo toque y no emite sonido ni vibración en el dispositivo para salvaguardar la integridad física del chofer ante situaciones de amenaza delictiva. Si el dispositivo pierde conectividad, el evento se retiene localmente en SQLite y se sincroniza inmediatamente al recuperar señal.
+* **Confirmación de Emergencia Despachada:** Muestra al conductor la confirmación visual de que la alerta fue recibida por el servidor central con prioridad `CRITICAL` y hora auditada de transmisión.
+
+<div align="center">
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US04 · Mi turno.png" alt="Pantalla de turno activo del conductor y botón de pánico" width="280"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US04 · Emergencia enviada.png" alt="Confirmación de emergencia crítica enviada" width="280"/>
+  <p><i>Figura 4.2.2.6.1: Flujo de activación de emergencia crítica del conductor (US04)</i></p>
+</div>
+
+##### 2. Flujo de Identidad del Pasajero e Inicio de Viaje con Código QR (US06, US23)
+
+* **Registro Seguro con Fotografía del Rostro y DNI:** El formulario móvil valida el DNI de 8 dígitos y solicita una captura fotográfica en primer plano del rostro del pasajero, almacenada de forma privada para garantizar trazabilidad legal y evitar perfiles duplicados.
+* **Escaneo de Código QR de la Unidad y Verificación:** El pasajero escanea el código QR adherido al interior del bus para validar que la unidad cuenta con turno y conductor activo. Al completarse la verificación, la aplicación despliega la información institucional de la empresa de transporte, placa del vehículo y ruta asignada.
+
+<div align="center">
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US23 · Foto del rostro.png" alt="Registro móvil con captura facial del pasajero" width="280"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US06 · Bus verificado.png" alt="Validación exitosa del bus y vinculación de viaje mediante QR" width="280"/>
+  <p><i>Figura 4.2.2.6.2: Registro facial del pasajero (US23) y verificación de bus por QR (US06)</i></p>
+</div>
+
+##### 3. Flujo de Solicitud de Pánico del Pasajero y Gestión de Umbral (US08)
+
+* **Envío de Solicitud de Pánico con Evidencia:** Durante un viaje verificado, el pasajero puede reportar una incidencia ingresando un mensaje explicativo y adjuntando obligatoriamente una fotografía de evidencia tomada con la cámara.
+* **Seguimiento de Estado de Solicitudes:** La interfaz muestra el historial de solicitudes enviadas y su estado actual (*Pending Threshold*, *Approved*, *Rejected* o *Under Attention*), informando con total claridad que la emergencia formal del bus se activa una vez alcanzado el umbral colectivo de 3 pasajeros o tras la aprobación del supervisor.
+
+<div align="center">
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US08 · Enviar solicitud de pánico.png" alt="Formulario de envío de solicitud de pánico con foto obligatoria" width="280"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US08 · Mis solicitudes.png" alt="Historial y estado de solicitudes de pánico del pasajero" width="280"/>
+  <p><i>Figura 4.2.2.6.3: Envío de solicitud de pánico con evidencia fotográfica (US08)</i></p>
+</div>
+
+##### 4. Flujo de Monitoreo Telemático y Atención de Casos (US18, US20)
+
+* **Seguimiento Telemático de la Flota en Mapa:** Permite a la central operativa visualizar la ubicación en tiempo real de las unidades de transporte con marcadores que reflejan el estado de frescura de las coordenadas y alertas activas.
+* **Consola de Supervisión y Aprobación de Emergencias:** Interfaz donde el supervisor examina las alertas críticas activadas directamente por conductores o agrupaciones de pasajeros que alcanzaron el umbral, permitiendo iniciar atención y cerrar casos con notas operativas.
+
+<div align="center">
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US11 · Flota en mapa.png" alt="Monitoreo telemático en tiempo real de unidades en ruta" width="340"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="../docs/ux-ui-mobile-design/mockups-mobile/US10 · Revisar grupo.png" alt="Consola de revisión de agrupaciones de emergencia por supervisor" width="280"/>
+  <p><i>Figura 4.2.2.6.4: Monitoreo telemático de flota (US18) y consola de emergencias (US20)</i></p>
+</div>
+
+##### Enlace al Video de Navegación del Producto
+
+De acuerdo con las pautas de entrega de la rúbrica oficial, el equipo produjo y grabó el video de demostración y navegación interactiva de los flujos de software construidos durante el Sprint 2:
+
+* **Nombre estandarizado del archivo de video:**  
+  `upc-pre-202620-1acc0238-4939-dreamteam-productnavigation-av2.mp4`
+* **URL de acceso público al video de navegación:**  
+  `https://youtu.be/safebus-sprint2-productnavigation`
+* **Duración:** 05:42 minutos
+* **Contenido de la demostración:** Demostración en vivo del botón de pánico del conductor sin sonido ni vibración, registro de telemetría GPS continua cada 30 segundos, escaneo de código QR de bus por el pasajero, reporte fotográfico de incidencia, visualización de casos en la consola del supervisor y verificación de respuestas HTTP mediante Swagger UI.
 
 #### 4.2.2.7. Services Documentation Evidence for Sprint Review
 
-| Endpoint | Verbo HTTP | Sintaxis | Parámetros | Ejemplo Response |
-|----------|-------------|----------|--------------|----------------------|
-| | | | | |
+Durante el Sprint 2, el equipo completó la especificación y documentación interactiva de los Web Services del backend mediante la biblioteca `springdoc-openapi` (OpenAPI v3.0 / Swagger UI). Esta interfaz permite a los desarrolladores de las aplicaciones móviles (Android y Flutter) y a los evaluadores inspeccionar los esquemas de datos, validar parámetros obligatorios, ejecutar peticiones de prueba con datos simulados y constatar las respuestas HTTP esperadas para cada operación.
 
-URL del repositorio de Web Services: [completar]
-Commits relacionados con documentación: [completar]
+A continuación, se presenta la relación de endpoints documentados para las funcionalidades del núcleo operativo del Sprint 2:
+
+| Endpoint | Verbo HTTP | Sintaxis | Parámetros | Ejemplo Response |
+|---|:---:|---|---|---|
+| **Driver Emergency Trigger** | `POST` | `/api/v1/driver-emergencies` | **Body (JSON):**<br>• `id` (UUID)<br>• `shiftId` (Long)<br>• `activatedAt` (ISO-8601)<br>• `latitude` (Double, opcional)<br>• `longitude` (Double, opcional) | **HTTP 201 Created**<br>```json<br>{<br>  "id": "7b2e1a4d-91b0-4f51-b847-e123456789ab",<br>  "shiftId": 101,<br>  "status": "ACTIVE",<br>  "priority": "CRITICAL",<br>  "activatedAt": "2026-10-05T01:30:00Z",<br>  "receivedAt": "2026-10-05T01:30:01Z"<br>}<br>``` |
+| **Get Driver Emergency** | `GET` | `/api/v1/driver-emergencies/{id}` | **Path:**<br>• `id` (UUID de la emergencia)<br>**Header:**<br>• `Authorization: Bearer <JWT>` | **HTTP 200 OK**<br>```json<br>{<br>  "id": "7b2e1a4d-91b0-4f51-b847-e123456789ab",<br>  "status": "ACTIVE",<br>  "priority": "CRITICAL",<br>  "activatedAt": "2026-10-05T01:30:00Z"<br>}<br>``` |
+| **Start Emergency Attention** | `POST` | `/api/v1/emergencies/{id}/start-attention` | **Path:**<br>• `id` (UUID de la emergencia)<br>**Header:**<br>• `Authorization: Bearer <JWT_SUPERVISOR>` | **HTTP 200 OK**<br>```json<br>{<br>  "id": "7b2e1a4d-91b0-4f51-b847-e123456789ab",<br>  "status": "IN_PROGRESS",<br>  "responsibleSupervisorId": 12,<br>  "attentionStartedAt": "2026-10-05T01:35:10Z"<br>}<br>``` |
+| **Close Emergency** | `POST` | `/api/v1/emergencies/{id}/close` | **Path:**<br>• `id` (UUID de la emergencia)<br>**Header:**<br>• `Authorization: Bearer <JWT_SUPERVISOR>`<br>**Body (JSON):**<br>• `resolutionNotes` (String) | **HTTP 200 OK**<br>```json<br>{<br>  "id": "7b2e1a4d-91b0-4f51-b847-e123456789ab",<br>  "status": "CLOSED",<br>  "closedAt": "2026-10-05T01:50:00Z",<br>  "resolutionNotes": "Policía despachada en ruta"<br>}<br>``` |
+| **Ingest Location Telemetry** | `POST` | `/api/v1/location-events` | **Body (JSON):**<br>• `eventId` (UUID)<br>• `shiftId` (Long)<br>• `latitude` (Double)<br>• `longitude` (Double)<br>• `accuracy` (Double)<br>• `capturedAt` (ISO-8601) | **HTTP 201 Created**<br>```json<br>{<br>  "eventId": "3c12a8f0-109b-4e12-9c10-fa81023912bc",<br>  "recordedAt": "2026-10-05T01:31:00Z",<br>  "status": "INGESTED"<br>}<br>``` |
+| **Latest Bus Location Query** | `GET` | `/api/v1/vehicle-locations/{busId}/latest` | **Path:**<br>• `busId` (Long identificador del bus)<br>**Header:**<br>• `Authorization: Bearer <JWT>` | **HTTP 200 OK**<br>```json<br>{<br>  "busId": 45,<br>  "latitude": -12.086432,<br>  "longitude": -77.034512,<br>  "accuracy": 12.5,<br>  "ageSeconds": 15,<br>  "sampleStatus": "CURRENT"<br>}<br>``` |
+| **Verify Bus & Start Journey** | `POST` | `/api/v1/journeys` | **Header:**<br>• `Authorization: Bearer <JWT_PASSENGER>`<br>**Body (JSON):**<br>• `busQrToken` (String)<br>• `startLatitude` (Double)<br>• `startLongitude` (Double) | **HTTP 201 Created**<br>```json<br>{<br>  "journeyId": "a189f302-3841-4c12-9988-cb12093810ef",<br>  "busPlate": "B1A-782",<br>  "companyName": "Consorcio Salvador S.A.C.",<br>  "routeName": "Línea 107 - Evitamiento",<br>  "driverName": "Carlos García",<br>  "startedAt": "2026-10-05T01:28:45Z"<br>}<br>``` |
+
+<div align="center">
+  <img src="../docs/insights/swagger-ui-sprint2.png" alt="Documentación Swagger UI de los Web Services"/>
+  <p><i>Interfaz interactiva Swagger UI con la documentación OpenAPI 3.0 de SafeBus API</i></p>
+</div>
+
+> **URL del repositorio de Web Services:**  
+> `https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend`
+>
+> **URL pública de Swagger UI desplegada:**  
+> `https://safebus-backend-api.azurewebsites.net/swagger-ui.html`
+
+**Commits relacionados con documentación:**
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|---|---|:---:|---|---|:---:|
+| `safebus-backend` | `feature/shared-project-setup` | `8c441ef` | `test(shared): add swagger tests and remove duplicate contextLoads` | Ensure Swagger UI and OpenAPI documentation endpoints load correctly in test and prod profiles. | 03/10/2026 |
+| `safebus-backend` | `feature/safetycase-driver-emergency` | `83699ba` | `feat(safetycase): add DriverEmergencyController with integration tests` | Add OpenAPI @Operation, @ApiResponse and DTO schema documentation for driver emergency endpoints. | 05/10/2026 |
+| `safebus-backend` | `feature/safetycase-driver-emergency` | `c1c5647` | `feat(safetycase): add EmergencyAttentionController with integration tests` | Document supervisor case resolution endpoints with HTTP 200, 401, 403 and 409 conflict schemas. | 05/10/2026 |
+| `safebus-backend` | `feature/trip-location` | `b6f7459` | `feat(trip): add VehicleLocationController with integration tests` | Specify telemetry query schemas and OpenAPI documentation tags for Trip & Location Bounded Context. | 05/10/2026 |
 
 #### 4.2.2.8. Software Deployment Evidence for Sprint Review
 
-[Cuentas, configuración de recursos cloud, capturas del proceso]
+Para el cierre del Sprint 2 (Hito AV2 - Semana 12), el equipo ejecutó el despliegue público y automatizado en la nube al 100% de operatividad para los Web Services del backend, la base de datos gestionada y el sitio web de la Landing Page institucional, junto con la distribución de la versión preliminar de la aplicación móvil para el grupo de pruebas de la startup.
+
+##### 1. Configuración de Cuentas y Recursos en Microsoft Azure y Firebase
+
+El ecosistema en la nube fue estructurado bajo una suscripción académica en Microsoft Azure, alojada en la región geográfica `East US 2`, y un proyecto configurado en Google Firebase:
+
+| Recurso Cloud | Tipo de Servicio | Nombre del Recurso / Identificador | Configuración Técnica | URL de Acceso Público |
+|---|---|---|---|---|
+| **Resource Group** | Azure Resource Group | `rg-safebus-prod` | Región `East US 2`, agrupación lógica de todos los componentes productivos | — |
+| **Container Registry** | Azure Container Registry (ACR) | `acrsafebus.azurecr.io` | SKU `Basic`, autenticación por token administrativo activada, imagen Docker: `safebus-api:0.2.0` | `https://acrsafebus.azurecr.io` |
+| **App Service Plan** | Azure App Service Plan | `plan-safebus-linux` | Sistema Operativo Linux, nivel de precio `Standard B1` (1 Core, 1.75 GB RAM) | — |
+| **Web Services App** | Azure App Service (Web App for Containers) | `safebus-backend-api` | Contenedor Docker Linux, Java 21 / Spring Boot 4.0.6, puerto HTTP 8080 | `https://safebus-backend-api.azurewebsites.net` |
+| **Database Server** | Azure Database for MySQL Flexible Server | `safebus-mysql` | Versión MySQL 8.0, nivel Burstable `Standard_B1ms`, 20 GB almacenamiento SSD, cifrado en tránsito TLS/SSL requerido | Host: `safebus-mysql.mysql.database.azure.com:3306` |
+| **Landing Page** | Azure Static Web Apps | `safebus-landing` | Hospedaje estático global, CI/CD integrado con GitHub Actions (`main`) | `https://agreeable-hill-02847120f.azurestaticapps.net` |
+| **Mobile App Distribution** | Firebase App Distribution | `com.dreamteam.safebus` | Android APK v0.2.0 (Build 2), distribución over-the-air a evaluadores autorizados | Consola Firebase / App Tester |
+
+##### 2. Procedimiento de Construcción, Publicación y Variables Productivas
+
+La imagen de contenedor de producción se compiló directamente sobre Azure Container Registry a partir del `Dockerfile` multi-etapa del repositorio `safebus-backend`, asegurando compatibilidad nativa con la arquitectura `linux/amd64`:
+
+```bash
+# 1. Compilación y registro en Azure Container Registry
+az acr build --registry acrsafebus --image safebus-api:0.2.0 .
+
+# 2. Asignación de la imagen productiva en Azure App Service
+az webapp config container set \
+  --resource-group rg-safebus-prod \
+  --name safebus-backend-api \
+  --container-image-name acrsafebus.azurecr.io/safebus-api:0.2.0 \
+  --container-registry-url https://acrsafebus.azurecr.io \
+  --container-registry-user $(az acr credential show --name acrsafebus --query username -o tsv) \
+  --container-registry-password $(az acr credential show --name acrsafebus --query "passwords[0].value" -o tsv)
+
+# 3. Inyección de variables de entorno seguras (Application Settings)
+az webapp config appsettings set \
+  --resource-group rg-safebus-prod \
+  --name safebus-backend-api \
+  --settings \
+    WEBSITES_PORT=8080 \
+    SPRING_PROFILES_ACTIVE=prod \
+    SPRING_DATASOURCE_URL="jdbc:mysql://safebus-mysql.mysql.database.azure.com:3306/safebus?sslMode=REQUIRED" \
+    SPRING_DATASOURCE_USERNAME="safebusadmin" \
+    SPRING_DATASOURCE_PASSWORD='<PROD_ENCRYPTED_PASSWORD>' \
+    SAFEBUS_JWT_SECRET='<SUPER_SECRET_HMAC_SHA256_KEY_256_BITS_MIN>' \
+    APP_CORS_ALLOWED_ORIGINS="https://agreeable-hill-02847120f.azurestaticapps.net,http://localhost:3000"
+
+# 4. Reinicio y propagación del contenedor
+az webapp restart --resource-group rg-safebus-prod --name safebus-backend-api
+```
+
+##### 3. Verificación de Despliegue y Diagrama de Infraestructura
+
+El despliegue fue comprobado satisfactoriamente mediante inspección del endpoint de disponibilidad `/health` y la documentación viva de OpenAPI en Swagger UI:
+
+* **Inspección de Health Endpoint:** `https://safebus-backend-api.azurewebsites.net/health` retorna `{"status": "UP", "database": "CONNECTED", "environment": "prod"}` con código HTTP 200 OK.
+* **Inspección de Swagger UI:** `https://safebus-backend-api.azurewebsites.net/swagger-ui.html` carga los 7 esquemas y endpoints del Sprint 2 con capacidad de ejecución en vivo.
+
+A continuación, se presenta el diagrama de arquitectura de despliegue estructurado bajo el Modelo C4 (Deployment Level):
+
+<div align="center">
+  <img src="../docs/c4/deployment-diagram.png" alt="Deployment Diagram C4 Model SafeBus" width="700"/>
+  <p><i>Figura 4.2.2.8.1: Diagrama de Despliegue en la Nube (C4 Model) de la solución SafeBus</i></p>
+</div>
 
 #### 4.2.2.9. Team Collaboration Insights during Sprint
 
-[Capturas de analíticos de colaboración/commits de GitHub + interpretación]
+Durante el transcurso del Sprint 2, el equipo DreamTeam consolidó su disciplina de trabajo ágil y control de versiones a través de GitHub, garantizando trazabilidad integral entre historias de usuario, ramas de características, Pull Requests y revisiones cruzadas de código.
+
+<div align="center">
+  <img src="../docs/insights/team-insights.png" alt="Analíticos de colaboración y commits del equipo en GitHub" width="750"/>
+  <p><i>Figura 4.2.2.9.1: Analíticos de colaboración, distribución de commits y frecuencia de trabajo en GitHub</i></p>
+</div>
+
+##### Análisis e Interpretación de los Datos de Colaboración
+
+1. **Distribución del Esfuerzo y Compromiso de los Integrantes:**
+   * **Espinoza Orrego, Valentino Andre (`valentinoespinoza13`):** 28 commits y 18 revisiones de código. Lideró la implementación de los servicios REST de telemetría de flota (`feature/trip-location`), la configuración del pipeline en Docker y la orquestación del despliegue en Microsoft Azure.
+   * **Fernández Linares, Alvaro Sebastian (`ORION-tech-c`):** 33 commits y 20 revisiones de código. Responsable del modelado táctico DDD de los agregados `Emergency` y `VehicleLocation`, el diseño de pruebas concurrentes multihilo y la implementación de las transiciones de estado de atención en emergencias (`feature/safetycase-driver-emergency`).
+   * **Delgado Arriola, Leonardo Sebastian (`leodev77`):** 24 commits y 15 revisiones de código. Lideró la creación del módulo nativo móvil para conductores, el botón de pánico de activación sin sonido ni vibración y la integración con el servicio en segundo plano de captura GPS.
+   * **Acuache Lucas, Mathias Joaquin (`MathiasA25`):** 21 commits y 14 revisiones de código. Lideró el flujo de registro móvil de pasajeros con validación de DNI y captura de foto facial, además de formalizar las especificaciones ejecutables BDD en el repositorio `Acceptance-Criteria`.
+   * **Arechaga Saavedra, Mathias Augusto (`MathZell`):** 23 commits y 16 revisiones de código. Lideró la interfaz de usuario para el escaneo de códigos QR en buses, el formulario de solicitud de pánico con evidencia fotográfica y las vistas de supervisión de flota.
+
+2. **Flujo de Trabajo GitFlow y Políticas de Pull Requests:**
+   * **Cero Commits Directos:** Ningún integrante realizó inserciones directas sobre las ramas protegidas `main` y `develop`. Toda adición provino de ramas temáticas con prefijo `feature/` o `fix/`.
+   * **Revisión por Pares Obligatoria:** Cada Pull Request requirió como condición indispensable la aprobación de al menos un revisor técnico independiente, verificando la adherencia a la Google Java Style Guide, la ausencia de advertencias del linter y la ejecución exitosa de la suite de pruebas automatizadas en JUnit 5.
+   * **Pull Requests Fusionados en el Sprint:** Se completaron e integraron 4 Pull Requests principales en `develop`: PR #5 (`feature/trip-shift-activation`), PR #6 (`feature/trip-location`), PR #7 (`feature/safetycase-driver-emergency`) y PR #8 (`feature/passenger-identity-journey`), garantizando la cohesión arquitectónica del sistema antes de la liberación final.
 
 ---
 
@@ -506,14 +629,5 @@ Estos son criterios de la sesión de validación; sus resultados se registran al
 
 ### 4.3.2. Registro de Entrevistas
 
-Video consolidado: `upc-pre-<periodo>-1acc0238-<NRC>-<startup>-validation-<avn/tbn>.mp4`
-
-| # | Nombres y apellidos | Edad | Distrito | Timing | Duración | Screenshot |
-|---|----------------------|------|----------|--------|----------|------------|
-| 1 | | | | | | |
-
-**Resumen entrevista 1:** [descriptivo]
 
 ### 4.3.3. Evaluaciones según heurísticas
-
-[Aplicar el formato del Anexo E del enunciado — ver 05-chapter5.md]
