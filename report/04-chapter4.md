@@ -208,7 +208,7 @@ Esta sección registra la implementación de los productos de SafeBus por Sprint
 |---|---|---|
 | Web Services | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend | `develop` |
 | Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing | `main` |
-| Aplicación móvil | [completar] | `main` |
+| Aplicación móvil | [Falta-completar] | `main` |
 
 
 ### 4.2.1. Sprint 1
