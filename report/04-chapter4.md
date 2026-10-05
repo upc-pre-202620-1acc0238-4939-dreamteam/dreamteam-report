@@ -2,6 +2,10 @@
 
 # Capítulo IV: Product Implementation & Validation
 
+## 4. Product Implementation & Validation
+
+En este capítulo se documenta cómo el equipo implementa, prueba, despliega y valida SafeBus. Se describe primero la configuración de herramientas, control de versiones y despliegue (sección 4.1), luego la implementación organizada por Sprint (sección 4.2) y, finalmente, las entrevistas de validación (sección 4.3). La solución se compone de tres productos digitales: la Landing Page, los Web Services (API RESTful) y la aplicación móvil.
+
 ### 4.1. Software Configuration Management
 
 Esta sección establece las decisiones y convenciones que mantienen la consistencia durante el ciclo de vida de los productos: las herramientas de trabajo del equipo, la organización del código fuente, las guías de estilo y la configuración de despliegue.
@@ -10,7 +14,7 @@ Esta sección establece las decisiones y convenciones que mantienen la consisten
 
 | Actividad | Producto | Propósito en el proyecto | Ruta de referencia |
 |---|---|---|---|
-| Gestión de proyecto | Trello | Product Backlog y tablero de Sprint | https://trello.com/invite/b/6ac31b86ef414ba1ccffcc9e/ATTI662ff4f0de4372693f4e82297df87b6451C57B66/safebus-sprint-1 |
+| Gestión de proyecto | Trello | Product Backlog y tablero de Sprint | https://trello.com |
 | Needfinding | UXPressia | User Personas, Journey Maps, Empathy Maps e Impact Map | https://uxpressia.com |
 | Modelado de dominio | Miro | EventStorming, Domain Storytelling, Bounded Context Canvas y Context Map | https://miro.com |
 | Diseño UX/UI | Figma | Wireframes, mock-ups y prototipos | https://www.figma.com |
@@ -23,7 +27,7 @@ Esta sección establece las decisiones y convenciones que mantienen la consisten
 | Pruebas | JUnit 5 y Spring Boot Test | Pruebas unitarias y de integración del backend | https://junit.org/junit5 |
 | Base de datos | H2 (desarrollo local) y MySQL 8 (producción) | Persistencia | https://www.mysql.com |
 | Contenedores | Docker | Empaquetado del backend | https://www.docker.com |
-| Despliegue | Microsoft Azure (Container Registry, App Service, Database for MySQL, Static Web Apps) y Azure CLI | Publicación de los productos | https://portal.azure.com · https://learn.microsoft.com/cli/azure |
+| Despliegue | Railway (servicio de contenedor construido desde el Dockerfile y base de datos MySQL administrada) | Publicación del backend | https://railway.com |
 | Distribución móvil | Firebase App Distribution | Pruebas de la aplicación en dispositivos reales | https://firebase.google.com/docs/app-distribution |
 | Control de versiones | Git y GitHub | Repositorios y colaboración | https://github.com |
 | Documentación del informe | Markdown con Visual Studio Code | Redacción del informe en el repositorio | https://code.visualstudio.com |
@@ -37,7 +41,7 @@ El equipo utiliza GitHub como plataforma de control de versiones, dentro de la o
 | Informe del proyecto | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/dreamteam-report |
 | Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing |
 | Web Services (backend) | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend |
-| Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile-app |
+| Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile |
 
 El repositorio del backend incluye el proyecto y sus archivos de pruebas, tanto unitarias como de integración y aceptación.
 
@@ -59,7 +63,7 @@ Todo cambio llega a `develop` o `main` mediante Pull Request revisado por al men
 feat(iam): add JWT authentication
 fix(location): reject out-of-range coordinates
 test(safety-case): add driver emergency integration test
-build: add Dockerfile for Azure deployment
+build: add Dockerfile for container deployment
 ```
 
 **Semantic Versioning.** Las versiones siguen el formato `MAJOR.MINOR.PATCH`. Mientras el producto no alcance su Release Review, las entregas son versiones `0.x.y`: `v0.1.0` para el Sprint 1 (TB1) y `v0.2.0` para el Sprint 2 (AV2). La versión `v1.0.0` corresponde al Release Review (TB2).
@@ -92,111 +96,59 @@ La adopción se verifica en la revisión de cada Pull Request.
 
 #### 4.1.4. Software Deployment Configuration
 
-Los tres productos digitales se publican sobre Microsoft Azure y Firebase. El backend se empaqueta como imagen Docker, se almacena en Azure Container Registry y se ejecuta en Azure App Service sobre una base de datos MySQL administrada.
+El backend se empaqueta con Docker y se ejecuta en Railway junto a una base de datos MySQL administrada; la Landing Page se publica como sitio estático y la aplicación móvil se distribuye con Firebase App Distribution. Railway construye la imagen directamente desde el `Dockerfile` del repositorio y vuelve a desplegarla en cada push a la rama enlazada.
 
 | Producto | Plataforma | Origen | Mecanismo de despliegue |
 |---|---|---|---|
-| Web Services | Azure Container Registry y Azure App Service (Linux, contenedor) | Repositorio del backend, rama `main` | Imagen Docker construida con el `Dockerfile` del repositorio |
-| Base de datos | Azure Database for MySQL, Flexible Server | — | El esquema lo crea Hibernate al iniciar la aplicación |
-| Landing Page | Azure Static Web Apps | Repositorio de la Landing Page, rama `main` | Flujo de GitHub Actions que Azure genera y que se ejecuta en cada push a `main` |
+| Web Services | Railway (servicio construido desde el `Dockerfile`) | Repositorio del backend, rama `develop` | Integración con GitHub: Railway construye la imagen y despliega en cada push a la rama enlazada |
+| Base de datos | Railway, servicio MySQL | — | El esquema lo crea Hibernate al iniciar la aplicación, y el arranque inicial crea la empresa y el primer supervisor |
+| Landing Page | Render | Repositorio de la Landing Page | Hosting del despliegue para la landing page|
 | Aplicación móvil | Firebase App Distribution | Repositorio de la aplicación móvil | Compilación del APK o AAB con Gradle y distribución a un grupo de testers *(se completa en TB2)* |
+
+La API desplegada responde en `https://safebus-backend-production-cb4d.up.railway.app` y su documentación Swagger en `/swagger-ui.html`.
+
+**La imagen del backend.** El `Dockerfile` tiene dos etapas: compila con Maven sobre `maven:3.9-eclipse-temurin-21` y ejecuta el JAR sobre `eclipse-temurin:21-jre`, con un usuario sin privilegios. La aplicación escucha en el puerto que Railway asigna mediante la variable `PORT`.
 
 **Entornos del backend.**
 
 | | Local | Producción |
 |---|---|---|
-| Perfil de Spring | por defecto | `prod` |
-| Base de datos | H2 en archivo | MySQL en Azure (TLS obligatorio) |
+| Perfil de Spring | por defecto (`dev`) | `prod` |
+| Base de datos | H2 en archivo | MySQL administrado por Railway |
 | Datos de ejemplo (seeders) | activos | desactivados |
-| Origen de la configuración | `application.properties` | Application Settings del App Service |
+| Origen de la configuración | `application.properties` y `application-dev.properties` | Variables del servicio en Railway |
 
-**Variables de configuración en Azure App Service.**
+**Variables de configuración del servicio.**
 
 | Variable | Descripción |
 |---|---|
-| `WEBSITES_PORT` | Puerto en el que escucha el contenedor (`8080`) |
 | `SPRING_PROFILES_ACTIVE` | Perfil de Spring (`prod`) |
-| `SPRING_DATASOURCE_URL` | URL JDBC del servidor MySQL, con `sslMode=REQUIRED` |
+| `SPRING_DATASOURCE_URL` | URL JDBC del servicio MySQL, construida con las variables de ese servicio |
 | `SPRING_DATASOURCE_USERNAME` | Usuario de la base de datos |
 | `SPRING_DATASOURCE_PASSWORD` | Contraseña de la base de datos |
-| `APP_CORS_ALLOWED_ORIGINS` | Orígenes web autorizados a consumir la API |
 | `SAFEBUS_JWT_SECRET` | Secreto con el que se firman los tokens JWT (mínimo 32 caracteres) |
 | `SAFEBUS_BOOTSTRAP_COMPANY` | Nombre de la empresa que se crea en el primer arranque |
 | `SAFEBUS_BOOTSTRAP_SUPERVISOR_LOGIN` | Código del primer supervisor, creado solo si la base está vacía |
 | `SAFEBUS_BOOTSTRAP_SUPERVISOR_PASSWORD` | Contraseña inicial de ese supervisor |
+| `PORT` | Puerto de la aplicación, asignado por Railway |
 
-Los secretos se configuran únicamente como Application Settings y nunca se versionan en el repositorio.
+Los secretos se configuran únicamente como variables del servicio y nunca se versionan en el repositorio. Con el perfil `prod`, la aplicación no arranca si falta `SAFEBUS_JWT_SECRET`, y si la base está vacía tampoco arranca sin las tres variables del arranque inicial.
 
-**Pasos de despliegue del backend.** Se parte del repositorio del backend, con Docker y Azure CLI instalados y la sesión iniciada con `az login`.
+**Pasos de despliegue del backend.** Se parte del repositorio del backend en GitHub y de una cuenta de Railway vinculada a GitHub.
 
-1. **Crear los recursos de Azure** (una sola vez):
+1. **Crear el proyecto** en Railway y agregar un servicio **MySQL**.
+2. **Crear el servicio del backend** con la opción *Deploy from GitHub repo*, eligiendo el repositorio del backend. En *Settings → Service Source* se indica la rama `develop`. Railway detecta el `Dockerfile` y construye la imagen.
+3. **Definir las variables** de la tabla anterior en la pestaña *Variables* del servicio del backend. La URL JDBC y las credenciales se arman con las variables del servicio MySQL.
+4. **Generar el dominio público** en *Settings → Networking*.
+5. **Verificar el despliegue.** `GET /api/v1/health` debe responder 200; el inicio de sesión del supervisor del arranque inicial debe responder 200 con un token; un usuario de desarrollo (`sup-001`) debe responder 401, lo que confirma que el perfil `prod` está activo; y Swagger debe cargar en `/swagger-ui.html`. Los registros se consultan en *Deployments → View logs*.
 
-```bash
-RG=rg-safebus
-LOC=<region-permitida-por-la-suscripcion>
-ACR=<nombre-unico-acr>
-PLAN=plan-safebus
-APP=<nombre-unico-app>
-MYSQL=<nombre-unico-mysql>
-
-az group create -n $RG -l $LOC
-az acr create -g $RG -n $ACR --sku Basic --admin-enabled true
-az mysql flexible-server create -g $RG -n $MYSQL -l $LOC \
-  --admin-user safebusadmin --admin-password '<password>' \
-  --tier Burstable --sku-name Standard_B1ms --storage-size 20 \
-  --public-access 0.0.0.0
-az mysql flexible-server db create -g $RG --server-name $MYSQL --database-name safebus
-az appservice plan create -g $RG -n $PLAN --is-linux --sku B1
-```
-
-2. **Construir y publicar la imagen.** Se indica la plataforma `linux/amd64` porque Azure App Service ejecuta contenedores para esa arquitectura, incluso cuando se compila desde un equipo con procesador ARM:
-
-```bash
-az acr login -n $ACR
-docker buildx build --platform linux/amd64 \
-  -t $ACR.azurecr.io/safebus-api:0.1.0 --push .
-```
-
-3. **Crear la aplicación y enlazarla a la imagen:**
-
-```bash
-az webapp create -g $RG -p $PLAN -n $APP \
-  --deployment-container-image-name $ACR.azurecr.io/safebus-api:0.1.0
-az webapp config container set -g $RG -n $APP \
-  --container-image-name $ACR.azurecr.io/safebus-api:0.1.0 \
-  --container-registry-url https://$ACR.azurecr.io \
-  --container-registry-user $(az acr credential show -n $ACR --query username -o tsv) \
-  --container-registry-password $(az acr credential show -n $ACR --query "passwords[0].value" -o tsv)
-```
-
-4. **Configurar las variables** descritas en la tabla anterior:
-
-```bash
-az webapp config appsettings set -g $RG -n $APP --settings \
-  WEBSITES_PORT=8080 \
-  SPRING_PROFILES_ACTIVE=prod \
-  SPRING_DATASOURCE_URL="jdbc:mysql://$MYSQL.mysql.database.azure.com:3306/safebus?sslMode=REQUIRED" \
-  SPRING_DATASOURCE_USERNAME=safebusadmin \
-  SPRING_DATASOURCE_PASSWORD='<password>' \
-  APP_CORS_ALLOWED_ORIGINS="https://<url-de-la-landing>" \
-  SAFEBUS_JWT_SECRET='<secreto-de-32-caracteres-o-mas>' \
-  SAFEBUS_BOOTSTRAP_COMPANY="<nombre-de-la-empresa>" \
-  SAFEBUS_BOOTSTRAP_SUPERVISOR_LOGIN="<codigo-del-supervisor>" \
-  SAFEBUS_BOOTSTRAP_SUPERVISOR_PASSWORD='<password-inicial>'
-az webapp restart -g $RG -n $APP
-```
-
-5. **Verificar el despliegue.** La documentación Swagger debe responder en `https://<nombre-app>.azurewebsites.net/swagger-ui.html`. Si no responde, los registros del contenedor se consultan con `az webapp log tail -g $RG -n $APP`.
-
-Para publicar una nueva versión se repite el paso 2 con una nueva etiqueta de imagen y se actualiza el paso 3.
-
-**Landing Page.** Desde el portal de Azure se crea un recurso Static Web Apps y se enlaza al repositorio de la Landing Page en GitHub, rama `main`. Azure agrega al repositorio un flujo de GitHub Actions que publica el sitio en cada push a `main`.
+Para publicar una nueva versión basta con integrar los cambios en la rama enlazada: cada push dispara una nueva construcción y un nuevo despliegue.
 
 **Aplicación móvil.** El APK o AAB se carga a Firebase App Distribution, desde la consola o con `firebase appdistribution:distribute`, y se asigna a un grupo de testers que recibe la invitación por correo.
 
 **Deployment Diagram (C4 Model).** El siguiente diagrama muestra cómo se distribuyen los contenedores de SafeBus sobre la infraestructura.
 
-<img src="../docs/c4/deployment-diagram.png">
+![deployment-diagram-v1.png](../docs/c4/deployment-diagram-v1.png)
 
 ---
 
@@ -208,7 +160,7 @@ Esta sección registra la implementación de los productos de SafeBus por Sprint
 |---|---|---|
 | Web Services | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend | `develop` |
 | Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing | `main` |
-| Aplicación móvil | [Falta-completar] | `main` |
+| Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile | `main` |
 
 
 ### 4.2.1. Sprint 1
@@ -388,8 +340,6 @@ La suite se ejecuta con el siguiente comando desde la raíz del repositorio:
 ```bash
 ./mvnw test
 ```
-
-[completar: captura del resultado de `./mvnw test` con el resumen `Tests run`]
 
 **Landing Page.** El repositorio de la Landing Page contiene dos conjuntos de pruebas, que utilizan bases de datos temporales o en memoria y no dependen de los datos del proyecto.
 
@@ -599,15 +549,10 @@ Al término del Sprint, los Web Services permiten ejecutar de extremo a extremo 
 ./mvnw spring-boot:run
 ```
 
-La documentación interactiva queda disponible en `http://localhost:8080/swagger-ui.html`.
+La documentación interactiva queda disponible en `https://safebus-backend-production-cb4d.up.railway.app/swagger-ui/index.html`.
 
-[completar: captura de Swagger UI con los grupos Auth, Buses, Routes, Drivers y Shift Assignments]
+<img src="../assets/swag-1.png" alt="Swagger-Grupos" width="720">
 
-[completar: captura de `POST /api/v1/auth/sign-in` con respuesta 200 y el token]
-
-[completar: captura de `POST /api/v1/shift-assignments` con respuesta 201]
-
-[completar: captura de `POST /api/v1/shift-assignments` con respuesta 409 por solapamiento]
 
 **Landing Page.**
 
@@ -715,11 +660,32 @@ URL del repositorio de Web Services: https://github.com/upc-pre-202620-1acc0238-
 
 URL del repositorio de la Landing Page: https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing
 
-URL de la documentación desplegada: [completar: `https://<nombre-app>.azurewebsites.net/swagger-ui.html`]
+URL de la documentación desplegada: https://safebus-backend-production-cb4d.up.railway.app/swagger-ui/index.html
 
-[completar: captura de Swagger UI con la lista de endpoints]
+#### 4.2.1.8. Software Deployment Evidence for Sprint Review
 
-Commits relacionados con documentación:
+El despliegue sigue el procedimiento de la sección 4.1.4. Durante el Sprint se dejó preparado en el repositorio de Web Services todo lo necesario para publicar el servicio como contenedor, y en el repositorio de la Landing Page, la compilación del sitio y la configuración de su servidor.
+
+**Web Services.**
+
+| Elemento | Ubicación en el repositorio | Commit Id |
+|---|---|---|
+| Imagen Docker multi-stage (compilación con Maven y ejecución con JRE 21, usuario sin privilegios, puerto 8080) | `Dockerfile` y `.dockerignore` | `20e607e` |
+| Perfiles `dev` y `prod`; el perfil `prod` toma la base de datos y el secreto JWT de variables de entorno | `application.properties` y `application-prod.properties` | `0949bf3` |
+| Creación de la primera empresa y supervisor en producción a partir de las variables `SAFEBUS_BOOTSTRAP_*`, con verificación de variables faltantes | `ProdBootstrap` | `4173f7d` |
+| Filtro CORS configurable con `APP_CORS_ALLOWED_ORIGINS` | `CorsConfig` | `ee45b5b`, `9b92b70` |
+
+**Landing Page.**
+
+| Elemento | Ubicación en el repositorio | Commit Id |
+|---|---|---|
+| Compilación del sitio en la carpeta `dist`: páginas en inglés y español, términos, estilos, fuentes locales, `robots.txt` y `sitemap.xml` | `scripts/build.mjs` (`npm run build`) | `e65cbb5` |
+| Servidor que entrega el sitio y recibe las solicitudes de contacto; requiere Node.js 24.14 o posterior | `server.mjs` (`npm start`) | `e65cbb5` |
+| Variables de entorno: `SITE_URL` (dominio para las URL canónicas y el sitemap), `HOST`, `PORT` y `DATA_FILE` (archivo SQLite de las solicitudes) | `README.md` | `e65cbb5` |
+
+El formulario de contacto depende del servidor Node.js: publicar únicamente la carpeta `dist` en un hosting estático muestra el sitio, pero no registra solicitudes. El archivo SQLite debe guardarse en un almacenamiento persistente y privado.
+
+#### 4.2.2.1 Sprint 2
 
 | Sprint # | Sprint 2 |
 |---|---|
@@ -810,7 +776,7 @@ A continuación, se presenta la relación de commits de implementación registra
 | `upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend` | `feature/trip-shift-activation` | `e93fee6` | `feat(fleet): add findDriverByUserAccountId and findBusCompanyId to facade` | Provide lookup operations to link authenticated IAM user with fleet driver profile. | 05/10/2026 |
 | `upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile` | `main` | `3e19095` | `feat: first ui demo implementation` | Initial layout and core mobile user interface screens for driver and passenger flows. | 05/10/2026 |
 
-#### 4.2.1.8. Software Deployment Evidence for Sprint Review
+#### 4.2.2.5. Software Deployment Evidence for Sprint Review
 
 El despliegue sigue el procedimiento de la sección 4.1.4. Durante el Sprint se dejó preparado en el repositorio de Web Services todo lo necesario para publicar el servicio como contenedor, y en el repositorio de la Landing Page, la compilación del sitio y la configuración de su servidor.
 
