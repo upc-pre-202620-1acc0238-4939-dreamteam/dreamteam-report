@@ -54,6 +54,7 @@
 |---------|-------|-------|------------------------------|
 | 0.1.0   |  9/01/2026| DreamTeam| Versión inicial del informe |
 | 1.0.0   | 9/21/2026| DreamTeam | Primer avance del informe |
+| 2.0.0   | 10/5/2026| DreamTeam | Segundo avance del informe |
 
 ---
 
@@ -65,7 +66,25 @@
 
 ### DreamTeam - Report Repository
 
-  <img src="../docs/insights/team-insights.png" alt="Foto de Estudiante"/>
+  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+
+### TB1
+
+### DreamTeam - Report Repository
+
+  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+
+### DreamTeam - Safebus Landing Page Repository
+
+  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+
+### DreamTeam - Safebus Mobile Repository
+
+  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
+
+### DreamTeam - Safebus API Repository
+
+  <img src="../docs/insights/team-insights.png" alt="insights-av1"/>
 
 ---
 
