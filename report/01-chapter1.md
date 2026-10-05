@@ -62,7 +62,7 @@ El alcance inicial se concentra en Lima y Callao. El GPS del conductor proporcio
 <table>
   <tr>
     <td rowspan="4" align="center" width="200">
-      <img src="/assets/LeonardoProfilePic.jpg" alt="Leonardo Delgado" width="180"/>
+      <img src="../assets/LeonardoProfilePic.jpg" alt="Leonardo Delgado" width="180"/>
     </td>
     <td><b>Nombre:</b> Leonardo Sebastian Delgado Arriola</td>
   </tr>
