@@ -310,7 +310,7 @@ Para optimizar la coordinación y efectividad durante el desarrollo del Sprint 2
 
 El Sprint Backlog del Sprint 2 reúne las historias de usuario priorizadas del Product Backlog orientadas al núcleo operativo de SafeBus: el despacho de emergencias críticas del conductor, la transmisión telemática de la flota en ruta, el registro seguro de pasajeros y el envío de solicitudes con evidencia fotográfica. A continuación, se presenta la referencia al tablero de gestión ágil y la descomposición técnica de cada historia de usuario en tareas de desarrollo, pruebas e integración:
 
-> **URL público del Board de seguimiento (Trello / Jira):** `https://trello.com/b/safebus-sprint2`
+> **URL público del Board de seguimiento (Trello / Jira):** `https://trello.com/invite/b/6ac32d61316f0c5c269e14f4/ATTIc604fd2b7f698e3f59998f368cfc62adE8A4AB52/sprint-backlog-2`
 
 <div align="center">
   <img src="../docs/insights/sprint2-board.png" alt="Board de seguimiento del Sprint 2"/>
