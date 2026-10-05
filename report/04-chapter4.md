@@ -40,7 +40,7 @@ El equipo utiliza GitHub como plataforma de control de versiones, dentro de la o
 |---|---|
 | Informe del proyecto | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/dreamteam-report |
 | Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing |
-| Web Services (backend) | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend |
+| Web Services (backend) | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-api |
 | Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile |
 
 El repositorio del backend incluye el proyecto y sus archivos de pruebas, tanto unitarias como de integración y aceptación.
@@ -158,9 +158,9 @@ Esta sección registra la implementación de los productos de SafeBus por Sprint
 
 | Producto | Repositorio | Rama de integración |
 |---|---|---|
-| Web Services | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend | `develop` |
-| Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing | `main` |
-| Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile | `main` |
+| Web Services | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-api | `develop` |
+| Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing | `develop` |
+| Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile | `develop` |
 
 
 ### 4.2.1. Sprint 1
