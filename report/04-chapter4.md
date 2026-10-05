@@ -270,6 +270,110 @@ Commits relacionados con documentación: [completar]
 
 [Capturas de analíticos de colaboración/commits de GitHub + interpretación]
 
+### 4.2.2. Sprint 2
+
+#### 4.2.2.1. Sprint Planning 2
+
+En esta sección se especifican los acuerdos y parámetros fundamentales establecidos durante la sesión de planificación del Sprint 2. El equipo analizó los resultados de la entrega previa y organizó el trabajo requerido para materializar las funcionalidades críticas de seguridad, telemetría y ciclo de viaje en las aplicaciones móviles y el backend. A continuación, se presenta el cuadro de resumen del Sprint Planning Meeting:
+
+| Sprint # | Sprint 2 |
+|---|---|
+| **Date** | 2026-09-07 |
+| **Time** | 19:00 - 21:00 |
+| **Location** | Sesión virtual sincrónica vía Google Meet / Discord |
+| **Prepared By** | Espinoza Orrego, Valentino Andre |
+| **Attendees** | Acuache Lucas, Mathias Joaquin / Arechaga Saavedra, Mathias Augusto / Delgado Arriola, Leonardo Sebastian / Espinoza Orrego, Valentino Andre / Fernández Linares, Alvaro Sebastian |
+| **Sprint 1 Review Summary** | Durante la sesión de revisión del Sprint 1, el equipo evidenció la publicación del Landing Page institucional en Azure Static Web Apps, la infraestructura de control de versiones con GitFlow y la arquitectura base del backend en Spring Boot desplegada al 70%, incluyendo los endpoints iniciales de Identity & Access Management (IAM) y la resolución de las Spike Stories técnicas de telemetría y flujo de conteo de pasajeros (US21 y US22). El Product Owner evaluó favorablemente el avance de la infraestructura base y recomendó concentrar el Sprint 2 en la interactividad operativa móvil y en el flujo crítico de emergencias en tiempo real. |
+| **Sprint n-1 Retrospective Summary** | En la retrospectiva del Sprint 1, el equipo reconoció como fortalezas la rápida adopción del modelado táctico de Domain-Driven Design (DDD) y el apego a las convenciones de estilo de código (Google Java Style Guide y Kotlin Coding Conventions). Como áreas de mejora para el trabajo colaborativo, se acordó concertar los contratos de DTO y esquemas JSON entre el frontend móvil y el backend antes de iniciar la codificación de las interfaces, incrementar la frecuencia de integración en ramas de características (*feature branches*) para prevenir discrepancias en las revisiones de Pull Requests, y diseñar las pruebas automatizadas BDD en paralelo a la lógica de negocio. |
+| **Sprint Goal** | **Our focus is on** delivering the core emergency response, real-time bus telemetry, and passenger journey verification features across the mobile applications and the public backend services.<br><br>**We believe it delivers** immediate panic protection for drivers, verifiable incident reporting for passengers, and real-time operational response capabilities for transport fleet supervisors.<br><br>**This will be confirmed when** a driver can trigger an immediate Critical emergency alert without approval, passengers can verify a bus unit via QR and submit threshold-eligible incident requests with photo evidence, and fleet supervisors can monitor live bus coordinates and manage safety cases through 100% publicly documented RESTful services. |
+| **Sprint Velocity** | 34 Story Points |
+| **Sum of Story Points** | 34 Story Points |
+
+#### 4.2.2.2. Aspect Leaders and Collaborators
+
+Para optimizar la coordinación y efectividad durante el desarrollo del Sprint 2, el equipo formalizó la Leadership-and-Collaboration Matrix (LACX). Cada aspecto técnico y funcional cuenta con un integrante designado como Líder (L), responsable de velar por la coherencia técnica y el cumplimiento de los criterios de aceptación, y Colaboradores (C), encargados de apoyar en la codificación, revisión cruzada de código y pruebas automatizadas:
+
+* **Aspecto 1: Driver Safety & Location (US03, US04):** Desarrollo de la interfaz nativa del conductor, botón de pánico de activación inmediata sin sonido ni vibración, almacenamiento local SQLite y captura de telemetría GPS en segundo plano.
+* **Aspecto 2: Passenger Identity & QR Journey (US06, US23, US24):** Formulario de registro con captura facial, módulo de escaneo de QR de la unidad con cámara y lógica de detección de alejamiento geográfico (>100 m durante 60 s).
+* **Aspecto 3: Passenger Panic & Threshold Management (US08):** Envío de solicitudes de pánico con mensaje y fotografía del incidente, y lógica de agregación temporal (umbral de 3 pasajeros en 5 minutos) en el backend.
+* **Aspecto 4: Telemetry Services & Event Dispatch (US18, US20):** Implementación de los controladores RESTful de geolocalización, persistencia en base de datos y canal de notificaciones en tiempo real vía WebSockets hacia la central de operaciones.
+
+| Team Member (Apellidos, Nombres) | GitHub Username | Driver Safety & Location (US03, US04) | Passenger Identity & QR Journey (US06, US23, US24) | Passenger Panic & Threshold Management (US08) | Telemetry Services & Event Dispatch (US18, US20) |
+|---|---|:---:|:---:|:---:|:---:|
+| **Delgado Arriola, Leonardo Sebastian** | `LeonardoDelgadoA` | **L** | C | C | C |
+| **Acuache Lucas, Mathias Joaquin** | `mathias-acuache` | C | **L** | C | C |
+| **Arechaga Saavedra, Mathias Augusto** | `MathiasArechaga` | C | C | **L** | C |
+| **Espinoza Orrego, Valentino Andre** | `ValentinoEspinoza` | C | C | C | **L** |
+| **Fernández Linares, Alvaro Sebastian** | `alvarofdez` | C | C | **L** | C |
+
+#### 4.2.2.3. Sprint Backlog 2
+
+El Sprint Backlog del Sprint 2 reúne las historias de usuario priorizadas del Product Backlog orientadas al núcleo operativo de SafeBus: el despacho de emergencias críticas del conductor, la transmisión telemática de la flota en ruta, el registro seguro de pasajeros y el envío de solicitudes con evidencia fotográfica. A continuación, se presenta la referencia al tablero de gestión ágil y la descomposición técnica de cada historia de usuario en tareas de desarrollo, pruebas e integración:
+
+> **URL público del Board de seguimiento (Trello / Jira):** `https://trello.com/b/safebus-sprint2`
+
+<div align="center">
+  <img src="../docs/insights/sprint2-board.png" alt="Board de seguimiento del Sprint 2"/>
+  <p><i>Tablero de control de estado del Sprint 2</i></p>
+</div>
+
+| Sprint # | Sprint 2 | | | | | | | |
+|:---:|:---:|---|:---:|---|---|:---:|:---:|:---:|
+| **User Story Id** | **User Story Title** | **Work-Item / Task Id** | **Task Title** | **Description** | **Estimation (Hours)** | **Assigned To** | **Status** | |
+| **US04** | Trigger an Immediate Driver Emergency Alert | TSK-04-01 | Driver Panic Button UI | Implementar botón de pánico en Jetpack Compose con activación inmediata y sin sonido ni vibración | 5 | Delgado Arriola, Leonardo Sebastian | Done |
+| | | TSK-04-02 | Local Offline Alert Persistence | Configurar encolamiento persistente en SQLite local para alertas activadas sin cobertura de red | 6 | Delgado Arriola, Leonardo Sebastian | Done |
+| | | TSK-04-03 | Backend Driver Emergency Ingestion | Desarrollar endpoint `POST /api/v1/emergencies/driver` con prioridad Critical y registro de hora de activación | 6 | Espinoza Orrego, Valentino Andre | Done |
+| **US03** | Share Bus Location During an Active Shift | TSK-03-01 | Background Location Collection Service | Implementar servicio en segundo plano con `FusedLocationProviderClient` para muestreo cada 30 segundos | 7 | Delgado Arriola, Leonardo Sebastian | Done |
+| | | TSK-03-02 | Location Queue & Sync | Implementar sincronización asíncrona de lotes de coordenadas retenidas hacia el backend | 5 | Fernández Linares, Alvaro Sebastian | Done |
+| **US18** | Provide Bus Location for Monitoring and Journey Completion | TSK-18-01 | Ingest & Query Location REST Endpoints | Implementar controladores `POST /api/v1/trips/{tripId}/locations` y `GET /api/v1/buses/{busId}/location/latest` | 6 | Espinoza Orrego, Valentino Andre | Done |
+| | | TSK-18-02 | Location Entity & Spatial Indexing | Mapear entidades JPA para lecturas de coordenadas con validación de precisión y marcas de tiempo | 4 | Acuache Lucas, Mathias Joaquin | Done |
+| **US23** | Register a Passenger Account with DNI and Face Photo | TSK-23-01 | Passenger Registration Form UI | Construir formulario de registro móvil con validación de DNI de 8 dígitos y políticas de contraseña | 5 | Acuache Lucas, Mathias Joaquin | Done |
+| | | TSK-23-02 | Face Photo Capture & Validation | Integrar selector/cámara con validación de formato JPEG/PNG y tamaño máximo de 5 MB | 6 | Acuache Lucas, Mathias Joaquin | Done |
+| | | TSK-23-03 | Backend Registration & Duplicate DNI Guard | Desarrollar servicio `POST /api/v1/passengers/register` con almacenamiento privado y prevención de duplicados | 6 | Espinoza Orrego, Valentino Andre | Done |
+| **US06** | Verify a Bus and Start a Passenger Journey | TSK-06-01 | QR Scanner Screen | Integrar lector de códigos QR mediante CameraX para lectura de credencial y validación de unidad | 6 | Arechaga Saavedra, Mathias Augusto | Done |
+| | | TSK-06-02 | Journey Association Service | Desarrollar endpoint `POST /api/v1/journeys` que valida turno activo del bus y vincula viaje a la cuenta | 5 | Fernández Linares, Alvaro Sebastian | Done |
+| **US08** | Submit a Passenger Panic Request with Message and Photo | TSK-08-01 | Passenger Panic Request UI | Diseñar formulario de reporte con captura fotográfica obligatoria de evidencia y mensaje descriptivo | 7 | Arechaga Saavedra, Mathias Augusto | Done |
+| | | TSK-08-02 | Multipart Evidence Upload | Implementar transmisión de datos y archivo de evidencia fotográfica hacia el servicio de almacenamiento | 6 | Fernández Linares, Alvaro Sebastian | Done |
+| | | TSK-08-03 | Backend Group Threshold Window Service | Desarrollar regla de agregación de solicitudes: umbral de 3 pasajeros distintos en ventana de 5 minutos | 9 | Espinoza Orrego, Valentino Andre | Done |
+| **US20** | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-01 | WebSocket Notification Broker | Configurar broker STOMP / WebSocket en Spring Boot para despacho en tiempo real al panel supervisor | 7 | Espinoza Orrego, Valentino Andre | Done |
+| | | TSK-20-02 | Supervisor Notification Listener | Implementar cliente de suscripción a eventos de alerta para actualización en vivo de casos de emergencia | 5 | Arechaga Saavedra, Mathias Augusto | Done |
+| **Task General** | Constraint de Proyecto | TSK-GEN-01 | OpenAPI Documentation & Deployment Update | Actualizar documentación de endpoints en Swagger UI y verificar el pipeline de despliegue en Azure Container Registry | 5 | Espinoza Orrego, Valentino Andre | Done |
+
+#### 4.2.2.4. Development Evidence for Sprint Review
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|-------------------|------------------------|-----------------|
+| | | | | | |
+
+#### 4.2.2.5. Testing Suite Evidence for Sprint Review
+
+[Unit / Integration / Acceptance tests — archivos .feature en Gherkin]
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|-------------------|------------------------|-----------------|
+| | | | | | |
+
+#### 4.2.2.6. Execution Evidence for Sprint Review
+
+[Resumen + screenshots de vistas implementadas + video de navegación]
+
+#### 4.2.2.7. Services Documentation Evidence for Sprint Review
+
+| Endpoint | Verbo HTTP | Sintaxis | Parámetros | Ejemplo Response |
+|----------|-------------|----------|--------------|----------------------|
+| | | | | |
+
+URL del repositorio de Web Services: [completar]
+Commits relacionados con documentación: [completar]
+
+#### 4.2.2.8. Software Deployment Evidence for Sprint Review
+
+[Cuentas, configuración de recursos cloud, capturas del proceso]
+
+#### 4.2.2.9. Team Collaboration Insights during Sprint
+
+[Capturas de analíticos de colaboración/commits de GitHub + interpretación]
+
 ---
 
 ## 4.3. Validation Interviews
