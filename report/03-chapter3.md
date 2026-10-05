@@ -745,5 +745,8 @@ User Flow 9: User goal revisar los mensajes y fotos de un grupo de pasajeros y a
 
 ### 3.1.4.5. Mobile Applications Prototyping
 
-[Prototipos con simulación de interacción — 1 screenshot + enlace a video de Microsoft
-Stream por aplicación]
+En este apartado se ha podido realizar la demostración del Prototipo de nuestro mobile application, todo ello se ha realizado en figma, en el cual se ha podido demostrar nuestra landing page en desktop y mobile conectandola con la aplicación mobile que se ha realizado, asi tambien como la explicación de todo lo que se ha podido observar.
+
+![Lámina de tipografía](../docs/ux-ui-mobile-design/prototyping-mobile/Prototyping.png)
+
+[Video Mobile Prototyping](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202314898_upc_edu_pe/IQBmbIiFvppXSKy6jJaSKZWvAS9SMqiMv5_uBFhpEYrUGvg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ZyFetQ)
