@@ -174,6 +174,30 @@ Video consolidado: [upc-pre-<2026-02>-1acc0238-<4939>-<DreamTeam>-needfinding-<a
 |Inicio | 13:41 |
 | **Resumen** | Elverth nos comenta que su labor diaria se divide entre cuadrar la salida matutina de decenas de buses mediante planillas físicas y resolver retrasos causados por choferes que no asisten a su turno. Indica que el mayor desafío operativo radica en la vulnerabilidad frente a asaltos y presiones por extorsión, eventos que suelen reportarse con minutos de retraso mediante llamadas telefónicas, lo que anula la posibilidad de una respuesta policial oportuna y genera pérdidas económicas constantes. A esto se suma la imposibilidad de fiscalizar la unidad durante el recorrido, facilitando malas prácticas como la entrega del volante a terceros no autorizados sin el consentimiento de la empresa. Por ello, valora como indispensable una plataforma en tiempo real capaz de autenticar al conductor y emitir alertas inmediatas, remarcando que la principal barrera a considerar antes de implementarla será lidiar con los problemas de cobertura de red y la desconfianza de los trabajadores hacia la supervisión digital. |
 
+### **Segmento 3: Pasajeros**
+
+### Entrevista 1: Alejandra Negrete
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Alejandra Negrete |
+| **Imagen** | <img src="../assets/entrevista1-segmento3.png" width="600" alt="Foto Entrevista 1" /> |
+| **Edad** | 20 |
+| **Ocupación** | Estudiante Universidad y Trabajo Remoto |
+| **Link** | [Entrevista 1 Segmento 3](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202314898_upc_edu_pe/IQDyh4mfoXvaR72xzpI9Gr2nAbz8x_R5cbInP12uYch9h50?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=jxrxGf)  |
+| **Resumen** | La entrevistada señala sentirse bastante intranquila al viajar de noche, exponiéndose a robos, empujones y acoso. Siente desconfianza por la informalidad de algunos buses y la falta de identificación de los conductores. Ante una emergencia, su reacción actual es acercarse a la puerta para huir o pegarse a otras mujeres; evita sacar el celular para no convertirse en blanco de robo. Respecto al uso de SafeBus, aunque reconoce que escanear un QR en la puerta puede ser un fastidio por el apuro, está dispuesta a hacerlo si garantiza su seguridad. Aprueba totalmente el registro previo con DNI y foto para viajar en unidades monitoreadas. Sin embargo, considera muy peligroso tener que tomar una foto como evidencia durante un asalto violento, sugiriendo en su lugar un botón de emergencia silencioso. |
+
+### Entrevista 2: Bruno Elescano
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Entrevistado** | Bruno Elescano |
+| **Imagen** | <img src="../assets/entrevista2-segmento3.png" width="600" alt="Foto Entrevista 2" /> |
+| **Edad** | 20 |
+| **Ocupación** | Estudiante y Trabajo en Mall |
+| **Link** | [Entrevista 2 Segmento 3](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202314898_upc_edu_pe/IQAc-bhKU2uXTr-WaGyDmYs5AXFlZADAEleoJFiHzL2d35E?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=7siE2k) |
+| **Resumen** | El entrevistado viaja constantemente a la defensiva, especialmente de noche, cuidando sus pertenencias. Le genera temor la improvisación de los choferes, ya que ante un accidente podrían darse a la fuga sin ser identificados. Actualmente, ante personas sospechosas, prefiere bajarse del bus o simplemente esconder sus cosas sin usar el teléfono. Sobre la adopción de SafeBus, advierte que escanear el QR en hora punta sería incómodo por los empujones, por lo que requeriría tener la app lista antes de subir. Está de acuerdo con brindar su DNI y foto si eso asegura el monitoreo del viaje. Finalmente, considera irreal y muy riesgoso sacar el celular para tomar fotos o escribir reportes durante un asalto, prefiriendo un botón que envíe una alerta inmediata sin necesidad de evidencia visual. |
+
 ### 2.2.3. Análisis de entrevistas
 
 El análisis se basa en las fichas y los resúmenes de las seis entrevistas registradas en 2.2.2: tres del segmento Conductores y tres del segmento Supervisores de Empresa. Cada segmento cuenta con el mínimo de tres entrevistas indicado en el enunciado. Se comparan características objetivas —edad y actividades o condiciones de trabajo declaradas— y subjetivas —opiniones, prioridades, preocupaciones y condiciones de adopción— para sustentar los arquetipos de SafeBus.
@@ -246,6 +270,26 @@ El patrón compartido es un responsable operativo que organiza las salidas y nec
 
 La resistencia o desconfianza del personal también aparece en los tres registros. Por ello, la adopción debe contemplar una explicación comprensible del propósito del monitoreo y de quién accede a los datos. La conectividad, citada por dos entrevistados, justifica distinguir información vigente, datos no disponibles y envíos pendientes. La capacitación y facilidad de uso tienen respaldo individual y complementan el perfil sin convertirse en características universales. Las edades observadas describen a estos participantes y no permiten afirmar que los supervisores del sector tengan necesariamente ese rango de edad.
 
+**Segmento 3: Pasajeros de transporte público**
+
+**Base de entrevistas**
+
+| Código | Entrevistado y registro de referencia | Edad | Contexto documentado |
+| :--- | :--- | :--- | :--- |
+| P1 | [Alejandra Negrete](#entrevista-1-alejandra-negrete) | 20 años | Describe acoso y robos de noche. Valora el registro con DNI y QR, pero advierte sobre el grave riesgo de tomar fotos durante un asalto. |
+| P2 | [Bruno Elescano](#entrevista-2-bruno-elescano) | 20 años | Describe viajes a la defensiva y temor a conductores informales. Acepta el registro biométrico, pero alerta sobre la fricción de escanear el QR en hora punta y rechaza enviar fotos en emergencias. |
+
+
+**Características comunes y condiciones particulares**
+
+| Tipo | Característica identificada en el registro | Frecuencia | Porcentaje | Evidencia |
+| :--- | :--- | :--- | :--- | :--- |
+| Objetiva, declarada | Describe alta exposición a riesgos (robos, acoso o accidentes) durante el trayecto nocturno o en hora punta. | 2 de 2 | 100 % | P1 menciona acoso y robos; P2 viaja a la defensiva con la mochila adelante. |
+| Objetiva, declarada | Identifica la falta de acción con el celular durante emergencias actuales por miedo a perder el equipo. | 2 de 2 | 100 % | P1 y P2 evitan sacar el celular ante sospechas para no ser un blanco. |
+| Subjetiva | Muestra disposición a escanear el código QR del bus, pero condicionado al aforo y la prisa. | 2 de 2 | 100 % | P1 y P2 lo harían, pero reconocen incomodidad y presión de otros pasajeros al subir en hora punta. |
+| Subjetiva | Acepta el registro de datos personales (DNI y foto) a cambio de monitoreo y seguridad. | 2 de 2 | 100 % | P1 y P2 aprueban la medida y valoran saber quiénes más viajan en la unidad. |
+| Subjetiva | Rechaza enfáticamente la toma de fotografías o escritura de mensajes durante una emergencia violenta (asalto). | 2 de 2 | 100 % | P1 y P2 priorizan un botón de pánico silencioso, considerando que tomar fotos expone directamente su vida. |
+
 #### Síntesis de los segmentos e implicaciones para SafeBus
 
 Los conductores buscan comunicar un peligro y ser localizados; los supervisores necesitan recibir ese aviso, identificar al responsable de la unidad y coordinar la respuesta. Ambos segmentos valoran el apoyo digital, aunque el interés expresado todavía no demuestra adopción efectiva ni una reducción comprobada de incidentes o tiempos de atención.
@@ -258,6 +302,10 @@ Los conductores buscan comunicar un peligro y ser localizados; los supervisores 
 | Privacidad indicada por D2 y desconfianza o resistencia descrita por S1–S3. | Refuerza el acceso por rol y la protección de datos de US16 y US17, junto con una explicación clara de su uso. |
 | Conectividad indicada por S1 y S3. | Refuerza los escenarios de envío pendiente, sincronización y recuperación incluidos en las historias de ubicación y emergencias. No demuestra todavía que esas soluciones funcionen en campo. |
 | Capacitación indicada por S1 y claridad o facilidad de uso indicadas por D3 y S2. | Orienta el contenido explicativo y las futuras pruebas de comprensión de los recorridos existentes. |
+| Rechazo total a tomar fotos o escribir reportes en asaltos, indicado por P1 y P2. | Impacta en las Historias de Usuario de emergencias. Sustenta la necesidad de un **botón de pánico de un solo toque (silencioso)**, eliminando la obligatoriedad de enviar evidencia multimedia para validar una alerta grave. |
+| Preocupación por la fricción al escanear el QR en hora punta, descrita por P1 y P2. | Respalda la necesidad de un proceso de escaneo extremadamente rápido y la concientización del usuario para tener la app abierta antes de abordar (validación inicial). |
+| Total aceptación del registro de identidad (DNI y rostro), indicado por P1 y P2. | Valida la adopción de los requisitos de registro del pasajero (US de Onboarding). Los usuarios justifican la entrega de datos personales si el valor a cambio es el monitoreo centralizado. |
+| Desconfianza generalizada hacia el conductor y la unidad, mencionada por P1 y P2. | Refuerza la importancia de mostrar el estado del conductor, su foto y autorización inmediatamente después de escanear el QR, antes de que el usuario tome asiento. |
 
 Las entrevistas aportan sustento a las necesidades del conductor y de la empresa, pero no validan por sí solas la precisión de sensores, el cálculo de aforo ni las decisiones técnicas pendientes de prueba. Tampoco aportan evidencia directa del segmento Pasajeros: el registro con DNI y rostro, las solicitudes con mensaje y foto, el umbral de tres pasajeros en cinco minutos y el cierre a más de 100 metros durante 60 segundos proceden de los acuerdos de alcance y QA, y deben contrastarse con ese segmento.
 
