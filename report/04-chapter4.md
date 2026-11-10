@@ -1063,6 +1063,26 @@ Durante el transcurso del Sprint 2, el equipo DreamTeam consolidó su disciplina
 
 ### 4.3.1. Diseño de Entrevistas
 
+### Segmento 1: Operadores y Conductores de Transporte Público
+
+1. ¿Qué tan fluido y directo le resultó el proceso de autenticación en la pantalla de Iniciar Sesión con sus credenciales de conductor y qué fue lo primero que llamó su atención al entrar a la pantalla principal de Mi Turno?
+2. Observando la información del turno activo en la pantalla de Mi Turno, ¿le resulta evidente identificar los datos operativos de su unidad asignada (placa del bus, ruta programada y horario de servicio)?
+3. En la pantalla principal de Mi Turno se muestra el estado de su programación del día. ¿Considera que esta ubicación es la ideal para confirmar rápidamente que está listo para iniciar su recorrido, o preferiría ver esta información en otra sección?
+4. En la sección de Mi Turno, si tuviera que vincularse al bus que va a operar, ¿qué tan intuitivo le parece el flujo de validación empezando por el botón Validar Turno y escaneando el código QR físico de la unidad?
+5. En la parte superior de la pantalla durante su recorrido, ¿cómo interpreta el indicador de estado del turno frente al tiempo de inicio y fin programado? ¿Le da una noción clara del avance de su jornada?
+6. En la pantalla de operación, encontrará los datos de la ruta y las alertas vigentes del trayecto. ¿La interfaz visual con las etiquetas de ruta y avisos operativos le resulta clara y convincente para mantenerse informado sobre las condiciones de su recorrido sin distraer el manejo?
+7. En la sección de Mis Alertas, ¿el diseño de tarjetas y etiquetas de estado (Pendiente de transmisión, Activa, En Progreso / En Atención, Cerrada) le facilita visualizar en qué etapa de respuesta se encuentra la central de la empresa ante su reporte?
+8. En la pantalla de Mi Turno, el botón de Emergencia tiene prioridad máxima (Critical) asignada directamente a su perfil de conductor. ¿Le resulta claro cómo esta configuración garantiza que su alerta llegue de forma inmediata a la empresa sin depender de la aprobación de nadie ni de reportes de terceros?
+9. En el sistema de asignaciones, su turno queda validado y protegido durante su horario de servicio para evitar que otra persona opere con su cuenta. Como conductor, ¿comprende cómo esta validación protege su identidad y responsabilidad sobre la unidad durante las horas de mayor afluencia?
+10. En la barra de estado de la aplicación, ¿la información sobre la señal de red, el estado del GPS y el envío automático de coordenadas cada 30 segundos le da la seguridad de que la central conoce su ubicación exacta en tiempo real sin necesidad de reportarse por radio o teléfono?
+11. Al presentarse una situación de peligro inminente (asalto, cobro de cupos o siniestro vial), ¿el botón rojo prominente de Emergencia en la zona inferior de la pantalla le genera la confianza de enviar un auxilio inmediato sin rodeos ni trámites previos?
+12. A diferencia de las solicitudes de los pasajeros, el botón del conductor activa la emergencia en un solo toque sin exigirle rellenar formularios, redactar mensajes ni tomar fotografías. ¿Esta activación directa le parece lo suficientemente rápida y segura para no exponer su vida mientras está al volante?
+13. Al presionar el botón de Emergencia, la aplicación confirma el envío en pantalla pero no emite ningún sonido de alarma ni vibración física en el teléfono. Conociendo el riesgo de represalias ante delincuentes armados, ¿esta respuesta silenciosa y discreta le resulta adecuada para proteger su integridad?
+14. Como conductor que realiza jornadas desde la madrugada (4:00 a. m.) hasta altas horas de la noche, ¿la paleta de colores oscuros (Modo Oscuro / Dark Mode), los botones amplios y la fluidez de la aplicación le transmiten comodidad visual y le evitan deslumbramientos o fatiga ocular al manejar?
+15. Sabiendo que la aplicación únicamente registra la ubicación GPS del vehículo durante el horario de su turno activo, y que bajo ninguna circunstancia graba audio, video ni monitorea su teléfono fuera de servicio, ¿se sentiría tranquilo y en total confianza utilizándola en su trabajo diario?
+16. De todo lo que probó hoy (validación de turno con código QR, botón de emergencia silencioso en un toque, telemetría automática de ubicación y envío guardado sin conexión), ¿cuál herramienta considera que tendría el impacto más rápido para reducir los riesgos y situaciones de peligro en su ruta diaria?
+17. Si su empresa de transporte o consorcio implementara SafeBus de forma permanente en todas las unidades de su flota, ¿estaría dispuesto a utilizar la aplicación en cada una de sus jornadas diarias? ¿Qué cambio o mejora le sugeriría a SafeBus para que le brinde mayor ayuda y seguridad al conducir en su ruta?
+
 Las sesiones contrastan la comprensión y uso de los flujos de seguridad por rol. Se emplean cuentas y datos de prueba autorizados para el registro y las imágenes; las grabaciones del informe no muestran DNI completos ni fotos privadas de otros participantes.
 
 | Segmento | Tareas a observar | Preguntas de validación |
