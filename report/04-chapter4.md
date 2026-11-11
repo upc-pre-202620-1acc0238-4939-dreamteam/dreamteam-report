@@ -1597,6 +1597,37 @@ URL del repositorio de Web Services: https://github.com/upc-pre-202620-1acc0238-
 
 URL de la documentación desplegada: [completar: URL desplegada]. En el Sprint 1 se publicó en el servicio de Railway (4.2.1.7); esa URL no se verificó para este Sprint.
 
+#### 4.2.3.8. Software Deployment Evidence for Sprint Review
+
+El despliegue del backend sigue el procedimiento de la sección 4.1.4: Railway construye la imagen desde el `Dockerfile` del repositorio de Web Services y la vuelve a desplegar en cada push a la rama enlazada, con una base de datos MySQL administrada. En este Sprint no cambiaron el `Dockerfile`, el `.dockerignore`, el `pom.xml` ni el perfil `prod`: entre el último commit anterior al Sprint (`155baa4`) y el merge del PR #18 (`8e4fe06`) el único archivo de configuración o de empaquetado que se modificó fue `application.properties`, con ocho propiedades nuevas. Todas tienen un valor por defecto en ese archivo, por lo que el servicio de Railway no necesita variables de entorno nuevas respecto de la tabla de 4.1.4.
+
+**Web Services.**
+
+| Elemento | Ubicación en el repositorio | Commit Id |
+|---|---|---|
+| Tareas programadas habilitadas por defecto: vencimiento de los grupos de solicitudes de pánico que superan su ventana; se pueden desactivar con `safebus.scheduling.enabled=false` | `SchedulingConfig`, `GroupExpiryJob`, `application.properties` | `c9cd30b` |
+| Configuración del stream de notificaciones para supervisores: `safebus.notifications.delivery-threads=8`, `queue-capacity=1000`, `mailbox-capacity=64`, `max-per-user=3`, `max-per-company=50`, `keep-alive=PT15S` y `max-connection-age=PT30M` | `application.properties`, `NotificationKeepAliveJob` | `dceea20` |
+
+Cualquiera de las propiedades nuevas puede sobrescribirse desde el servicio de Railway con una variable de entorno, sin modificar el repositorio. El perfil `prod` mantiene `spring.jpa.hibernate.ddl-auto=update`, de modo que las tablas de las nuevas entidades del Sprint (solicitudes y grupos de pánico, fuentes de conteo y aforo) las crea Hibernate al iniciar la aplicación, sin una migración manual.
+
+**Aspectos de operación del Sprint.**
+
+- El stream `GET /api/v1/notifications/stream` mantiene conexiones abiertas: el servidor envía un comentario de keep-alive cada 15 segundos, cierra cada conexión a los 30 minutos como máximo, y admite hasta 3 streams por usuario y 50 por empresa; el cliente debe reconectarse y recuperar lo perdido por REST.
+- Las solicitudes de pánico aceptan una foto de evidencia; el límite de carga (6 MB por archivo y 7 MB por solicitud) ya existía antes del Sprint.
+- Los datos de ejemplo del perfil `dev` no se cargan en producción, igual que en 4.1.4.
+
+**Estado del despliegue de este Sprint.** El repositorio contiene todo lo necesario para desplegar la versión del Sprint (`develop` en `8e4fe06`), pero no se verificó que Railway esté ejecutando esa versión.
+
+| Dato | Valor |
+|---|---|
+| Commit desplegado en Railway | [completar: commit y fecha del último redeploy] |
+| Rama enlazada al servicio | [completar: confirmar que sigue siendo `develop`] |
+| URL del servicio desplegado | [completar: URL desplegada] |
+| Respuesta de `GET /api/v1/health` en el servicio desplegado | [completar: captura] |
+| Captura del historial de deployments de Railway | [completar: captura] |
+| Captura de las variables del servicio, sin mostrar los valores secretos | [completar: captura] |
+| Landing Page y aplicación móvil: cambios de despliegue en el Sprint | [completar: si corresponde] |
+
 
 ## 4.3. Validation Interviews
 
