@@ -1258,6 +1258,68 @@ La tabla de commits cubre únicamente lo integrado en `develop` entre el 28/10/2
 
 Los 54 commits de implementación y pruebas de este Sprint fueron escritos con la identidad de Git `ORION-tech-c`; el detalle de la autoría por semana se presenta en la sección 4.2.3.9. Los repositorios de la Landing Page y de la aplicación móvil no se incluyen en esta tabla: `[completar: commits de safebus-landing y safebus-mobile del Sprint 3, si corresponde]`.
 
+#### 4.2.3.5. Testing Suite Evidence for Sprint Review
+
+El Sprint se verificó con pruebas automatizadas en el repositorio de Web Services (`safebus-backend`), escritas con JUnit 5 y Spring Boot Test. Las pruebas de capa REST usan `MockMvc` sobre una base H2 y, para el flujo de notificaciones, se levanta un servidor real y se consume el stream por HTTP. La ejecución completa se hizo con `./mvnw -B test` sobre una copia limpia de `develop` en el commit `8e4fe06` (merge del PR #18), según la marca de tiempo del log, el 11/11/2026.
+
+| Dato de la ejecución | Resultado |
+|---|---|
+| Comando | `./mvnw -B test` |
+| Commit evaluado | `8e4fe06` (`develop`) |
+| Clases de prueba ejecutadas | 162 |
+| Tests ejecutados | 1302 |
+| Fallos / Errores / Omitidos | 0 / 0 / 0 |
+| Resultado de Maven | `BUILD SUCCESS` |
+| Duración | 1 min 26 s |
+
+La cifra de 1302 corresponde a toda la suite del repositorio en ese commit, incluidas las pruebas de Sprints anteriores. La siguiente tabla relaciona con cada User Story las clases de prueba que se añadieron o modificaron entre el 28/10/2026 y el 10/11/2026; los números entre paréntesis son los tests ejecutados por clase según el log de Maven, y las clases ya existentes que se modificaron en la ventana se indican como «modificada», por lo que su conteo incluye también pruebas anteriores. Las clases de apoyo (`support/`, fixtures y utilidades) no se listan.
+
+**Pruebas por User Story.**
+
+| US | Alcance verificado | Clases de prueba (tests ejecutados) | Comportamientos verificados |
+|---|---|---|---|
+| US08 | Registro de solicitudes de pánico del pasajero (ventana, evidencia, grupos y vencimiento) | `PassengerRequestControllerTest` (18)<br>`RegisterPassengerRequestTest` (29)<br>`RegisterPassengerRequestRetryTest` (6)<br>`PassengerRequestWindowControllerTest` (10)<br>`PassengerRequestGroupTest` (20)<br>`PassengerRequestTest` (8)<br>`PassengerRequestGroupRepositoryTest` (8)<br>`PassengerRequestRepositoryTest` (6)<br>`PassengerRequestConcurrencyTest` (4)<br>`ExpireOverdueGroupsTest` (4)<br>`GroupExpiryJobTest` (3)<br>`GroupExpiryJobTestProfileTest` (1)<br>`PassengerContextFacadeJourneyTest` (4)<br>`PublicReferenceTest` (8, modificada)<br>**Subtotal: 129** | Una solicitud con exactamente 5 minutos de antigüedad es elegible y una con 1 ms más es tardía (`late`); la solicitud tardía no aporta al umbral de un grupo abierto; una solicitud elegible para un grupo en espera de aprobación o aprobado se adjunta sin cambiar el grupo; tras el vencimiento del grupo, una nueva solicitud abre una nueva ventana con ella como única contribuyente; la foto de registro nunca se usa como evidencia; un viaje desconocido y el viaje de otra cuenta dan el mismo código y detalle; el grupo abre en `Collecting` con ventana de cinco minutos, pasa a `AwaitingApproval` y vence solo desde `Collecting`; solicitudes concurrentes sobre un mismo turno. |
+| US10 | Aprobación o rechazo de grupos, cola de revisión y cierre de la emergencia de pasajero | `RequestGroupDecisionControllerTest` (13)<br>`GroupDecisionWriterTest` (10)<br>`GroupDecisionRetryTest` (9)<br>`GroupDecisionConcurrencyTest` (3)<br>`ReviewQueueControllerTest` (12)<br>`PassengerRequestEvidenceControllerTest` (7)<br>`ClosePassengerEmergencyTest` (7)<br>`EmergencyRepositoryTest` (5)<br>`GroupsWithOtherSafetyRecordsTest` (9)<br>**Subtotal: 75** | Aprobar activa una emergencia `HIGH` y mueve el grupo a `Approved`, y aprobar de nuevo devuelve 200 con la misma emergencia; aprobar o rechazar fuera de estado es un conflicto; rechazar registra motivo y respuesta y no crea emergencia, y es idempotente; rechazar sin motivo válido es 422; un grupo ajeno o inexistente da el mismo 403; solo un supervisor con empresa puede decidir (sin token, 401); la cola separa emergencias del conductor, emergencias de pasajero y grupos en espera, con orden determinista, solo trabajo abierto de la empresa del solicitante y sin exponer identidad ni imágenes; decisiones concurrentes. |
+| US09 | Consulta de las solicitudes propias del pasajero | `MyPassengerRequestControllerTest` (17)<br>`MyPassengerRequestPhotoTest` (8)<br>**Subtotal: 25** | Estados informados al pasajero: `Collecting` con su mensaje, referencia de evidencia y conteo; `Expired` aun antes de que corra el job; en espera de aprobación con tres contribuyentes; `late` sin grupo ni conteo; rechazado con hora de decisión y solo la respuesta orientada al usuario; emergencia activa, en atención y cerrada sin exponer el resultado interno; listado solo de las solicitudes del propio pasajero, la más reciente primero; acceso a la foto propia. |
+| US07 | Historial de seguridad del bus con grupos de solicitudes | `BusSafetyHistoryGroupsTest` (10)<br>`GetBusSafetyHistoryQueryServiceTest` (8, modificada)<br>`BusSafetyHistoryControllerTest` (11, modificada)<br>**Subtotal: 29** | Un grupo y su emergencia se muestran como un solo ítem con la misma referencia en todos los estados; un grupo vencido se informa `Expired` antes de que corra el job; un grupo rechazado se muestra como no aprobado sin motivo ni respuesta; la emergencia del conductor conserva su referencia y no tiene conteo; se excluyen los grupos de otro turno; un historial vacío solo indica que no hay reportes; un viaje terminado o un turno ajeno dan el mismo 403. |
+| US24 | Fin del viaje del pasajero y separación automática (lado servidor) | `PassengerJourneyEndTest` (13)<br>`JourneyEndAutomaticSeparationTest` (10)<br>`JourneyEndConcurrencyTest` (3)<br>`JourneyEndKeepsSafetyRecordsTest` (8)<br>`TimePolicyTest` (1)<br>`EndJourneyCommandServiceTest` (13, modificada)<br>`JourneyControllerTest` (20, modificada)<br>**Subtotal: 68** | La separación automática guarda la hora original y el resumen; sin hora ni resumen se usa la hora del servidor; `endedAt` anterior al inicio se rechaza y el viaje sigue activo; `endedAt` más allá de la tolerancia futura se rechaza y dentro de ella se ajusta a la hora del servidor; un resumen con otro motivo, incompleto o no positivo se rechaza; un reintento con datos distintos devuelve los originales sin cambiar nada; ids ajenos, desconocidos o mal formados dan el mismo 403; otro rol es 403 y sin token 401; fines concurrentes; las solicitudes y emergencias sobreviven al fin del viaje. |
+| US19 | Fuente de conteo y eventos de aforo (dispositivo) | `CountingSourceControllerTest` (18)<br>`CountingSourceTest` (7)<br>`CountingSourceKeysImplTest` (5)<br>`CountingSourceCredentialRedactionTest` (2)<br>`CountingSourceKeyAuthenticationIntegrationTest` (9)<br>`CountingSourceKeyFilterTest` (7)<br>`DeviceKeyIsolationTest` (5)<br>`BusOccupancyTest` (21)<br>`OccupancyEventTest` (3)<br>`OccupancyEventControllerTest` (18)<br>`OccupancyEventConcurrencyTest` (3)<br>`OccupancyInitializationAndHeartbeatTest` (15)<br>`OccupancyPersistenceTest` (3)<br>**Subtotal: 116** | El registro devuelve 201 con la clave una sola vez y guarda solo su hash; una segunda fuente activa para el mismo bus es conflicto; la lista nunca contiene la clave ni su hash; la rotación entrega una clave nueva y la anterior deja de funcionar; la revocación detiene la clave y es idempotente; el primer evento devuelve 201 con el nuevo conteo; un reintento idéntico devuelve 200; una secuencia con salto devuelve 409 con la secuencia esperada y se recupera con el reenvío; una salida por debajo de cero es 422 y marca el conteo inconsistente; la inicialización parte de cero y el heartbeat registra la hora del servidor; claves erróneas, revocadas, rotadas o de otro bus reciben la misma negativa. |
+| US11 | Aforo y grupos en la vista de flota del supervisor (parte complementaria) | `OccupancyControllerTest` (16)<br>`OccupancyAssessmentTest` (12)<br>`TripContextFacadeOccupancyTest` (6)<br>`FleetContextFacadeBatchCapacityTest` (2)<br>`SafetycaseContextFacadeGroupsTest` (8)<br>`FleetOverviewControllerTest` (22, modificada)<br>`GetFleetOverviewQueryServiceTest` (21, modificada)<br>**Subtotal: 87** | El aforo se informa vigente con capacidad y horas, sobre capacidad, con capacidad desconocida, desactualizado (`Stale`) solo cuando el heartbeat supera los dos minutos o nunca existió, o no disponible (sin inicializar, con salto de secuencia, inconsistente o de un turno cerrado); un pasajero o un conductor reciben 403, sin token 401, y un bus ajeno o inexistente recibe la misma negativa; la clave del dispositivo no puede leer el aforo; las respuestas de buses para el pasajero no incluyen valores de aforo. Las clases de la vista de flota se modificaron en la ventana. |
+| US20 | Flujo de notificaciones en tiempo real para supervisores (SSE) | `NotificationDispatcherTest` (10)<br>`NotificationSubscriptionTest` (4)<br>`SubscriptionRegistryTest` (6)<br>`NotificationStreamControllerTest` (9)<br>`NotificationStreamServerTest` (8)<br>`ConnectionPoolServerTest` (1)<br>`DeliveryTimeServerTest` (20)<br>`ReconnectRecoveryServerTest` (2)<br>`SupervisorNotificationFlowTest` (7)<br>`DriverEmergencyNotificationTest` (9)<br>`GlobalExceptionHandlerTooManyRequestsTest` (1)<br>**Subtotal: 77** | Sobre un servidor real: un token vencido, mal formado o ausente da 401, uno de pasajero 403, y una empresa ajena 403 sin registrar nada; el stream abre con cabeceras de streaming, recibe comentarios de keep-alive y se cierra al vencer el token; un evento publicado llega solo a la empresa propia; una emergencia del conductor llega a cinco suscriptores dentro de cinco segundos (20 repeticiones); tras reconectar se recupera por REST y se reanuda en vivo sin duplicados; el registro rechaza el tercer stream de un usuario y el que excede el límite por empresa; el umbral envía solo `PassengerReviewRequired` y la aprobación envía una única `EmergencyActivated` de prioridad alta, incluso con ocho solicitudes o aprobaciones simultáneas; los payloads no llevan identidad, foto, mensaje ni ids internos. |
+
+Las clases de la tabla suman 606 tests de los 1302 ejecutados; el resto corresponde a pruebas de Sprints anteriores o a clases del repositorio que la ventana no tocó.
+
+**Commits de tipo `test:` del Sprint (safebus-backend).**
+
+|------------|--------|-----------|----------------|---------------------|--------------|
+| safebus-backend | `feature/safetycase-passenger-requests` | `bb568e5` | test(safetycase): cover window, late and attached requests over REST | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `ab209be` | test(safetycase): cover concurrent passenger requests on one shift | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `7c308e3` | test(safetycase): cover concurrent group decisions | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `ed92c2b` | test(safetycase): cover driver emergencies and closed shifts with open groups | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `5aed849` | test(safetycase): cover collecting and approved groups with driver panic and expiry | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `dc69879` | test(passenger): cover concurrent journey ends | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `de62788` | test(safetycase): verify requests and emergencies survive the end of a journey | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `940993e` | test(trip): cover concurrent occupancy events | — | 03/11/2026 |
+| safebus-backend | `feature/live-notifications` | `4d8c5a0` | test(notification): cover delivery time and recovery over a real server | — | 04/11/2026 |
+
+Son los 9 commits de tipo `test` entre el 28/10/2026 y el 10/11/2026; el resto de las pruebas de la tabla anterior se integró en los mismos commits `feat:` y `fix:` que el código que verifican.
+
+**Pruebas de aceptación (BDD).** El repositorio contiene tres archivos `.feature` en `src/test/resources/features/`, todos integrados antes de la ventana del Sprint (4 y 5 de octubre de 2026): `safetycase-driver-emergency.feature` (US04), `safetycase-emergency-attention.feature` (US10, inicio de atención y cierre) y `passenger-identity-journey.feature` (US23 y US06). Están escritos como especificación en Gherkin, por ejemplo:
+
+```gherkin
+Feature: Emergency Attention (US10)
+
+  # US10 S1 – Supervisor starts attention on a driver emergency
+  Scenario: Supervisor of the same company starts attention
+    Given an ACTIVE emergency belonging to company C
+    When POST /api/v1/emergencies/{id}/start-attention with a supervisor JWT for company C
+    Then the response status is 200
+```
+
+Estos archivos no se ejecutan: el `pom.xml` no declara una dependencia de Cucumber y no existen definiciones de pasos, de modo que no hay pruebas de aceptación automatizadas asociadas a ellos. Para las User Stories de este Sprint (US08, US09, US07, US24, US11, US19 y US20) no existe ningún archivo `.feature`, y de US10 solo hay uno para la parte de atención y cierre, anterior al Sprint. Por lo tanto, la verificación automatizada de este Sprint la dan las pruebas de la tabla anterior, no una suite de aceptación.
+
+[pendiente: suite BDD con Cucumber, fase 7]
+
 
 ## 4.3. Validation Interviews
 
