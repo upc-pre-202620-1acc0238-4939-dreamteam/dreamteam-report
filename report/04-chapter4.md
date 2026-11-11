@@ -1359,6 +1359,244 @@ Para preparar esta sección se inició el servicio con ese perfil sobre una copi
 
 **Video de la ejecución.** [completar: URL del video]
 
+#### 4.2.3.7. Services Documentation Evidence for Sprint Review
+
+La documentación de los Web Services se genera con springdoc-openapi a partir de las anotaciones de los controladores (`@Tag`, `@Operation`, `@ApiResponse`), igual que en el Sprint 1 (4.2.1.7). La tabla siguiente se obtuvo del documento `/v3/api-docs` de la versión del Sprint (commit `8e4fe06` de `develop`), con el servicio iniciado con el perfil `dev` y procesado con el script `openapi_table.py`, que se mantiene fuera de los repositorios. Solo incluye los endpoints añadidos o ampliados en este Sprint; los endpoints de Sprints anteriores se documentan en 4.2.1.7. Las rutas siguen la convención `/api/v1/<recurso-en-plural-kebab-case>` de la sección 4.1.3.
+
+Los endpoints de `passenger-requests` reciben `multipart/form-data`: Swagger UI muestra `id`, `journeyId`, `message` y `activatedAt` como parámetros, pero se envían como campos del formulario junto con el archivo `photo`. Los endpoints de dispositivo (`occupancy-initializations`, `occupancy-heartbeats` y `occupancy-events`) no usan token Bearer sino la clave de la fuente de conteo en la cabecera `X-Counting-Source-Key`, que el supervisor obtiene al registrar o rotar la fuente. El endpoint `GET /api/v1/passenger-requests/mine/photo` existe para tratar el texto literal `photo` como cualquier otro identificador desconocido de solicitud, por lo que solo responde 401 o 403.
+
+**Endpoints del Sprint.**
+
+| Método | Path | Auth / Rol | Parameters | Request body (`*` obligatorio) | Response codes |
+|---|---|---|---|---|---|
+| POST | `/api/v1/passenger-requests` | Bearer JWT, rol PASSENGER | `id` (form, string)<br>`journeyId` (form, string)<br>`message` (form, string)<br>`activatedAt` (form, string)<br>`photo` (form, archivo) | multipart/form-data (ver Parameters) | `201` Request recorded (COUNTED, ATTACHED or LATE)<br>`200` Identical retry of a recorded request<br>`401` No token provided<br>`403` Passenger role required or JOURNEY_ACCESS_DENIED<br>`409` REQUEST_ID_REUSED or DUPLICATE_CONTRIBUTION<br>`422` INVALID_REQUEST, INVALID_REQUEST_ID, MESSAGE_REQUIRED, MESSAGE_TOO_LONG, EVIDENCE_PHOTO_REQUIRED, EVIDENCE_PHOTO_INVALID, EVIDENCE_PHOTO_TOO_LARGE, INVALID_ACTIVATION_TIME, ACTIVATION_AFTER_JOURNEY_END, BUS_NOT_FOUND or UPLOAD_TOO_LARGE |
+| GET | `/api/v1/passenger-requests/mine` | Bearer JWT, rol PASSENGER | — | — | `200` The account's requests, or an empty list with a message<br>`401` No token provided<br>`403` Passenger role required |
+| GET | `/api/v1/passenger-requests/mine/{id}` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio) | — | `200` The request with its current status and decision<br>`401` No token provided<br>`403` Passenger role required or PASSENGER_REQUEST_ACCESS_DENIED |
+| GET | `/api/v1/passenger-requests/mine/{id}/photo` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio) | — | `200` The stored image with its original content type<br>`401` No token provided<br>`403` Passenger role required or PASSENGER_REQUEST_ACCESS_DENIED<br>`404` EVIDENCE_NOT_FOUND: the stored image is missing |
+| GET | `/api/v1/passenger-requests/mine/photo` | Bearer JWT, rol PASSENGER | — | — | `401` No token provided<br>`403` Passenger role required or PASSENGER_REQUEST_ACCESS_DENIED |
+| GET | `/api/v1/passenger-requests/{id}/photo` | Bearer JWT, rol SUPERVISOR | `id` (path, string, obligatorio) | — | `200` The stored image with its original content type<br>`401` No token provided<br>`403` Supervisor role required or EVIDENCE_ACCESS_DENIED<br>`404` EVIDENCE_NOT_FOUND: the stored image is missing |
+| POST | `/api/v1/request-groups/{id}/approve` | Bearer JWT, rol SUPERVISOR | `id` (path, string, obligatorio) | — | `201` Group approved, High-priority emergency activated<br>`200` Group already approved, the same emergency is returned<br>`401` No token provided<br>`403` Supervisor role required or GROUP_ACCESS_DENIED<br>`409` INVALID_TRANSITION |
+| POST | `/api/v1/request-groups/{id}/decline` | Bearer JWT, rol SUPERVISOR | `id` (path, string, obligatorio) | `reason`: string<br>`response`: string | `200` Group not approved; a repeated decline returns the stored decision<br>`401` No token provided<br>`403` Supervisor role required or GROUP_ACCESS_DENIED<br>`409` INVALID_TRANSITION<br>`422` REASON_REQUIRED, REASON_TOO_LONG or RESPONSE_TOO_LONG |
+| GET | `/api/v1/review-queue` | Bearer JWT, rol SUPERVISOR | — | — | `200` The three prioritized blocks<br>`401` No token provided<br>`403` Supervisor role required or REVIEW_ACCESS_DENIED |
+| GET | `/api/v1/vehicles/{id}/safety-history` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio)<br>`shiftId` (query, string) | — | `200` Redacted bus safety history<br>`401` No token provided<br>`403` Passenger role required or BUS_ACCESS_DENIED |
+| POST | `/api/v1/journeys` | Bearer JWT, rol PASSENGER | — | `busQrCode`: string | `201` Journey started<br>`200` Existing active journey on same bus returned (same body as 201)<br>`401` No token provided<br>`403` Passenger role required<br>`409` Active journey on a different bus (ACTIVE_JOURNEY_EXISTS)<br>`422` BUS_QR_INVALID (also when the body or busQrCode is missing) or BUS_NOT_IN_SERVICE |
+| POST | `/api/v1/journeys/{id}/end` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio) | `reason`: string<br>`endedAt`: string (date-time)<br>`summary`: objeto | `200` Journey ended (or already ended: original data returned)<br>`401` No token provided<br>`403` Passenger role required or JOURNEY_ACCESS_DENIED (foreign, unknown or malformed id)<br>`422` INVALID_END_REASON, INVALID_END_TIME or INVALID_END_SUMMARY |
+| GET | `/api/v1/notifications/stream` | Bearer JWT, rol SUPERVISOR | `companyId` (query, integer (int64)) | — | `200` Stream opened (text/event-stream)<br>`401` Missing, expired or invalid token<br>`403` Supervisor role required, or NOTIFICATION_SCOPE_DENIED (no company in the token, or a different companyId was requested)<br>`429` SUBSCRIPTION_LIMIT_USER or SUBSCRIPTION_LIMIT_COMPANY: too many open streams |
+| GET | `/api/v1/buses/{busId}/occupancy` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio) | — | `200` Occupancy; status is CURRENT, STALE or UNAVAILABLE (count absent)<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED |
+| POST | `/api/v1/buses/{busId}/counting-sources` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio) | `label`: string | `201` Source registered; the key is in this response only<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED<br>`409` ACTIVE_SOURCE_EXISTS — the bus already has an active source<br>`422` LABEL_TOO_LONG |
+| GET | `/api/v1/buses/{busId}/counting-sources` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio) | — | `200` Sources of the bus<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED |
+| POST | `/api/v1/buses/{busId}/counting-sources/{sourceId}/rotation` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio)<br>`sourceId` (path, integer (int64), obligatorio) | — | `200` Key rotated; the new key is in this response only<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED<br>`404` SOURCE_NOT_FOUND<br>`409` SOURCE_REVOKED |
+| POST | `/api/v1/buses/{busId}/counting-sources/{sourceId}/revocation` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio)<br>`sourceId` (path, integer (int64), obligatorio) | — | `200` Source revoked<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED<br>`404` SOURCE_NOT_FOUND |
+| POST | `/api/v1/occupancy-initializations` | Dispositivo: cabecera `X-Counting-Source-Key` (rol DEVICE) | — | `initializationId`*: string<br>`busId`*: integer (int64)<br>`shiftId`*: integer (int64)<br>`confirmedCount`*: integer (int32)<br>`confirmedAt`*: string (date-time) | `201` Count initialized<br>`200` Identical retry; nothing changed<br>`401` No credential provided<br>`403` OCCUPANCY_SOURCE_NOT_AUTHORIZED — key, bus or shift refused<br>`409` ALREADY_INITIALIZED<br>`422` Malformed request, INVALID_INITIAL_COUNT or INVALID_CAPTURE_TIME |
+| POST | `/api/v1/occupancy-heartbeats` | Dispositivo: cabecera `X-Counting-Source-Key` (rol DEVICE) | — | `busId`*: integer (int64) | `200` Heartbeat recorded with the server time<br>`401` No credential provided<br>`403` OCCUPANCY_SOURCE_NOT_AUTHORIZED — key or bus refused<br>`422` Malformed request |
+| POST | `/api/v1/occupancy-events` | Dispositivo: cabecera `X-Counting-Source-Key` (rol DEVICE) | — | `eventId`*: string<br>`busId`*: integer (int64)<br>`shiftId`*: integer (int64)<br>`sequence`*: integer (int64)<br>`type`*: enum ENTRY \| EXIT<br>`capturedAt`*: string (date-time) | `201` Event applied; the resulting count is returned<br>`200` Identical retry; nothing changed<br>`401` No credential provided<br>`403` OCCUPANCY_SOURCE_NOT_AUTHORIZED — key, bus or shift refused<br>`409` SEQUENCE_GAP (with expectedSequence), EVENT_ID_REUSED or SEQUENCE_ALREADY_APPLIED<br>`422` Malformed request, NEGATIVE_COUNT, OCCUPANCY_NOT_INITIALIZED, OCCUPANCY_INCONSISTENT or INVALID_CAPTURE_TIME |
+| GET | `/api/v1/fleet/overview` | Bearer JWT, rol SUPERVISOR | — | — | `200` Fleet overview returned<br>`401` No token provided<br>`403` Supervisor role required, or FLEET_ACCESS_DENIED |
+
+**Ejemplos de request y response.** Los ejemplos muestran la estructura de cada recurso tal como la declara el esquema OpenAPI; los valores entre `<>` indican el tipo del campo y `A|B` los valores permitidos de un campo enumerado. No son respuestas capturadas de una ejecución. Los endpoints cuya respuesta no tiene cuerpo JSON (fotos, stream) no se listan.
+
+**POST `/api/v1/passenger-requests`**
+
+Response `201`:
+
+```json
+{
+  "requestId": "<string>",
+  "status": "<string>",
+  "receivedAt": "<date-time>",
+  "groupStatus": "<string>",
+  "contributorCount": "<int32>"
+}
+```
+
+**POST `/api/v1/request-groups/{id}/approve`**
+
+Response `201`:
+
+```json
+{
+  "groupId": "<int64>",
+  "emergencyId": "<string>",
+  "status": "<string>",
+  "priority": "<string>",
+  "approvedAt": "<date-time>"
+}
+```
+
+**POST `/api/v1/request-groups/{id}/decline`**
+
+Request:
+
+```json
+{
+  "reason": "<string>",
+  "response": "<string>"
+}
+```
+
+Response `200`:
+
+```json
+{
+  "groupId": "<int64>",
+  "status": "<string>",
+  "decidedAt": "<date-time>",
+  "reason": "<string>",
+  "response": "<string>"
+}
+```
+
+**POST `/api/v1/journeys/{id}/end`**
+
+Request:
+
+```json
+{
+  "reason": "<string>",
+  "endedAt": "<date-time>",
+  "summary": {
+    "separationDistanceMeters": "<int32>",
+    "separationDurationSeconds": "<int32>"
+  }
+}
+```
+
+Response `200`:
+
+```json
+{
+  "journeyId": "<int64>",
+  "status": "<string>",
+  "endedAt": "<date-time>",
+  "endReason": "<string>",
+  "summary": {
+    "separationDistanceMeters": "<int32>",
+    "separationDurationSeconds": "<int32>"
+  }
+}
+```
+
+**GET `/api/v1/buses/{busId}/occupancy`**
+
+Response `200`:
+
+```json
+{
+  "status": "CURRENT|STALE|UNAVAILABLE",
+  "reason": "NOT_INITIALIZED|SEQUENCE_GAP|INCONSISTENT_COUNT",
+  "count": "<int32>",
+  "capacity": "<int32>",
+  "load": "WITHIN_CAPACITY|OVER_CAPACITY|CAPACITY_UNKNOWN",
+  "lastCountAt": "<date-time>",
+  "lastHeartbeatAt": "<date-time>"
+}
+```
+
+**POST `/api/v1/buses/{busId}/counting-sources`**
+
+Request:
+
+```json
+{
+  "label": "<string>"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "sourceId": "<int64>",
+  "busId": "<int64>",
+  "label": "<string>",
+  "status": "<string>",
+  "createdAt": "<date-time>",
+  "rotatedAt": "<date-time>",
+  "key": "<string>"
+}
+```
+
+**POST `/api/v1/occupancy-initializations`**
+
+Request:
+
+```json
+{
+  "initializationId": "<uuid>",
+  "busId": "<int64>",
+  "shiftId": "<int64>",
+  "confirmedCount": "<int32>",
+  "confirmedAt": "<date-time>"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "initializationId": "<string>",
+  "busId": "<int64>",
+  "shiftId": "<int64>",
+  "confirmedCount": "<int32>",
+  "confirmedAt": "<date-time>"
+}
+```
+
+**POST `/api/v1/occupancy-events`**
+
+Request:
+
+```json
+{
+  "eventId": "<uuid>",
+  "busId": "<int64>",
+  "shiftId": "<int64>",
+  "sequence": "<int64>",
+  "type": "ENTRY|EXIT",
+  "capturedAt": "<date-time>"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "eventId": "<string>",
+  "sequence": "<int64>",
+  "type": "ENTRY|EXIT",
+  "count": "<int32>",
+  "load": "WITHIN_CAPACITY|OVER_CAPACITY|CAPACITY_UNKNOWN"
+}
+```
+
+Los endpoints se agrupan en Swagger UI por controlador. En el OpenAPI generado, las respuestas 401, 403, 409 y 422 repiten el esquema de la respuesta exitosa; en la práctica los errores se devuelven con el formato `ProblemDetail` y la propiedad `code` descrita en 4.2.1.7. Los códigos que documentan los endpoints de este Sprint son los siguientes.
+
+| Estado HTTP | `code` | Situación |
+|---|---|---|
+| 403 | `JOURNEY_ACCESS_DENIED`, `PASSENGER_REQUEST_ACCESS_DENIED`, `GROUP_ACCESS_DENIED`, `REVIEW_ACCESS_DENIED`, `EVIDENCE_ACCESS_DENIED`, `BUS_ACCESS_DENIED`, `FLEET_ACCESS_DENIED`, `NOTIFICATION_SCOPE_DENIED` | El recurso es de otro pasajero, de otra empresa o de otro turno, o no existe; las pruebas verifican que se devuelve la misma respuesta en los tres casos. |
+| 403 | `OCCUPANCY_SOURCE_NOT_AUTHORIZED` | La clave de la fuente de conteo, el bus o el turno es rechazado: clave errónea, revocada o rotada, o de otro bus. |
+| 404 | `EVIDENCE_NOT_FOUND`, `SOURCE_NOT_FOUND` | Falta la imagen almacenada de la evidencia, o la fuente de conteo no existe en el bus. |
+| 409 | `INVALID_TRANSITION` | El grupo no está en espera de aprobación para aprobarlo o rechazarlo. |
+| 409 | `REQUEST_ID_REUSED`, `DUPLICATE_CONTRIBUTION` | El identificador de la solicitud ya se usó con otros datos, o la cuenta ya contribuyó al grupo. |
+| 409 | `ACTIVE_JOURNEY_EXISTS` | El pasajero ya tiene un viaje activo en otro bus. |
+| 409 | `ACTIVE_SOURCE_EXISTS`, `SOURCE_REVOKED` | El bus ya tiene una fuente activa, o se intentó rotar una fuente revocada. |
+| 409 | `ALREADY_INITIALIZED`, `EVENT_ID_REUSED`, `SEQUENCE_ALREADY_APPLIED`, `SEQUENCE_GAP` | Conflictos del conteo: ya inicializado, evento reutilizado con otro contenido, secuencia ya aplicada, o salto de secuencia (la respuesta incluye `expectedSequence`). |
+| 422 | `MESSAGE_REQUIRED`, `MESSAGE_TOO_LONG`, `EVIDENCE_PHOTO_REQUIRED`, `EVIDENCE_PHOTO_INVALID`, `EVIDENCE_PHOTO_TOO_LARGE`, `UPLOAD_TOO_LARGE`, `INVALID_REQUEST`, `INVALID_REQUEST_ID`, `INVALID_ACTIVATION_TIME`, `ACTIVATION_AFTER_JOURNEY_END`, `BUS_NOT_FOUND` | Validaciones de la solicitud de pánico: mensaje, foto, identificador, hora de activación y bus. |
+| 422 | `REASON_REQUIRED`, `REASON_TOO_LONG`, `RESPONSE_TOO_LONG` | Validaciones del rechazo de un grupo. |
+| 422 | `INVALID_END_REASON`, `INVALID_END_TIME`, `INVALID_END_SUMMARY` | Validaciones del fin del viaje por separación automática. |
+| 422 | `BUS_QR_INVALID`, `BUS_NOT_IN_SERVICE` | Validaciones del inicio del viaje. |
+| 422 | `LABEL_TOO_LONG`, `INVALID_INITIAL_COUNT`, `INVALID_CAPTURE_TIME`, `NEGATIVE_COUNT`, `OCCUPANCY_NOT_INITIALIZED`, `OCCUPANCY_INCONSISTENT` | Validaciones de la fuente de conteo y del aforo; una salida por debajo de cero marca el conteo como inconsistente. |
+| 429 | `SUBSCRIPTION_LIMIT_USER`, `SUBSCRIPTION_LIMIT_COMPANY` | Se superó el máximo de streams abiertos por usuario o por empresa. |
+
+**Documentación interactiva.** [completar: captura de Swagger UI con los grupos del Sprint]
+
+[completar: captura de Swagger UI con el detalle de `POST /api/v1/passenger-requests`]
+
+[completar: captura de Swagger UI con el detalle de `POST /api/v1/occupancy-events`]
+
+URL del repositorio de Web Services: https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend
+
+URL de la documentación desplegada: [completar: URL desplegada]. En el Sprint 1 se publicó en el servicio de Railway (4.2.1.7); esa URL no se verificó para este Sprint.
+
 
 ## 4.3. Validation Interviews
 
