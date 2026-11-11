@@ -1628,6 +1628,48 @@ Cualquiera de las propiedades nuevas puede sobrescribirse desde el servicio de R
 | Captura de las variables del servicio, sin mostrar los valores secretos | [completar: captura] |
 | Landing Page y aplicación móvil: cambios de despliegue en el Sprint | [completar: si corresponde] |
 
+#### 4.2.3.9. Team Collaboration Insights during Sprint
+
+Los datos de esta sección se calcularon con Git sobre los repositorios disponibles, para el periodo del Sprint (28/10/2026 a 10/11/2026, hora de Lima): `git shortlog -sne --no-merges --all` con el rango de fechas para los commits por autor, y el script `insights.py` (mantenido fuera de los repositorios) para los commits por semana del Sprint, con la semana 1 del 28/10 al 03/11 y la semana 2 del 04/11 al 10/11. Se cuentan los commits sin los de merge, por fecha de commit. Git registra commits, no esfuerzo ni revisiones: la cifra de cada integrante no mide por sí sola su aporte.
+
+**safebus-backend** (rama `develop`).
+
+| Autor (nombre en git) | Correo | Commits | Semana 1 | Semana 2 |
+|---|---|:---:|:---:|:---:|
+| ORION-tech-c | `asfernandezl.peru@gmail.com` | 54 | 46 | 8 |
+| **Total** | | **54** | **46** | **8** |
+
+Los commits ocurrieron en tres días: 12 el 02/11/2026, 34 el 03/11/2026 y 8 el 04/11/2026; no hay commits el resto del periodo. Además, los cinco commits de merge de los Pull Requests #14 a #18 los registró GitHub con el correo `noreply` de la cuenta `ORION-tech-c`, y no se cuentan en la tabla.
+
+**dreamteam-report** (rama `develop`, hasta el 10/11/2026).
+
+| Autor (nombre en git) | Correo | Commits | Semana 1 | Semana 2 |
+|---|---|:---:|:---:|:---:|
+| mathias | `mathiasarechaga62@gmail.com` | 3 | 0 | 3 |
+| Valentino Espinoza | `andre.espinoza.orrego@gmail.com` | 1 | 0 | 1 |
+| Mathias Acuache | `u202314898@upc.edu.pe` | 1 | 0 | 1 |
+| **Total** | | **5** | **0** | **5** |
+
+Los cinco commits son del 09/11/2026 (4) y del 10/11/2026 (1). Según sus mensajes, añaden el diseño de entrevistas, el segmento 3 de entrevistas, información de videos y de imágenes del producto, y más información del equipo. La tabla no incluye los commits de esta sección del informe, que se hicieron en una rama aparte y con fecha posterior al periodo.
+
+**Repositorios de la Landing Page y de la aplicación móvil.** [completar: commits del Sprint 3 en `safebus-landing` y `safebus-mobile`, si corresponde]
+
+##### Análisis e Interpretación de los Datos de Colaboración
+
+1. **Distribución del trabajo.** En el repositorio de Web Services, los 54 commits de implementación y pruebas del Sprint provienen de una sola cuenta, `ORION-tech-c`, que corresponde a Fernández Linares, Alvaro Sebastian. La cuenta `leodev77` (correo `U202321020@upc.edu.pe`, integrante: [completar: nombre del integrante]) no tiene commits en ese repositorio durante el periodo, aunque registra 17 commits en su historia anterior. Ningún otro integrante tiene commits en el repositorio de Web Services.
+2. **Frecuencia de trabajo.** El 85 % de los commits del backend (46 de 54) cae en la primera semana del Sprint, y todos en tres días, del 02 al 04/11/2026. Hay commits cuyos horarios de commit están a pocos minutos entre sí, por lo que la fecha de commit refleja cuándo se integró el trabajo y no cuánto tiempo tomó.
+3. **Flujo de trabajo GitFlow.** Todo el trabajo del periodo llegó a `develop` mediante cinco Pull Requests desde ramas `feature/`, con el mensaje de merge de GitHub; los commits de implementación no se hicieron directamente sobre `develop`.
+4. **Informe.** En el periodo, los commits del repositorio del informe provienen de tres cuentas distintas a la del backend y se concentran en las dos últimas fechas del Sprint.
+5. **Revisión de código.** Git no registra las revisiones de los Pull Requests: [completar: revisiones y aprobaciones de los PR #14 a #18, según GitHub].
+
+[completar: captura de GitHub Insights, Contributors, de safebus-backend]
+
+[completar: captura de GitHub Insights, Commits, de safebus-backend]
+
+[completar: captura de GitHub Insights, Contributors, de dreamteam-report]
+
+[completar: capturas de GitHub Insights de safebus-landing y safebus-mobile, si corresponde]
+
 
 ## 4.3. Validation Interviews
 
