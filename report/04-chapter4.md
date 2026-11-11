@@ -1569,15 +1569,17 @@ Los endpoints se agrupan en Swagger UI por controlador. En el OpenAPI generado, 
 | 422 | `LABEL_TOO_LONG`, `INVALID_INITIAL_COUNT`, `INVALID_CAPTURE_TIME`, `NEGATIVE_COUNT`, `OCCUPANCY_NOT_INITIALIZED`, `OCCUPANCY_INCONSISTENT` | Validaciones de la fuente de conteo y del aforo; una salida por debajo de cero marca el conteo como inconsistente. |
 | 429 | `SUBSCRIPTION_LIMIT_USER`, `SUBSCRIPTION_LIMIT_COMPANY` | Se superó el máximo de streams abiertos por usuario o por empresa. |
 
-**Documentación interactiva.** [completar: captura de Swagger UI con los grupos del Sprint]
+**Documentación interactiva.** Swagger UI del servicio desplegado, con los grupos de endpoints del Sprint.
 
-[completar: captura de Swagger UI con el detalle de `POST /api/v1/passenger-requests`]
+<img src="../docs/insights/sprint3-swagger-1.png" alt="Swagger UI de SafeBus con los grupos de endpoints del Sprint 3" width="750">
 
-[completar: captura de Swagger UI con el detalle de `POST /api/v1/occupancy-events`]
+<img src="../docs/insights/sprint3-swagger-2.png" alt="Swagger UI de SafeBus, detalle de un endpoint del Sprint 3" width="750">
+
+<img src="../docs/insights/sprint3-swagger-3.png" alt="Swagger UI de SafeBus, detalle de un endpoint del Sprint 3 (continuación)" width="750">
 
 URL del repositorio de Web Services: https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend
 
-URL de la documentación desplegada: [completar: URL desplegada]. En el Sprint 1 se publicó en el servicio de Railway (4.2.1.7); esa URL no se verificó para este Sprint.
+URL de la documentación desplegada: https://safebus-api-production-cb4d.up.railway.app/swagger-ui/index.html
 
 #### 4.2.3.8. Software Deployment Evidence for Sprint Review
 
@@ -1598,17 +1600,16 @@ Cualquiera de las propiedades nuevas puede sobrescribirse desde el servicio de R
 - Las solicitudes de pánico aceptan una foto de evidencia; el límite de carga (6 MB por archivo y 7 MB por solicitud) ya existía antes del Sprint.
 - Los datos de ejemplo del perfil `dev` no se cargan en producción, igual que en 4.1.4.
 
-**Estado del despliegue de este Sprint.** El repositorio contiene todo lo necesario para desplegar la versión del Sprint (`develop` en `8e4fe06`), pero no se verificó que Railway esté ejecutando esa versión.
+**Estado del despliegue de este Sprint.** El servicio de Railway se llama `safebus-api` y está publicado en https://safebus-api-production-cb4d.up.railway.app. Su deployment activo corresponde al merge del Pull Request #18 (`8e4fe06`, rama `feature/live-notifications`), del 11/11/2026. La construcción fue exitosa: inicialización en 52 s, build en 50 s y deploy en 5 s.
 
 | Dato | Valor |
 |---|---|
-| Commit desplegado en Railway | [completar: commit y fecha del último redeploy] |
-| Rama enlazada al servicio | [completar: confirmar que sigue siendo `develop`] |
-| URL del servicio desplegado | [completar: URL desplegada] |
-| Respuesta de `GET /api/v1/health` en el servicio desplegado | [completar: captura] |
-| Captura del historial de deployments de Railway | [completar: captura] |
-| Captura de las variables del servicio, sin mostrar los valores secretos | [completar: captura] |
-| Landing Page y aplicación móvil: cambios de despliegue en el Sprint | [completar: si corresponde] |
+| Servicio en Railway | `safebus-api` |
+| URL del servicio desplegado | https://safebus-api-production-cb4d.up.railway.app |
+| Deployment activo | Merge del PR #18, commit `8e4fe06`, 11/11/2026 |
+| Tiempos del build | Inicialización 52 s, build 50 s, deploy 5 s |
+
+<img src="../docs/insights/sprint3-railway.png" alt="Deployment activo del servicio safebus-api en Railway" width="750">
 
 #### 4.2.3.9. Team Collaboration Insights during Sprint
 
