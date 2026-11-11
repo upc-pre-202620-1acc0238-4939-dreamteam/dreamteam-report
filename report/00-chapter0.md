@@ -55,6 +55,7 @@
 | 0.1.0   |  9/01/2026| DreamTeam| Versión inicial del informe |
 | 1.0.0   | 9/21/2026| DreamTeam | Primer avance del informe |
 | 2.0.0   | 10/5/2026| DreamTeam | Segundo avance del informe |
+| 3.0.0   | [completar: fecha] | DreamTeam | Tercer avance del informe: Sprint 3 (4.2.3) |
 
 ---
 
@@ -85,6 +86,24 @@
 ### DreamTeam - Safebus API Repository
 
   <img src="../docs/insights/api-insights-tb1.png" alt="insights-av1"/>
+
+### AV2
+
+### DreamTeam - Report Repository
+
+[completar: captura de GitHub Insights de dreamteam-report]
+
+### DreamTeam - Safebus Landing Page Repository
+
+[completar: captura de GitHub Insights de safebus-landing]
+
+### DreamTeam - Safebus Mobile Repository
+
+[completar: captura de GitHub Insights de safebus-mobile]
+
+### DreamTeam - Safebus Backend Repository
+
+[completar: captura de GitHub Insights de safebus-backend]
 
 ---
 
