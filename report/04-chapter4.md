@@ -1093,6 +1093,32 @@ El Sprint 3 completa en los Web Services el circuito de seguridad del pasajero s
 
 La suma de 42 Story Points toma los puntos completos de cada historia del Product Backlog, incluidas US10 y US11, cuyas primeras partes se integraron antes del inicio del Sprint. El alcance de las aplicaciones móvil y Landing Page en este Sprint no se registra aquí: `[completar: alcance de safebus-mobile y safebus-landing en el Sprint 3]`.
 
+#### 4.2.3.2. Aspect Leaders and Collaborators
+
+Cada aspecto del Sprint tiene un líder (L), responsable de coordinar el trabajo y de integrar los cambios, y colaboradores (C) que aportan en ese aspecto. Los aspectos de los Web Services corresponden a los Bounded Contexts del repositorio `safebus-backend` que se modifican en este Sprint; los dos últimos corresponden a los demás productos de SafeBus.
+
+| Aspecto | Descripción en este Sprint | Historias |
+|---|---|---|
+| Passenger | Contexto `passenger`: fin del viaje con motivo de separación automática, hora original y resumen de la separación. | US24 |
+| Safetycase | Contexto `safetycase`: solicitudes de pánico del pasajero con evidencia, grupos por bus y turno con umbral y vencimiento, aprobación y rechazo, cola de revisión priorizada, consulta de solicitudes propias e historial de seguridad del bus. | US08, US09, US07, US10 |
+| Trip | Contexto `trip`: fuentes de conteo con clave propia, inicialización, latido y eventos ordenados de aforo, y lectura del aforo por el supervisor. | US19, US11 |
+| Fleet Monitoring | Contexto `fleetmonitoring`: aforo y grupos de pasajeros abiertos en la vista de flota del supervisor. | US11 |
+| Notification | Contexto `notification`: flujo de eventos en vivo para supervisores, con registro de suscripciones y entrega acotada. | US20 |
+| Landing Page | Producto `safebus-landing`. | `[completar]` |
+| Mobile Application | Producto `safebus-mobile`. | `[completar]` |
+
+El paquete `shared` (autenticación de fuentes de conteo por clave y respuesta 429) y la exposición de capacidades por lote del contexto `fleet` se integraron como parte de los aspectos Trip y Notification, por lo que no se tratan como aspectos independientes.
+
+| Team Member (Apellidos, Nombres) | GitHub Username | Passenger | Safetycase | Trip | Fleet Monitoring | Notification | Landing Page | Mobile Application |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Acuache Lucas, Mathias Joaquin | MathiasA25 | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` |
+| Arechaga Saavedra, Mathias Augusto | MathZell | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` |
+| Delgado Arriola, Leonardo Sebastian | leodev77 | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` |
+| Espinoza Orrego, Valentino Andre | valentinoespinoza13 | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` | `[completar]` |
+| Fernández Linares, Alvaro Sebastian | ORION-tech-c | L | L | L | L | L | `[completar]` | `[completar]` |
+
+La fila de Fernández Linares, Alvaro Sebastian se completa a partir de la autoría en Git: en el periodo del Sprint (28/10/2026 al 10/11/2026), los 54 commits no-merge de `safebus-backend` integrados en `develop` fueron escritos con la identidad `ORION-tech-c`, y abarcan los cinco Bounded Contexts de la tabla. Los roles de los demás integrantes y los de los productos Landing Page y Mobile Application no se pueden determinar desde el repositorio de Web Services y deben registrarse a partir de la planificación del equipo.
+
 ## 4.3. Validation Interviews
 
 ### 4.3.1. Diseño de Entrevistas
