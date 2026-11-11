@@ -1114,60 +1114,69 @@ El liderazgo de Fernández Linares, Alvaro Sebastian en Web Services se confirma
 
 #### 4.2.3.3. Sprint Backlog 3
 
-El Sprint Backlog descompone cada historia en tareas. Las tareas de este Sprint se derivaron del trabajo integrado en `develop` entre el 28/10/2026 y el 10/11/2026 (los cinco Pull Requests #14 a #18 del repositorio `safebus-backend`): cada commit del Sprint corresponde a una tarea, y los identificadores de commit entre paréntesis permiten rastrearla en la sección 4.2.3.4. La columna Assigned To se deriva de la autoría de esos commits. La estimación de cada tarea queda pendiente de completar a partir del registro del equipo. El estado Done indica que la historia está integrada en `develop`.
+El Sprint Backlog descompone el trabajo del Sprint en tareas y se lleva en un tablero de Trello. La tabla lista las 55 tarjetas de la columna Done del tablero, de `TSK-08-01` a `TSK-VAL-09`. Las tareas de las historias de usuario del Product Backlog (US08, US10, US09, US07, US24, US11, US19 y US20) indican su historia; las demás tareas (documentación y despliegue de los Web Services, frontend, Landing Page, videos y entrevistas de validación) no pertenecen a una historia del Product Backlog y llevan «-». La columna Assigned To sigue el reparto de aspectos de la sección 4.2.3.2.
 
-> URL público del Board: `[completar: URL público del board]`
+> URL público del Board: https://trello.com/b/QeKdsMFe/sprint-backlog-3
 
-`[completar: captura del board del Sprint 3, archivo docs/insights/sprint3-board.png]`
-
-<!-- Cuando exista la captura, reemplazar la línea anterior por:
 <img src="../docs/insights/sprint3-board.png" alt="Board del Sprint 3 de SafeBus" width="750">
--->
 
-| Sprint | US Id | US Title | Work-Item Id | Task Title | Description | Estimation (h) | Assigned To | Status |
-|--------|-------|----------|--------------|------------|-------------|----------------|-------------|--------|
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T01 | Passenger journey facade | Exponer a `safetycase`, mediante la fachada del contexto `passenger`, el viaje activo del pasajero (23271d8). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T02 | Request and group aggregates | Agregados `PassengerRequest` y `PassengerRequestGroup` y `PassengerRequestPolicy`: umbral de tres cuentas distintas, ventana de cinco minutos y antigüedad máxima de la solicitud de cinco minutos (3020b52, e70cf67). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T03 | Request and group repositories | Repositorios de solicitudes y grupos, con las pruebas `PassengerRequestRepositoryTest` y `PassengerRequestGroupRepositoryTest` (f429758, 48829b7). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T04 | Register passenger request service | Registro de la solicitud con una contribución por cuenta, reintento idéntico que devuelve la solicitud original, solicitud tardía (Late) y solicitud adjunta a un grupo ya en revisión (62d7b2d). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T05 | Group expiry | Vencimiento del grupo bajo el umbral: de forma diferida antes de una nueva solicitud, como caso de uso y como tarea programada (624d19d, a5e61ce, c9cd30b). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T06 | Passenger request endpoint | `POST /api/v1/passenger-requests` con `multipart/form-data` (mensaje y foto de incidente), restringido al rol pasajero (959e411). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T07 | Passenger request REST and concurrency tests | Pruebas de ventana, solicitud tardía y solicitud adjunta sobre REST, y de solicitudes concurrentes en un mismo turno (bb568e5, ab209be). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | T08 | Retry after the journey ends | Responder un reintento con la solicitud original aunque el viaje ya haya terminado (a5db00c). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | T09 | Group decision transitions and passenger emergency | Transiciones de aprobación, rechazo y cierre del grupo y emergencia de pasajero activada desde un grupo aprobado (c9fc1fd, 8f4b0a2). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | T10 | Approval and decline services | Servicios de aprobación (una única emergencia, repetición idempotente) y de rechazo con motivo y respuesta al pasajero (6fcbab2). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | T11 | Group decision endpoints | `POST /api/v1/request-groups/{id}/approve` y `/decline`, restringidos al rol supervisor (6d6f4cf). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | T12 | Close the group with its emergency | Cierre del grupo cuando se cierra su emergencia, con la prueba `ClosePassengerEmergencyTest` (b5fa51d). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | T13 | Prioritized review queue | `GET /api/v1/review-queue`: emergencias del conductor, emergencias de pasajeros y grupos por aprobar en bloques separados y con orden determinista (f8ab074). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | T14 | Evidence photos for supervisors | Carga de imágenes en el puerto de almacenamiento y `GET /api/v1/passenger-requests/{id}/photo` para el supervisor de la empresa (c41ec8d, 1432aec). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | T15 | Group decision tests and concurrency | Pruebas de decisiones concurrentes, de emergencias del conductor y turnos cerrados con grupos abiertos, y de grupos en recolección o aprobados con pánico del conductor y vencimiento (7c308e3, ed92c2b, 5aed849). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US09 | Consult the Status of My Passenger Panic Requests | T16 | Public reference for request groups | Referencia pública estable para cada grupo de solicitudes (0fe1223). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US09 | Consult the Status of My Passenger Panic Requests | T17 | Own passenger requests endpoints | `GET /api/v1/passenger-requests/mine` y `/mine/{id}`: estado de las solicitudes propias (en recolección, vencida, en espera de aprobación, no aprobada, con emergencia) sin exponer a otras cuentas (38f7147). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US09 | Consult the Status of My Passenger Panic Requests | T18 | Evidence photo for its owner | `GET /api/v1/passenger-requests/mine/photo` y `/mine/{id}/photo`: la foto de incidente solo para la cuenta que la envió (1684282). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US07 | Consult the Alerts Reported on My Bus | T19 | Request groups in the bus safety history | Incorporar los grupos de solicitudes al historial de seguridad `GET /api/v1/vehicles/{id}/safety-history`, con su referencia pública y sin datos de identidad, y con la prueba `BusSafetyHistoryGroupsTest` (4ca12a8). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | T20 | Shared future-skew policy | Constante compartida `TimePolicy.MAX_FUTURE_SKEW` (cinco minutos) para validar horas informadas por el cliente (faccc94). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | T21 | Separation summary on the journey | Registro en el viaje del resumen de la separación automática (af013dc). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | T22 | End journey with automatic separation | `POST /api/v1/journeys/{id}/end` acepta el motivo `AUTOMATIC_SEPARATION`, la hora original de término y el resumen de la separación (c53448c). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | T23 | Journey end tests | Pruebas de término de viaje concurrente y de que las solicitudes y emergencias sobreviven al término del viaje (dc69879, de62788). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US19 | Provide a RESTful Passenger-Count Service | T24 | Counting source and device authentication | Agregado de fuente de conteo con clave almacenada con hash y autenticación por clave con el rol `DEVICE` (0dfaa8d, 07c8421). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US19 | Provide a RESTful Passenger-Count Service | T25 | Counting source management | `POST /api/v1/buses/{busId}/counting-sources` y sus operaciones de listado, rotación y revocación de clave, para el supervisor (3c2441b). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US19 | Provide a RESTful Passenger-Count Service | T26 | Bus occupancy aggregate | Agregado de aforo del bus con reglas de secuencia, estado inconsistente y reinicialización (15d0d1d). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US19 | Provide a RESTful Passenger-Count Service | T27 | Initialization and heartbeat endpoints | `POST /api/v1/occupancy-initializations` y `/occupancy-heartbeats` para la fuente de conteo (f7da3b3). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US19 | Provide a RESTful Passenger-Count Service | T28 | Occupancy event endpoint | `POST /api/v1/occupancy-events`: eventos de entrada y salida ordenados por secuencia, con reintento idéntico y detección de huecos (12dad93). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US19 | Provide a RESTful Passenger-Count Service | T29 | Occupancy concurrency tests | Pruebas de eventos de aforo concurrentes (940993e). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US11 | Monitor Fleet Location and Occupancy | T30 | Bus capacities in batch | Exposición de las capacidades de varios buses por lote en la fachada del contexto `fleet` (f55cae3). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US11 | Monitor Fleet Location and Occupancy | T31 | Supervisor occupancy read endpoint | `GET /api/v1/buses/{busId}/occupancy`: aforo, capacidad, vigencia y disponibilidad del conteo para el supervisor (212b23b). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US11 | Monitor Fleet Location and Occupancy | T32 | Occupancy and groups through the facades | Exponer el aforo desde la fachada de `trip` y los grupos abiertos desde la fachada de `safetycase` (f9775b4, 8a9efa0). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US11 | Monitor Fleet Location and Occupancy | T33 | Fleet overview with occupancy and groups | Aforo y grupos de pasajeros abiertos en `GET /api/v1/fleet/overview`, contando solo a los contribuyentes en el conteo de solicitudes del grupo (07590c7, 1a923d2). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T34 | Too-many-requests exception | Excepción de dominio para el límite de conexiones, respondida con 429 (43d8bee). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T35 | Subscription registry with caps | Registro de suscripciones con topes por usuario y por empresa (45666e0). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T36 | Bounded delivery with subscriber isolation | Entrega acotada que aísla a cada suscriptor para que uno lento no afecte a los demás (726930d). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T37 | Authenticated supervisor event stream | `GET /api/v1/notifications/stream`: flujo de eventos del servidor para el supervisor de una empresa (dceea20). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T38 | Group reference in the review queue | Exponer en la cola de revisión la referencia del grupo, que identifica también el evento de revisión (ed8d9be). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T39 | Driver emergency notification | Notificar a los supervisores `EmergencyActivated` con prioridad crítica después de confirmar la emergencia del conductor (39f74a3). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T40 | Review required and approved notifications | Notificar `PassengerReviewRequired` al alcanzar el umbral y `EmergencyActivated` con prioridad alta al aprobar (938d585). | `[completar]` | Fernández Linares, Alvaro | Done |
-| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T41 | Delivery time and recovery tests | Pruebas con un servidor real de tiempo de entrega y de recuperación tras reconexión (4d8c5a0). | `[completar]` | Fernández Linares, Alvaro | Done |
-
+| Sprint | US Id | US Title | Work-Item Id | Task Title | Assigned To | Status |
+|--------|-------|----------|--------------|------------|-------------|--------|
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-01 | Passenger Request Group & Request Aggregates | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-02 | Locking Repositories & Unique Constraints | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-03 | Register Request: Threshold, Late Request & Idempotency | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-04 | Scheduled Expiration of Stale Groups | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-05 | Multipart POST /passenger-requests Endpoint | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-06 | Concurrency Tests: Identical Retries & 5 Simultaneous Passengers | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-01 | Group Transitions: Approve, Decline, Close | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-02 | HIGH Emergency from Group with Unique Link | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-03 | Approve & Decline Endpoints | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-04 | Prioritized Review Queue | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-05 | Evidence Photo for Same-Company Supervisor | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-06 | Close Group on Emergency Close | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-07 | Concurrency Tests: Approve vs Decline | Fernández Linares, Alvaro | Done |
+| 3 | US09 | Consult the Status of My Passenger Panic Requests | TSK-09-01 | My Requests List & Detail with Status Mapping | Fernández Linares, Alvaro | Done |
+| 3 | US09 | Consult the Status of My Passenger Panic Requests | TSK-09-02 | Evidence Photo for Owner | Fernández Linares, Alvaro | Done |
+| 3 | US07 | Consult the Alerts Reported on My Bus | TSK-07-01 | Groups in Bus Safety History with Public Reference | Fernández Linares, Alvaro | Done |
+| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | TSK-24-01 | Automatic Separation Summary & Reason | Fernández Linares, Alvaro | Done |
+| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | TSK-24-02 | Journey End Concurrency Tests | Fernández Linares, Alvaro | Done |
+| 3 | US11 | Monitor Fleet Location and Occupancy | TSK-11-01 | Occupancy & Groups in Fleet Overview | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-01 | Counting Source with Hashed Key & DEVICE Auth | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-02 | Occupancy Aggregate: Sequence, Gap & Inconsistency | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-03 | Device Endpoints: Init, Events & Heartbeat | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-04 | Supervisor Occupancy Read with Freshness | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-05 | Counting Event Concurrency Tests | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-01 | Subscription Registry & Bounded Delivery | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-02 | SSE Stream with JWT, Caps & Foreign Company Rejection | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-03 | After-Commit Publishing from safetycase | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-04 | Delivery Timing & Recovery Tests | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-GEN-01 | MySQL 8 Schema Validation per Phase | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-GEN-02 | OpenAPI Documentation & Swagger Walkthrough | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-FE-01 | API Client & JWT Session Handling | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-02 | Login & Supervisor Route Guards | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-03 | Fleet Overview Connected to API | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-04 | Passenger Request Review Queue Screen | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-05 | Approve & Decline Actions with Evidence Photo | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-06 | Bus Occupancy & Safety History Panels | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-07 | Live Notifications (SSE) Client | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-08 | Error Handling & Empty States | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-LP-01 | About-The-Team Section Layout | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-LP-02 | Team Member Cards & Photos | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-LP-03 | Responsive Check & Landing Publish | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VD-01 | About-The-Team Script & Storyboard | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-VD-02 | About-The-Team Video: First Version | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-VD-03 | About-The-Product Script & Demo Flow | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-GEN-03 | Railway Redeploy of Latest develop | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-VD-04 | About-The-Product Video: First Version | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-VAL-01 | Segment 1 Interview Script | Espinoza Orrego, Valentino | Done |
+| 3 | - | - | TSK-VAL-02 | Segment 1 Interviews Conducted | Espinoza Orrego, Valentino | Done |
+| 3 | - | - | TSK-VAL-03 | Segment 1 Findings Summary | Espinoza Orrego, Valentino | Done |
+| 3 | - | - | TSK-VAL-04 | Segment 2 Interview Script | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VAL-05 | Segment 2 Interviews Conducted | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VAL-06 | Segment 2 Findings Summary | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VAL-07 | Segment 3 Interview Script | Acuache Lucas, Mathias J. | Done |
+| 3 | - | - | TSK-VAL-08 | Segment 3 Interviews Conducted | Acuache Lucas, Mathias J. | Done |
+| 3 | - | - | TSK-VAL-09 | Segment 3 Findings Summary | Acuache Lucas, Mathias J. | Done |
 
 #### 4.2.3.4. Development Evidence for Sprint Review
 
