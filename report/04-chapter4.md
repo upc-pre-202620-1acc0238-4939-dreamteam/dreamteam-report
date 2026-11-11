@@ -1316,34 +1316,30 @@ Los Web Services de este Sprint no tienen pantallas: su ejecución se demuestra 
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-Para preparar esta sección se inició el servicio con ese perfil sobre una copia limpia de `develop` (commit `8e4fe06`): `GET /api/v1/health` respondió `{"status":"UP"}` y `GET /v3/api-docs` entregó la especificación OpenAPI con los endpoints descritos en 4.2.3.7. El recorrido manual de la tabla siguiente no se ejecutó ni se capturó en esa preparación.
+Para preparar esta sección se inició el servicio con ese perfil sobre una copia limpia de `develop` (commit `8e4fe06`): `GET /api/v1/health` respondió `{"status":"UP"}` y `GET /v3/api-docs` entregó la especificación OpenAPI con los endpoints descritos en 4.2.3.7.
 
-**Recorrido de ejecución.** La columna de resultado resume lo que verifican las pruebas automatizadas de 4.2.3.5 para cada paso; no es una captura de pantalla. Cada paso tiene un espacio para la captura de Swagger UI.
+**Recorrido de ejecución.** La columna de resultado resume lo que verifican las pruebas automatizadas de 4.2.3.5 para cada paso; no corresponde a una ejecución manual del recorrido.
 
-| # | Paso | Endpoint | Resultado esperado (según las pruebas) | Historia | Captura |
-|---|---|---|---|---|---|
-| 1 | El supervisor y el pasajero inician sesión | `POST /api/v1/auth/sign-in` | Cada uno obtiene un token Bearer con su rol. | US16 (Sprint 1) | [completar: captura] |
-| 2 | El conductor activa su turno escaneando la credencial QR | `POST /api/v1/shifts/activate` | Responde 201 con el turno `ACTIVE`. | US13 (Sprint 1) | [completar: captura] |
-| 3 | El pasajero inicia su viaje en el bus | `POST /api/v1/journeys` | Responde 201 con el viaje activo. | US23 | [completar: captura] |
-| 4 | El supervisor abre el stream de notificaciones de su empresa | `GET /api/v1/notifications/stream` | Responde 200 con `text/event-stream` y comentarios de keep-alive. Un cuarto stream abierto sin cerrar los anteriores supera el límite por usuario y responde 429. | US20 | [completar: captura] |
-| 5 | Tres pasajeros distintos envían una solicitud de pánico con mensaje y foto | `POST /api/v1/passenger-requests` | Responde 201 con `requestId`, `status` (`COUNTED`, `ATTACHED` o `LATE`), `groupStatus` y `contributorCount`. Un reintento idéntico responde 200. | US08 | [completar: captura] |
-| 6 | Al llegar al umbral de tres contribuyentes el stream recibe el evento | `GET /api/v1/notifications/stream` | Llega solo `PassengerReviewRequired` (prioridad `REVIEW`), sin identidad, foto ni mensaje. | US20, US08 | [completar: captura] |
-| 7 | El supervisor consulta la cola de revisión | `GET /api/v1/review-queue` | El grupo aparece en `groupsAwaitingApproval` con sus solicitudes y su referencia; la respuesta no expone identidad ni imágenes. | US10 | [completar: captura] |
-| 8 | El supervisor descarga la foto de evidencia de una solicitud del grupo | `GET /api/v1/passenger-requests/{id}/photo` | Responde 200 con la imagen y su tipo de contenido original. | US10 | [completar: captura] |
-| 9 | El supervisor aprueba el grupo | `POST /api/v1/request-groups/{id}/approve` | Responde 201 con `emergencyId`, estado y prioridad alta; aprobar de nuevo responde 200 con la misma emergencia. El stream recibe una única `EmergencyActivated`. | US10, US20 | [completar: captura] |
-| 10 | Alternativa: el supervisor rechaza el grupo con motivo y respuesta | `POST /api/v1/request-groups/{id}/decline` | Responde 200 con el grupo no aprobado y no se crea emergencia. Sin motivo válido responde 422. | US10 | [completar: captura] |
-| 11 | El pasajero consulta sus solicitudes y el resultado | `GET /api/v1/passenger-requests/mine` | Lista solo sus solicitudes, la más reciente primero, con el estado del grupo y la respuesta orientada al usuario. | US09 | [completar: captura] |
-| 12 | El pasajero consulta el historial de seguridad del bus | `GET /api/v1/vehicles/{id}/safety-history` | El grupo y su emergencia aparecen como un solo ítem con la misma referencia en todos los estados. | US07 | [completar: captura] |
-| 13 | El supervisor registra la fuente de conteo del bus | `POST /api/v1/buses/{busId}/counting-sources` | Responde 201 con la clave una sola vez; la lista posterior (`GET`) nunca la devuelve. | US19 | [completar: captura] |
-| 14 | El dispositivo inicializa el conteo, envía eventos de entrada y salida y el latido | `POST /api/v1/occupancy-initializations`, `POST /api/v1/occupancy-events`, `POST /api/v1/occupancy-heartbeats` | La inicialización responde 201 con conteo cero; cada evento responde 201 con el conteo resultante; un salto de secuencia responde 409 con la secuencia esperada. | US19 | [completar: captura] |
-| 15 | El supervisor consulta el aforo del bus y la vista de flota | `GET /api/v1/buses/{busId}/occupancy`, `GET /api/v1/fleet/overview` | El aforo se informa `CURRENT`, o `STALE` si el latido supera los dos minutos, o `UNAVAILABLE` con su motivo. | US11 | [completar: captura] |
-| 16 | El pasajero termina su viaje por separación automática | `POST /api/v1/journeys/{id}/end` | Responde 200 con el viaje terminado; las solicitudes y emergencias del viaje se conservan. | US24 | [completar: captura] |
+| # | Paso | Endpoint | Resultado esperado (según las pruebas) | Historia |
+|---|---|---|---|---|
+| 1 | El supervisor y el pasajero inician sesión | `POST /api/v1/auth/sign-in` | Cada uno obtiene un token Bearer con su rol. | US16 (Sprint 1) |
+| 2 | El conductor activa su turno escaneando la credencial QR | `POST /api/v1/shifts/activate` | Responde 201 con el turno `ACTIVE`. | US13 (Sprint 1) |
+| 3 | El pasajero inicia su viaje en el bus | `POST /api/v1/journeys` | Responde 201 con el viaje activo. | US23 |
+| 4 | El supervisor abre el stream de notificaciones de su empresa | `GET /api/v1/notifications/stream` | Responde 200 con `text/event-stream` y comentarios de keep-alive. Un cuarto stream abierto sin cerrar los anteriores supera el límite por usuario y responde 429. | US20 |
+| 5 | Tres pasajeros distintos envían una solicitud de pánico con mensaje y foto | `POST /api/v1/passenger-requests` | Responde 201 con `requestId`, `status` (`COUNTED`, `ATTACHED` o `LATE`), `groupStatus` y `contributorCount`. Un reintento idéntico responde 200. | US08 |
+| 6 | Al llegar al umbral de tres contribuyentes el stream recibe el evento | `GET /api/v1/notifications/stream` | Llega solo `PassengerReviewRequired` (prioridad `REVIEW`), sin identidad, foto ni mensaje. | US20, US08 |
+| 7 | El supervisor consulta la cola de revisión | `GET /api/v1/review-queue` | El grupo aparece en `groupsAwaitingApproval` con sus solicitudes y su referencia; la respuesta no expone identidad ni imágenes. | US10 |
+| 8 | El supervisor descarga la foto de evidencia de una solicitud del grupo | `GET /api/v1/passenger-requests/{id}/photo` | Responde 200 con la imagen y su tipo de contenido original. | US10 |
+| 9 | El supervisor aprueba el grupo | `POST /api/v1/request-groups/{id}/approve` | Responde 201 con `emergencyId`, estado y prioridad alta; aprobar de nuevo responde 200 con la misma emergencia. El stream recibe una única `EmergencyActivated`. | US10, US20 |
+| 10 | Alternativa: el supervisor rechaza el grupo con motivo y respuesta | `POST /api/v1/request-groups/{id}/decline` | Responde 200 con el grupo no aprobado y no se crea emergencia. Sin motivo válido responde 422. | US10 |
+| 11 | El pasajero consulta sus solicitudes y el resultado | `GET /api/v1/passenger-requests/mine` | Lista solo sus solicitudes, la más reciente primero, con el estado del grupo y la respuesta orientada al usuario. | US09 |
+| 12 | El pasajero consulta el historial de seguridad del bus | `GET /api/v1/vehicles/{id}/safety-history` | El grupo y su emergencia aparecen como un solo ítem con la misma referencia en todos los estados. | US07 |
+| 13 | El supervisor registra la fuente de conteo del bus | `POST /api/v1/buses/{busId}/counting-sources` | Responde 201 con la clave una sola vez; la lista posterior (`GET`) nunca la devuelve. | US19 |
+| 14 | El dispositivo inicializa el conteo, envía eventos de entrada y salida y el latido | `POST /api/v1/occupancy-initializations`, `POST /api/v1/occupancy-events`, `POST /api/v1/occupancy-heartbeats` | La inicialización responde 201 con conteo cero; cada evento responde 201 con el conteo resultante; un salto de secuencia responde 409 con la secuencia esperada. | US19 |
+| 15 | El supervisor consulta el aforo del bus y la vista de flota | `GET /api/v1/buses/{busId}/occupancy`, `GET /api/v1/fleet/overview` | El aforo se informa `CURRENT`, o `STALE` si el latido supera los dos minutos, o `UNAVAILABLE` con su motivo. | US11 |
+| 16 | El pasajero termina su viaje por separación automática | `POST /api/v1/journeys/{id}/end` | Responde 200 con el viaje terminado; las solicitudes y emergencias del viaje se conservan. | US24 |
 
 **Eventos del stream de notificaciones.** El supervisor recibe dos eventos: `PassengerReviewRequired` cuando un grupo reúne el umbral y espera aprobación, y `EmergencyActivated` cuando se activa una emergencia (prioridad `CRITICAL` para la del conductor y `HIGH` para un grupo aprobado).
-
-[completar: captura del stream recibiendo `PassengerReviewRequired` y `EmergencyActivated`]
-
-**Video de la ejecución.** [completar: URL del video]
 
 #### 4.2.3.7. Services Documentation Evidence for Sprint Review
 
