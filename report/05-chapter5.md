@@ -74,17 +74,17 @@ El video **About-The-Team** resume el proceso de trabajo realizado por el equipo
 
 A continuación se muestran capturas reales del prototipo SafeBus que evidencian la fase de desarrollo y pruebas del equipo, incorporadas en el video About-The-Team.
 
+![Organizacion del Equipo](assets/abteam2.png)
+
+![Reuniones del equipo](assets/abteam1.png)
+
 ![Turno activo del conductor con botón de emergencia](assets/02-conductor-turno-emergencia.png)
-
-![Emergencia Critical enviada por el conductor](assets/03-conductor-emergencia-critical.png)
-
-![Viaje activo del pasajero verificado por QR](assets/04-pasajero-viaje-activo.png)
 
 ![Solicitud de pánico del pasajero con mensaje y evidencia](assets/05-pasajero-solicitud-panico.png)
 
 ![Pantalla de revisión de solicitudes de SafeBus](assets/07-supervisor-revision-3de3.png)
 
-![Monitoreo de la flota en tiempo real](assets/06-supervisor-flota-mapa.png)
+
 
 
 
