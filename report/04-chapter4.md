@@ -1635,24 +1635,12 @@ Los commits ocurrieron en tres días: 12 el 02/11/2026, 34 el 03/11/2026 y 8 el 
 
 Los cinco commits son del 09/11/2026 (4) y del 10/11/2026 (1). Según sus mensajes, añaden el diseño de entrevistas, el segmento 3 de entrevistas, información de videos y de imágenes del producto, y más información del equipo. La tabla no incluye los commits de esta sección del informe, que se hicieron en una rama aparte y con fecha posterior al periodo.
 
-**Repositorios de la Landing Page y de la aplicación móvil.** [completar: commits del Sprint 3 en `safebus-landing` y `safebus-mobile`, si corresponde]
-
 ##### Análisis e Interpretación de los Datos de Colaboración
 
-1. **Distribución del trabajo.** En el repositorio de Web Services, los 54 commits de implementación y pruebas del Sprint provienen de una sola cuenta, `ORION-tech-c`, que corresponde a Fernández Linares, Alvaro Sebastian. La cuenta `leodev77` (correo `U202321020@upc.edu.pe`, integrante: [completar: nombre del integrante]) no tiene commits en ese repositorio durante el periodo, aunque registra 17 commits en su historia anterior. Ningún otro integrante tiene commits en el repositorio de Web Services.
+1. **Distribución del trabajo.** En el repositorio de Web Services, los 54 commits de implementación y pruebas del Sprint provienen de una sola cuenta, `ORION-tech-c`, que corresponde a Fernández Linares, Alvaro Sebastian. La cuenta `leodev77` (correo `U202321020@upc.edu.pe`, integrante: Delgado Arriola, Leonardo Sebastian) no tiene commits en ese repositorio durante el periodo, aunque registra 17 commits en su historia anterior. Ningún otro integrante tiene commits en el repositorio de Web Services.
 2. **Frecuencia de trabajo.** El 85 % de los commits del backend (46 de 54) cae en la primera semana del Sprint, y todos en tres días, del 02 al 04/11/2026. Hay commits cuyos horarios de commit están a pocos minutos entre sí, por lo que la fecha de commit refleja cuándo se integró el trabajo y no cuánto tiempo tomó.
 3. **Flujo de trabajo GitFlow.** Todo el trabajo del periodo llegó a `develop` mediante cinco Pull Requests desde ramas `feature/`, con el mensaje de merge de GitHub; los commits de implementación no se hicieron directamente sobre `develop`.
 4. **Informe.** En el periodo, los commits del repositorio del informe provienen de tres cuentas distintas a la del backend y se concentran en las dos últimas fechas del Sprint.
-5. **Revisión de código.** Git no registra las revisiones de los Pull Requests: [completar: revisiones y aprobaciones de los PR #14 a #18, según GitHub].
-
-[completar: captura de GitHub Insights, Contributors, de safebus-backend]
-
-[completar: captura de GitHub Insights, Commits, de safebus-backend]
-
-[completar: captura de GitHub Insights, Contributors, de dreamteam-report]
-
-[completar: capturas de GitHub Insights de safebus-landing y safebus-mobile, si corresponde]
-
 
 ## 4.3. Validation Interviews
 
