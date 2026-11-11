@@ -87,24 +87,6 @@
 
   <img src="../docs/insights/api-insights-tb1.png" alt="insights-av1"/>
 
-### AV2
-
-### DreamTeam - Report Repository
-
-[completar: captura de GitHub Insights de dreamteam-report]
-
-### DreamTeam - Safebus Landing Page Repository
-
-[completar: captura de GitHub Insights de safebus-landing]
-
-### DreamTeam - Safebus Mobile Repository
-
-[completar: captura de GitHub Insights de safebus-mobile]
-
-### DreamTeam - Safebus Backend Repository
-
-[completar: captura de GitHub Insights de safebus-backend]
-
 ---
 
 ## Contenido
