@@ -1061,21 +1061,15 @@ Durante el transcurso del Sprint 2, el equipo DreamTeam consolidó su disciplina
 
 ### 4.2.3. Sprint 3
 
-El Sprint 3 completa en los Web Services el circuito de seguridad del pasajero sobre la base de identidad, viaje, turno y emergencias del conductor construida en los Sprints anteriores: la solicitud de pánico con mensaje y foto (US08), la consulta de su estado y de las alertas del bus (US09 y US07), la revisión y aprobación por el supervisor (US10), el fin automático del viaje (US24), el aforo de cada bus (US19 y US11) y la entrega de notificaciones en vivo (US20). El periodo del Sprint va del 28/10/2026 al 10/11/2026. Las historias US08 y US20 estaban asignadas al Sprint 2 en la sección 2.4.3 y se trasladan a este Sprint; US10 y US11 se completan en este Sprint porque sus primeras partes ya estaban integradas en `develop`. Esta sección documenta únicamente el alcance de los Web Services (repositorio `safebus-backend`).
+El Sprint 3 completa en los Web Services el circuito de seguridad del pasajero sobre la base de identidad, viaje, turno y emergencias del conductor construida en los Sprints anteriores: la solicitud de pánico con mensaje y foto (US08), la consulta de su estado y de las alertas del bus (US09 y US07), la revisión y aprobación por el supervisor (US10), el fin automático del viaje (US24), el aforo de cada bus (US19 y US11) y la entrega de notificaciones en vivo (US20). El periodo del Sprint va del 28/10/2026 al 10/11/2026. Las historias US08 y US20 estaban asignadas al Sprint 2 en la sección 2.4.3 y se trasladan a este Sprint; US10 y US11 se completan en este Sprint porque sus primeras partes ya estaban integradas en `develop`. Las evidencias de desarrollo, pruebas, documentación de servicios, despliegue y colaboración (4.2.3.4 a 4.2.3.9) documentan los Web Services (repositorio `safebus-backend`).
 
 #### 4.2.3.1. Sprint Planning 3
 
 | Sprint # | Sprint 3 |
 |----------|----------|
-| **Date** | 28/10/2026 `[completar: confirmar fecha]` |
-| **Time** | `[completar: hora]` |
-| **Location** | `[completar: lugar o medio de la reunión]` |
-| **Prepared By** | `[completar: nombre del integrante]` |
-| **Attendees** | `[completar: asistentes a la reunión]` |
-| **Sprint n-1 Review Summary** | `[completar: resumen de la Sprint 2 Review]` |
-| **Sprint n-1 Retrospective Summary** | `[completar: resumen de la Sprint 2 Retrospective]` |
+| **Date** | 28/10/2026 |
+| **Sprint Period** | 28/10/2026 al 10/11/2026 |
 | **Sprint Goal** | Nuestro enfoque está en completar el circuito de seguridad del pasajero en los Web Services: el registro de solicitudes de pánico con mensaje y foto, su agrupación por bus y turno hasta el umbral de tres pasajeros distintos en cinco minutos, la aprobación o el rechazo por el supervisor, la consulta del estado de las solicitudes y de las alertas del bus, el fin automático del viaje, el aforo de cada bus y las notificaciones en vivo. Creemos que esto entrega a los supervisores una cola priorizada de emergencias y solicitudes por aprobar, con el aforo y la ubicación de cada bus, y a los pasajeros la posibilidad de reportar un peligro con evidencia y conocer su estado, sin exponer identidades. Esto se confirmará cuando, con un viaje activo, tres pasajeros distintos envíen solicitudes que dejen el grupo en espera de aprobación, el supervisor lo apruebe y se active una única emergencia de prioridad High, el supervisor reciba por su flujo de eventos `PassengerReviewRequired` y `EmergencyActivated`, y un dispositivo de conteo registrado informe el aforo del bus mediante los Web Services documentados. |
-| **Sprint Velocity** | `[completar: velocidad del equipo]` |
 | **Sum of Story Points** | 42 (US08: 8, US10: 8, US07: 3, US09: 3, US11: 5, US19: 5, US20: 5, US24: 5) |
 
 **Historias seleccionadas para el Sprint.** Los Story Points provienen del Product Backlog de la sección 2.4.3.
@@ -1091,7 +1085,7 @@ El Sprint 3 completa en los Web Services el circuito de seguridad del pasajero s
 | US19 | Provide a RESTful Passenger-Count Service | 5 | 3 | Web Services |
 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | 5 | 2 | Web Services |
 
-La suma de 42 Story Points toma los puntos completos de cada historia del Product Backlog, incluidas US10 y US11, cuyas primeras partes se integraron antes del inicio del Sprint. El alcance de las aplicaciones móvil y Landing Page en este Sprint no se registra aquí: `[completar: alcance de safebus-mobile y safebus-landing en el Sprint 3]`.
+La suma de 42 Story Points toma los puntos completos de cada historia del Product Backlog, incluidas US10 y US11, cuyas primeras partes se integraron antes del inicio del Sprint.
 
 #### 4.2.3.2. Aspect Leaders and Collaborators
 
