@@ -1573,9 +1573,9 @@ Los endpoints se agrupan en Swagger UI por controlador. En el OpenAPI generado, 
 
 <img src="../docs/insights/sprint3-swagger-1.png" alt="Swagger UI de SafeBus con los grupos de endpoints del Sprint 3" width="750">
 
-<img src="../docs/insights/sprint3-swagger-2.png" alt="Swagger UI de SafeBus, detalle de un endpoint del Sprint 3" width="750">
+<img src="../docs/insights/sprint3-swagger-2.png" alt="Swagger UI de SafeBus: Counting sources, Bus Safety History, Live Notifications, Fleet Monitoring y Occupancy" width="750">
 
-<img src="../docs/insights/sprint3-swagger-3.png" alt="Swagger UI de SafeBus, detalle de un endpoint del Sprint 3 (continuación)" width="750">
+<img src="../docs/insights/sprint3-swagger-3.png" alt="Swagger UI de SafeBus: Passenger Requests, Passenger count (device), Journeys y Emergency Attention" width="750">
 
 URL del repositorio de Web Services: https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend
 
