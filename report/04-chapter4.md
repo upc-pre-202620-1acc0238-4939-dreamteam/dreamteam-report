@@ -1306,22 +1306,6 @@ Las clases de la tabla suman 606 tests de los 1302 ejecutados; el resto correspo
 
 Son los 9 commits de tipo `test` entre el 28/10/2026 y el 10/11/2026; el resto de las pruebas de la tabla anterior se integró en los mismos commits `feat:` y `fix:` que el código que verifican.
 
-**Pruebas de aceptación (BDD).** El repositorio contiene tres archivos `.feature` en `src/test/resources/features/`, todos integrados antes de la ventana del Sprint (4 y 5 de octubre de 2026): `safetycase-driver-emergency.feature` (US04), `safetycase-emergency-attention.feature` (US10, inicio de atención y cierre) y `passenger-identity-journey.feature` (US23 y US06). Están escritos como especificación en Gherkin, por ejemplo:
-
-```gherkin
-Feature: Emergency Attention (US10)
-
-  # US10 S1 – Supervisor starts attention on a driver emergency
-  Scenario: Supervisor of the same company starts attention
-    Given an ACTIVE emergency belonging to company C
-    When POST /api/v1/emergencies/{id}/start-attention with a supervisor JWT for company C
-    Then the response status is 200
-```
-
-Estos archivos no se ejecutan: el `pom.xml` no declara una dependencia de Cucumber y no existen definiciones de pasos, de modo que no hay pruebas de aceptación automatizadas asociadas a ellos. Para las User Stories de este Sprint (US08, US09, US07, US24, US11, US19 y US20) no existe ningún archivo `.feature`, y de US10 solo hay uno para la parte de atención y cierre, anterior al Sprint. Por lo tanto, la verificación automatizada de este Sprint la dan las pruebas de la tabla anterior, no una suite de aceptación.
-
-[pendiente: suite BDD con Cucumber, fase 7]
-
 #### 4.2.3.6. Execution Evidence for Sprint Review
 
 Los Web Services de este Sprint no tienen pantallas: su ejecución se demuestra desde Swagger UI (`/swagger-ui/index.html`), que permite enviar las solicitudes con un token Bearer, y desde el stream de eventos que recibe el supervisor. Al término del Sprint se puede recorrer de extremo a extremo el circuito de seguridad del pasajero: el pasajero envía solicitudes de pánico con evidencia, el sistema las agrupa y avisa a la empresa, el supervisor las revisa y decide, el pasajero consulta el resultado, y el aforo del bus llega desde un dispositivo de conteo hasta la vista de flota.
