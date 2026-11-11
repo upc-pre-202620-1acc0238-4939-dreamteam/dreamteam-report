@@ -69,6 +69,26 @@ El video **About-The-Team** resume el proceso de trabajo realizado por el equipo
 | 00:0[m]:[ss] | Testimonio – [Integrante 4]: actividades, outcome y competencias (~1 minuto). |
 | 00:0[m]:[ss] | Cierre: conclusión y despedida del equipo. |
 
+
+**Evidencias visuales para el video About-The-Team**
+
+A continuación se muestran capturas reales del prototipo SafeBus que evidencian la fase de desarrollo y pruebas del equipo, incorporadas en el video About-The-Team.
+
+![Turno activo del conductor con botón de emergencia](assets/02-conductor-turno-emergencia.png)
+
+![Emergencia Critical enviada por el conductor](assets/03-conductor-emergencia-critical.png)
+
+![Viaje activo del pasajero verificado por QR](assets/04-pasajero-viaje-activo.png)
+
+![Solicitud de pánico del pasajero con mensaje y evidencia](assets/05-pasajero-solicitud-panico.png)
+
+![Pantalla de revisión de solicitudes de SafeBus](assets/07-supervisor-revision-3de3.png)
+
+![Monitoreo de la flota en tiempo real](assets/06-supervisor-flota-mapa.png)
+
+
+
+
 ---
 
 # Glosario
