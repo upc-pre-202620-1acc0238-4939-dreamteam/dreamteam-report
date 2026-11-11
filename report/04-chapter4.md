@@ -1176,6 +1176,89 @@ El Sprint Backlog descompone cada historia en tareas. Las tareas de este Sprint 
 | 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | T41 | Delivery time and recovery tests | Pruebas con un servidor real de tiempo de entrega y de recuperación tras reconexión (4d8c5a0). | `[completar]` | Fernández Linares, Alvaro | Done |
 
 
+#### 4.2.3.4. Development Evidence for Sprint Review
+
+Durante el Sprint se implementaron en el repositorio de Web Services las solicitudes de pánico del pasajero y su revisión en el Bounded Context `safetycase` (paquetes `domain`, `application`, `infrastructure` e `interfaces`), el fin automático del viaje en `passenger`, la fuente de conteo y el aforo en `trip`, la vista de flota con aforo y grupos en `fleetmonitoring`, y el flujo de eventos para supervisores en el nuevo contexto `notification`. El trabajo se integró en `develop` mediante cinco Pull Requests, cada uno desde una rama `feature/` creada para una parte del circuito.
+
+La tabla de commits cubre únicamente lo integrado en `develop` entre el 28/10/2026 y el 10/11/2026: 59 commits, de los cuales 54 son commits de implementación y pruebas y 5 son los commits de merge de los Pull Requests. Los commits anteriores a esa fecha no se incluyen.
+
+**Pulls integrados en `develop` (safebus-backend).**
+
+| PR | Rama de origen | Merge Commit Id | Commits | Contenido | Integrado el |
+|---|---|---|:---:|---|---|
+| #14 | `feature/safetycase-passenger-requests` | `56a87f1` | 12 | Solicitudes de pánico del pasajero con evidencia, grupos con umbral y vencimiento (US08) | 02/11/2026 |
+| #15 | `feature/safetycase-approval` | `d14b569` | 11 | Aprobación y rechazo de grupos, emergencia de pasajero, cola de revisión y fotos de evidencia para el supervisor (US10) | 03/11/2026 |
+| #16 | `feature/passenger-views-and-exit` | `c6eb8e2` | 10 | Consulta de solicitudes propias, grupos en el historial del bus y fin del viaje por separación automática (US09, US07, US24) | 03/11/2026 |
+| #17 | `feature/occupancy-count` | `e73f3ca` | 13 | Fuentes de conteo, eventos de aforo, lectura del aforo y aforo en la vista de flota (US19, US11) | 03/11/2026 |
+| #18 | `feature/live-notifications` | `8e4fe06` | 8 | Flujo de eventos en vivo y notificaciones de emergencias y de revisión (US20) | 04/11/2026 |
+
+**Commits del Sprint (safebus-backend).** Los commits se agrupan por la rama de la que provienen, en el orden de integración; al final se listan los commits de merge sobre `develop`.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|----------------|---------------------|--------------|
+| safebus-backend | `feature/safetycase-passenger-requests` | `23271d8` | feat(passenger): expose a passenger's own journey through the facade | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `3020b52` | feat(safetycase): add the passenger request group aggregate and policy | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `f429758` | feat(safetycase): add the passenger request group repository | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `e70cf67` | feat(safetycase): add the passenger request aggregate | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `48829b7` | feat(safetycase): add the passenger request repository | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `62d7b2d` | feat(safetycase): record passenger requests with threshold and late handling | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `624d19d` | feat(safetycase): expire an overdue group lazily before a new request | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `a5e61ce` | feat(safetycase): add the use case that expires overdue groups | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `c9cd30b` | feat(safetycase): add scheduled expiry of overdue groups | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `959e411` | feat(safetycase): add the passenger request endpoint | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `bb568e5` | test(safetycase): cover window, late and attached requests over REST | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `ab209be` | test(safetycase): cover concurrent passenger requests on one shift | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `c9fc1fd` | feat(safetycase): add approve, decline and close transitions to the group | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `8f4b0a2` | feat(safetycase): add the passenger emergency activated from a group | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `6fcbab2` | feat(safetycase): add group approval and decline services | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `6d6f4cf` | feat(safetycase): add the group decision endpoints | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `b5fa51d` | feat(safetycase): close the group when its emergency closes | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `f8ab074` | feat(safetycase): add the prioritized review queue | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `c41ec8d` | feat(shared): add image loading to the image storage port | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `1432aec` | feat(safetycase): serve group evidence photos to supervisors | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `7c308e3` | test(safetycase): cover concurrent group decisions | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `ed92c2b` | test(safetycase): cover driver emergencies and closed shifts with open groups | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `5aed849` | test(safetycase): cover collecting and approved groups with driver panic and expiry | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `faccc94` | refactor(shared): add a shared future-skew policy constant | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `af013dc` | feat(passenger): record the automatic separation summary on the journey | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `c53448c` | feat(passenger): accept automatic separation and the original end time | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `dc69879` | test(passenger): cover concurrent journey ends | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `a5db00c` | fix(safetycase): answer a retried request with its original after the journey ends | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `de62788` | test(safetycase): verify requests and emergencies survive the end of a journey | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `0fe1223` | feat(safetycase): give request groups a public reference | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `38f7147` | feat(safetycase): list and read the passenger's own requests | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `1684282` | feat(safetycase): serve the evidence photo to its owner | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `4ca12a8` | feat(safetycase): include request groups in the bus safety history | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `f55cae3` | feat(fleet): expose bus capacities in batch through the facade | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `0dfaa8d` | feat(trip): add the counting source aggregate with a hashed key | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `15d0d1d` | feat(trip): add the bus occupancy aggregate with sequence rules | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `07c8421` | feat(shared): authenticate counting sources by key as DEVICE | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `3c2441b` | feat(trip): add counting source registration, rotation and revocation | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `f7da3b3` | feat(trip): add occupancy initialization and heartbeat endpoints | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `12dad93` | feat(trip): add the occupancy event endpoint | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `212b23b` | feat(trip): add the supervisor occupancy read endpoint | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `940993e` | test(trip): cover concurrent occupancy events | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `f9775b4` | feat(trip): expose occupancy through the trip facade | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `8a9efa0` | feat(safetycase): expose open request groups through the facade | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `07590c7` | feat(fleet): add occupancy and passenger groups to the fleet overview | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `1a923d2` | fix(fleet): count only contributors in the group request count | — | 03/11/2026 |
+| safebus-backend | `feature/live-notifications` | `43d8bee` | feat(shared): add a too-many-requests exception | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `45666e0` | feat(notification): add the subscription registry with caps | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `726930d` | feat(notification): add bounded delivery with subscriber isolation | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `dceea20` | feat(notification): add the authenticated supervisor event stream | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `ed8d9be` | feat(safetycase): expose the group reference in the review queue | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `39f74a3` | feat(safetycase): notify supervisors of driver emergencies after commit | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `938d585` | feat(safetycase): notify review required and approved emergencies | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `4d8c5a0` | test(notification): cover delivery time and recovery over a real server | — | 04/11/2026 |
+| safebus-backend | `develop` | `56a87f1` | Merge pull request #14 from upc-pre-202620-1acc0238-4939-dreamteam/feature/safetycase-passenger-requests | Feature/safetycase passenger requests | 02/11/2026 |
+| safebus-backend | `develop` | `d14b569` | Merge pull request #15 from upc-pre-202620-1acc0238-4939-dreamteam/feature/safetycase-approval | Feature/safetycase approval | 03/11/2026 |
+| safebus-backend | `develop` | `c6eb8e2` | Merge pull request #16 from upc-pre-202620-1acc0238-4939-dreamteam/feature/passenger-views-and-exit | Feature/passenger views and exit | 03/11/2026 |
+| safebus-backend | `develop` | `e73f3ca` | Merge pull request #17 from upc-pre-202620-1acc0238-4939-dreamteam/feature/occupancy-count | Feature/occupancy count | 03/11/2026 |
+| safebus-backend | `develop` | `8e4fe06` | Merge pull request #18 from upc-pre-202620-1acc0238-4939-dreamteam/feature/live-notifications | Feature/live notifications | 04/11/2026 |
+
+Los 54 commits de implementación y pruebas de este Sprint fueron escritos con la identidad de Git `ORION-tech-c`; el detalle de la autoría por semana se presenta en la sección 4.2.3.9. Los repositorios de la Landing Page y de la aplicación móvil no se incluyen en esta tabla: `[completar: commits de safebus-landing y safebus-mobile del Sprint 3, si corresponde]`.
+
+
 ## 4.3. Validation Interviews
 
 ### 4.3.1. Diseño de Entrevistas
