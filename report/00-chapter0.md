@@ -55,6 +55,7 @@
 | 0.1.0   |  9/01/2026| DreamTeam| Versión inicial del informe |
 | 1.0.0   | 9/21/2026| DreamTeam | Primer avance del informe |
 | 2.0.0   | 10/5/2026| DreamTeam | Segundo avance del informe |
+| 3.0.0   | 11/11/2026 | DreamTeam | Tercer avance del informe: Sprint 3 (4.2.3) |
 
 ---
 
