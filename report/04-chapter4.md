@@ -1320,6 +1320,45 @@ Estos archivos no se ejecutan: el `pom.xml` no declara una dependencia de Cucumb
 
 [pendiente: suite BDD con Cucumber, fase 7]
 
+#### 4.2.3.6. Execution Evidence for Sprint Review
+
+Los Web Services de este Sprint no tienen pantallas: su ejecución se demuestra desde Swagger UI (`/swagger-ui/index.html`), que permite enviar las solicitudes con un token Bearer, y desde el stream de eventos que recibe el supervisor. Al término del Sprint se puede recorrer de extremo a extremo el circuito de seguridad del pasajero: el pasajero envía solicitudes de pánico con evidencia, el sistema las agrupa y avisa a la empresa, el supervisor las revisa y decide, el pasajero consulta el resultado, y el aforo del bus llega desde un dispositivo de conteo hasta la vista de flota.
+
+**Ejecución local de los Web Services.** Con Java 21 instalado, el servicio se inicia desde la raíz del repositorio de Web Services con el perfil `dev`, que usa una base de datos H2 y carga los datos de ejemplo de `FleetDevSeeder`.
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+```
+
+Para preparar esta sección se inició el servicio con ese perfil sobre una copia limpia de `develop` (commit `8e4fe06`): `GET /api/v1/health` respondió `{"status":"UP"}` y `GET /v3/api-docs` entregó la especificación OpenAPI con los endpoints descritos en 4.2.3.7. El recorrido manual de la tabla siguiente no se ejecutó ni se capturó en esa preparación.
+
+**Recorrido de ejecución.** La columna de resultado resume lo que verifican las pruebas automatizadas de 4.2.3.5 para cada paso; no es una captura de pantalla. Cada paso tiene un espacio para la captura de Swagger UI.
+
+| # | Paso | Endpoint | Resultado esperado (según las pruebas) | Historia | Captura |
+|---|---|---|---|---|---|
+| 1 | El supervisor y el pasajero inician sesión | `POST /api/v1/auth/sign-in` | Cada uno obtiene un token Bearer con su rol. | US16 (Sprint 1) | [completar: captura] |
+| 2 | El conductor activa su turno escaneando la credencial QR | `POST /api/v1/shifts/activate` | Responde 201 con el turno `ACTIVE`. | US13 (Sprint 1) | [completar: captura] |
+| 3 | El pasajero inicia su viaje en el bus | `POST /api/v1/journeys` | Responde 201 con el viaje activo. | US23 | [completar: captura] |
+| 4 | El supervisor abre el stream de notificaciones de su empresa | `GET /api/v1/notifications/stream` | Responde 200 con `text/event-stream` y comentarios de keep-alive. Un cuarto stream abierto sin cerrar los anteriores supera el límite por usuario y responde 429. | US20 | [completar: captura] |
+| 5 | Tres pasajeros distintos envían una solicitud de pánico con mensaje y foto | `POST /api/v1/passenger-requests` | Responde 201 con `requestId`, `status` (`COUNTED`, `ATTACHED` o `LATE`), `groupStatus` y `contributorCount`. Un reintento idéntico responde 200. | US08 | [completar: captura] |
+| 6 | Al llegar al umbral de tres contribuyentes el stream recibe el evento | `GET /api/v1/notifications/stream` | Llega solo `PassengerReviewRequired` (prioridad `REVIEW`), sin identidad, foto ni mensaje. | US20, US08 | [completar: captura] |
+| 7 | El supervisor consulta la cola de revisión | `GET /api/v1/review-queue` | El grupo aparece en `groupsAwaitingApproval` con sus solicitudes y su referencia; la respuesta no expone identidad ni imágenes. | US10 | [completar: captura] |
+| 8 | El supervisor descarga la foto de evidencia de una solicitud del grupo | `GET /api/v1/passenger-requests/{id}/photo` | Responde 200 con la imagen y su tipo de contenido original. | US10 | [completar: captura] |
+| 9 | El supervisor aprueba el grupo | `POST /api/v1/request-groups/{id}/approve` | Responde 201 con `emergencyId`, estado y prioridad alta; aprobar de nuevo responde 200 con la misma emergencia. El stream recibe una única `EmergencyActivated`. | US10, US20 | [completar: captura] |
+| 10 | Alternativa: el supervisor rechaza el grupo con motivo y respuesta | `POST /api/v1/request-groups/{id}/decline` | Responde 200 con el grupo no aprobado y no se crea emergencia. Sin motivo válido responde 422. | US10 | [completar: captura] |
+| 11 | El pasajero consulta sus solicitudes y el resultado | `GET /api/v1/passenger-requests/mine` | Lista solo sus solicitudes, la más reciente primero, con el estado del grupo y la respuesta orientada al usuario. | US09 | [completar: captura] |
+| 12 | El pasajero consulta el historial de seguridad del bus | `GET /api/v1/vehicles/{id}/safety-history` | El grupo y su emergencia aparecen como un solo ítem con la misma referencia en todos los estados. | US07 | [completar: captura] |
+| 13 | El supervisor registra la fuente de conteo del bus | `POST /api/v1/buses/{busId}/counting-sources` | Responde 201 con la clave una sola vez; la lista posterior (`GET`) nunca la devuelve. | US19 | [completar: captura] |
+| 14 | El dispositivo inicializa el conteo, envía eventos de entrada y salida y el latido | `POST /api/v1/occupancy-initializations`, `POST /api/v1/occupancy-events`, `POST /api/v1/occupancy-heartbeats` | La inicialización responde 201 con conteo cero; cada evento responde 201 con el conteo resultante; un salto de secuencia responde 409 con la secuencia esperada. | US19 | [completar: captura] |
+| 15 | El supervisor consulta el aforo del bus y la vista de flota | `GET /api/v1/buses/{busId}/occupancy`, `GET /api/v1/fleet/overview` | El aforo se informa `CURRENT`, o `STALE` si el latido supera los dos minutos, o `UNAVAILABLE` con su motivo. | US11 | [completar: captura] |
+| 16 | El pasajero termina su viaje por separación automática | `POST /api/v1/journeys/{id}/end` | Responde 200 con el viaje terminado; las solicitudes y emergencias del viaje se conservan. | US24 | [completar: captura] |
+
+**Eventos del stream de notificaciones.** El supervisor recibe dos eventos: `PassengerReviewRequired` cuando un grupo reúne el umbral y espera aprobación, y `EmergencyActivated` cuando se activa una emergencia (prioridad `CRITICAL` para la del conductor y `HIGH` para un grupo aprobado).
+
+[completar: captura del stream recibiendo `PassengerReviewRequired` y `EmergencyActivated`]
+
+**Video de la ejecución.** [completar: URL del video]
+
 
 ## 4.3. Validation Interviews
 
