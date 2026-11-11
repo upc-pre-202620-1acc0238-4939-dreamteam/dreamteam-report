@@ -31,12 +31,14 @@ La validación de la problemática realizada en el TB1 de una manera profunda y 
 
 # Video About-the-Product
 
-- Screenshot: [completar]
-- URL OneDrive: [completar]
-- URL YouTube: [completar]
-- Duración: [completar]
+- Screenshot: ![Pantalla de revisión de solicitudes de SafeBus](assets/07-supervisor-revision-3de3.png)
+- URL OneDrive: https://1drv.ms/v/c/73fbe521365b1fff/IQAuIpXOy-mmQY-Zi2c3vzoHATXdnDJE8v4ZMC5mtYoT0Qs?e=qdcoiT
+- URL YouTube: https://youtu.be/0qolV7gV23E
+- Duración: 00:00:33
 
-[Introducción a la sección]
+El video About-the-Product presenta SafeBus, la solución móvil de la startup DreamTeam orientada a la seguridad durante la ruta en el transporte público. Está dirigido a los visitantes del Landing Page, interesados en conocer el modelo de negocio y las características principales del producto, y a los usuarios de las aplicaciones, que realizan las tareas de seguridad soportadas por la solución. El tono es promocional y consistente con el adoptado para la marca, enfatizando la protección del conductor y del pasajero mediante un sistema integrado al vehículo.
+
+El video recorre el producto a través de sus tres roles complementarios, construidos de forma nativa en Kotlin, Jetpack Compose y Material 3. El conductor valida su unidad por QR y dispone de un botón de emergencia que, con un solo toque, declara un caso Critical y lo envía a la empresa. El pasajero verifica el bus, inicia su viaje y puede enviar una solicitud de pánico con mensaje y evidencia. El supervisor monitorea la flota, atiende las emergencias y revisa los grupos de solicitudes. Se destaca el diferenciador de SafeBus: una solicitud individual no es una emergencia; al reunir tres pasajeros distintos en cinco minutos, el caso pasa a aprobación de la empresa y se genera una emergencia High, evitando falsas alarmas y priorizando la respuesta según la gravedad real.
 
 ---
 
@@ -48,15 +50,44 @@ La validación de la problemática realizada en el TB1 de una manera profunda y 
 
 # Video About-The-Team
 
-- Screenshot: [completar]
-- URL Microsoft Stream: [completar]
-- URL YouTube: [completar]
+- **Screenshot:** [completar]
+- **URL Microsoft Stream:** [completar]
+- **URL YouTube:** [completar]
+
+El video **About-The-Team** resume el proceso de trabajo realizado por el equipo DreamTeam durante el desarrollo de SafeBus. Incluye escenas con imágenes o grabaciones de sesiones de trabajo real del equipo, complementadas con narración en voz en off, e incorpora el testimonio ante cámara de cada integrante, quien describe las actividades realizadas, el logro del student outcome correspondiente y el desarrollo de las competencias alcanzadas. El tono es reflexivo y cierra con la retrospectiva grupal del proyecto.
 
 **Pauta de secuencias de contenido**
 
 | Timing (hh:mm:ss) | Sección |
-|---------------------|-----------|
-| 00:00:00 | |
+|---|---|
+| 00:00:00 | Introducción: presentación del equipo DreamTeam y del proyecto SafeBus. |
+| 00:00:[ss] | Resumen del proceso de trabajo: sesiones reales del equipo con narración en voz en off. |
+| 00:0[m]:[ss] | Retrospectiva de grupo: logros, dificultades y aprendizajes (considerar ~5 minutos). |
+| 00:0[m]:[ss] | Testimonio – [Integrante 1]: actividades, outcome y competencias (~1 minuto). |
+| 00:0[m]:[ss] | Testimonio – [Integrante 2]: actividades, outcome y competencias (~1 minuto). |
+| 00:0[m]:[ss] | Testimonio – [Integrante 3]: actividades, outcome y competencias (~1 minuto). |
+| 00:0[m]:[ss] | Testimonio – [Integrante 4]: actividades, outcome y competencias (~1 minuto). |
+| 00:0[m]:[ss] | Cierre: conclusión y despedida del equipo. |
+
+
+**Evidencias visuales para el video About-The-Team**
+
+A continuación se muestran capturas reales del prototipo SafeBus que evidencian la fase de desarrollo y pruebas del equipo, incorporadas en el video About-The-Team.
+
+![Organizacion del Equipo](assets/abteam2.png)
+
+![Reuniones del equipo](assets/abteam1.png)
+
+![Turno activo del conductor con botón de emergencia](assets/02-conductor-turno-emergencia.png)
+
+![Solicitud de pánico del pasajero con mensaje y evidencia](assets/05-pasajero-solicitud-panico.png)
+
+![Pantalla de revisión de solicitudes de SafeBus](assets/07-supervisor-revision-3de3.png)
+
+
+
+
+
 
 ---
 

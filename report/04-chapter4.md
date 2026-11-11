@@ -158,7 +158,7 @@ Esta sección registra la implementación de los productos de SafeBus por Sprint
 
 | Producto | Repositorio | Rama de integración |
 |---|---|---|
-| Web Services | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-api | `develop` |
+| Web Services | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend | `develop` |
 | Landing Page | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-landing | `develop` |
 | Aplicación móvil | https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-mobile | `develop` |
 
@@ -1059,9 +1059,612 @@ Durante el transcurso del Sprint 2, el equipo DreamTeam consolidó su disciplina
    * **Pull Requests Fusionados en el Sprint:** Se completaron e integraron 4 Pull Requests principales en `develop`: PR #5 (`feature/trip-shift-activation`), PR #6 (`feature/trip-location`), PR #7 (`feature/safetycase-driver-emergency`) y PR #8 (`feature/passenger-identity-journey`), garantizando la cohesión arquitectónica del sistema antes de la liberación final.
 
 
+### 4.2.3. Sprint 3
+
+El Sprint 3 completa en los Web Services el circuito de seguridad del pasajero sobre la base de identidad, viaje, turno y emergencias del conductor construida en los Sprints anteriores: la solicitud de pánico con mensaje y foto (US08), la consulta de su estado y de las alertas del bus (US09 y US07), la revisión y aprobación por el supervisor (US10), el fin automático del viaje (US24), el aforo de cada bus (US19 y US11) y la entrega de notificaciones en vivo (US20). El periodo del Sprint va del 28/10/2026 al 10/11/2026. Las historias US08 y US20 estaban asignadas al Sprint 2 en la sección 2.4.3 y se trasladan a este Sprint; US10 y US11 se completan en este Sprint porque sus primeras partes ya estaban integradas en `develop`. Las evidencias de desarrollo, pruebas, documentación de servicios, despliegue y colaboración (4.2.3.4 a 4.2.3.9) documentan los Web Services (repositorio `safebus-backend`).
+
+#### 4.2.3.1. Sprint Planning 3
+
+| Sprint # | Sprint 3 |
+|----------|----------|
+| **Date** | 28/10/2026 |
+| **Sprint Period** | 28/10/2026 al 10/11/2026 |
+| **Sprint Goal** | Nuestro enfoque está en completar el circuito de seguridad del pasajero en los Web Services: el registro de solicitudes de pánico con mensaje y foto, su agrupación por bus y turno hasta el umbral de tres pasajeros distintos en cinco minutos, la aprobación o el rechazo por el supervisor, la consulta del estado de las solicitudes y de las alertas del bus, el fin automático del viaje, el aforo de cada bus y las notificaciones en vivo. Creemos que esto entrega a los supervisores una cola priorizada de emergencias y solicitudes por aprobar, con el aforo y la ubicación de cada bus, y a los pasajeros la posibilidad de reportar un peligro con evidencia y conocer su estado, sin exponer identidades. Esto se confirmará cuando, con un viaje activo, tres pasajeros distintos envíen solicitudes que dejen el grupo en espera de aprobación, el supervisor lo apruebe y se active una única emergencia de prioridad High, el supervisor reciba por su flujo de eventos `PassengerReviewRequired` y `EmergencyActivated`, y un dispositivo de conteo registrado informe el aforo del bus mediante los Web Services documentados. |
+| **Sum of Story Points** | 42 (US08: 8, US10: 8, US07: 3, US09: 3, US11: 5, US19: 5, US20: 5, US24: 5) |
+
+**Historias seleccionadas para el Sprint.** Los Story Points provienen del Product Backlog de la sección 2.4.3.
+
+| User Story Id | Título | Story Points | Sprint en el Product Backlog | Alcance en este Sprint |
+|---|---|---|:---:|---|
+| US08 | Submit a Passenger Panic Request with Message and Photo | 8 | 2 | Web Services |
+| US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | 8 | 3 | Web Services: aprobación y rechazo de grupos y cola de revisión (la atención y el cierre de emergencias del conductor ya estaban integrados) |
+| US09 | Consult the Status of My Passenger Panic Requests | 3 | 3 | Web Services |
+| US07 | Consult the Alerts Reported on My Bus | 3 | 3 | Web Services: grupos de solicitudes en el historial de seguridad del bus (el historial de emergencias del conductor ya estaba integrado) |
+| US24 | Automatically End a Journey When Moving Away from the Bus | 5 | 3 | Web Services: fin del viaje por separación automática (la detección de la separación corresponde a la aplicación móvil) |
+| US11 | Monitor Fleet Location and Occupancy | 5 | 3 | Web Services: aforo y grupos de pasajeros en la vista de flota (ubicación y emergencias ya estaban integradas) |
+| US19 | Provide a RESTful Passenger-Count Service | 5 | 3 | Web Services |
+| US20 | Deliver Driver Emergencies and Passenger Review Notifications | 5 | 2 | Web Services |
+
+La suma de 42 Story Points toma los puntos completos de cada historia del Product Backlog, incluidas US10 y US11, cuyas primeras partes se integraron antes del inicio del Sprint.
+
+#### 4.2.3.2. Aspect Leaders and Collaborators
+
+Cada aspecto del Sprint tiene un líder (L), responsable de coordinar el trabajo y de integrar los cambios, y colaboradores (C) que aportan en ese aspecto. Una celda con «-» indica que el integrante no participó en ese aspecto según la evidencia disponible: el historial de Git del repositorio de Web Services y el reparto de tareas del equipo.
+
+| Aspecto | Descripción en este Sprint |
+|---|---|
+| Web Services (backend) | Repositorio `safebus-backend`: contextos `passenger`, `safetycase`, `trip`, `fleetmonitoring` y `notification` (US08, US09, US07, US10, US24, US19, US11 y US20), validación del esquema en MySQL, documentación OpenAPI y redeploy en Railway. |
+| Frontend | Cliente conectado a los Web Services: sesión con JWT, inicio de sesión y rutas protegidas, vista de flota, cola de revisión de solicitudes, aprobación y rechazo con foto de evidencia, paneles de aforo e historial de seguridad, notificaciones en vivo y manejo de errores. |
+| Landing Page | Sección About-The-Team de la Landing Page. |
+| Mobile Application | Aplicación móvil en Flutter. |
+| Videos | Videos About-The-Team y About-The-Product. |
+| Validation Segment 1 | Entrevistas de validación del Segmento 1. |
+| Validation Segment 2 | Entrevistas de validación del Segmento 2. |
+| Validation Segment 3 | Entrevistas de validación del Segmento 3. |
+
+| Team Member (Apellidos, Nombres) | GitHub Username | Web Services | Frontend | Landing Page | Mobile Application | Videos | Validation Segment 1 | Validation Segment 2 | Validation Segment 3 |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Acuache Lucas, Mathias Joaquin | MathiasA25 | - | - | - | - | - | - | - | L |
+| Arechaga Saavedra, Mathias Augusto | MathZell | - | - | - | L | L | - | - | - |
+| Delgado Arriola, Leonardo Sebastian | leodev77 | - | L | L | - | - | - | L | - |
+| Espinoza Orrego, Valentino Andre | valentinoespinoza13 | - | - | - | - | - | L | - | - |
+| Fernández Linares, Alvaro Sebastian | ORION-tech-c | L | - | - | - | - | - | - | - |
+
+El liderazgo de Fernández Linares, Alvaro Sebastian en Web Services se confirma con la autoría en Git: en el periodo del Sprint (28/10/2026 al 10/11/2026), los 54 commits no-merge de `safebus-backend` integrados en `develop` fueron escritos con la identidad `ORION-tech-c`, y abarcan los cinco Bounded Contexts del aspecto. Los demás aspectos se registran según el reparto de tareas del equipo; no se registraron colaboradores adicionales.
+
+#### 4.2.3.3. Sprint Backlog 3
+
+El Sprint Backlog descompone el trabajo del Sprint en tareas y se lleva en un tablero de Trello. La tabla lista las 55 tarjetas de la columna Done del tablero, de `TSK-08-01` a `TSK-VAL-09`. Las tareas de las historias de usuario del Product Backlog (US08, US10, US09, US07, US24, US11, US19 y US20) indican su historia; las demás tareas (documentación y despliegue de los Web Services, frontend, Landing Page, videos y entrevistas de validación) no pertenecen a una historia del Product Backlog y llevan «-». La columna Assigned To sigue el reparto de aspectos de la sección 4.2.3.2.
+
+> URL público del Board: https://trello.com/b/QeKdsMFe/sprint-backlog-3
+
+<img src="../docs/insights/sprint3-board.png" alt="Board del Sprint 3 de SafeBus" width="750">
+
+| Sprint | US Id | US Title | Work-Item Id | Task Title | Assigned To | Status |
+|--------|-------|----------|--------------|------------|-------------|--------|
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-01 | Passenger Request Group & Request Aggregates | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-02 | Locking Repositories & Unique Constraints | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-03 | Register Request: Threshold, Late Request & Idempotency | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-04 | Scheduled Expiration of Stale Groups | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-05 | Multipart POST /passenger-requests Endpoint | Fernández Linares, Alvaro | Done |
+| 3 | US08 | Submit a Passenger Panic Request with Message and Photo | TSK-08-06 | Concurrency Tests: Identical Retries & 5 Simultaneous Passengers | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-01 | Group Transitions: Approve, Decline, Close | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-02 | HIGH Emergency from Group with Unique Link | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-03 | Approve & Decline Endpoints | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-04 | Prioritized Review Queue | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-05 | Evidence Photo for Same-Company Supervisor | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-06 | Close Group on Emergency Close | Fernández Linares, Alvaro | Done |
+| 3 | US10 | Approve Passenger Emergencies and Prioritize Driver Alerts | TSK-10-07 | Concurrency Tests: Approve vs Decline | Fernández Linares, Alvaro | Done |
+| 3 | US09 | Consult the Status of My Passenger Panic Requests | TSK-09-01 | My Requests List & Detail with Status Mapping | Fernández Linares, Alvaro | Done |
+| 3 | US09 | Consult the Status of My Passenger Panic Requests | TSK-09-02 | Evidence Photo for Owner | Fernández Linares, Alvaro | Done |
+| 3 | US07 | Consult the Alerts Reported on My Bus | TSK-07-01 | Groups in Bus Safety History with Public Reference | Fernández Linares, Alvaro | Done |
+| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | TSK-24-01 | Automatic Separation Summary & Reason | Fernández Linares, Alvaro | Done |
+| 3 | US24 | Automatically End a Journey When Moving Away from the Bus | TSK-24-02 | Journey End Concurrency Tests | Fernández Linares, Alvaro | Done |
+| 3 | US11 | Monitor Fleet Location and Occupancy | TSK-11-01 | Occupancy & Groups in Fleet Overview | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-01 | Counting Source with Hashed Key & DEVICE Auth | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-02 | Occupancy Aggregate: Sequence, Gap & Inconsistency | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-03 | Device Endpoints: Init, Events & Heartbeat | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-04 | Supervisor Occupancy Read with Freshness | Fernández Linares, Alvaro | Done |
+| 3 | US19 | Provide a RESTful Passenger-Count Service | TSK-19-05 | Counting Event Concurrency Tests | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-01 | Subscription Registry & Bounded Delivery | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-02 | SSE Stream with JWT, Caps & Foreign Company Rejection | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-03 | After-Commit Publishing from safetycase | Fernández Linares, Alvaro | Done |
+| 3 | US20 | Deliver Driver Emergencies and Passenger Review Notifications | TSK-20-04 | Delivery Timing & Recovery Tests | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-GEN-01 | MySQL 8 Schema Validation per Phase | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-GEN-02 | OpenAPI Documentation & Swagger Walkthrough | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-FE-01 | API Client & JWT Session Handling | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-02 | Login & Supervisor Route Guards | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-03 | Fleet Overview Connected to API | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-04 | Passenger Request Review Queue Screen | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-05 | Approve & Decline Actions with Evidence Photo | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-06 | Bus Occupancy & Safety History Panels | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-07 | Live Notifications (SSE) Client | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-FE-08 | Error Handling & Empty States | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-LP-01 | About-The-Team Section Layout | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-LP-02 | Team Member Cards & Photos | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-LP-03 | Responsive Check & Landing Publish | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VD-01 | About-The-Team Script & Storyboard | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-VD-02 | About-The-Team Video: First Version | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-VD-03 | About-The-Product Script & Demo Flow | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-GEN-03 | Railway Redeploy of Latest develop | Fernández Linares, Alvaro | Done |
+| 3 | - | - | TSK-VD-04 | About-The-Product Video: First Version | Arechaga Saavedra, Mathias | Done |
+| 3 | - | - | TSK-VAL-01 | Segment 1 Interview Script | Espinoza Orrego, Valentino | Done |
+| 3 | - | - | TSK-VAL-02 | Segment 1 Interviews Conducted | Espinoza Orrego, Valentino | Done |
+| 3 | - | - | TSK-VAL-03 | Segment 1 Findings Summary | Espinoza Orrego, Valentino | Done |
+| 3 | - | - | TSK-VAL-04 | Segment 2 Interview Script | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VAL-05 | Segment 2 Interviews Conducted | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VAL-06 | Segment 2 Findings Summary | Delgado Arriola, Leonardo | Done |
+| 3 | - | - | TSK-VAL-07 | Segment 3 Interview Script | Acuache Lucas, Mathias J. | Done |
+| 3 | - | - | TSK-VAL-08 | Segment 3 Interviews Conducted | Acuache Lucas, Mathias J. | Done |
+| 3 | - | - | TSK-VAL-09 | Segment 3 Findings Summary | Acuache Lucas, Mathias J. | Done |
+
+#### 4.2.3.4. Development Evidence for Sprint Review
+
+Durante el Sprint se implementaron en el repositorio de Web Services las solicitudes de pánico del pasajero y su revisión en el Bounded Context `safetycase` (paquetes `domain`, `application`, `infrastructure` e `interfaces`), el fin automático del viaje en `passenger`, la fuente de conteo y el aforo en `trip`, la vista de flota con aforo y grupos en `fleetmonitoring`, y el flujo de eventos para supervisores en el nuevo contexto `notification`. El trabajo se integró en `develop` mediante cinco Pull Requests, cada uno desde una rama `feature/` creada para una parte del circuito.
+
+La tabla de commits cubre únicamente lo integrado en `develop` entre el 28/10/2026 y el 10/11/2026: 59 commits, de los cuales 54 son commits de implementación y pruebas y 5 son los commits de merge de los Pull Requests. Los commits anteriores a esa fecha no se incluyen.
+
+**Pulls integrados en `develop` (safebus-backend).**
+
+| PR | Rama de origen | Merge Commit Id | Commits | Contenido | Integrado el |
+|---|---|---|:---:|---|---|
+| #14 | `feature/safetycase-passenger-requests` | `56a87f1` | 12 | Solicitudes de pánico del pasajero con evidencia, grupos con umbral y vencimiento (US08) | 02/11/2026 |
+| #15 | `feature/safetycase-approval` | `d14b569` | 11 | Aprobación y rechazo de grupos, emergencia de pasajero, cola de revisión y fotos de evidencia para el supervisor (US10) | 03/11/2026 |
+| #16 | `feature/passenger-views-and-exit` | `c6eb8e2` | 10 | Consulta de solicitudes propias, grupos en el historial del bus y fin del viaje por separación automática (US09, US07, US24) | 03/11/2026 |
+| #17 | `feature/occupancy-count` | `e73f3ca` | 13 | Fuentes de conteo, eventos de aforo, lectura del aforo y aforo en la vista de flota (US19, US11) | 03/11/2026 |
+| #18 | `feature/live-notifications` | `8e4fe06` | 8 | Flujo de eventos en vivo y notificaciones de emergencias y de revisión (US20) | 04/11/2026 |
+
+**Commits del Sprint (safebus-backend).** Los commits se agrupan por la rama de la que provienen, en el orden de integración; al final se listan los commits de merge sobre `develop`.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on |
+|------------|--------|-----------|----------------|---------------------|--------------|
+| safebus-backend | `feature/safetycase-passenger-requests` | `23271d8` | feat(passenger): expose a passenger's own journey through the facade | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `3020b52` | feat(safetycase): add the passenger request group aggregate and policy | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `f429758` | feat(safetycase): add the passenger request group repository | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `e70cf67` | feat(safetycase): add the passenger request aggregate | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `48829b7` | feat(safetycase): add the passenger request repository | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `62d7b2d` | feat(safetycase): record passenger requests with threshold and late handling | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `624d19d` | feat(safetycase): expire an overdue group lazily before a new request | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `a5e61ce` | feat(safetycase): add the use case that expires overdue groups | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `c9cd30b` | feat(safetycase): add scheduled expiry of overdue groups | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `959e411` | feat(safetycase): add the passenger request endpoint | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `bb568e5` | test(safetycase): cover window, late and attached requests over REST | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `ab209be` | test(safetycase): cover concurrent passenger requests on one shift | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `c9fc1fd` | feat(safetycase): add approve, decline and close transitions to the group | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `8f4b0a2` | feat(safetycase): add the passenger emergency activated from a group | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `6fcbab2` | feat(safetycase): add group approval and decline services | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `6d6f4cf` | feat(safetycase): add the group decision endpoints | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `b5fa51d` | feat(safetycase): close the group when its emergency closes | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `f8ab074` | feat(safetycase): add the prioritized review queue | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `c41ec8d` | feat(shared): add image loading to the image storage port | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `1432aec` | feat(safetycase): serve group evidence photos to supervisors | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `7c308e3` | test(safetycase): cover concurrent group decisions | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `ed92c2b` | test(safetycase): cover driver emergencies and closed shifts with open groups | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `5aed849` | test(safetycase): cover collecting and approved groups with driver panic and expiry | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `faccc94` | refactor(shared): add a shared future-skew policy constant | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `af013dc` | feat(passenger): record the automatic separation summary on the journey | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `c53448c` | feat(passenger): accept automatic separation and the original end time | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `dc69879` | test(passenger): cover concurrent journey ends | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `a5db00c` | fix(safetycase): answer a retried request with its original after the journey ends | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `de62788` | test(safetycase): verify requests and emergencies survive the end of a journey | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `0fe1223` | feat(safetycase): give request groups a public reference | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `38f7147` | feat(safetycase): list and read the passenger's own requests | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `1684282` | feat(safetycase): serve the evidence photo to its owner | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `4ca12a8` | feat(safetycase): include request groups in the bus safety history | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `f55cae3` | feat(fleet): expose bus capacities in batch through the facade | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `0dfaa8d` | feat(trip): add the counting source aggregate with a hashed key | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `15d0d1d` | feat(trip): add the bus occupancy aggregate with sequence rules | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `07c8421` | feat(shared): authenticate counting sources by key as DEVICE | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `3c2441b` | feat(trip): add counting source registration, rotation and revocation | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `f7da3b3` | feat(trip): add occupancy initialization and heartbeat endpoints | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `12dad93` | feat(trip): add the occupancy event endpoint | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `212b23b` | feat(trip): add the supervisor occupancy read endpoint | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `940993e` | test(trip): cover concurrent occupancy events | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `f9775b4` | feat(trip): expose occupancy through the trip facade | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `8a9efa0` | feat(safetycase): expose open request groups through the facade | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `07590c7` | feat(fleet): add occupancy and passenger groups to the fleet overview | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `1a923d2` | fix(fleet): count only contributors in the group request count | — | 03/11/2026 |
+| safebus-backend | `feature/live-notifications` | `43d8bee` | feat(shared): add a too-many-requests exception | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `45666e0` | feat(notification): add the subscription registry with caps | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `726930d` | feat(notification): add bounded delivery with subscriber isolation | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `dceea20` | feat(notification): add the authenticated supervisor event stream | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `ed8d9be` | feat(safetycase): expose the group reference in the review queue | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `39f74a3` | feat(safetycase): notify supervisors of driver emergencies after commit | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `938d585` | feat(safetycase): notify review required and approved emergencies | — | 04/11/2026 |
+| safebus-backend | `feature/live-notifications` | `4d8c5a0` | test(notification): cover delivery time and recovery over a real server | — | 04/11/2026 |
+| safebus-backend | `develop` | `56a87f1` | Merge pull request #14 from upc-pre-202620-1acc0238-4939-dreamteam/feature/safetycase-passenger-requests | Feature/safetycase passenger requests | 02/11/2026 |
+| safebus-backend | `develop` | `d14b569` | Merge pull request #15 from upc-pre-202620-1acc0238-4939-dreamteam/feature/safetycase-approval | Feature/safetycase approval | 03/11/2026 |
+| safebus-backend | `develop` | `c6eb8e2` | Merge pull request #16 from upc-pre-202620-1acc0238-4939-dreamteam/feature/passenger-views-and-exit | Feature/passenger views and exit | 03/11/2026 |
+| safebus-backend | `develop` | `e73f3ca` | Merge pull request #17 from upc-pre-202620-1acc0238-4939-dreamteam/feature/occupancy-count | Feature/occupancy count | 03/11/2026 |
+| safebus-backend | `develop` | `8e4fe06` | Merge pull request #18 from upc-pre-202620-1acc0238-4939-dreamteam/feature/live-notifications | Feature/live notifications | 04/11/2026 |
+
+Los 54 commits de implementación y pruebas de este Sprint fueron escritos con la identidad de Git `ORION-tech-c`; el detalle de la autoría por semana se presenta en la sección 4.2.3.9.
+
+#### 4.2.3.5. Testing Suite Evidence for Sprint Review
+
+El Sprint se verificó con pruebas automatizadas en el repositorio de Web Services (`safebus-backend`), escritas con JUnit 5 y Spring Boot Test. Las pruebas de capa REST usan `MockMvc` sobre una base H2 y, para el flujo de notificaciones, se levanta un servidor real y se consume el stream por HTTP. La ejecución completa se hizo con `./mvnw -B test` sobre una copia limpia de `develop` en el commit `8e4fe06` (merge del PR #18), según la marca de tiempo del log, el 11/11/2026.
+
+| Dato de la ejecución | Resultado |
+|---|---|
+| Comando | `./mvnw -B test` |
+| Commit evaluado | `8e4fe06` (`develop`) |
+| Clases de prueba ejecutadas | 162 |
+| Tests ejecutados | 1302 |
+| Fallos / Errores / Omitidos | 0 / 0 / 0 |
+| Resultado de Maven | `BUILD SUCCESS` |
+| Duración | 1 min 26 s |
+
+La cifra de 1302 corresponde a toda la suite del repositorio en ese commit, incluidas las pruebas de Sprints anteriores. La siguiente tabla relaciona con cada User Story las clases de prueba que se añadieron o modificaron entre el 28/10/2026 y el 10/11/2026; los números entre paréntesis son los tests ejecutados por clase según el log de Maven, y las clases ya existentes que se modificaron en la ventana se indican como «modificada», por lo que su conteo incluye también pruebas anteriores. Las clases de apoyo (`support/`, fixtures y utilidades) no se listan.
+
+**Pruebas por User Story.**
+
+| US | Alcance verificado | Clases de prueba (tests ejecutados) | Comportamientos verificados |
+|---|---|---|---|
+| US08 | Registro de solicitudes de pánico del pasajero (ventana, evidencia, grupos y vencimiento) | `PassengerRequestControllerTest` (18)<br>`RegisterPassengerRequestTest` (29)<br>`RegisterPassengerRequestRetryTest` (6)<br>`PassengerRequestWindowControllerTest` (10)<br>`PassengerRequestGroupTest` (20)<br>`PassengerRequestTest` (8)<br>`PassengerRequestGroupRepositoryTest` (8)<br>`PassengerRequestRepositoryTest` (6)<br>`PassengerRequestConcurrencyTest` (4)<br>`ExpireOverdueGroupsTest` (4)<br>`GroupExpiryJobTest` (3)<br>`GroupExpiryJobTestProfileTest` (1)<br>`PassengerContextFacadeJourneyTest` (4)<br>`PublicReferenceTest` (8, modificada)<br>**Subtotal: 129** | Una solicitud con exactamente 5 minutos de antigüedad es elegible y una con 1 ms más es tardía (`late`); la solicitud tardía no aporta al umbral de un grupo abierto; una solicitud elegible para un grupo en espera de aprobación o aprobado se adjunta sin cambiar el grupo; tras el vencimiento del grupo, una nueva solicitud abre una nueva ventana con ella como única contribuyente; la foto de registro nunca se usa como evidencia; un viaje desconocido y el viaje de otra cuenta dan el mismo código y detalle; el grupo abre en `Collecting` con ventana de cinco minutos, pasa a `AwaitingApproval` y vence solo desde `Collecting`; solicitudes concurrentes sobre un mismo turno. |
+| US10 | Aprobación o rechazo de grupos, cola de revisión y cierre de la emergencia de pasajero | `RequestGroupDecisionControllerTest` (13)<br>`GroupDecisionWriterTest` (10)<br>`GroupDecisionRetryTest` (9)<br>`GroupDecisionConcurrencyTest` (3)<br>`ReviewQueueControllerTest` (12)<br>`PassengerRequestEvidenceControllerTest` (7)<br>`ClosePassengerEmergencyTest` (7)<br>`EmergencyRepositoryTest` (5)<br>`GroupsWithOtherSafetyRecordsTest` (9)<br>**Subtotal: 75** | Aprobar activa una emergencia `HIGH` y mueve el grupo a `Approved`, y aprobar de nuevo devuelve 200 con la misma emergencia; aprobar o rechazar fuera de estado es un conflicto; rechazar registra motivo y respuesta y no crea emergencia, y es idempotente; rechazar sin motivo válido es 422; un grupo ajeno o inexistente da el mismo 403; solo un supervisor con empresa puede decidir (sin token, 401); la cola separa emergencias del conductor, emergencias de pasajero y grupos en espera, con orden determinista, solo trabajo abierto de la empresa del solicitante y sin exponer identidad ni imágenes; decisiones concurrentes. |
+| US09 | Consulta de las solicitudes propias del pasajero | `MyPassengerRequestControllerTest` (17)<br>`MyPassengerRequestPhotoTest` (8)<br>**Subtotal: 25** | Estados informados al pasajero: `Collecting` con su mensaje, referencia de evidencia y conteo; `Expired` aun antes de que corra el job; en espera de aprobación con tres contribuyentes; `late` sin grupo ni conteo; rechazado con hora de decisión y solo la respuesta orientada al usuario; emergencia activa, en atención y cerrada sin exponer el resultado interno; listado solo de las solicitudes del propio pasajero, la más reciente primero; acceso a la foto propia. |
+| US07 | Historial de seguridad del bus con grupos de solicitudes | `BusSafetyHistoryGroupsTest` (10)<br>`GetBusSafetyHistoryQueryServiceTest` (8, modificada)<br>`BusSafetyHistoryControllerTest` (11, modificada)<br>**Subtotal: 29** | Un grupo y su emergencia se muestran como un solo ítem con la misma referencia en todos los estados; un grupo vencido se informa `Expired` antes de que corra el job; un grupo rechazado se muestra como no aprobado sin motivo ni respuesta; la emergencia del conductor conserva su referencia y no tiene conteo; se excluyen los grupos de otro turno; un historial vacío solo indica que no hay reportes; un viaje terminado o un turno ajeno dan el mismo 403. |
+| US24 | Fin del viaje del pasajero y separación automática (lado servidor) | `PassengerJourneyEndTest` (13)<br>`JourneyEndAutomaticSeparationTest` (10)<br>`JourneyEndConcurrencyTest` (3)<br>`JourneyEndKeepsSafetyRecordsTest` (8)<br>`TimePolicyTest` (1)<br>`EndJourneyCommandServiceTest` (13, modificada)<br>`JourneyControllerTest` (20, modificada)<br>**Subtotal: 68** | La separación automática guarda la hora original y el resumen; sin hora ni resumen se usa la hora del servidor; `endedAt` anterior al inicio se rechaza y el viaje sigue activo; `endedAt` más allá de la tolerancia futura se rechaza y dentro de ella se ajusta a la hora del servidor; un resumen con otro motivo, incompleto o no positivo se rechaza; un reintento con datos distintos devuelve los originales sin cambiar nada; ids ajenos, desconocidos o mal formados dan el mismo 403; otro rol es 403 y sin token 401; fines concurrentes; las solicitudes y emergencias sobreviven al fin del viaje. |
+| US19 | Fuente de conteo y eventos de aforo (dispositivo) | `CountingSourceControllerTest` (18)<br>`CountingSourceTest` (7)<br>`CountingSourceKeysImplTest` (5)<br>`CountingSourceCredentialRedactionTest` (2)<br>`CountingSourceKeyAuthenticationIntegrationTest` (9)<br>`CountingSourceKeyFilterTest` (7)<br>`DeviceKeyIsolationTest` (5)<br>`BusOccupancyTest` (21)<br>`OccupancyEventTest` (3)<br>`OccupancyEventControllerTest` (18)<br>`OccupancyEventConcurrencyTest` (3)<br>`OccupancyInitializationAndHeartbeatTest` (15)<br>`OccupancyPersistenceTest` (3)<br>**Subtotal: 116** | El registro devuelve 201 con la clave una sola vez y guarda solo su hash; una segunda fuente activa para el mismo bus es conflicto; la lista nunca contiene la clave ni su hash; la rotación entrega una clave nueva y la anterior deja de funcionar; la revocación detiene la clave y es idempotente; el primer evento devuelve 201 con el nuevo conteo; un reintento idéntico devuelve 200; una secuencia con salto devuelve 409 con la secuencia esperada y se recupera con el reenvío; una salida por debajo de cero es 422 y marca el conteo inconsistente; la inicialización parte de cero y el heartbeat registra la hora del servidor; claves erróneas, revocadas, rotadas o de otro bus reciben la misma negativa. |
+| US11 | Aforo y grupos en la vista de flota del supervisor (parte complementaria) | `OccupancyControllerTest` (16)<br>`OccupancyAssessmentTest` (12)<br>`TripContextFacadeOccupancyTest` (6)<br>`FleetContextFacadeBatchCapacityTest` (2)<br>`SafetycaseContextFacadeGroupsTest` (8)<br>`FleetOverviewControllerTest` (22, modificada)<br>`GetFleetOverviewQueryServiceTest` (21, modificada)<br>**Subtotal: 87** | El aforo se informa vigente con capacidad y horas, sobre capacidad, con capacidad desconocida, desactualizado (`Stale`) solo cuando el heartbeat supera los dos minutos o nunca existió, o no disponible (sin inicializar, con salto de secuencia, inconsistente o de un turno cerrado); un pasajero o un conductor reciben 403, sin token 401, y un bus ajeno o inexistente recibe la misma negativa; la clave del dispositivo no puede leer el aforo; las respuestas de buses para el pasajero no incluyen valores de aforo. Las clases de la vista de flota se modificaron en la ventana. |
+| US20 | Flujo de notificaciones en tiempo real para supervisores (SSE) | `NotificationDispatcherTest` (10)<br>`NotificationSubscriptionTest` (4)<br>`SubscriptionRegistryTest` (6)<br>`NotificationStreamControllerTest` (9)<br>`NotificationStreamServerTest` (8)<br>`ConnectionPoolServerTest` (1)<br>`DeliveryTimeServerTest` (20)<br>`ReconnectRecoveryServerTest` (2)<br>`SupervisorNotificationFlowTest` (7)<br>`DriverEmergencyNotificationTest` (9)<br>`GlobalExceptionHandlerTooManyRequestsTest` (1)<br>**Subtotal: 77** | Sobre un servidor real: un token vencido, mal formado o ausente da 401, uno de pasajero 403, y una empresa ajena 403 sin registrar nada; el stream abre con cabeceras de streaming, recibe comentarios de keep-alive y se cierra al vencer el token; un evento publicado llega solo a la empresa propia; una emergencia del conductor llega a cinco suscriptores dentro de cinco segundos (20 repeticiones); tras reconectar se recupera por REST y se reanuda en vivo sin duplicados; el registro rechaza el tercer stream de un usuario y el que excede el límite por empresa; el umbral envía solo `PassengerReviewRequired` y la aprobación envía una única `EmergencyActivated` de prioridad alta, incluso con ocho solicitudes o aprobaciones simultáneas; los payloads no llevan identidad, foto, mensaje ni ids internos. |
+
+Las clases de la tabla suman 606 tests de los 1302 ejecutados; el resto corresponde a pruebas de Sprints anteriores o a clases del repositorio que la ventana no tocó.
+
+**Commits de tipo `test:` del Sprint (safebus-backend).**
+
+|------------|--------|-----------|----------------|---------------------|--------------|
+| safebus-backend | `feature/safetycase-passenger-requests` | `bb568e5` | test(safetycase): cover window, late and attached requests over REST | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-passenger-requests` | `ab209be` | test(safetycase): cover concurrent passenger requests on one shift | — | 02/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `7c308e3` | test(safetycase): cover concurrent group decisions | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `ed92c2b` | test(safetycase): cover driver emergencies and closed shifts with open groups | — | 03/11/2026 |
+| safebus-backend | `feature/safetycase-approval` | `5aed849` | test(safetycase): cover collecting and approved groups with driver panic and expiry | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `dc69879` | test(passenger): cover concurrent journey ends | — | 03/11/2026 |
+| safebus-backend | `feature/passenger-views-and-exit` | `de62788` | test(safetycase): verify requests and emergencies survive the end of a journey | — | 03/11/2026 |
+| safebus-backend | `feature/occupancy-count` | `940993e` | test(trip): cover concurrent occupancy events | — | 03/11/2026 |
+| safebus-backend | `feature/live-notifications` | `4d8c5a0` | test(notification): cover delivery time and recovery over a real server | — | 04/11/2026 |
+
+Son los 9 commits de tipo `test` entre el 28/10/2026 y el 10/11/2026; el resto de las pruebas de la tabla anterior se integró en los mismos commits `feat:` y `fix:` que el código que verifican.
+
+#### 4.2.3.6. Execution Evidence for Sprint Review
+
+Los Web Services de este Sprint no tienen pantallas: su ejecución se demuestra desde Swagger UI (`/swagger-ui/index.html`), que permite enviar las solicitudes con un token Bearer, y desde el stream de eventos que recibe el supervisor. Al término del Sprint se puede recorrer de extremo a extremo el circuito de seguridad del pasajero: el pasajero envía solicitudes de pánico con evidencia, el sistema las agrupa y avisa a la empresa, el supervisor las revisa y decide, el pasajero consulta el resultado, y el aforo del bus llega desde un dispositivo de conteo hasta la vista de flota.
+
+**Ejecución local de los Web Services.** Con Java 21 instalado, el servicio se inicia desde la raíz del repositorio de Web Services con el perfil `dev`, que usa una base de datos H2 y carga los datos de ejemplo de `FleetDevSeeder`.
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+```
+
+Para preparar esta sección se inició el servicio con ese perfil sobre una copia limpia de `develop` (commit `8e4fe06`): `GET /api/v1/health` respondió `{"status":"UP"}` y `GET /v3/api-docs` entregó la especificación OpenAPI con los endpoints descritos en 4.2.3.7.
+
+**Recorrido de ejecución.** La columna de resultado resume lo que verifican las pruebas automatizadas de 4.2.3.5 para cada paso; no corresponde a una ejecución manual del recorrido.
+
+| # | Paso | Endpoint | Resultado esperado (según las pruebas) | Historia |
+|---|---|---|---|---|
+| 1 | El supervisor y el pasajero inician sesión | `POST /api/v1/auth/sign-in` | Cada uno obtiene un token Bearer con su rol. | US16 (Sprint 1) |
+| 2 | El conductor activa su turno escaneando la credencial QR | `POST /api/v1/shifts/activate` | Responde 201 con el turno `ACTIVE`. | US13 (Sprint 1) |
+| 3 | El pasajero inicia su viaje en el bus | `POST /api/v1/journeys` | Responde 201 con el viaje activo. | US23 |
+| 4 | El supervisor abre el stream de notificaciones de su empresa | `GET /api/v1/notifications/stream` | Responde 200 con `text/event-stream` y comentarios de keep-alive. Un cuarto stream abierto sin cerrar los anteriores supera el límite por usuario y responde 429. | US20 |
+| 5 | Tres pasajeros distintos envían una solicitud de pánico con mensaje y foto | `POST /api/v1/passenger-requests` | Responde 201 con `requestId`, `status` (`COUNTED`, `ATTACHED` o `LATE`), `groupStatus` y `contributorCount`. Un reintento idéntico responde 200. | US08 |
+| 6 | Al llegar al umbral de tres contribuyentes el stream recibe el evento | `GET /api/v1/notifications/stream` | Llega solo `PassengerReviewRequired` (prioridad `REVIEW`), sin identidad, foto ni mensaje. | US20, US08 |
+| 7 | El supervisor consulta la cola de revisión | `GET /api/v1/review-queue` | El grupo aparece en `groupsAwaitingApproval` con sus solicitudes y su referencia; la respuesta no expone identidad ni imágenes. | US10 |
+| 8 | El supervisor descarga la foto de evidencia de una solicitud del grupo | `GET /api/v1/passenger-requests/{id}/photo` | Responde 200 con la imagen y su tipo de contenido original. | US10 |
+| 9 | El supervisor aprueba el grupo | `POST /api/v1/request-groups/{id}/approve` | Responde 201 con `emergencyId`, estado y prioridad alta; aprobar de nuevo responde 200 con la misma emergencia. El stream recibe una única `EmergencyActivated`. | US10, US20 |
+| 10 | Alternativa: el supervisor rechaza el grupo con motivo y respuesta | `POST /api/v1/request-groups/{id}/decline` | Responde 200 con el grupo no aprobado y no se crea emergencia. Sin motivo válido responde 422. | US10 |
+| 11 | El pasajero consulta sus solicitudes y el resultado | `GET /api/v1/passenger-requests/mine` | Lista solo sus solicitudes, la más reciente primero, con el estado del grupo y la respuesta orientada al usuario. | US09 |
+| 12 | El pasajero consulta el historial de seguridad del bus | `GET /api/v1/vehicles/{id}/safety-history` | El grupo y su emergencia aparecen como un solo ítem con la misma referencia en todos los estados. | US07 |
+| 13 | El supervisor registra la fuente de conteo del bus | `POST /api/v1/buses/{busId}/counting-sources` | Responde 201 con la clave una sola vez; la lista posterior (`GET`) nunca la devuelve. | US19 |
+| 14 | El dispositivo inicializa el conteo, envía eventos de entrada y salida y el latido | `POST /api/v1/occupancy-initializations`, `POST /api/v1/occupancy-events`, `POST /api/v1/occupancy-heartbeats` | La inicialización responde 201 con conteo cero; cada evento responde 201 con el conteo resultante; un salto de secuencia responde 409 con la secuencia esperada. | US19 |
+| 15 | El supervisor consulta el aforo del bus y la vista de flota | `GET /api/v1/buses/{busId}/occupancy`, `GET /api/v1/fleet/overview` | El aforo se informa `CURRENT`, o `STALE` si el latido supera los dos minutos, o `UNAVAILABLE` con su motivo. | US11 |
+| 16 | El pasajero termina su viaje por separación automática | `POST /api/v1/journeys/{id}/end` | Responde 200 con el viaje terminado; las solicitudes y emergencias del viaje se conservan. | US24 |
+
+**Eventos del stream de notificaciones.** El supervisor recibe dos eventos: `PassengerReviewRequired` cuando un grupo reúne el umbral y espera aprobación, y `EmergencyActivated` cuando se activa una emergencia (prioridad `CRITICAL` para la del conductor y `HIGH` para un grupo aprobado).
+
+#### 4.2.3.7. Services Documentation Evidence for Sprint Review
+
+La documentación de los Web Services se genera con springdoc-openapi a partir de las anotaciones de los controladores (`@Tag`, `@Operation`, `@ApiResponse`), igual que en el Sprint 1 (4.2.1.7). La tabla siguiente se obtuvo del documento `/v3/api-docs` de la versión del Sprint (commit `8e4fe06` de `develop`), con el servicio iniciado con el perfil `dev` y procesado con el script `openapi_table.py`, que se mantiene fuera de los repositorios. Solo incluye los endpoints añadidos o ampliados en este Sprint; los endpoints de Sprints anteriores se documentan en 4.2.1.7. Las rutas siguen la convención `/api/v1/<recurso-en-plural-kebab-case>` de la sección 4.1.3.
+
+Los endpoints de `passenger-requests` reciben `multipart/form-data`: Swagger UI muestra `id`, `journeyId`, `message` y `activatedAt` como parámetros, pero se envían como campos del formulario junto con el archivo `photo`. Los endpoints de dispositivo (`occupancy-initializations`, `occupancy-heartbeats` y `occupancy-events`) no usan token Bearer sino la clave de la fuente de conteo en la cabecera `X-Counting-Source-Key`, que el supervisor obtiene al registrar o rotar la fuente. El endpoint `GET /api/v1/passenger-requests/mine/photo` existe para tratar el texto literal `photo` como cualquier otro identificador desconocido de solicitud, por lo que solo responde 401 o 403.
+
+**Endpoints del Sprint.**
+
+| Método | Path | Auth / Rol | Parameters | Request body (`*` obligatorio) | Response codes |
+|---|---|---|---|---|---|
+| POST | `/api/v1/passenger-requests` | Bearer JWT, rol PASSENGER | `id` (form, string)<br>`journeyId` (form, string)<br>`message` (form, string)<br>`activatedAt` (form, string)<br>`photo` (form, archivo) | multipart/form-data (ver Parameters) | `201` Request recorded (COUNTED, ATTACHED or LATE)<br>`200` Identical retry of a recorded request<br>`401` No token provided<br>`403` Passenger role required or JOURNEY_ACCESS_DENIED<br>`409` REQUEST_ID_REUSED or DUPLICATE_CONTRIBUTION<br>`422` INVALID_REQUEST, INVALID_REQUEST_ID, MESSAGE_REQUIRED, MESSAGE_TOO_LONG, EVIDENCE_PHOTO_REQUIRED, EVIDENCE_PHOTO_INVALID, EVIDENCE_PHOTO_TOO_LARGE, INVALID_ACTIVATION_TIME, ACTIVATION_AFTER_JOURNEY_END, BUS_NOT_FOUND or UPLOAD_TOO_LARGE |
+| GET | `/api/v1/passenger-requests/mine` | Bearer JWT, rol PASSENGER | — | — | `200` The account's requests, or an empty list with a message<br>`401` No token provided<br>`403` Passenger role required |
+| GET | `/api/v1/passenger-requests/mine/{id}` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio) | — | `200` The request with its current status and decision<br>`401` No token provided<br>`403` Passenger role required or PASSENGER_REQUEST_ACCESS_DENIED |
+| GET | `/api/v1/passenger-requests/mine/{id}/photo` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio) | — | `200` The stored image with its original content type<br>`401` No token provided<br>`403` Passenger role required or PASSENGER_REQUEST_ACCESS_DENIED<br>`404` EVIDENCE_NOT_FOUND: the stored image is missing |
+| GET | `/api/v1/passenger-requests/mine/photo` | Bearer JWT, rol PASSENGER | — | — | `401` No token provided<br>`403` Passenger role required or PASSENGER_REQUEST_ACCESS_DENIED |
+| GET | `/api/v1/passenger-requests/{id}/photo` | Bearer JWT, rol SUPERVISOR | `id` (path, string, obligatorio) | — | `200` The stored image with its original content type<br>`401` No token provided<br>`403` Supervisor role required or EVIDENCE_ACCESS_DENIED<br>`404` EVIDENCE_NOT_FOUND: the stored image is missing |
+| POST | `/api/v1/request-groups/{id}/approve` | Bearer JWT, rol SUPERVISOR | `id` (path, string, obligatorio) | — | `201` Group approved, High-priority emergency activated<br>`200` Group already approved, the same emergency is returned<br>`401` No token provided<br>`403` Supervisor role required or GROUP_ACCESS_DENIED<br>`409` INVALID_TRANSITION |
+| POST | `/api/v1/request-groups/{id}/decline` | Bearer JWT, rol SUPERVISOR | `id` (path, string, obligatorio) | `reason`: string<br>`response`: string | `200` Group not approved; a repeated decline returns the stored decision<br>`401` No token provided<br>`403` Supervisor role required or GROUP_ACCESS_DENIED<br>`409` INVALID_TRANSITION<br>`422` REASON_REQUIRED, REASON_TOO_LONG or RESPONSE_TOO_LONG |
+| GET | `/api/v1/review-queue` | Bearer JWT, rol SUPERVISOR | — | — | `200` The three prioritized blocks<br>`401` No token provided<br>`403` Supervisor role required or REVIEW_ACCESS_DENIED |
+| GET | `/api/v1/vehicles/{id}/safety-history` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio)<br>`shiftId` (query, string) | — | `200` Redacted bus safety history<br>`401` No token provided<br>`403` Passenger role required or BUS_ACCESS_DENIED |
+| POST | `/api/v1/journeys` | Bearer JWT, rol PASSENGER | — | `busQrCode`: string | `201` Journey started<br>`200` Existing active journey on same bus returned (same body as 201)<br>`401` No token provided<br>`403` Passenger role required<br>`409` Active journey on a different bus (ACTIVE_JOURNEY_EXISTS)<br>`422` BUS_QR_INVALID (also when the body or busQrCode is missing) or BUS_NOT_IN_SERVICE |
+| POST | `/api/v1/journeys/{id}/end` | Bearer JWT, rol PASSENGER | `id` (path, string, obligatorio) | `reason`: string<br>`endedAt`: string (date-time)<br>`summary`: objeto | `200` Journey ended (or already ended: original data returned)<br>`401` No token provided<br>`403` Passenger role required or JOURNEY_ACCESS_DENIED (foreign, unknown or malformed id)<br>`422` INVALID_END_REASON, INVALID_END_TIME or INVALID_END_SUMMARY |
+| GET | `/api/v1/notifications/stream` | Bearer JWT, rol SUPERVISOR | `companyId` (query, integer (int64)) | — | `200` Stream opened (text/event-stream)<br>`401` Missing, expired or invalid token<br>`403` Supervisor role required, or NOTIFICATION_SCOPE_DENIED (no company in the token, or a different companyId was requested)<br>`429` SUBSCRIPTION_LIMIT_USER or SUBSCRIPTION_LIMIT_COMPANY: too many open streams |
+| GET | `/api/v1/buses/{busId}/occupancy` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio) | — | `200` Occupancy; status is CURRENT, STALE or UNAVAILABLE (count absent)<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED |
+| POST | `/api/v1/buses/{busId}/counting-sources` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio) | `label`: string | `201` Source registered; the key is in this response only<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED<br>`409` ACTIVE_SOURCE_EXISTS — the bus already has an active source<br>`422` LABEL_TOO_LONG |
+| GET | `/api/v1/buses/{busId}/counting-sources` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio) | — | `200` Sources of the bus<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED |
+| POST | `/api/v1/buses/{busId}/counting-sources/{sourceId}/rotation` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio)<br>`sourceId` (path, integer (int64), obligatorio) | — | `200` Key rotated; the new key is in this response only<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED<br>`404` SOURCE_NOT_FOUND<br>`409` SOURCE_REVOKED |
+| POST | `/api/v1/buses/{busId}/counting-sources/{sourceId}/revocation` | Bearer JWT, rol SUPERVISOR | `busId` (path, integer (int64), obligatorio)<br>`sourceId` (path, integer (int64), obligatorio) | — | `200` Source revoked<br>`401` No token provided<br>`403` Not a supervisor, or BUS_ACCESS_DENIED<br>`404` SOURCE_NOT_FOUND |
+| POST | `/api/v1/occupancy-initializations` | Dispositivo: cabecera `X-Counting-Source-Key` (rol DEVICE) | — | `initializationId`*: string<br>`busId`*: integer (int64)<br>`shiftId`*: integer (int64)<br>`confirmedCount`*: integer (int32)<br>`confirmedAt`*: string (date-time) | `201` Count initialized<br>`200` Identical retry; nothing changed<br>`401` No credential provided<br>`403` OCCUPANCY_SOURCE_NOT_AUTHORIZED — key, bus or shift refused<br>`409` ALREADY_INITIALIZED<br>`422` Malformed request, INVALID_INITIAL_COUNT or INVALID_CAPTURE_TIME |
+| POST | `/api/v1/occupancy-heartbeats` | Dispositivo: cabecera `X-Counting-Source-Key` (rol DEVICE) | — | `busId`*: integer (int64) | `200` Heartbeat recorded with the server time<br>`401` No credential provided<br>`403` OCCUPANCY_SOURCE_NOT_AUTHORIZED — key or bus refused<br>`422` Malformed request |
+| POST | `/api/v1/occupancy-events` | Dispositivo: cabecera `X-Counting-Source-Key` (rol DEVICE) | — | `eventId`*: string<br>`busId`*: integer (int64)<br>`shiftId`*: integer (int64)<br>`sequence`*: integer (int64)<br>`type`*: enum ENTRY \| EXIT<br>`capturedAt`*: string (date-time) | `201` Event applied; the resulting count is returned<br>`200` Identical retry; nothing changed<br>`401` No credential provided<br>`403` OCCUPANCY_SOURCE_NOT_AUTHORIZED — key, bus or shift refused<br>`409` SEQUENCE_GAP (with expectedSequence), EVENT_ID_REUSED or SEQUENCE_ALREADY_APPLIED<br>`422` Malformed request, NEGATIVE_COUNT, OCCUPANCY_NOT_INITIALIZED, OCCUPANCY_INCONSISTENT or INVALID_CAPTURE_TIME |
+| GET | `/api/v1/fleet/overview` | Bearer JWT, rol SUPERVISOR | — | — | `200` Fleet overview returned<br>`401` No token provided<br>`403` Supervisor role required, or FLEET_ACCESS_DENIED |
+
+**Ejemplos de request y response.** Los ejemplos muestran la estructura de cada recurso tal como la declara el esquema OpenAPI; los valores entre `<>` indican el tipo del campo y `A|B` los valores permitidos de un campo enumerado. No son respuestas capturadas de una ejecución. Los endpoints cuya respuesta no tiene cuerpo JSON (fotos, stream) no se listan.
+
+**POST `/api/v1/passenger-requests`**
+
+Response `201`:
+
+```json
+{
+  "requestId": "<string>",
+  "status": "<string>",
+  "receivedAt": "<date-time>",
+  "groupStatus": "<string>",
+  "contributorCount": "<int32>"
+}
+```
+
+**POST `/api/v1/request-groups/{id}/approve`**
+
+Response `201`:
+
+```json
+{
+  "groupId": "<int64>",
+  "emergencyId": "<string>",
+  "status": "<string>",
+  "priority": "<string>",
+  "approvedAt": "<date-time>"
+}
+```
+
+**POST `/api/v1/request-groups/{id}/decline`**
+
+Request:
+
+```json
+{
+  "reason": "<string>",
+  "response": "<string>"
+}
+```
+
+Response `200`:
+
+```json
+{
+  "groupId": "<int64>",
+  "status": "<string>",
+  "decidedAt": "<date-time>",
+  "reason": "<string>",
+  "response": "<string>"
+}
+```
+
+**POST `/api/v1/journeys/{id}/end`**
+
+Request:
+
+```json
+{
+  "reason": "<string>",
+  "endedAt": "<date-time>",
+  "summary": {
+    "separationDistanceMeters": "<int32>",
+    "separationDurationSeconds": "<int32>"
+  }
+}
+```
+
+Response `200`:
+
+```json
+{
+  "journeyId": "<int64>",
+  "status": "<string>",
+  "endedAt": "<date-time>",
+  "endReason": "<string>",
+  "summary": {
+    "separationDistanceMeters": "<int32>",
+    "separationDurationSeconds": "<int32>"
+  }
+}
+```
+
+**GET `/api/v1/buses/{busId}/occupancy`**
+
+Response `200`:
+
+```json
+{
+  "status": "CURRENT|STALE|UNAVAILABLE",
+  "reason": "NOT_INITIALIZED|SEQUENCE_GAP|INCONSISTENT_COUNT",
+  "count": "<int32>",
+  "capacity": "<int32>",
+  "load": "WITHIN_CAPACITY|OVER_CAPACITY|CAPACITY_UNKNOWN",
+  "lastCountAt": "<date-time>",
+  "lastHeartbeatAt": "<date-time>"
+}
+```
+
+**POST `/api/v1/buses/{busId}/counting-sources`**
+
+Request:
+
+```json
+{
+  "label": "<string>"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "sourceId": "<int64>",
+  "busId": "<int64>",
+  "label": "<string>",
+  "status": "<string>",
+  "createdAt": "<date-time>",
+  "rotatedAt": "<date-time>",
+  "key": "<string>"
+}
+```
+
+**POST `/api/v1/occupancy-initializations`**
+
+Request:
+
+```json
+{
+  "initializationId": "<uuid>",
+  "busId": "<int64>",
+  "shiftId": "<int64>",
+  "confirmedCount": "<int32>",
+  "confirmedAt": "<date-time>"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "initializationId": "<string>",
+  "busId": "<int64>",
+  "shiftId": "<int64>",
+  "confirmedCount": "<int32>",
+  "confirmedAt": "<date-time>"
+}
+```
+
+**POST `/api/v1/occupancy-events`**
+
+Request:
+
+```json
+{
+  "eventId": "<uuid>",
+  "busId": "<int64>",
+  "shiftId": "<int64>",
+  "sequence": "<int64>",
+  "type": "ENTRY|EXIT",
+  "capturedAt": "<date-time>"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "eventId": "<string>",
+  "sequence": "<int64>",
+  "type": "ENTRY|EXIT",
+  "count": "<int32>",
+  "load": "WITHIN_CAPACITY|OVER_CAPACITY|CAPACITY_UNKNOWN"
+}
+```
+
+Los endpoints se agrupan en Swagger UI por controlador. En el OpenAPI generado, las respuestas 401, 403, 409 y 422 repiten el esquema de la respuesta exitosa; en la práctica los errores se devuelven con el formato `ProblemDetail` y la propiedad `code` descrita en 4.2.1.7. Los códigos que documentan los endpoints de este Sprint son los siguientes.
+
+| Estado HTTP | `code` | Situación |
+|---|---|---|
+| 403 | `JOURNEY_ACCESS_DENIED`, `PASSENGER_REQUEST_ACCESS_DENIED`, `GROUP_ACCESS_DENIED`, `REVIEW_ACCESS_DENIED`, `EVIDENCE_ACCESS_DENIED`, `BUS_ACCESS_DENIED`, `FLEET_ACCESS_DENIED`, `NOTIFICATION_SCOPE_DENIED` | El recurso es de otro pasajero, de otra empresa o de otro turno, o no existe; las pruebas verifican que se devuelve la misma respuesta en los tres casos. |
+| 403 | `OCCUPANCY_SOURCE_NOT_AUTHORIZED` | La clave de la fuente de conteo, el bus o el turno es rechazado: clave errónea, revocada o rotada, o de otro bus. |
+| 404 | `EVIDENCE_NOT_FOUND`, `SOURCE_NOT_FOUND` | Falta la imagen almacenada de la evidencia, o la fuente de conteo no existe en el bus. |
+| 409 | `INVALID_TRANSITION` | El grupo no está en espera de aprobación para aprobarlo o rechazarlo. |
+| 409 | `REQUEST_ID_REUSED`, `DUPLICATE_CONTRIBUTION` | El identificador de la solicitud ya se usó con otros datos, o la cuenta ya contribuyó al grupo. |
+| 409 | `ACTIVE_JOURNEY_EXISTS` | El pasajero ya tiene un viaje activo en otro bus. |
+| 409 | `ACTIVE_SOURCE_EXISTS`, `SOURCE_REVOKED` | El bus ya tiene una fuente activa, o se intentó rotar una fuente revocada. |
+| 409 | `ALREADY_INITIALIZED`, `EVENT_ID_REUSED`, `SEQUENCE_ALREADY_APPLIED`, `SEQUENCE_GAP` | Conflictos del conteo: ya inicializado, evento reutilizado con otro contenido, secuencia ya aplicada, o salto de secuencia (la respuesta incluye `expectedSequence`). |
+| 422 | `MESSAGE_REQUIRED`, `MESSAGE_TOO_LONG`, `EVIDENCE_PHOTO_REQUIRED`, `EVIDENCE_PHOTO_INVALID`, `EVIDENCE_PHOTO_TOO_LARGE`, `UPLOAD_TOO_LARGE`, `INVALID_REQUEST`, `INVALID_REQUEST_ID`, `INVALID_ACTIVATION_TIME`, `ACTIVATION_AFTER_JOURNEY_END`, `BUS_NOT_FOUND` | Validaciones de la solicitud de pánico: mensaje, foto, identificador, hora de activación y bus. |
+| 422 | `REASON_REQUIRED`, `REASON_TOO_LONG`, `RESPONSE_TOO_LONG` | Validaciones del rechazo de un grupo. |
+| 422 | `INVALID_END_REASON`, `INVALID_END_TIME`, `INVALID_END_SUMMARY` | Validaciones del fin del viaje por separación automática. |
+| 422 | `BUS_QR_INVALID`, `BUS_NOT_IN_SERVICE` | Validaciones del inicio del viaje. |
+| 422 | `LABEL_TOO_LONG`, `INVALID_INITIAL_COUNT`, `INVALID_CAPTURE_TIME`, `NEGATIVE_COUNT`, `OCCUPANCY_NOT_INITIALIZED`, `OCCUPANCY_INCONSISTENT` | Validaciones de la fuente de conteo y del aforo; una salida por debajo de cero marca el conteo como inconsistente. |
+| 429 | `SUBSCRIPTION_LIMIT_USER`, `SUBSCRIPTION_LIMIT_COMPANY` | Se superó el máximo de streams abiertos por usuario o por empresa. |
+
+**Documentación interactiva.** Swagger UI del servicio desplegado, con los grupos de endpoints del Sprint.
+
+<img src="../docs/insights/sprint3-swagger-1.png" alt="Swagger UI de SafeBus con los grupos de endpoints del Sprint 3" width="750">
+
+<img src="../docs/insights/sprint3-swagger-2.png" alt="Swagger UI de SafeBus: Counting sources, Bus Safety History, Live Notifications, Fleet Monitoring y Occupancy" width="750">
+
+<img src="../docs/insights/sprint3-swagger-3.png" alt="Swagger UI de SafeBus: Passenger Requests, Passenger count (device), Journeys y Emergency Attention" width="750">
+
+URL del repositorio de Web Services: https://github.com/upc-pre-202620-1acc0238-4939-dreamteam/safebus-backend
+
+URL de la documentación desplegada: https://safebus-api-production-cb4d.up.railway.app/swagger-ui/index.html
+
+#### 4.2.3.8. Software Deployment Evidence for Sprint Review
+
+El despliegue del backend sigue el procedimiento de la sección 4.1.4: Railway construye la imagen desde el `Dockerfile` del repositorio de Web Services y la vuelve a desplegar en cada push a la rama enlazada, con una base de datos MySQL administrada. En este Sprint no cambiaron el `Dockerfile`, el `.dockerignore`, el `pom.xml` ni el perfil `prod`: entre el último commit anterior al Sprint (`155baa4`) y el merge del PR #18 (`8e4fe06`) el único archivo de configuración o de empaquetado que se modificó fue `application.properties`, con ocho propiedades nuevas. Todas tienen un valor por defecto en ese archivo, por lo que el servicio de Railway no necesita variables de entorno nuevas respecto de la tabla de 4.1.4.
+
+**Web Services.**
+
+| Elemento | Ubicación en el repositorio | Commit Id |
+|---|---|---|
+| Tareas programadas habilitadas por defecto: vencimiento de los grupos de solicitudes de pánico que superan su ventana; se pueden desactivar con `safebus.scheduling.enabled=false` | `SchedulingConfig`, `GroupExpiryJob`, `application.properties` | `c9cd30b` |
+| Configuración del stream de notificaciones para supervisores: `safebus.notifications.delivery-threads=8`, `queue-capacity=1000`, `mailbox-capacity=64`, `max-per-user=3`, `max-per-company=50`, `keep-alive=PT15S` y `max-connection-age=PT30M` | `application.properties`, `NotificationKeepAliveJob` | `dceea20` |
+
+Cualquiera de las propiedades nuevas puede sobrescribirse desde el servicio de Railway con una variable de entorno, sin modificar el repositorio. El perfil `prod` mantiene `spring.jpa.hibernate.ddl-auto=update`, de modo que las tablas de las nuevas entidades del Sprint (solicitudes y grupos de pánico, fuentes de conteo y aforo) las crea Hibernate al iniciar la aplicación, sin una migración manual.
+
+**Aspectos de operación del Sprint.**
+
+- El stream `GET /api/v1/notifications/stream` mantiene conexiones abiertas: el servidor envía un comentario de keep-alive cada 15 segundos, cierra cada conexión a los 30 minutos como máximo, y admite hasta 3 streams por usuario y 50 por empresa; el cliente debe reconectarse y recuperar lo perdido por REST.
+- Las solicitudes de pánico aceptan una foto de evidencia; el límite de carga (6 MB por archivo y 7 MB por solicitud) ya existía antes del Sprint.
+- Los datos de ejemplo del perfil `dev` no se cargan en producción, igual que en 4.1.4.
+
+**Estado del despliegue de este Sprint.** El servicio de Railway se llama `safebus-api` y está publicado en https://safebus-api-production-cb4d.up.railway.app. Su deployment activo corresponde al merge del Pull Request #18 (`8e4fe06`, rama `feature/live-notifications`), del 11/11/2026. La construcción fue exitosa: inicialización en 52 s, build en 50 s y deploy en 5 s.
+
+| Dato | Valor |
+|---|---|
+| Servicio en Railway | `safebus-api` |
+| URL del servicio desplegado | https://safebus-api-production-cb4d.up.railway.app |
+| Deployment activo | Merge del PR #18, commit `8e4fe06`, 11/11/2026 |
+| Tiempos del build | Inicialización 52 s, build 50 s, deploy 5 s |
+
+<img src="../docs/insights/sprint3-railway.png" alt="Deployment activo del servicio safebus-api en Railway" width="750">
+
+#### 4.2.3.9. Team Collaboration Insights during Sprint
+
+Los datos de esta sección se calcularon con Git sobre los repositorios disponibles, para el periodo del Sprint (28/10/2026 a 10/11/2026, hora de Lima): `git shortlog -sne --no-merges --all` con el rango de fechas para los commits por autor, y el script `insights.py` (mantenido fuera de los repositorios) para los commits por semana del Sprint, con la semana 1 del 28/10 al 03/11 y la semana 2 del 04/11 al 10/11. Se cuentan los commits sin los de merge, por fecha de commit. Git registra commits, no esfuerzo ni revisiones: la cifra de cada integrante no mide por sí sola su aporte.
+
+**safebus-backend** (rama `develop`).
+
+| Autor (nombre en git) | Correo | Commits | Semana 1 | Semana 2 |
+|---|---|:---:|:---:|:---:|
+| ORION-tech-c | `asfernandezl.peru@gmail.com` | 54 | 46 | 8 |
+| **Total** | | **54** | **46** | **8** |
+
+Los commits ocurrieron en tres días: 12 el 02/11/2026, 34 el 03/11/2026 y 8 el 04/11/2026; no hay commits el resto del periodo. Además, los cinco commits de merge de los Pull Requests #14 a #18 los registró GitHub con el correo `noreply` de la cuenta `ORION-tech-c`, y no se cuentan en la tabla.
+
+**dreamteam-report** (rama `develop`, hasta el 10/11/2026).
+
+| Autor (nombre en git) | Correo | Commits | Semana 1 | Semana 2 |
+|---|---|:---:|:---:|:---:|
+| mathias | `mathiasarechaga62@gmail.com` | 3 | 0 | 3 |
+| Valentino Espinoza | `andre.espinoza.orrego@gmail.com` | 1 | 0 | 1 |
+| Mathias Acuache | `u202314898@upc.edu.pe` | 1 | 0 | 1 |
+| **Total** | | **5** | **0** | **5** |
+
+Los cinco commits son del 09/11/2026 (4) y del 10/11/2026 (1). Según sus mensajes, añaden el diseño de entrevistas, el segmento 3 de entrevistas, información de videos y de imágenes del producto, y más información del equipo. La tabla no incluye los commits de esta sección del informe, que se hicieron en una rama aparte y con fecha posterior al periodo.
+
+##### Análisis e Interpretación de los Datos de Colaboración
+
+1. **Distribución del trabajo.** En el repositorio de Web Services, los 54 commits de implementación y pruebas del Sprint provienen de una sola cuenta, `ORION-tech-c`, que corresponde a Fernández Linares, Alvaro Sebastian. La cuenta `leodev77` (correo `U202321020@upc.edu.pe`, integrante: Delgado Arriola, Leonardo Sebastian) no tiene commits en ese repositorio durante el periodo, aunque registra 17 commits en su historia anterior. Ningún otro integrante tiene commits en el repositorio de Web Services.
+2. **Frecuencia de trabajo.** El 85 % de los commits del backend (46 de 54) cae en la primera semana del Sprint, y todos en tres días, del 02 al 04/11/2026. Hay commits cuyos horarios de commit están a pocos minutos entre sí, por lo que la fecha de commit refleja cuándo se integró el trabajo y no cuánto tiempo tomó.
+3. **Flujo de trabajo GitFlow.** Todo el trabajo del periodo llegó a `develop` mediante cinco Pull Requests desde ramas `feature/`, con el mensaje de merge de GitHub; los commits de implementación no se hicieron directamente sobre `develop`.
+4. **Informe.** En el periodo, los commits del repositorio del informe provienen de tres cuentas distintas a la del backend y se concentran en las dos últimas fechas del Sprint.
+
 ## 4.3. Validation Interviews
 
 ### 4.3.1. Diseño de Entrevistas
+
+### Segmento 1: Operadores y Conductores de Transporte Público
+
+1. ¿Qué tan fluido y directo le resultó el proceso de autenticación en la pantalla de Iniciar Sesión con sus credenciales de conductor y qué fue lo primero que llamó su atención al entrar a la pantalla principal de Mi Turno?
+2. Observando la información del turno activo en la pantalla de Mi Turno, ¿le resulta evidente identificar los datos operativos de su unidad asignada (placa del bus, ruta programada y horario de servicio)?
+3. En la pantalla principal de Mi Turno se muestra el estado de su programación del día. ¿Considera que esta ubicación es la ideal para confirmar rápidamente que está listo para iniciar su recorrido, o preferiría ver esta información en otra sección?
+4. En la sección de Mi Turno, si tuviera que vincularse al bus que va a operar, ¿qué tan intuitivo le parece el flujo de validación empezando por el botón Validar Turno y escaneando el código QR físico de la unidad?
+5. En la parte superior de la pantalla durante su recorrido, ¿cómo interpreta el indicador de estado del turno frente al tiempo de inicio y fin programado? ¿Le da una noción clara del avance de su jornada?
+6. En la pantalla de operación, encontrará los datos de la ruta y las alertas vigentes del trayecto. ¿La interfaz visual con las etiquetas de ruta y avisos operativos le resulta clara y convincente para mantenerse informado sobre las condiciones de su recorrido sin distraer el manejo?
+7. En la sección de Mis Alertas, ¿el diseño de tarjetas y etiquetas de estado (Pendiente de transmisión, Activa, En Progreso / En Atención, Cerrada) le facilita visualizar en qué etapa de respuesta se encuentra la central de la empresa ante su reporte?
+8. En la pantalla de Mi Turno, el botón de Emergencia tiene prioridad máxima (Critical) asignada directamente a su perfil de conductor. ¿Le resulta claro cómo esta configuración garantiza que su alerta llegue de forma inmediata a la empresa sin depender de la aprobación de nadie ni de reportes de terceros?
+9. En el sistema de asignaciones, su turno queda validado y protegido durante su horario de servicio para evitar que otra persona opere con su cuenta. Como conductor, ¿comprende cómo esta validación protege su identidad y responsabilidad sobre la unidad durante las horas de mayor afluencia?
+10. En la barra de estado de la aplicación, ¿la información sobre la señal de red, el estado del GPS y el envío automático de coordenadas cada 30 segundos le da la seguridad de que la central conoce su ubicación exacta en tiempo real sin necesidad de reportarse por radio o teléfono?
+11. Al presentarse una situación de peligro inminente (asalto, cobro de cupos o siniestro vial), ¿el botón rojo prominente de Emergencia en la zona inferior de la pantalla le genera la confianza de enviar un auxilio inmediato sin rodeos ni trámites previos?
+12. A diferencia de las solicitudes de los pasajeros, el botón del conductor activa la emergencia en un solo toque sin exigirle rellenar formularios, redactar mensajes ni tomar fotografías. ¿Esta activación directa le parece lo suficientemente rápida y segura para no exponer su vida mientras está al volante?
+13. Al presionar el botón de Emergencia, la aplicación confirma el envío en pantalla pero no emite ningún sonido de alarma ni vibración física en el teléfono. Conociendo el riesgo de represalias ante delincuentes armados, ¿esta respuesta silenciosa y discreta le resulta adecuada para proteger su integridad?
+14. Como conductor que realiza jornadas desde la madrugada (4:00 a. m.) hasta altas horas de la noche, ¿la paleta de colores oscuros (Modo Oscuro / Dark Mode), los botones amplios y la fluidez de la aplicación le transmiten comodidad visual y le evitan deslumbramientos o fatiga ocular al manejar?
+15. Sabiendo que la aplicación únicamente registra la ubicación GPS del vehículo durante el horario de su turno activo, y que bajo ninguna circunstancia graba audio, video ni monitorea su teléfono fuera de servicio, ¿se sentiría tranquilo y en total confianza utilizándola en su trabajo diario?
+16. De todo lo que probó hoy (validación de turno con código QR, botón de emergencia silencioso en un toque, telemetría automática de ubicación y envío guardado sin conexión), ¿cuál herramienta considera que tendría el impacto más rápido para reducir los riesgos y situaciones de peligro en su ruta diaria?
+17. Si su empresa de transporte o consorcio implementara SafeBus de forma permanente en todas las unidades de su flota, ¿estaría dispuesto a utilizar la aplicación en cada una de sus jornadas diarias? ¿Qué cambio o mejora le sugeriría a SafeBus para que le brinde mayor ayuda y seguridad al conducir en su ruta?
 
 Las sesiones contrastan la comprensión y uso de los flujos de seguridad por rol. Se emplean cuentas y datos de prueba autorizados para el registro y las imágenes; las grabaciones del informe no muestran DNI completos ni fotos privadas de otros participantes.
 
