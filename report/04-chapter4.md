@@ -1258,7 +1258,7 @@ La tabla de commits cubre únicamente lo integrado en `develop` entre el 28/10/2
 | safebus-backend | `develop` | `e73f3ca` | Merge pull request #17 from upc-pre-202620-1acc0238-4939-dreamteam/feature/occupancy-count | Feature/occupancy count | 03/11/2026 |
 | safebus-backend | `develop` | `8e4fe06` | Merge pull request #18 from upc-pre-202620-1acc0238-4939-dreamteam/feature/live-notifications | Feature/live notifications | 04/11/2026 |
 
-Los 54 commits de implementación y pruebas de este Sprint fueron escritos con la identidad de Git `ORION-tech-c`; el detalle de la autoría por semana se presenta en la sección 4.2.3.9. Los repositorios de la Landing Page y de la aplicación móvil no se incluyen en esta tabla: `[completar: commits de safebus-landing y safebus-mobile del Sprint 3, si corresponde]`.
+Los 54 commits de implementación y pruebas de este Sprint fueron escritos con la identidad de Git `ORION-tech-c`; el detalle de la autoría por semana se presenta en la sección 4.2.3.9.
 
 #### 4.2.3.5. Testing Suite Evidence for Sprint Review
 
